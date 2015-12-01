@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+	<title>The Ambula</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" />
+        <link href="css/custom.css" rel="stylesheet" media="screen" />
+       
+        <link href="css/color1.css" rel="stylesheet" media="screen" />
+
+        <link href="css/font-awesome.min.css" rel="stylesheet" />
+	<link href="css/jquery.vegas.css" rel="stylesheet" />
+        
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+	
+    <!--[if lt IE 9]>
+      <script src="css/font-awesome-ie7.min.css"></script>
+    <![endif]-->
+    
+	<!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet' type='text/css'>
+
+    <!-- ##### Le HTML5 shim, for IE6-8 support of HTML5 elements ##### -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <!--  ##### fav and touch icons ##### -->
+    <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple144.png"> -->
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple114.png"> -->
+    <!-- For first- and second-generation iPad: -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple72.png"> -->
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!--<link rel="apple-touch-icon-precomposed" href="img/apple57.png"> -->
+
+    
+   
+</head>
+
+<body>
+        <!--Header START -->   
+         <header class="navbar navbar-inverse navbar-fixed-top mob-mrg0">
+		<div class="container">
+            <!-- Needed this button code to show menu in mobile and table -->
+            <button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">Menu <i class="icon-reorder"></i></button>
+    
+            <!-- Logo Here -->
+            <a class="brand" href="#home"><img src="img/logo.png" alt="Grace - Personal One Page Parallax Scrolling Theme" /></a>
+
+            <!-- Top Navigation Here -->
+            <div class="nav-collapse collapse">
+                <ul id="documenter_nav" class="nav pull-right">
+                    <li><a class="current" href="#home">Home</a></li>
+                    <li><a href="#topRec">Top Recepies</a></li>
+                    <li><a href="#topRest">Top Restaurants</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>         
+                    <li><a id="modal_trigger" href="#modal">Sign In</a></li>                 
+                </ul>
+            </div>
+        </div>
+           <!-- Pop up Box Code START -->
+             <div  class="container" >
+	
+	      <div id="modal" class="popupContainer" style="display:none;">
+		<header class="popupHeader">
+                    <p align="center"><span class="header_title">Login</span></p>
+			<span class="modal_close"><i class="fa fa-times"></i></span>
+		</header>
+		
+		<section class="popupBody">
+			<!-- Social Login -->
+			<div class="social_login">
+				<div class="">
+					<a href="#" class="social_box fb">
+						<span class="icon"><i class="fa fa-facebook"></i></span>
+						<span class="icon_title">Connect with Facebook</span>
+						
+					</a>
+
+					<a href="#" class="social_box google">
+						<span class="icon"><i class="fa fa-google-plus"></i></span>
+						<span class="icon_title">Connect with Google</span>
+					</a>
+				</div>
+
+				<div class="centeredText">
+					<span>Or use your Email address</span>
+				</div>
+
+				<div class="action_btns">
+					<div class="one_half"><a href="#" id="login_form" class="btn">Login</a></div>
+					<div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
+				</div>
+			</div>
+
+			<!-- Username & Password Login form -->
+			<div class="user_login">
+				<form>
+					<label>Email / Username</label>
+					<input type="text" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" />
+					<br />
+
+					<div class="checkbox">
+						<input id="remember" type="checkbox" />
+						<label for="remember">Remember me on this computer</label>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+					</div>
+				</form>
+
+				<a href="#" class="forgot_password">Forgot password?</a>
+			</div>
+
+			<!-- Register Form -->
+			<div class="user_register">
+				<form>
+					<label>Full Name</label>
+					<input type="text" />
+					<br />
+
+					<label>Email Address</label>
+					<input type="email" />
+					<br />
+
+					<label>Password</label>
+					<input type="password" />
+					<br />
+
+					<div class="checkbox">
+						<input id="send_updates" type="checkbox" />
+						<label for="send_updates">Send me occasional email updates</label>
+					</div>
+
+					<div class="action_btns">
+						<div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
+						<div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+</div>
+ 
+             <script type="text/javascript">
+	$("#modal_trigger").leanModal({top : 200, overlay : 0.6, closeButton: ".modal_close" });
+
+	$(function(){
+		// Calling Login Form
+		$("#login_form").click(function(){
+			$(".social_login").hide();
+			$(".user_login").show();
+			return false;
+		});
+
+		// Calling Register Form
+		$("#register_form").click(function(){
+			$(".social_login").hide();
+			$(".user_register").show();
+			$(".header_title").text('Register');
+			return false;
+		});
+
+		// Going back to Social Forms
+		$(".back_btn").click(function(){
+			$(".user_login").hide();
+			$(".user_register").hide();
+			$(".social_login").show();
+			$(".header_title").text('Login');
+			return false;
+		});
+
+	})
+</script>
+           <!-- pop up box code END -->
+             
+         	
+    </header>    
+        
+        <!-- Header END -->
+    
+	<section id="home" class="container-fluid pages"> <!-- Home START -->
+         <div class="container">  
+         	<div  class="row pos-relative hgt700" ><!-- We need fix height for this <div> because we have image in absolute position. -->
+                    <!-- Senteces in picture -->
+            	<!--<div class="span8">
+					<h1 class="txt-white mrg50T pdg50T mrg40B mob-txt-center">
+                    	I am a <span class="txt-yellow">Shane Grace</span>,<br />A Freelance Graphic/Web Designer<br />From Mumbai.
+                    </h1>
+					<p class="txt-white txt-font2 txt24 mrg20T mob-txt-center">I don't think outside of the box;<br />I think of what I can do with the box.</p>
+					<p class="mrg50T mob-txt-center"><a href="#work" class="btn btn-simple bg-yellow txt18 txt-font2 txt-blue">Have a look at my work <i class="icon-circle-arrow-down txt-blue"></i></a></p>
+                </div> span8 END -->
+
+				
+                <!-- 
+                	tab-w350 = table width:350px 
+                	btm0 = bottom:0px | right0 = top:0px;
+                
+                
+				-->
+                                
+                               
+                                   <div class="transbox">
+                                      <input type="text" class="textBox" />
+                                   </div>
+                             
+                                
+                                </div>
+            </div>
+        </section><!-- Home END -->
+        
+	<section id="topRec" class="container-fluid pages">  <!--Top Recepies START -->
+    	<div class="container">
+            <h1 class="pg-title txt-yellow"><span>Top Recepies </span></h1>
+           
+          <!--  <p class="txt24 txt-font2 txt-light-blue txt-center mrg20B pdg20B">Our goal is to help clients maintain to there expectation<br>I live by that, and I apply it to my work approach.</p> -->
+            
+            <ul class="row portfolio portfolio-detail clear-ul pdg20T mrg20T">
+            <!-- #1 to #4 Work Detail Section - If you reduce item per row to 3 put work-info after 3 <li> -->
+                <li class="span12 work-info displaynone" id="work1">
+                	<a href="javascript:void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work1a-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#1 END -->
+                
+                <li class="span12 work-info displaynone" id="work2">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work2-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#2 END -->
+                
+                <li class="span12 work-info displaynone" id="work3">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work3-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#3 END -->
+                
+                <li class="span12 work-info displaynone" id="work4">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work4-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#4 END -->
+
+                <li class="span12 work-info displaynone" id="work5">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work5-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#5 END -->
+                
+                <li class="span12 work-info displaynone" id="work6">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work6-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#6 END -->
+                
+                <li class="span12 work-info displaynone" id="work7">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work7-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#7 END -->
+                
+                <li class="span12 work-info displaynone" id="work8">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work8-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#8 END -->
+
+
+                <li class="span12 work-info displaynone" id="work9">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work9-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#9 END -->
+                
+                <li class="span12 work-info displaynone" id="work10">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work10-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#10 END -->
+                
+                <li class="span12 work-info displaynone" id="work11">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work11-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#11 END -->
+                
+                <li class="span12 work-info displaynone" id="work12">
+                	<a href="javascript: void(0);" class="cls"><i class="icon-remove"></i> CLOSE</a>
+                	<div class="row">
+                        <div class="span7 prj-cntr"><img src="img/work12-full.jpg" alt="" /></div>
+                        <div class="span4 prj-data">
+                        	<p class="txt16 txt-darkgrey"><strong>Project Name Here</strong></p>
+                            <p>Small project info  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit</p>
+                            <p>
+                            	<strong class="txt16 txt-darkgrey">I helped with:</strong><br />
+                                Design / HTML / CSS
+                            </p>
+                            <p class="txt-darkgrey">Live site link:<br /><a href="javascript:void(0);">livesitelink.com</a></p>
+                        </div>
+					</div>
+                </li><!-- work-info#12 END -->
+            </ul> -->
+            
+            <ul class="nav nav-tabs tab-custom mrg-auto w300" id="myTab">
+                <li class="active"><a href="javascript: void(0);" class="gracesortbut" data-sorttype="all">All</a></li>
+                <li><a href="javascript: void(0);" class="gracesortbut" data-sorttype="art">Art</a></li>
+                <li><a href="javascript: void(0);" class="gracesortbut" data-sorttype="illu">Illustration</a></li>
+                <li><a href="javascript: void(0);" class="gracesortbut" data-sorttype="testimonial">Testimonial</a></li>
+            </ul>
+        
+            <ul class="row portfolio clear-ul pdg20T mrg20T grace_sortable" data-buttonclass="gracesortbut">
+                <li class="span3 mrg20B art">
+                    <a href="javascript:void(0);" data-rel="work1">
+                        <img src="img/work1.jpg" alt="" />
+                        
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Consectetur Pvt. Ltd.</strong><br />
+                            <span class="txt-white">Design / HTML / CSS</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B testimonial">
+                    <a href="javascript:void(0);" data-rel="work2">
+                    	<!-- height require to maintain consistency -->
+                        <span class="quote hgt200 bg-red txt-white txt16"><i class="icon-quote-left"></i> <em class="txt-font2">It was an excellent experice working with Shane. He has best communication and design skill I have ever came across. I will surely recommend him to anybody. Love love love.</em></span>
+                        <span class="hoverinfo">
+                            <strong class="txt-white">M Clarke, CEO | Eiusmod Inc.</strong><br />
+                            <span class="txt-white">Logo Design</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B art">
+                    <a href="javascript:void(0);" data-rel="work3">
+                        <img src="img/work2.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Quisquam Plc.</strong><br />
+                            <span class="txt-white">WordPress Implimentation</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B art illu">
+                    <a href="javascript:void(0);" data-rel="work4">
+                        <img src="img/work3.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Quisquam Plc.</strong><br />
+                            <span class="txt-white">Prototype / User Testing</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B illu">
+                    <a href="javascript:void(0);" data-rel="work5">
+                        <img src="img/work4.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Dolorem Plc.</strong><br />
+                            <span class="txt-white">Interaction Design / Visual Design</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B art">
+                    <a href="javascript:void(0);" data-rel="work6">
+                        <img src="img/work5.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Eiusmod Inc.</strong><br />
+                            <span class="txt-white">Interactive ads / Emailer</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B art illu">
+                    <a href="javascript:void(0);" data-rel="work7">
+                        <img src="img/work6.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Dolorem Plc.</strong><br />
+                            <span class="txt-white">Interaction Design / Visual Design</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B testimonial">
+                    <a href="javascript:void(0);" data-rel="work8">
+                        <span class="quote hgt200 bg-yellow txt-black txt16"><i class="icon-quote-left"></i> <em class="txt-font2">I appreciate your support sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nisi ut aliquip ex ea commodo consequat.</em></span>
+                        <span class="hoverinfo">
+                            <strong class="txt-white">TT Watson | Proquam Ltd.</strong><br />
+                            <span class="txt-white">Prototype / User Testing</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>                
+                <li class="span3 mrg20B testimonial">
+                    <a href="javascript:void(0);" data-rel="work9">
+                        <span class="quote hgt200 bg-yellow txt-black txt16"><i class="icon-quote-left"></i> <em class="txt-font2">Amazing design skill! sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nisi ut aliquip ex ea commodo consequat.</em></span>
+                        <span class="hoverinfo">
+                            <strong class="txt-white">DA Hughes | Dolorem Plc.</strong><br />
+                            <span class="txt-white">Interaction Design / Visual Design</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>                
+                <li class="span3 mrg20B illu">
+                    <a href="javascript:void(0);" data-rel="work10">
+                        <img src="img/work7.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Quisquam Plc.</strong><br />
+                            <span class="txt-white">Prototype / User Testing</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B testimonial">
+                    <a href="javascript:void(0);" data-rel="work11">
+                        <span class="quote hgt200 bg-red txt-white txt16"><i class="icon-quote-left"></i> <em class="txt-font2">It was an sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nisi ut aliquip ex ea commodo consequat.</em></span>
+                        <span class="hoverinfo">
+                            <strong class="txt-white">MA Starc | Quisquam Plc.</strong><br />
+                            <span class="txt-white">Design / HTML / CSS</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+                <li class="span3 mrg20B illu">
+                    <a href="javascript:void(0);" data-rel="work12">
+                        <img src="img/work8.jpg" alt="" />
+                        <span class="hoverinfo">
+                            <strong class="txt-white">Adipisci Inc.</strong><br />
+                            <span class="txt-white">Interaction Design</span><br /><br />
+                            <i class="icon-zoom-in txt-white txt30"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </section><!-- top recepies END -->
+    
+	<section id="topRest" class="container-fluid pages"> <!-- top restaurant START -->
+    	<div class="container">
+            <h1 class="pg-title txt-yellow"><span>Top Restaurants</span></h1>
+            
+            <div class="row serv-info">         	
+                <article class="span3 serv-col txt-center txt-white">
+                    <div class="circle"><i class="icon-magic"></i></div>
+                    <p class="txt-font2 txt24 txt-cap">Designing</p>
+                    <p class="opacity70">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </article>
+                
+                <article class="span3 serv-col txt-center txt-white">
+                    <div class="circle"><i class="icon-desktop"></i></div>
+                    <p class="txt-font2 txt24 txt-cap">PSD TO HTML</p>
+                    <p class="opacity70">Consectetur adipisicing ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaquis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Ut enim ad minim veniam, ex ea.</p>
+                </article>
+                
+                <article class="span3 serv-col txt-center txt-white">
+                    <div class="circle"><i class="icon-leaf"></i></div>
+                    <p class="txt-font2 txt24 txt-cap">Illustration</p>
+                    <p class="opacity70">Sed do eiusmod tempor incididunt ut sectetur adipisicing ipsum dolor sit amet labore et dolore magna aliquaquis nostrud exercitation ullamco enim ad minim veniam ex ea laboris nisi ut aliquip commodo consequat.</p>
+                </article>
+                
+                <article class="span3 serv-col txt-center txt-white">
+                    <div class="circle"><i class="icon-gift"></i></div>
+                    <p class="txt-font2 txt24 txt-cap">WordPress</p>
+                    <p class="opacity70">Tectetur adipisicing ipsum dolor sit amet labore et dolore magna aliquaquis nostrud exercitation ullamco enim ad minim veniam ex ea laboris nisi ut aliquip commodo consequat eiusmod tempor incididunt ut.</p>
+                </article>
+            </div>
+		</div>
+        </section><!-- top restaurant END -->
+        
+        <section id="about" class="container-fluid pages">  <!--About START -->
+         <div class="container">
+         	<h1 class="pg-title"><span>All About </span></h1>
+            <div class="row">
+            	<article class="span4 mob-txt-center">
+                	<h3 class="tags">My Skills</h3>
+                    <p class="mrg20B">
+                    	<strong class="txt16 txt-darkgrey">UX Design</strong><br />
+                    	 Research Plans / Prototypes / User Testing / Interaction Design / Visual Design
+                    </p>
+                    <p class="mrg20B">
+                    	<strong class="txt16 txt-darkgrey">Development</strong><br />
+                    	XHTML / HTML5 / CSS3 / WordPress Implimentation
+                    </p>
+                    <p class="mrg20B">
+                    	<strong class="txt16 txt-darkgrey">Digital and Printing</strong><br />
+                    	Logo Design / Illustration / Business Stationery / Interactive ads / Emailer / Microsites
+                    </p>
+                    <p class="mrg20B">
+                    	<strong class="txt16 txt-darkgrey">Team/Project Management</strong><br />
+                    	Lead Planning / Ability to Multi-Task / Prioritize projects / Implementation project / project Budget and Resource Allocation
+                    </p>
+                    <!-- My Skills END -->
+                    
+                	<h3 class="tags">Tools I Use</h3>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> Photoshop</strong>
+                        <span class="txt12"> - To design website and mobile site/app</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> Dreamviewer</strong>
+                        <span class="txt12"> - Edit HTML/JS</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> Adobe Illustrator</strong>
+                        <span class="txt12"> - For vector design</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> FileZilla </strong>
+                        <span class="txt12"> - For uploading files on server</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> TreePad Asia</strong>
+                        <span class="txt12"> - To manage notes</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> iPhone</strong>
+                        <span class="txt12"> - For testing sites/apps on mobile</span>
+                    </p>
+                    <p>
+                    	<strong class="txt-darkgrey"><i class="icon-angle-right txt-orange"></i> Producteev.com</strong>
+                        <span class="txt12"> - To manage projects</span>
+                    </p>
+                    <!-- Tools I Use END -->
+                </article><!-- Left Col -->
+            	
+                <article class="span4 txt-center ">
+					<p class="effect-fade">
+                    	<img src="img/about-img1.jpg" class="img1 img-circle" alt="" />
+                    	<img src="img/about-img2.jpg" class="img2 img-circle" alt="" />
+                    </p>
+                    <p class="mrg20B"><strong>Shane Grace</strong> is a full time <strong>Web/Graphic designer & Illustrator</strong>. I live in <strong>Mumbai, India</strong>. Phasellus vulputate iaculis congue. Donec ultrices, leo in fermentum accumsan, dolor eros condimentum arcu pretium rutrum diam  habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas facilisis blandit ligula dictum et vitae rutrum lorem velit nec ligula. Please take a moment to review selections of my work and feel free to contact me for further information on my background, skills and experience.</p>
+                    <p><a href="javascript:void(0);" class="btn btn-styled txt16 txt-cap"><i class="icon-download-alt"></i> <strong>Download Resume</strong></a></p>                    
+                </article><!-- Mid Col -->
+                
+            	<article class="span4 mob-txt-center">
+                	<h3 class="tags">Experience</h3>
+                    <p class="mrg20B">
+                    	<strong class="txt-darkgrey txt16">Freelance</strong><br />
+                        <strong class="txt16">2009- Current</strong><br />
+                        <span>Currently working from my office in Mumbai, with my colleague.</span>
+                    </p>
+                    <p class="mrg20B">
+                    	<strong class="txt-darkgrey txt16">ABC Tech Pvt. Ltd.</strong><br />
+                        <strong class="txt16">2007- 2009 | Design Team Manager</strong><br />
+                        <span>Job description porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit.</span>
+                    </p>
+                    <p class="mrg20B">
+                    	<strong class="txt-darkgrey txt16">Attixx Core Pvt. Ltd.</strong><br />
+                        <strong class="txt16">2004- 2007 | Web Designer</strong><br />
+                        <span>Job description quia dolor sit porro quisquam est qui consectetur adipisci velit dolorem ipsum amet.</span>
+                    </p>
+                    
+                    
+                	<h3 class="tags">Awards</h3>
+                    <p class="mrg20B">
+                        <span class="txt-orange">Site of the Month (BSCD Site)</span><br />
+                        <a href="javascript:void(0);">abcexpyr.com</a> - Jun 2012<br />
+                        <span class="txt12">Peor dolor sit porro quisquam est qui consectetur adipisci velit dolorem ipsum amet.</span>
+                    </p>
+                    <p>
+                        <span class="txt-orange">Best UI Design (RHWA Site)</span><br />
+                        <a href="javascript:void(0);">opqrswrd.com</a> - Oct 2012<br />
+                        <span class="txt12">Dolor sit porro quisquam est qui consectetur adipisci velit dolorem ipsum amet.</span>
+                    </p>
+
+                </article><!-- Right Col -->
+
+            </div><!-- row END -->
+         </div><!-- container END -->
+        </section><!-- About END -->
+	
+	<section id="contact" class="container-fluid pages">  <!-- Contact START -->
+            <iframe height="700" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Thane,+Maharashtra,+India&amp;aq=0&amp;oq=thane+m&amp;sspn=38.092988,56.513672&amp;ie=UTF8&amp;hq=&amp;hnear=Thane,+Maharashtra,+India&amp;t=m&amp;ll=19.233282,72.987928&amp;spn=0.02026,0.008497&amp;z=14&amp;output=embed"></iframe>
+         <div class="container">
+            <div id="contactaddress">
+                <h1 class="pg-title"><span>Contact</span></h1>
+    
+                <p class="txt24 txt-font2 txt-darkgrey mrg20B">Use below details to tell me about your project goals and needs.<br>The best way to reach me is thorugh email: <a href="mailto:contact@bdslorem.com">contact@bdslorem.com</a></p>
+                
+                <h4 class="txt-orange">Address & Phone</h4>
+                <p class="txt-darkgrey">Kisan Nagar, Wagle Estate, Thane (Mumbai), Maharashtra, India.</p>
+                <div class="mrg20B txt16 row">
+                    <div class="span6 txt-right mob-txt-center"><i class="icon-phone txt-white"></i> <a href="tel:000000000" class="txt-white"><strong>+91 0000 000 000</strong></a></div>
+                    <div class="span6 txt-left mob-txt-center"><i class="icon-envelope txt-white"></i> <a href="mailto:contact@bdslorem.com" class="txt-white"><strong>contact@bdslorem.com</strong></a></div>
+                </div>
+    
+                <h4 class="txt-orange">Social</h4>
+                <p class="social">
+                    <a href="javascript:void(0);"><i class="icon-facebook-sign icon-2x txt-darkgrey"></i></a>
+                    <a href="javascript:void(0);"><i class="icon-twitter-sign icon-2x txt-darkgrey"></i></a>
+                    <a href="javascript:void(0);"><i class="icon-github icon-2x txt-darkgrey"></i></a>
+                    <a href="javascript:void(0);"><i class="icon-linkedin-sign icon-2x txt-darkgrey"></i></a>
+                    <a href="javascript:void(0);"><i class="icon-pinterest icon-2x txt-darkgrey"></i></a>
+                    <a href="javascript:void(0);"><i class="icon-google-plus-sign icon-2x txt-darkgrey"></i></a>
+                </p>
+			</div>
+			<p><a href="javascript: void(0);" id="but_contact_addr" class="txt12">Navigate me through map</a></p>
+		</div>
+        </section><!-- contact END -->
+        
+        
+        
+        <!-- Java Scripts Codes-->
+      
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+	<script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+	<script src="js/jquery.quicksand.js"></script>
+	<script src="js/jquery.easing.js"></script>
+	<script src="js/jquery.easing.compatibility.js"></script>
+	<script src="js/jquery.vegas.js"></script>
+	<script>document.createElement('section');var duration=1000,easing='easeInOutExpo';</script>
+	<script src="js/script.js"></script>
+    
+       <script type="text/javascript">
+
+         var _gaq = _gaq || [];
+         _gaq.push(['_setAccount', 'UA-38931984-1']);
+         _gaq.push(['_trackPageview']);
+  
+  
+       $("#home").backstretch([
+          "img/1.jpg"
+        , "img/2.jpg"
+        , "img/3.jpeg"
+       ], {duration: 3000, fade: 750});
+
+       (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	
+	
+  })();
+  
+    
+
+</script>
+
+</body>
+
+</html>

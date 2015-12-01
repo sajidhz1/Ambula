@@ -1,0 +1,277 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic);
+
+body {font-family: 'Source Sans Pro', sans-serif;  color: #666;}
+h2{text-align : center;}
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+#footer {
+    background-color:#0C0C0C;
+
+}
+#footer a{color:#8a8a8a;}
+#footer-category li{
+    line-height:1.5em;
+    float:left;
+    display:inline;
+    width: 50%;
+}
+
+#footer-category li:before {
+    content: "• ";
+}
+
+#rectangle{
+    width:500px;
+    height:500px;
+    background:grey;
+}
+
+#jumbo
+{
+/* IE8 and below */
+    background: rgb(200,255, 255);
+    /* all other browsers */
+    background: rgba(255, 255, 255, 0.7);
+	padding-top : 10px;
+}
+
+/* custom search box */
+
+
+#search-form {
+	background: #e1e1e1; /* Fallback color for non-css3 browsers */
+	width: 65%;
+	margin : auto;
+	padding :10px;
+	/* Gradients */
+	background: -webkit-gradient( linear,left top, left bottom, color-stop(0, rgb(243,243,243)), color-stop(1, rgb(225,225,225)));
+	background: -moz-linear-gradient( center top, rgb(243,243,243) 0%, rgb(225,225,225) 100%);
+
+	/* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+
+	/* Shadows */
+	box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.8);
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.8);
+	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,.3), 0 0 2px rgba(0,0,0,.8);
+}
+
+
+#form-search{
+
+  line-height: 35px;
+    padding: 1px 2px;
+    font-size: 20.5px;
+}
+
+#btn-search{
+ padding: 0px 15px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+}
+/* end of custom Search box */
+
+#form-search::-webkit-input-placeholder {color: red;font-style :italic;padding-left :5px; opacity:0.8;filter:alpha(opacity=80);}
+#form-search:-moz-placeholder {color: red;font-style :italic;padding-left :5px;opacity:0.8;filter:alpha(opacity=80);}
+#form-search::-moz-placeholder {color: red;font-style :italic;padding-left :5px;opacity:0.8;filter:alpha(opacity=80);}
+#form-search:-ms-input-placeholder {color: red;font-style :italic;padding-left :5px;opacity:0.8;filter:alpha(opacity=80);}
+
+/* sign up box */
+#btn-signup{
+ margin-bottom :10px;
+
+
+}
+#signup-box{
+
+text-align:center;background:#ffffff;margin-left:5px;margin-top:5px;
+/* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top :10px;
+}
+  /* most viewed */
+
+#col-cuisines{
+
+ background :#F3F3EC;
+ /* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top : 15px;
+	margin-left : -10px;
+}
+
+ul.rig {
+	list-style: none;
+	font-size: 0px;
+	margin-left: -6%; /* should match li left margin */
+
+}
+ul.rig li {
+	height : 225px;
+	display: inline-block;
+	padding: 10px;
+	margin: 0 0 2.5% 1%;
+	background: #fff;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	font-size: 1rem;
+	vertical-align: top;
+	box-shadow: 0 0 5px #ddd;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
+}
+ul.rig li img {
+	max-width: 100%;
+	height: auto;
+	margin: 0 0 10px;
+}
+ul.rig li h4 {
+	margin: 0 0 5px;
+
+}
+ul.rig li p {
+	font-size: 1.5em;
+	line-height: 1.2em;
+	color: #FF0000;
+}
+/* class for 2 columns */
+ul.rig.columns-2 li {
+	width: 47.5%; /* this value + 2.5 should = 50% */
+}
+/* class for 3 columns */
+ul.rig.columns-9 li {
+	width: 13%; /* this value + 2.5 should = 33% */
+}
+/* class for 4 columns */
+ul.rig.columns-6 li {
+	width: 19%;
+	/* this value + 2.5 should = 25% */
+}
+/* top viewed */
+
+#col-recent{
+
+/* add horizontal space between columns */
+margin-right : 2px;
+
+ margin-left : -11px;
+
+background :#F3F3EC;
+ /* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top : 15px;
+	padding-bottom: 20px;
+
+}
+#col-vid{
+
+ /* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top : 25px;
+	padding-top :20px;
+	padding-bottom: 20px;
+
+}
+
+#col-most-viewed{
+
+
+ margin-left : 2px;
+  width : 49.8%;
+  background :#F3F3EC;
+ /* Rounded Corners */
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	margin-top : 15px;
+}
+
+/* ingredients caraousel */
+.carousel-control 			 { width:  4%; }
+.carousel-control.left,.carousel-control.right {margin-left:15px;background-image:none;}
+
+
+#category-grid{
+
+  margin-top : 20px;
+  padding-bottom  : 25px;
+
+}
+#category-grid .row{
+
+    margin-top : 10px;
+}
+
+.thumbnail-grid {
+	user-select: none
+}
+.thumbnail-grid div{
+	position: relative;
+	width : 18%;
+	height: 150px;
+	border-radius: 3px;
+    margin-bottom: 5px;
+	box-shadow: inset 0 -40px 0 0 rgba(0, 0, 0, 0.1);
+	transition: all .2s ease-in-out
+}
+.thumbnail-grid div:hover {
+	box-shadow: inset 0 -150px 0 0 rgba(0, 0, 0, 0.5)
+}
+.thumbnail-grid span {
+	position: absolute;
+	width: 100%;
+	font-weight: 300;
+	text-align: center;
+	color: #f4f4f4;
+	text-shadow: 0 0 3px black;
+	bottom: 10px;
+	transition: all .2s ease-in-out
+}
+.thumbnail-grid div:hover span {
+	bottom: 60px
+}
+.flex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: stretch;
+	align-content: stretch
+}
+.flex-item {
+	flex: 1 0 auto
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    background: #8a8a8a;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 45px;
+    background-color: #080808;
+}
+
+
+
+

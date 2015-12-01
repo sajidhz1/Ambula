@@ -1,0 +1,51 @@
+/* To understand below classes in better view http://nishantpatil.com//grace/documentation */
+
+a		{ color: #40403A;}
+a:hover	{}
+
+/* Navigation */
+.navbar .container{width: 100%;}
+header.navbar					{background:#092229;}
+.navbar .nav a.current:focus,
+.navbar .nav a.current,
+.navbar .nav a.current:hover	{ color:#FF3300;
+ background-image: -webkit-linear-gradient(top, #080808 0%, #0f0f0f 100%);
+    background-image:      -o-linear-gradient(top, #080808 0%, #0f0f0f 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#080808), to(#0f0f0f));
+    background-image:         linear-gradient(to bottom, #080808 0%, #0f0f0f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff080808', endColorstr='#ff0f0f0f', GradientType=0);
+    background-repeat: repeat-x;
+    -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25);
+    box-shadow: inset 0 3px 9px rgba(0, 0, 0, .25);
+}
+.navbar-inverse .brand, 
+.navbar-inverse .nav > li > a	{color:#999; text-shadow:inherit;}
+.navbar-inverse .brand:hover,.navbar-inverse .nav>li>a:hover,
+.navbar-inverse .nav > li > a:focus,
+.navbar .nav a:hover			{color:#fff;}
+
+h4,h5{ color :black;}
+/* About Us */
+h3.tags						{background:#86cd52; color:#fff;}
+
+
+#about p:hover				{color:#000;}
+#about p:hover strong		{color:#390;}
+
+/* ##### Slide Management ##### */
+#home 			{background: url(../img/checkered_pattern.png)  repeat fixed;
+ min-height:1000px !important;}
+#registration 			{ background: url(../img/food_tile1.jpg) top center repeat fixed;}
+#work			{background:#44454e; min-height:1000px; padding-bottom:200px;}
+#services		{background:#dc4238; min-height:700px;}
+#contact		{background:#bdca29; min-height:700px; padding:0px; position:relative;}
+
+/*Contact */
+#contact .container	{background:url(../img/dot-green.png) repeat;}
+
+/* Service */
+.serv-info .circle	{border:3px solid #fff;}
+
+/* Selection color works on in Modern Browser */
+::-moz-selection{background:#86CD52;color:#fff;}
+::selection		{background:#86CD52;color:#fff;}
