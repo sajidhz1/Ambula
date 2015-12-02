@@ -67,7 +67,7 @@
     <div id="legend">
         <legend class="new-recipe">New Recipe</legend>
     </div>
-    <form data-toggle="validator" role="form" method="POST" enctype="multipart/form-data" action="addNewRecipe"
+    <form data-toggle="validator"  role="form" method="POST" enctype="multipart/form-data" action="addNewRecipe"
           id="form1">
         <div class="row">
             <div id="recipePart1" class="col-lg-5 col-sm-12">
@@ -305,8 +305,7 @@
         </div>
 </fieldset>
 </form>
-
-
+</div>
 <div id="loading" >
     <h4>Uploading Recipe</h4>
     <h6>will take a moment</h6>
