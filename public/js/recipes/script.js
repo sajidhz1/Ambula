@@ -136,18 +136,7 @@ $(window).on("navigate", function (event, data) {
     alert(direction);
 });
 
-function validate(form) {
 
-    // validation code here ...
-     var valid  = false;
-    if(!valid) {
-        alert('Please correct the errors in the form!');
-        return false;
-    }
-    else {
-        return ;
-    }
-}
 
 //onload
 $(function () {
@@ -156,36 +145,49 @@ $(function () {
 	//form submit
     $('#form1').on('submit', function() {
 
-    if(confirm('Do you want to finish and continue ?')) {
-        $('#control-buttons').hide();
-        $('#recipePart2').hide();
-        $('.directions-control').hide();
-        $('.submit').hide();
-        $('#backbtn').hide();
-        $('#loading').show();
+        if ($('#time').val().length > 0) {
 
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'),
-            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-            contentType: false,       // The content type used when sending data to the server.
-            cache: false,             // To unable request pages to be cached
-            processData: false,        // To send DOMDocument or non processed data file it is set to false
-            success: function (json) {
-                window.onbeforeunload = function () {
-                    return null;
-                };
-                //alert(json);
-                var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
+            if (document.getElementsByName('steps[]')[0].value.length > 0) {
+                if (confirm('Do you want to finish and continue ?')) {
+                    $('#control-buttons').hide();
+                    $('#recipePart2').hide();
+                    $('.directions-control').hide();
+                    $('.submit').hide();
+                    $('#backbtn').hide();
+                    $('#loading').show();
+
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        type: $(this).attr('method'),
+                        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                        contentType: false,       // The content type used when sending data to the server.
+                        cache: false,             // To unable request pages to be cached
+                        processData: false,        // To send DOMDocument or non processed data file it is set to false
+                        success: function (json) {
+                            window.onbeforeunload = function () {
+                                return null;
+                            };
+                            //alert(json);
+                            var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
+                            window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
+                        }
+                    });
+
+                    return false;
+
+                } else {
+                    return false;
+                }
+            } else {
+                alert("Tell us how to make it ");
+                return false;
             }
-        });
+        }
+        else{
+            alert("add preparation time ");
+            return false;
+        }
 
-        return false;
-
-    }else {
-        return false;
-    }
     });
     
 
