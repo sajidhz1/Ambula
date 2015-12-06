@@ -30,16 +30,87 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+    <style>
+        .box {
+            padding: 0 5px 0 5px;
+        }
+        .box .inner {
+            background-color: #fff;
+        }
+    </style>
 </head>
 
 <body>
 
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
-<div class="container-fluid" style="background: #666">
+<div class="container-fluid">
 
     <div class="row" style="height: 250px;background: #bbb;margin-top: 50px; ">ndj hehf </div>
+    <div  class="row" style="background: #eee;margin-top: 15px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Latest</a></li>
+            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+        </ul>
+
+    <div class="tab-content" style="margin-top: 20px;">
+        <div  class="tab-pane fade in active">
+
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+            <div class="col-lg-2 box" style="background: #ddd;height: 250px;border: 5px solid #eee">
+                <div class="inner box">Hello</div>
+            </div>
+
+        </div>
+        <div id="menu1" class="tab-pane fade">
+            <h3>Menu 1</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div id="menu2" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div id="menu3" class="tab-pane fade">
+            <h3>Menu 3</h3>
+            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+    </div>
+    </div>
+
     <div  class="row" style="height: 300px;background: #eee;">ndj hehf </div>
 </div>
 
