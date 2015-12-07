@@ -21,4 +21,8 @@ class FoodProducts extends Controller{
     {
         $this->view('foodproducts/products_view');
     }
+
+    public function addNewProduct(){
+        $this->view('foodproducts/new_product');
+    }
 } 

@@ -35,6 +35,7 @@
             padding: 5px;
             text-align: center;
         }
+
         .box .inner {
             background-color: #eee;
         }
@@ -106,134 +107,201 @@
 
 <div class="container-fluid">
 
-
-
-
-    <div  class="row" style=" margin-top: 15px;">
+    <div class="row" style=" margin: 25px 10px;">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Latest</a></li>
+            <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
             <li><a data-toggle="tab" href="#menu1">Brands</a></li>
-            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+            <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
             <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
         </ul>
 
-    <div class="tab-content" style="margin-top: 20px;">
-        <div  class="tab-pane fade in active">
+        <div class="tab-content" style="margin-top: 20px;">
+            <div class="tab-pane fade in active"  id="hom">
 
-            <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;margin: auto;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
-            </div>
 
- <div class="col-lg-2 box" style="height: 265px;">
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;">
-                    <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
+                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
+                             style="display:block;margin: auto;">
+                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                    </div>
                 </div>
+                <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">
+                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">View All Products</a>
+                </div>
+
             </div>
+            <div id="menu1" class="tab-pane fade">
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
+                <div class="col-lg-2 box" style="height: 265px;">
+                    <div class="inner box">
+                        </div>
+                    </div>
 
 
-        </div>
-        <div id="menu1" class="tab-pane fade">
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div id="menu2" class="tab-pane fade">
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-        </div>
-        <div id="menu3" class="tab-pane fade">
-            <h3>Menu 3</h3>
-            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <h3>Menu 2</h3>
+
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <h3>Menu 3</h3>
+
+                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                    explicabo.</p>
+            </div>
         </div>
     </div>
-    </div>
 
-    <div  class="row" style="height: 300px;background: #eee;margin-top: 50px;">ndj hehf </div>
+    <div class="row" style="height: 300px;background: #eee;margin-top: 50px;"></div>
 </div>
 
 <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
