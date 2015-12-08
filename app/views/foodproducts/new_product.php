@@ -31,13 +31,154 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <style>
+        .registration-container {
+            background: rgb(255, 255, 255); /* for IE */
+
+            /* Rounded Corners */
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+
+            border: 1px solid #E0D6CC;
+            float: right;
+            padding-bottom: 20px;
+
+        }
+
+        label.valid {
+            width: 24px;
+            height: 24px;
+            background: url(http://localhost/Ambula/public/img/valid.png) center center no-repeat;
+            display: inline-block;
+            text-indent: -9999px;
+        }
+
+        label.error {
+            font-weight: bold;
+            color: red;
+            padding: 2px 8px;
+            margin-top: 2px;
+        }
+
+        #image{
+            float: right;
+            width: 200px;
+            height: 150px;
+            border: groove;
+        }
+
+        .uploader {position:relative; overflow:hidden;  background:#f3f3f3; border:2px dashed #e8e8e8;}
+
+        #filePhoto1 , #filePhoto2{
+            position:absolute;
+            width:150px;
+            height:150px;
+            top:-50px;
+            left:0;
+            z-index:3;
+            opacity:0;
+            cursor:pointer;
+        }
+
+        .uploader img{
+            position: relative;
+            left  : -14px;
+        }
+    </style>
 </head>
 
 <body>
 
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
+<div class="container-fluid pages">
+    <div class="col-lg-12 ingredients-control">
+        <div class="col-lg-12 col-sm-12" id="fields">
+            <label class="control-label" for="field1"><h3>New Products</h3></label>
+            <br>
+            <span id="ing_error" style="color: red;"></span>
+            <br>
+
+            <div class="col-xs-5 col-sm-3" style="color: brown"> Name</div>
+            <div class="col-xs-5 col-sm-2" style="color: brown"> Category</div>
+            <div class="col-xs-2 col-sm-2" style="color: brown"> Short Description</div>
+            <br>
+            <br>
+
+            <div class="entry" >
+                <div  class="row" style="margin-bottom: 15px;" >
+                    <div class="col-xs-5 col-sm-5 col-lg-3">
+                        <input class="form-control" name="ingname[]" type="text"
+                               placeholder="Example : sugar , salt"/>
+                    </div>
+                    <div class="dropdown col-xs-3 col-sm-3 col-lg-2">
+                        <select class="form-control" name="metrics[]">
+                            <option value="">select</option>
+                            <option value="kg">kg</option>
+                            <option value="g">g</option>
+                            <option value="oz">oz</option>
+                            <option value="tbspn">tbspn</option>
+                            <option value="tspn">tspn</option>
+                            <option value="cup">Cup</option>
+                            <option value="ml">ml</option>
+                            <option value="l">l</option>
+                            <option value="packet">packet</option>
+                            <option value="drops">drops</option>
+                            <option value="pieces">pieces</option>
+                            <option value="pinch">pinch</option>
+                            <option value="tin">tin</option>
+
+                        </select>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-lg-3">
+                        <textarea class="form-control" name="amount[]" placeholder="0" type="text" ></textarea>
+                    </div>
+                    <div class="col-xs-1 col-sm-2 col-lg-4"  >
+                        <div class="col-lg-8">
+                            <div class="uploader col-lg-6" onclick="$('#filePhoto1').click()">
+
+                                <img width="110" height="110" src="http://localhost/Ambula/public/img/no_preview_available.jpg"/>
+                                <input type="file" name="userprofile_picture"  id="filePhoto1" />
+                            </div>
+
+                            <div class=" col-lg-6" >
 
 
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4" style="display: inline-block;vertical-align: middle;" >
+                            <button class="btn btn-success btn-add" style="margin-top: 30%;" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+
+                        </div>
+
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+
+
+    var imageLoader = document.getElementById('filePhoto1');
+    imageLoader.addEventListener('change', handleImage1, false);
+
+    function handleImage1(e) {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+
+            $('.uploader img').attr('src',event.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+</script>
 </body>
 </html>
