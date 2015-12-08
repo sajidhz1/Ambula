@@ -67,6 +67,24 @@
             height: 150px;
             border: groove;
         }
+
+        .uploader {position:relative; overflow:hidden;  background:#f3f3f3; border:2px dashed #e8e8e8;}
+
+        #filePhoto1 , #filePhoto2{
+            position:absolute;
+            width:150px;
+            height:150px;
+            top:-50px;
+            left:0;
+            z-index:3;
+            opacity:0;
+            cursor:pointer;
+        }
+
+        .uploader img{
+            position: relative;
+            left  : -14px;
+        }
     </style>
 </head>
 
@@ -75,9 +93,9 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 <div class="container-fluid pages">
-    <div class="col-lg-12 registration-container">
+    <div class="col-lg-12 ingredients-control">
         <div class="col-lg-12 col-sm-12" id="fields">
-            <label class="control-label" for="field1"><h3>Ingredients</h3></label>
+            <label class="control-label" for="field1"><h3>New Products</h3></label>
             <br>
             <span id="ing_error" style="color: red;"></span>
             <br>
@@ -88,8 +106,8 @@
             <br>
             <br>
 
-            <div class="entry">
-                <div class="" >
+            <div class="entry" >
+                <div  class="row" style="margin-bottom: 15px;" >
                     <div class="col-xs-5 col-sm-5 col-lg-3">
                         <input class="form-control" name="ingname[]" type="text"
                                placeholder="Example : sugar , salt"/>
@@ -118,12 +136,17 @@
                     </div>
                     <div class="col-xs-1 col-sm-2 col-lg-4"  >
                         <div class="col-lg-8">
-                            <div class="col-lg-6">
-                            <img width="100" style="border: 1px solid #b2b2b2"  src="http://localhost/Ambula/public/img/no_preview_available.jpg" alt=""/>
+                            <div class="uploader col-lg-6" onclick="$('#filePhoto1').click()">
+
+                                <img width="110" height="110" src="http://localhost/Ambula/public/img/no_preview_available.jpg"/>
+                                <input type="file" name="userprofile_picture"  id="filePhoto1" />
                             </div>
-                            <div class="col-lg-6">
-                            <img width="100" style="border: 1px solid #b2b2b2"  src="http://localhost/Ambula/public/img/no_preview_available.jpg" alt=""/>
+
+                            <div class=" col-lg-6" >
+
+
                             </div>
+
                         </div>
                         <div class="col-lg-4" style="display: inline-block;vertical-align: middle;" >
                             <button class="btn btn-success btn-add" style="margin-top: 30%;" type="button">
@@ -134,11 +157,28 @@
 
                     </div>
                     <br>
+
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+<script>
+
+
+    var imageLoader = document.getElementById('filePhoto1');
+    imageLoader.addEventListener('change', handleImage1, false);
+
+    function handleImage1(e) {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+
+            $('.uploader img').attr('src',event.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+</script>
 </body>
 </html>
