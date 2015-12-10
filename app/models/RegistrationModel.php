@@ -403,6 +403,45 @@ class RegistrationModel {
 
     }
 
+    public function update_commercial_user(){
+
+      //  $website = $facebook = $youtube = $description = $user_name  = '' ;
+
+        $website = $_POST["web_site_url"];
+        $facebook = $_POST["facebook_url"];
+        $youtube = $_POST["youtube_url"];
+        $user_name = $_POST["user_name"];
+        $description = $_POST["description"];
+
+        $path = "uploads/profile/commercial_user/" . $user_name;
+        if(!is_dir($path)){
+            mkdir($path);
+        }
+
+        if($this->imageUpload("company_logo", $user_name)) {
+
+            $sql_0 = "SELECT user_id FROM users WHERE user_name = '".$user_name."'" ;
+
+            $sth = $this->db->prepare($sql_0);
+            $sth->execute();
+            $user_id = $sth->fetch()->user_id;
+
+
+
+            $sql = "UPDATE users SET user_avatar = 'uploads/profile/commercial_user/" . $user_name . "' WHERE user_id =  '".$user_id."' ";
+            $result = $this->db->prepare($sql)->execute();
+
+
+
+            $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '".$user_id."'" ;
+            $result2 = $this->db->prepare($sql_1)->execute();
+
+            echo $result2;
+
+        }
+
+    }
+
     public function imageUpload($name = '', $path = '')
     {
 
