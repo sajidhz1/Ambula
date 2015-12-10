@@ -6,20 +6,20 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="public/css/registration.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
 	 <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="public/js/registration/validator.js"></script>
-    <script src="public/js/typeahead.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
+    <script src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -45,6 +45,7 @@
             -moz-border-radius: 5px;
 
             border: 1px solid #E0D6CC;
+            margin-top: 55px;
 
         }
 
