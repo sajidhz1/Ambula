@@ -65,4 +65,8 @@ class Registration extends Controller
         $this->registration->register_commercial_user();
     }
 
+    public function update_commercial_user(){
+        $this->registration->update_commercial_user();
+    }
+
 } 

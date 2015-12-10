@@ -114,7 +114,7 @@
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
 <div class="container">
-    <form data-toggle="validator" role="form" action="http://localhost/Ambula/registration/register_commercial_user"  method="POST"  enctype="multipart/form-data" >
+    <form data-toggle="validator" role="form" action="http://localhost/Ambula/registration/register_commercial_user"  method="POST"  >
     <div class="col-lg-6 registration-container-1">
         <div id="legend">
             <legend class="">Company Details</legend>

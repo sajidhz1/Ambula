@@ -48,7 +48,7 @@
 
         }
 
-        h4 {
+        h4,h5 {
             text-align: center;
         }
 
@@ -75,6 +75,10 @@
             display: block;
 
         }
+
+        table td{
+            width: 200px;
+        }
     </style>
 </head>
 
@@ -84,11 +88,11 @@
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
 <div class="container">
-
+    <form data-toggle="validator" role="form" action='http://localhost/Ambula/registration/update_commercial_user' method="POST"  enctype="multipart/form-data">
     <div class="container mrg50T">
         <h4 class="txt-red">Almost There Just One Step to go !</h4>
 
-        <div class="col-lg-5 hgt600" style="background-color: #f4f4f4;">
+        <div class="col-lg-5 hgt600" style="background-color: #ffc266;">
             <h4>Company Logo</h4>
             <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
                  id="profile_img" alt=""/>
@@ -96,10 +100,9 @@
             <div class="text-center">
                 <span class="btn btn-default btn-file">
                      Browse <input type="file"
-                                   onchange="$('#profile_img').attr('src' ,window.URL.createObjectURL(this.files[0]));$('.logo-save').show();">
+                                   onchange="$('#profile_img').attr('src' ,window.URL.createObjectURL(this.files[0]));$('.logo-save').show();" name="company_logo">
                 </span>
-                <button style="margin-top: 8px;margin-left: 5px;display: none;" class="btn btn-success logo-save">Save
-                </button>
+
             </div>
             <br>
 
@@ -107,25 +110,20 @@
                 <label class="control-label" for="last_name">Website </label>
                 <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                    <input id="login-username" type="text" class="form-control" name="username" value=""
+                    <input id="login-username" type="text" class="form-control" name="web_site_url" value=""
                            placeholder="http://theambula.lk/">
                 </div>
-            </div>
-            <div class="col-lg-2" style="margin-top:25px;">
-                <button class="btn btn-success" style="display: none;">save</button>
             </div>
 
             <div class="col-lg-10" style="margin-bottom:15px;">
                 <label class="control-label" for="last_name">Facebook Page URL </label>
                 <div class="input-group ">
                     <span class="input-group-addon" style="font-weight: 600;">f</span>
-                    <input id="login-username" type="text" class="form-control" name="username" value=""
+                    <input id="login-username" type="text" class="form-control" name="facebook_url" value=""
                            placeholder="https://www.facebook.com/the.ambula">
                 </div>
             </div>
-            <div class="col-lg-2" style="margin-top:25px;">
-                <button class="btn btn-success" style="display: none;">save</button>
-            </div>
+
 
 
 
@@ -133,13 +131,11 @@
                 <label class="control-label" for="last_name">Youtube channel URL</label>
                 <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-play"></i></span>
-                    <input id="login-username" type="text" class="form-control" name="username" value=""
+                    <input id="login-username" type="text" class="form-control" name="youtube_url" value=""
                            placeholder="username or email">
                 </div>
             </div>
-            <div class="col-lg-2" style="margin-top:25px;">
-                <button class="btn btn-success" style="display: none;">save</button>
-            </div>
+
         </div>
 
         <div class="col-lg-7 hgt600" style="padding-top:15px;background: #e8e8e8;">
@@ -151,7 +147,7 @@
                     <div class="col-lg-12 col-xs-12 col-sm-12">
                         <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
                                   cols="40"></textarea>
-                        <button style="right:0;display: none;" class="btn btn-success description-save">Save</button>
+
                     </div>
                     <br>
                 </div>
@@ -162,28 +158,28 @@
 
                <table  cellspacing="10" style="color: #222">
                    <tr>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="drinks"> drinks</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> flour</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> dairy products</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> sauces</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> spices</td>
                    </tr>
                    <tr>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> jam</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> soya products</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> pasta,sphagetti,macaroni</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> noodles</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> processed meat</td>
+                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> flavour enhancers</td>
                    </tr>
                    <tr>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> biscuits/cookies</td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> honey , kithul trickle</td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Canned foods /canned meat</td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> grain products</td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> food colourings and flavourings </td>
+                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> frozen products</td>
                    </tr>
                </table>
             </div>
@@ -193,9 +189,13 @@
 
 
     </div>
-    <div class="text-center" style="margin-top: 5px;">
-        <a href="" class="btn btn-success ">Skip >></a>
+    <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
+        <a href="" class="btn btn-default ">Skip >></a>
+        <button class="btn btn-success">Save</button>
+
     </div>
+      <input type="hidden" name="user_name" value="<?php echo $_GET['user']; ?>" />
+    </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor
         // instance, using default configuration.
