@@ -102,7 +102,8 @@
 
             <div class="col-xs-5 col-sm-3" style="color: brown"> Name</div>
             <div class="col-xs-5 col-sm-2" style="color: brown"> Category</div>
-            <div class="col-xs-2 col-sm-2" style="color: brown"> Short Description</div>
+            <div class="col-xs-2 col-sm-3" style="color: brown"> Short Description</div>
+            <div class="col-xs-2 col-sm-4" style="color: brown">Thumbnail Image</div>
             <br>
             <br>
 
@@ -132,14 +133,14 @@
                         </select>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-lg-3">
-                        <textarea class="form-control" name="amount[]" placeholder="0" type="text" ></textarea>
+                        <textarea class="form-control" name="amount[]" placeholder="short description" type="text" ></textarea>
                     </div>
                     <div class="col-xs-1 col-sm-2 col-lg-4"  >
                         <div class="col-lg-8">
-                            <div class="uploader col-lg-6" onclick="$('#filePhoto1').click()">
+                            <div class="uploader col-lg-6" >
 
-                                <img width="110" height="110" src="http://localhost/Ambula/public/img/no_preview_available.jpg"/>
-                                <input type="file" name="userprofile_picture"  id="filePhoto1" />
+                                <img width="110" height="110" class="thumb" src="http://localhost/Ambula/public/img/no_preview_available.jpg"/>
+                                <input type="file" name="userprofile_picture" onchange="$(this).siblings('img').attr('src' ,window.URL.createObjectURL(this.files[0]));" id="filePhoto1" />
                             </div>
 
                             <div class=" col-lg-6" >
@@ -166,18 +167,32 @@
 </div>
 <script>
 
+   $(function() {
 
-    var imageLoader = document.getElementById('filePhoto1');
-    imageLoader.addEventListener('change', handleImage1, false);
+       //ingredients add dynamic fields
+       $(document).on('click', '.btn-add', function (e) {
+           e.preventDefault();
 
-    function handleImage1(e) {
-        var reader = new FileReader();
-        reader.onload = function (event) {
+           var controlForm = $('.ingredients-control'),
+               currentEntry = $(this).parents('.entry:first'),
+               newEntry = $(currentEntry.clone()).appendTo(controlForm);
 
-            $('.uploader img').attr('src',event.target.result);
-        }
-        reader.readAsDataURL(e.target.files[0]);
-    }
+           newEntry.find('input').val('');
+           newEntry.find('img').attr('src','http://localhost/Ambula/public/img/no_preview_available.jpg');
+           controlForm.find('.entry:not(:last) .btn-add')
+               .removeClass('btn-add').addClass('btn-remove')
+               .removeClass('btn-success').addClass('btn-danger')
+               .html('<span class="glyphicon glyphicon-minus"></span>');
+       }).on('click', '.btn-remove', function (e) {
+           $(this).parents('.entry:first').remove();
+
+           e.preventDefault();
+           return false;
+       });
+   });
+
+
+
 
 </script>
 </body>
