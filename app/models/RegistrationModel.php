@@ -51,7 +51,7 @@ class RegistrationModel {
                 }
             }
 
-            if(empty($_POST["last_name"])){
+            if(empty($_POST["username"])){
                 $usernameErr = "username required";
                 $username_flag = false;
             }else{
@@ -270,4 +270,187 @@ class RegistrationModel {
             http_response_code(200);
         }
     }
+
+
+    //register commercial user
+    public function register_commercial_user(){
+
+       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+           $company_name_flag = $address_flag = $telephone1_flag = $city_flag = $email_flag = $password_flag = $company_logo_flag = $username_flag = false;
+           $nameErr = $emailErr = $teleErr = $passwordErr = $cityErr = $logoErr = $addresErr = $usernameErr = "";
+           $company_name = $address = $telephone1 = $telephone2 = $city = $company_logo = $email = $password = $username = "";
+
+           //companyname validation
+           if (empty($_POST["company_name"])) {
+               $nameErr = "company name is required";
+               $company_name_flag = false;
+           } else {
+               $company_name_flag = true;
+               $company_name = $this->test_input($_POST["company_name"]);
+               // check if name only contains letters and whitespace
+               /*if (!preg_match("/^[a-zA-Z0-9 ]*$/",$company_name)) {
+                   $company_name_flag = false;
+                   $nameErr = "Only letters and white space allowed";
+               }*/
+           }
+
+           //address validation
+           if (empty($_POST["address_1"])) {
+               $addresErr = "address is required";
+               $address_flag = false;
+           } else {
+               $address_flag = true;
+               $address = $this->test_input($_POST["address_1"]);
+               // check if name only contains letters and whitespace
+               if (!preg_match("/^[a-z0-9- ]+$/i",$address)) {
+                   $address_flag = false;
+                   $addressErr = "Only letters and white space and numbers allowed";
+               }
+           }
+
+           //validate password
+           if (empty($_POST["password"]) || empty($_POST["password_confirm"])) {
+               $nameErr = "password is needed";
+               $password_flag = false;
+           } else {
+               $password_flag = true;
+               $password = $this->test_input($_POST["password"]);
+               // check if name only contains letters and whitespace
+               if (!preg_match("/^[a-zA-Z0-9]*$/",$password)) {
+                   $password_flag = false;
+                   $nameErr = "pass letters and white space allowed";
+               }
+           }
+
+           //validate email
+           if (empty($_POST["email"])) {
+               $emailErr = "Email is required";
+               $email_flag = false;
+           } else {
+               $email_flag = true;
+               $email = $this->test_input($_POST["email"]);
+               // check if e-mail address is well-formed
+               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                   $this->flag_log = false;
+                   $emailErr = "Invalid email format";
+               }
+           }
+
+           //validate telephone
+           if (empty($_POST["telephone_1"])) {
+               $teleErr = "Hotline is required";
+               $telephone1_flag = false;
+           } else {
+               $telephone1_flag = true;
+               $telephone1 = $this->test_input($_POST["telephone_1"]);
+               // check if name only contains letters and whitespace
+
+           }
+
+           //username validation
+           if (empty($_POST["user_name"])) {
+               $usernameErr = "Username is required";
+               $username_flag = false;
+           } else {
+               $username_flag = true;
+               $username = $this->test_input($_POST["user_name"]);
+               // check if name only contains letters and whitespace
+               if (!preg_match("/^[A-Za-z0-9_-]{3,16}$/",$username)) {
+                   $username_flag= false;
+                   $usernameErr = "Only letters and white space allowed";
+               }
+           }
+
+            $city = $_POST["city"];
+            $district = $_POST["district"];
+           /* //check company logo
+           if($_FILES['company_logo']['tmp_name']!='') {
+               $company_logo_flag = true;
+           } else {
+              $company_logo_flag = false;
+
+           }*/
+
+           $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+           $password_hash =   password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
+
+
+           //  echo "name".$company_name_flag."add" .$address_flag ."tel".$telephone1_flag ."em".$email_flag ."pass".$password_flag."logo".$company_logo_flag ."user".$username_flag."";
+    if(!$company_name_flag && !$address_flag && !$telephone1_flag && !$email_flag && !$password_flag && !$company_logo_flag && !$username_flag)
+         return false;
+
+       }
+
+        //mkdir("uploads/profile/commercial_user/" . $username);
+        //if($this->imageUpload("company_logo",$username)){
+
+            $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type)
+                VALUES ('".$email."','".$username."','".$password_hash."', 2 ,'DEFAULT' )";
+
+                $result =  $this->db->prepare($sql)->execute();
+
+                $user_id = $this->db->lastInsertId();
+
+            $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city )
+                VALUES ($user_id, '".$company_name."','".$address."', '".$telephone1."','".$telephone2."','".$city."')";
+
+                $result2 =  $this->db->prepare($sql_1)->execute();
+
+            return $result2;
+       // }
+
+
+    }
+
+    public function imageUpload($name = '', $path = '')
+    {
+
+        $target_dir = "uploads/profile/commercial_user/" . $path . "/";
+        $target_file = $target_dir . basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+// Check if image file is a actual image or fake image
+        if (isset($_POST["submit"])) {
+            $check = getimagesize($_FILES[$name]["tmp_name"]);
+            if ($check !== false) {
+                echo "File is an image - " . $check["mime"] . ".";
+                $uploadOk = 1;
+            } else {
+                echo "File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+// Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+// Check file size
+        if ($_FILES[$name]["size"] > 2000000) {
+            echo "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+// Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif"
+        ) {
+            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+// Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+// if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir.$path.'.'.$imageFileType)) {
+
+            return true;
+
+            } else {
+                return false;
+            }
+        }
+    }
+
 } 

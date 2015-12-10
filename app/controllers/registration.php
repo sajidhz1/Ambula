@@ -22,15 +22,20 @@ class Registration extends Controller
 
     public function index($name = '')
     {
-        $this->view('Registration/registration');
+        if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_GET['user']))
+            $this->view('Registration/commercial_user_continue');
+       else  if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user")
+            $this->view('Registration/commercial_user_registration');
+        else
+            $this->view('Registration/registration');
     }
 
 
     public function registerNewUser()
     {
-        if($this->registration->validateFields() == 1){
+        if ($this->registration->validateFields() == 1) {
             Header('Location:http:/login');
-        }else{
+        } else {
             Header('Location:http:/registration');
         }
     }
@@ -39,17 +44,25 @@ class Registration extends Controller
     {
 
         if ($this->registration->registerWithFacebook()) {
-            Header('Location:'.URL);
-        }else{
+            Header('Location:' . URL);
+        } else {
 
         }
 
     }
-     public function checkEmail(){
+
+    public function checkEmail()
+    {
         $this->registration->checkEmail($_GET['email']);
     }
 
-    public function  checkUserName(){
+    public function  checkUserName()
+    {
         $this->registration->checkUserName($_GET['username']);
     }
+
+    public function register_commercial_user(){
+        $this->registration->register_commercial_user();
+    }
+
 } 
