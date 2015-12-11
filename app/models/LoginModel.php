@@ -17,7 +17,8 @@ class LoginModel
                                           user_email,
                                           user_password_hash,
                                           user_avatar,
-                                          user_provider_type
+                                          user_provider_type,
+                                          user_account_type
                                    FROM   users
                                    WHERE  (user_name = :user_name OR user_email = :user_email)
                                           AND user_provider_type = :provider_type");
@@ -30,20 +31,38 @@ class LoginModel
 
                 if(password_verify($_POST['password'], $result->user_password_hash)) {
 
-                    $st = $this->db->prepare("SELECT first_name,
+                    Session::init();
+                    Session::set('uid', $result->user_id);
+                    Session::set('username', $result->user_name);
+                    Session::set('user_provider_type', $result->user_provider_type);
+                    Session::set('user_logged_in', true);
+                    Session::set('user_avatar', $result->user_avatar);
+                    Session::set('user_account_type', $result->user_account_type);
+
+                    if($result->user_account_type == 2){
+                        $st = $this->db->prepare("SELECT company_name
+                                   FROM   commercial_user
+                                   WHERE  users_user_id = '".$result->user_id."'");
+                        $st->execute();
+                        $user_details = $st->fetch();
+                        Session::set('name',$user_details->company_name);
+                        Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/commercial_user/".$result->user_name."/".$result->user_name.".jpg");
+
+                    }else{
+                        $st = $this->db->prepare("SELECT first_name,
                                           last_name
                                    FROM   user_personal
                                    WHERE  users_user_id = '".$result->user_id."'");
-                    $st->execute();
-                    $user_details = $st->fetch();
+                        $st->execute();
+                        $user_details = $st->fetch();
+                        Session::set('name',$user_details->first_name . ' ' . $user_details->last_name);
+                        Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/".$result->user_name.".jpg");
+                    }
 
-                Session::init();
-                Session::set('uid', $result->user_id);
-                Session::set('name',$user_details->first_name . ' ' . $user_details->last_name);
-                Session::set('user_avatar',$result->user_avatar);
-                Session::set('username', $result->user_name);
-                Session::set('user_provider_type', $result->user_provider_type);
-                Session::set('user_logged_in', true);
+
+
+
+
 
 
                     // if user has checked the "remember me" checkbox, then write cookie

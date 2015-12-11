@@ -7,8 +7,7 @@ class Home extends Controller{
     public $search;
     public $category;
 
-    function __construct()
-    {
+    function __construct(){
         parent::__construct();
         $this->user = $this->model('HomeModel');
 
@@ -107,14 +106,12 @@ class Home extends Controller{
     
     
     public function contact(){
-     $this->view('contact');
-
+        $this->view('contact');
     }
 
 
     public function promotions(){
-     $this->view('offers');
-
+        $this->view('promotions/viewPromotions');
     }
     
      public function uploadUserPhoto(){

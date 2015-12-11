@@ -94,7 +94,6 @@
 
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
-
                         <div class="col-sm-12 controls">
                             <input type="submit" id="btn-login" class="btn btn-success" value="Login"/>
                             <a id="btn-fblogin" href="/registration/registerWithFacebook" class="btn btn-primary">Login with Facebook</a>

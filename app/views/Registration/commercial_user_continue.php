@@ -81,7 +81,7 @@
         }
 
         .category-group label {
-            min-width: 13em;
+            min-width: 174px;
             background-color: #8ABB55;
         }
 
@@ -191,7 +191,7 @@
                         </li>
 
                         <li>
-                            <label for="checkboxes4">Canned Foods/Canned Meat</label>
+                            <label for="checkboxes4">Canned Foods/Meat</label>
                             <input id="checkboxes4" name="checkboxes[]" value="cannedFoods" type="checkbox">
                         </li>
 
@@ -206,7 +206,7 @@
                         </li>
 
                         <li>
-                            <label for="checkboxes7">Processed Meat products</label>
+                            <label for="checkboxes7">Processed Meat</label>
                             <input id="checkboxes7" name="checkboxes[]" value="processedMeat" type="checkbox">
                         </li>
                     </ul>

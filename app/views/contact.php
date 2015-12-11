@@ -6,18 +6,21 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/public/css/slider.css">
+    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen" />
+    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen" />
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/custom.css" />
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/color1.css" />
+
 
     <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/style.css" />
     <link type="text/css" rel="stylesheet" href="/public/css/style.css"/>
 
     <!--[if lt IE 9]>

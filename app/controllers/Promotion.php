@@ -40,6 +40,21 @@ class Promotion extends Controller
 		$this->promotion->validateAndInsertNewPromo();
 	}
 
+
+	//returns the user type to the Promotion view by executing the userType($userId) method in the
+	//PromotionModel
+	public function checkUserType()
+	{
+		$userList = $this->promotion->userType($_POST["userId"]);
+		$row = $userList->fetch(PDO::FETCH_ASSOC);
+		if($row['user_acount_type'] == 2){
+			$commUser = true;
+		}else{
+			$commUser = false;
+		}
+		echo json_encode($commUser);
+	}
+
 	public function checkEmailsInPromoAdder()
 	{
 		$id = $this->promotion->checkEmailsInAdder($_POST["email"]);
@@ -81,7 +96,7 @@ class Promotion extends Controller
 				$endDate = $row['end_date'];
 				echo "<div class='col-sm-6 col-md-4' xmlns=\"http://www.w3.org/1999/html\">
 						<div class='thumbnail'>
-							<img src=http://localhost/Ambula/$imageUrl alt='...' style='width: 170px; height: 150px;'>
+							<img src=http://localhost$imageUrl alt='...' style='width: 170px; height: 150px;'>
 							<br class='caption'>
 								<h3 style='display: inline'>$promotionName</h3><h5 style='display: inline;'>(offered by $companyName)</h5>
 								<p>$description</p>

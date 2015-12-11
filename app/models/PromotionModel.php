@@ -263,6 +263,23 @@ class PromotionModel
 		}
 	}
 
+	//This function is used to check whether a logged in user is a personal or a corporate user
+	//user type is returned to Promotion Controller wheich is called by checkUserType() method
+	public function userType($userId)
+	{
+		$sql = "SELECT user_account_type FROM users WHERE user_id = ?";
+		$query = $this->db->prepare($sql);
+		$query->bindParam(1,$userId, PDO::PARAM_STR);
+		$query->execute();
+
+		if($query->rowCount() == 0){
+			return $query;
+		}else{
+			return $query;
+		}
+
+	}
+
 	public function viewPromotions($promotion_type)
 	{
 		$sql = "SELECT * FROM promotion WHERE promotion_type = ?";

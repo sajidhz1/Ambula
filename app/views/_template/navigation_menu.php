@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Logo Here -->
-            <a class="navbar-brand" href="/home"><img src="http://localhost/Ambula/public/img/ambula-logo.png"  alt="The Ambula"/></a>
+            <a class="navbar-brand" href="/Ambula/"><img src="http://localhost/Ambula/public/img/ambula-logo.png"  alt="The Ambula"/></a>
         </div>
 
         <!-- search box -->
@@ -34,10 +34,10 @@
                 else
                 $d="" ?>
 
-                <li><a <?php if($d == "home") echo "class='current'" ?> href="/">Home</a></li>
-                <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="home/categories">Categories</a></li>
-                <li><a <?php if($d and $data == "promotions") echo "class='current'" ?> href="home/promotions">Promotions</a></li>
-                <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="home/contact">Contact</a></li>
+                <li><a <?php if($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
+                <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Categories</a></li>
+                <li><a <?php if($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a></li>
+                <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="/Ambula/home/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                    <?php if (isset($_SESSION['user_logged_in'])) {

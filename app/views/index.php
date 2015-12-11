@@ -183,7 +183,7 @@
         <?php if(isset($_SESSION["user_logged_in"])){ ?>
             <a href="/recipes/newRecipe" style="color: #fff;" id="btn-signup"  class="btn btn-primary">Add Recipe</a>
         <?php }else{ ?>
-        <a href="/registration" style="color: #fff;" id="btn-signup"  class="btn btn-primary">SIGN UP</a>
+            <a href="/registration" style="color: #fff;" id="btn-signup"  class="btn btn-primary">SIGN UP</a>
         <?php }?>
     </div>
 

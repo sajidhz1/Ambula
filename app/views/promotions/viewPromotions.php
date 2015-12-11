@@ -77,6 +77,28 @@
 			});
 		});
 
+		$(document).ready(function () {
+			var uId = '<?php echo $_SESSION["uid"]; ?>';
+
+			$.ajax({
+				url:  "http://localhost/Ambula/Promotion/checkUserType",
+				type: "post",
+				data: {userId: uId},
+				dataType: 'json',
+				async: false,
+				success: function (response) {
+					if(!response)
+					{
+
+
+					}else{
+							//alert('email exists');
+					}
+				}
+			});
+
+		});
+
 	</script>
 
 	<style>
@@ -116,7 +138,7 @@
 
 <!--Header START -->
 <body>
-	<?php $this->view('_template/navigation_menu', "newPromotion") ?>
+	<?php $this->view('_template/navigation_menu', "viewPromotion") ?>
 
 	<nav class="navbar navbar-default navbar-promo" id="promonav">
 		<div class="container-fluid">
@@ -128,7 +150,12 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/Ambula/Promotion/index" style="float: left">Join Ambula Promotions</a>
+				<?php if(isset($_SESSION["user_logged_in"]) && $_SESSION["uid"]){ ?>
+					<a class="navbar-brand" href="/Ambula/Promotion/index" style="float: left">Add New Promotions</a>
+				<?php }else{ ?>
+					<a class="navbar-brand" href="/Ambula/registration/" style="float: left">Join Ambula Promotions</a>
+				<?php }?>
+
 			</div>
 
 
@@ -146,6 +173,7 @@
 	</nav>
 
 	<div id="promotionContainer">
+
 	</div>
 </body>
 </html>
