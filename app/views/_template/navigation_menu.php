@@ -48,7 +48,7 @@
                        <?php  if(Session::get('user_provider_type')=='FACEBOOK'){ ?>
                        <img src="https://graph.facebook.com/<?=Session::get('fbid')?>/picture" width="35" style="margin-top:7px;" height="35">
                        <?php } else if(Session::get('user_provider_type')=='DEFAULT' && Session::get('user_avatar')==1){ ?>
-                           <img src="http://localhost/Ambula/uploads/profile/<?=Session::get('username')?>.jpg" width="35" style="margin-top:7px;" height="35">
+                           <img src="<?=Session::get('user_avatar_url')?>" width="35" style="margin-top:7px;" height="35">
                        <?php } else if(Session::get('user_provider_type')=='DEFAULT' && Session::get('user_avatar')==0){ ?>
                            <img src="/public/img/profile_avatar.jpg" width="35" style="margin-top:7px;" height="35">
 

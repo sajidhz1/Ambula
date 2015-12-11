@@ -20,7 +20,7 @@ class Login extends Controller{
         if(!Session::get('user_logged_in'))
             $this->view('login/Login',['name' => 'sajidh']);
         else
-            header('location:/');
+            header('location:http://localhost/Ambula/');
 
     }
 
@@ -33,7 +33,7 @@ class Login extends Controller{
             Header('Location:'.Session::get('page_rdr'));
         }
         else{
-            Header('Location:/login/');
+            Header('Location:http://localhost/Ambula/login/');
         }
     }
 
