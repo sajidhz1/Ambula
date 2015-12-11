@@ -37,6 +37,7 @@ class LoginModel
                     Session::set('user_provider_type', $result->user_provider_type);
                     Session::set('user_logged_in', true);
                     Session::set('user_avatar', $result->user_avatar);
+                    Session::set('user_account_type', $result->user_account_type);
 
                     if($result->user_account_type == 2){
                         $st = $this->db->prepare("SELECT company_name
