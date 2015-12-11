@@ -76,8 +76,25 @@
 
         }
 
-        table td{
-            width: 200px;
+        .category-group{
+            margin-bottom: 25px;
+        }
+
+        .category-group label {
+            min-width: 13em;
+            background-color: #8ABB55;
+        }
+
+        .category-group input{
+            /*margin-right: 2%;*/
+        }
+
+        .category-group div{
+            display: inline-block;
+        }
+
+        .container{
+            width: 99%;
         }
     </style>
 </head>
@@ -92,7 +109,7 @@
     <div class="container mrg50T">
         <h4 class="txt-red">Almost There Just One Step to go !</h4>
 
-        <div class="col-lg-5 hgt600" style="background-color: #ffc266;">
+        <div class="col-lg-4 hgt600" style="background-color: #ffc266;">
             <h4>Company Logo</h4>
             <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
                  id="profile_img" alt=""/>
@@ -138,7 +155,7 @@
 
         </div>
 
-        <div class="col-lg-7 hgt600" style="padding-top:15px;background: #e8e8e8;">
+        <div class="col-lg-8" style="padding-top:15px;background: #e8e8e8;">
 
             <div class="col-lg-12">
                 <h4 style="margin-bottom: 15px;"> Short Description</h4>
@@ -153,35 +170,129 @@
                 </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 category-group">
                 <h5 style="margin-bottom: 15px;margin-top: 25px;"> Categories</h5>
 
-               <table  cellspacing="10" style="color: #222">
-                   <tr>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="drinks"> drinks</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> flour</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> Cheese</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> dairy products</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> sauces</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> spices</td>
-                   </tr>
-                   <tr>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> jam</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> soya products</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> pasta,sphagetti,macaroni</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> noodles</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> processed meat</td>
-                       <td style="padding: 5px 5px;"><input type="checkbox"  name="food_category" value="Bike"> flavour enhancers</td>
-                   </tr>
-                   <tr>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> biscuits/cookies</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> honey , kithul trickle</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> Canned foods /canned meat</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> grain products</td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> food colourings and flavourings </td>
-                       <td style="padding: 5px 15px;"><input type="checkbox"  name="food_category" value="Bike"> frozen products</td>
-                   </tr>
-               </table>
+                <div class="col-lg-4">
+                    <ul>
+                        <li>
+                            <label for="checkboxes1">Beverages</label>
+                            <input id="checkboxes1" name="checkboxes[]" value="beverages" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes2">Dairy Products</label>
+                            <input id="checkboxes2" name="checkboxes[]" value="dairyProducts" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes3">Frozen Foods</label>
+                            <input id="checkboxes3" name="checkboxes[]" value="frozenFoods" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes4">Canned Foods/Canned Meat</label>
+                            <input id="checkboxes4" name="checkboxes[]" value="cannedFoods" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes5">Jam</label>
+                            <input id="checkboxes5" name="checkboxes[]" value="jam" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes6">Sauces</label>
+                            <input id="checkboxes6" name="checkboxes[]" value="sauces" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes7">Processed Meat products</label>
+                            <input id="checkboxes7" name="checkboxes[]" value="processedMeat" type="checkbox">
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <ul>
+                        <li>
+                            <label for="checkboxes8">Noodles</label>
+                            <input id="checkboxes8" name="checkboxes[]" value="noodles" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes9">Pasta/Spagetti</label>
+                            <input id="checkboxes9" name="checkboxes[]" value="Pasta/Spagetti" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes10">Soya Products</label>
+                            <input id="checkboxes10" name="checkboxes[]" value="soyaProducts" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes11">Flour</label>
+                            <input id="checkboxes11" name="checkboxes[]" value="flour" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes12">Spices</label>
+                            <input id="checkboxes12" name="checkboxes[]" value="spices" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes13">Grain Products</label>
+                            <input id="checkboxes13" name="checkboxes[]" value="grainProducts" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes14">Flavour Enhancers</label>
+                            <input id="checkboxes14" name="checkboxes[]" value="flavourEnhancers" type="checkbox">
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <ul>
+                        <li>
+                            <label for="checkboxes15">Biscuits/Cookies</label>
+                            <input id="checkboxes15" name="checkboxes[]" value="biscuits/cookies" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes16">Bee Honey/Kitul Trickle</label>
+                            <input id="checkboxes16" name="checkboxes[]" value="honey/kitulTrickle" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes17">Food Coloring/Flavoring</label>
+                            <input id="checkboxes17" name="checkboxes[]" value="Test" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes18">Ice Cream</label>
+                            <input id="checkboxes18" name="checkboxes[]" value="icecream" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes19">Margarine/Spreads</label>
+                            <input id="checkboxes19" name="checkboxes[]" value="margarine/spreads" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes20">Coconut Oil/Cooking Oil</label>
+                            <input id="checkboxes20" name="checkboxes[]" value="coconutOil" type="checkbox">
+                        </li>
+
+                        <li>
+                            <label for="checkboxes21">Fresh Vegetables/Fruits</label>
+                            <input id="checkboxes21" name="checkboxes[]" value="freshVegetables/fruits" type="checkbox">
+                        </li>
+                    </ul>
+
+                </div>
+
             </div>
 
 
