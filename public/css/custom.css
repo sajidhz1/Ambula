@@ -40,7 +40,7 @@ header.navbar					{background:#092229;}
 .navbar .nav a.current,
 .navbar .nav a.current:hover	{background:none; color:#86cd52;}
 .navbar-inverse .brand,
-.navbar-inverse .nav > li > a	{color:#999; text-shadow:inherit;width :125px;text-align: center;}
+.navbar-inverse .nav > li > a	{color:#999; text-shadow:inherit;width :150px;text-align: center;}
 .navbar-inverse .brand:hover,.navbar-inverse .nav>li>a:hover,
 .navbar-inverse .nav > li > a:focus,
 .navbar .nav a:hover			{color:#fff;}

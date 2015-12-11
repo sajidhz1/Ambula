@@ -81,8 +81,14 @@
         }
 
         .category-group label {
+<<<<<<< HEAD
             min-width: 174px;
             background-color: #8ABB55;
+=======
+            min-width: 173px;
+            background-color: #ffa366;
+
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
         }
 
         .category-group input{
@@ -109,7 +115,7 @@
     <div class="container mrg50T">
         <h4 class="txt-red">Almost There Just One Step to go !</h4>
 
-        <div class="col-lg-4 hgt600" style="background-color: #ffc266;">
+        <div class="col-lg-4 hgt600" style="border: 1px solid #b2b2b2">
             <h4>Company Logo</h4>
             <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
                  id="profile_img" alt=""/>
@@ -123,7 +129,7 @@
             </div>
             <br>
 
-            <div class="col-lg-10" style="margin-bottom:15px;margin-top: 20px;">
+            <div class="col-lg-11" style="margin-bottom:15px;margin-top: 20px;">
                 <label class="control-label" for="last_name">Website </label>
                 <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
@@ -132,7 +138,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-10" style="margin-bottom:15px;">
+            <div class="col-lg-11" style="margin-bottom:15px;">
                 <label class="control-label" for="last_name">Facebook Page URL </label>
                 <div class="input-group ">
                     <span class="input-group-addon" style="font-weight: 600;">f</span>
@@ -144,7 +150,7 @@
 
 
 
-            <div class="col-lg-10">
+            <div class="col-lg-11">
                 <label class="control-label" for="last_name">Youtube channel URL</label>
                 <div class="input-group ">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-play"></i></span>
@@ -155,7 +161,7 @@
 
         </div>
 
-        <div class="col-lg-8" style="padding-top:15px;background: #e8e8e8;">
+        <div class="col-lg-8 hgt600" style="padding-top:15px;background: #e8e8e8;">
 
             <div class="col-lg-12">
                 <h4 style="margin-bottom: 15px;"> Short Description</h4>
@@ -191,7 +197,11 @@
                         </li>
 
                         <li>
+<<<<<<< HEAD
                             <label for="checkboxes4">Canned Foods/Meat</label>
+=======
+                            <label for="checkboxes4">Canned Foods/ Meat</label>
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
                             <input id="checkboxes4" name="checkboxes[]" value="cannedFoods" type="checkbox">
                         </li>
 
@@ -206,7 +216,11 @@
                         </li>
 
                         <li>
+<<<<<<< HEAD
                             <label for="checkboxes7">Processed Meat</label>
+=======
+                            <label for="checkboxes7">Processed Meat </label>
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
                             <input id="checkboxes7" name="checkboxes[]" value="processedMeat" type="checkbox">
                         </li>
                     </ul>
