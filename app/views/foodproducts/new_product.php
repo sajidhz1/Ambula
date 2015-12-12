@@ -93,9 +93,10 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 <div class="container-fluid pages">
+    <form action="/Ambula/FoodProducts/addProduct" method="POST" enctype="multipart/form-data" id="form1" >
     <div class="col-lg-12 ingredients-control">
         <div class="col-lg-12 col-sm-12" id="fields">
-            <label class="control-label" for="field1"><h3>New Products</h3></label>
+            <label class="control-label" for="field1"><h3>Add New Product</h3></label>
             <br>
             <span id="ing_error" style="color: red;"></span>
             <br>
@@ -110,16 +111,16 @@
             <div class="entry" >
                 <div  class="row" style="margin-bottom: 15px;" >
                     <div class="col-xs-5 col-sm-5 col-lg-3">
-                        <input class="form-control" name="ingname[]" type="text"
+                        <input class="form-control" name="product_name" type="text"
                                placeholder="Example : sugar , salt"/>
                     </div>
                     <div class="dropdown col-xs-3 col-sm-3 col-lg-2">
-                        <select class="form-control" name="metrics[]">
+                        <select class="form-control" name="category">
                             <option value="">select</option>
-                            <option value="kg">kg</option>
-                            <option value="g">g</option>
-                            <option value="oz">oz</option>
-                            <option value="tbspn">tbspn</option>
+                            <option value="1">kg</option>
+                            <option value="2">g</option>
+                            <option value="3">oz</option>
+                            <option value="4">tbspn</option>
                             <option value="tspn">tspn</option>
                             <option value="cup">Cup</option>
                             <option value="ml">ml</option>
@@ -133,14 +134,14 @@
                         </select>
                     </div>
                     <div class="col-xs-2 col-sm-2 col-lg-3">
-                        <textarea class="form-control" name="amount[]" placeholder="short description" type="text" ></textarea>
+                        <textarea class="form-control" name="description" placeholder="short description" type="text" ></textarea>
                     </div>
                     <div class="col-xs-1 col-sm-2 col-lg-4"  >
                         <div class="col-lg-8">
                             <div class="uploader col-lg-6" >
 
                                 <img width="110" height="110" class="thumb" src="http://localhost/Ambula/public/img/no_preview_available.jpg"/>
-                                <input type="file" name="userprofile_picture" onchange="$(this).siblings('img').attr('src' ,window.URL.createObjectURL(this.files[0]));" id="filePhoto1" />
+                                <input type="file"  name="product_thumb" onchange="$(this).siblings('img').attr('src' ,window.URL.createObjectURL(this.files[0]));" id="filePhoto1" />
                             </div>
 
                             <div class=" col-lg-6" >
@@ -150,8 +151,8 @@
 
                         </div>
                         <div class="col-lg-4" style="display: inline-block;vertical-align: middle;" >
-                            <button class="btn btn-success btn-add" style="margin-top: 30%;" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
+                            <button class="btn btn-success btn-add" style="margin-top: 30%;">
+                               Add  <span class="glyphicon glyphicon-plus"></span>
                             </button>
 
                         </div>
@@ -164,35 +165,69 @@
 
         </div>
     </div>
+        </form>
+
+    <div class="col-lg-12"  style="border: 1px solid black;">
+        <?php
+        ?>
+        <table border="1" style="margin-top: 15px;">
+            <tbody>
+        <?php
+        $arr = json_decode($this->viewUserProducts(Session::get('coporate_user_id')), true);
+        foreach ($arr as $product) { ?>
+            <tr>
+                <td class="col-lg-3"><?=$product['product_name'] ?></td>
+                <td class="col-lg-3"><?=$product['description'] ?></td>
+                <td class="col-lg-2"><img style="padding: 2px;" src="/Ambula/<?=$product['img_url'] ?>" height="100" width="100" alt=""/></td>
+                <td class="col-lg-2">category</td>
+
+                <td class="col-lg-2"><a href="" class="btn btn-default">edit <span class="glyphicon glyphicon-pencil"></span></a>
+                                     <a href="" class="btn btn-danger">remove <span class="glyphicon glyphicon-trash"></span></a>
+                </td>
+            </tr>
+        <?php } ?>
+            </tbody>
+         </table>
+    </div>
 </div>
 <script>
 
    $(function() {
 
-       //ingredients add dynamic fields
-       $(document).on('click', '.btn-add', function (e) {
-           e.preventDefault();
+       //form submit
+       $('#form1').on('submit', function() {
 
-           var controlForm = $('.ingredients-control'),
-               currentEntry = $(this).parents('.entry:first'),
-               newEntry = $(currentEntry.clone()).appendTo(controlForm);
 
-           newEntry.find('input').val('');
-           newEntry.find('img').attr('src','http://localhost/Ambula/public/img/no_preview_available.jpg');
-           controlForm.find('.entry:not(:last) .btn-add')
-               .removeClass('btn-add').addClass('btn-remove')
-               .removeClass('btn-success').addClass('btn-danger')
-               .html('<span class="glyphicon glyphicon-minus"></span>');
-       }).on('click', '.btn-remove', function (e) {
-           $(this).parents('.entry:first').remove();
+                       $.ajax({
+                           url: $(this).attr('action'),
+                           type: $(this).attr('method'),
+                           data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                           contentType: false,       // The content type used when sending data to the server.
+                           cache: false,             // To unable request pages to be cached
+                           processData: false,        // To send DOMDocument or non processed data file it is set to false
+                           success: function (json) {
 
-           e.preventDefault();
-           return false;
+                           var  data = $.parseJSON(json);
+                              //  alert(data.product_name);
+
+                               $('<tr>' +
+                               '<td class="col-lg-3" >'+data.product_name+'</td>' +
+                               '<td class="col-lg-3">'+data.description+'</td>' +
+                               '<td class="col-lg-2"><img src="/Ambula/'+data.thumb_url+'" style="padding: 2px;" height="100" width="100"  alt=""/></td>' +
+                               '<td class="col-lg-2">'+data.category+'</td>' +
+                               '<td class="col-lg-2"><a href="" class="btn btn-default">edit <span class="glyphicon glyphicon-pencil"></span></a>'+
+                               ' <a href="" class="btn btn-danger">remove <span class="glyphicon glyphicon-trash"></span></a></td>' +
+                               '</tr>').prependTo("table > tbody");
+
+
+                           }
+                       });
+
+            return false;
        });
+
+
    });
-
-
-
 
 </script>
 </body>

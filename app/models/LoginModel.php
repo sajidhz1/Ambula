@@ -40,12 +40,13 @@ class LoginModel
                     Session::set('user_account_type', $result->user_account_type);
 
                     if($result->user_account_type == 2){
-                        $st = $this->db->prepare("SELECT company_name
+                        $st = $this->db->prepare("SELECT company_name ,idcommercial_user
                                    FROM   commercial_user
                                    WHERE  users_user_id = '".$result->user_id."'");
                         $st->execute();
                         $user_details = $st->fetch();
                         Session::set('name',$user_details->company_name);
+                        Session::set('coporate_user_id',$user_details->idcommercial_user);
                         Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/commercial_user/".$result->user_name."/".$result->user_name.".jpg");
 
                     }else{

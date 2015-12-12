@@ -263,7 +263,7 @@
 
                         <li>
                             <label for="checkboxes16">Bee Honey/Kitul Trickle</label>
-                            <input id="checkboxes16" name="checkboxes[]" value="honey/kitulTrickle" type="checkbox">
+                            <input id="checkboxes16" name="checkboxes[]" value="2" type="checkbox">
                         </li>
 
                         <li>

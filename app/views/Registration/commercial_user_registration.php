@@ -211,7 +211,7 @@
                     <label class="control-label" for="email">E-mail</label>
 
                     <div class="controls">
-                        <input type="email" data-native-error="invalid email format" id="email" name="email" data-remote="http://localhost/Ambula/registration/checkEmail" placeholder="" class="form-control" data-error="The email address you have entered already has an account" required>
+                        <input type="email" data-native-error="invalid email format" id="email" name="email" data-remote="/Ambula/registration/checkEmail" placeholder="" class="form-control" data-error="The email address you have entered already has an account" required>
 
 
                         <p class="help-block with-errors">Please provide your E-mail</p>
@@ -225,8 +225,8 @@
                     <label class="control-label" for="user_name">Username</label>
 
                     <div class="controls">
-                        <input type="text" id="username" name="user_name" placeholder="" class="form-control"
-                               pattern="^[A-Za-z0-9_-]{3,16}$" data-native-error="username should at least contain 3 Characters (letter numbers and underscore)" data-remote="http://localhost/Ambula/registration/checkUserName" data-error="username already exists ,choose a different one"  maxlength="10"   required>
+                        <input type="text" id="username" name="username" placeholder="" class="form-control"
+                               pattern="^[A-Za-z0-9_-]{3,16}$" data-native-error="username should at least contain 3 Characters (letter numbers and underscore)"  data-remote="/Ambula/registration/checkUserName" data-error="username already exists ,choose a different one"  maxlength="10"   required>
 
                         <p class="help-block with-errors"></p>
                     </div>

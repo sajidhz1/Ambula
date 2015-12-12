@@ -349,12 +349,12 @@ class RegistrationModel {
            }
 
            //username validation
-           if (empty($_POST["user_name"])) {
+           if (empty($_POST["username"])) {
                $usernameErr = "Username is required";
                $username_flag = false;
            } else {
                $username_flag = true;
-               $username = $this->test_input($_POST["user_name"]);
+               $username = $this->test_input($_POST["username"]);
                // check if name only contains letters and whitespace
                if (!preg_match("/^[A-Za-z0-9_-]{3,16}$/",$username)) {
                    $username_flag= false;

@@ -25,4 +25,12 @@ class FoodProducts extends Controller{
     public function addNewProduct(){
         $this->view('foodproducts/new_product');
     }
+
+    public function addProduct(){
+        $this->products->addProduct();
+    }
+
+    public function viewUserProducts($cooperate_user_id = ''){
+      return  $this->products->viewUserProducts($cooperate_user_id);
+    }
 } 
