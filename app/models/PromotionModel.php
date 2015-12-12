@@ -18,6 +18,7 @@ class PromotionModel
 		$this->idpromo_adder_flag = false;
 	}
 
+	/*
 	public function validateAndInsertPromoAdder()
 	{
 
@@ -108,16 +109,25 @@ class PromotionModel
 		$this->db->prepare($sql)->execute();
 		return $this->db->lastInsertId();
 	}
+	*/
 
 	public function validateAndInsertNewPromo()
 	{
 
-		$this->idpromo_adder_flag = $promo_type_flag = $promo_name_flag = $company_name_flag = $email_flag  = $description_flag = $startdate_flag = $enddate_flag = $priority_flag = false;
-		$this->idpromo_adderErr = $promo_typeErr = $promo_nameErr = $company_nameErr = $emailErr = $promo_imageErr = $descriptionErr = $startdateErr = $enddateErr =  $priorityErr = $datetime_adderdErr = $visibilityErr = "";
-		$this->idPromotion_Adder = $promotion_type = $promotion_name = $company_name = $email = $image_url = $description = $start_date = $end_date =  $priority = $date_time_added = $visibility ="";
+		$this->idpromo_adder_flag = $promo_type_flag = $promo_name_flag = $description_flag = $startdate_flag = $enddate_flag = $priority_flag = false;
+		$this->idpromo_adderErr = $promo_typeErr = $promo_nameErr = $promo_imageErr = $descriptionErr = $startdateErr = $enddateErr =  $priorityErr = $datetime_adderdErr = $visibilityErr = "";
+		$this->idPromotion_Adder = $promotion_type = $promotion_name = $image_url = $description = $start_date = $end_date =  $priority = $date_time_added = $visibility ="";
 
 
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+			if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2){
+				$this->idPromotion_Adder = $_SESSION["uid"];
+				$this->idpromo_adder_flag = true;
+			}else{
+				$this->idpromo_adder_flag = false;
+				$this->idpromo_adderErr = "Not logged in as Coporate user";
+			}
 
 			//promo type validation
 			if (empty($_POST["promotion_type"])) {
@@ -139,30 +149,6 @@ class PromotionModel
 				if (!preg_match("/^[a-zA-Z0-9 ]*$/",$promotion_name)) {
 					$promo_name_flag = false;
 					$promo_nameErr = "Only letters,digits and white spaces allowed";
-				}
-			}
-
-			//company name validation
-			if (empty($_POST["company_name"])) {
-				$company_nameErr = "Company name is required";
-				$company_name_flag = false;
-			} else {
-				$company_name_flag = true;
-				$company_name = $this->test_input($_POST["company_name"]);
-			}
-
-			//email validation
-			if (empty($_POST["email"])) {
-				$emailErr = "Email is required";
-				$email_flag = false;
-			} else {
-				$email_flag = true;
-				$email = $this->test_input($_POST["email"]);
-				// check if e-mail address is well-formed
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					$this->flag_log = false;
-					$email_flag = false;
-					$emailErr = "Invalid email address";
 				}
 			}
 
@@ -226,25 +212,24 @@ class PromotionModel
 
 			$visibility = false;
 
-			//id promotion adder
-			$this->checkEmailsInAdder($_POST["email"]);
 		}
 
 		$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
 
     //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
 
-		if(!$promo_type_flag || !$promo_name_flag || !$company_name_flag || !$email_flag || !$image_url || !$description_flag || !$startdate_flag || !$enddate_flag || !$priority_flag){
+		if(!$promo_type_flag || !$promo_name_flag || !$image_url || !$description_flag || !$startdate_flag || !$enddate_flag || !$priority_flag){
 			return false;
 		}
 		//insert into promotion_adder table
 
-        $sql = "INSERT INTO promotion (idPromotion_Adder, promotion_type, promotion_name, company_name, email, image_url, description, start_date, end_date, priority, visibility) VALUES ('".$this->idPromotion_Adder."','".$promotion_type."','".$promotion_name."','".$company_name."','".$email."','".$image_url."','".$description."','".$start_date."','".$end_date."','".$priority."','".$visibility."')";
+        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES ('".$this->idPromotion_Adder."','".$promotion_type."','".$promotion_name."','".$image_url."','".$description."','".$start_date."','".$end_date."','".$priority."','".$visibility."')";
 		$this->db->prepare($sql)->execute();
 		return $this->db->lastInsertId();
 
 	}
 
+	/*
 	public function checkEmailsInAdder($email)
 	{
 		$sql = "SELECT * FROM promotion_adder WHERE email = ? LIMIT 1";
@@ -262,12 +247,44 @@ class PromotionModel
 			return $query;
 		}
 	}
+	*/
+
+	//This function is used to check whether a logged in user is a personal or a corporate user
+	//user type is returned to Promotion Controller wheich is called by checkUserType() method
+	/*public function userType($userId)
+	{
+		$sql = "SELECT user_account_type FROM users WHERE user_id = ?";
+		$query = $this->db->prepare($sql);
+		$query->bindParam(1,$userId, PDO::PARAM_STR);
+		$query->execute();
+
+		if($query->rowCount() == 0){
+			return $query;
+		}else{
+			return $query;
+		}
+
+	}*/
 
 	public function viewPromotions($promotion_type)
 	{
 		$sql = "SELECT * FROM promotion WHERE promotion_type = ?";
 		$query = $this->db->prepare($sql);
 		$query->bindParam(1, $promotion_type, PDO::PARAM_STR);
+		$query->execute();
+
+		if($query->rowCount() == 0)
+		{
+			return false;
+		}else{
+			return $query;
+		}
+	}
+
+	public function viewPromotionCompany($uId){
+		$sql = "SELECT company_name FROM commercial_user WHERE users_user_id = ?";
+		$query = $this->db->prepare($sql);
+		$query->bindParam(1,$uId, PDO::PARAM_STR);
 		$query->execute();
 
 		if($query->rowCount() == 0)

@@ -81,9 +81,14 @@
         }
 
         .category-group label {
+<<<<<<< HEAD
+            min-width: 174px;
+            background-color: #8ABB55;
+=======
             min-width: 173px;
             background-color: #ffa366;
 
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
         }
 
         .category-group input{
@@ -192,7 +197,11 @@
                         </li>
 
                         <li>
+<<<<<<< HEAD
+                            <label for="checkboxes4">Canned Foods/Meat</label>
+=======
                             <label for="checkboxes4">Canned Foods/ Meat</label>
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
                             <input id="checkboxes4" name="checkboxes[]" value="cannedFoods" type="checkbox">
                         </li>
 
@@ -207,7 +216,11 @@
                         </li>
 
                         <li>
+<<<<<<< HEAD
+                            <label for="checkboxes7">Processed Meat</label>
+=======
                             <label for="checkboxes7">Processed Meat </label>
+>>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
                             <input id="checkboxes7" name="checkboxes[]" value="processedMeat" type="checkbox">
                         </li>
                     </ul>

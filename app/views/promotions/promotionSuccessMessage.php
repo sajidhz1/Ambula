@@ -61,23 +61,10 @@
 			float: right;
 			margin-right: 25%;
 			margin-left: 22%;
+			margin-top: 24%;
 
 		}
 
-		label.valid {
-			width: 24px;
-			height: 24px;
-			background: url(<?php echo URL; ?>Ambula/public/img/valid.png) center center no-repeat;
-			display: inline-block;
-			text-indent: -9999px;
-		}
-
-		label.error {
-			font-weight: bold;
-			color: red;
-			padding: 2px 8px;
-			margin-top: 2px;
-		}
 	</style>
 </head>
 
@@ -86,10 +73,9 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
-	<div class="container">
-		<div class="col-lg-6 registration-container">
-			<div class="alert alert-success" role="alert" style='text-align:center;>Your Promotional Information Was Successfully Added
-			</div>
+	<div class="col-lg-6 registration-container">
+		<div class="alert alert-success">
+			<strong>Success!</strong> Your Promotional Information Was Added Successfully.
 		</div>
 	</div>
 </body>
