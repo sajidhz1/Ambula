@@ -77,27 +77,6 @@
 			});
 		});
 
-		$(document).ready(function () {
-			var uId = '<?php echo $_SESSION["uid"]; ?>';
-
-			$.ajax({
-				url:  "http://localhost/Ambula/Promotion/checkUserType",
-				type: "post",
-				data: {userId: uId},
-				dataType: 'json',
-				async: false,
-				success: function (response) {
-					if(!response)
-					{
-
-
-					}else{
-							//alert('email exists');
-					}
-				}
-			});
-
-		});
 
 	</script>
 
@@ -133,6 +112,16 @@
 
 		.promoViewButton{
 		}
+
+		.modal {
+			background: rgba(000, 000, 000, 0.7);
+			min-height:1000000px;
+		}
+
+		.modal-dialog-center {
+			margin-top: 15%;
+		}
+
 	</style>
 </head>
 
@@ -150,12 +139,35 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<?php if(isset($_SESSION["user_logged_in"]) && $_SESSION["uid"]){ ?>
+				<?php if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2){ ?>
 					<a class="navbar-brand" href="/Ambula/Promotion/index" style="float: left">Add New Promotions</a>
 				<?php }else{ ?>
-					<a class="navbar-brand" href="/Ambula/registration/" style="float: left">Join Ambula Promotions</a>
+					<a class="navbar-brand" href="#" style="float: left" data-toggle="modal" data-target="#myModal">Join Ambula Promotions</a>
 				<?php }?>
 
+			</div>
+			<!-------------------- Modal --------------------->
+
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;" data-backdrop="false">
+				<div class="modal-dialog modal-dialog-center">
+					<div class="modal-content">
+
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Sign Up as a Coporate User</h4>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-info">
+								You must be signed in as an Ambula&trade; coporate user to add new Promotions to Ambula&trade; promotions.
+								Sign Up here as a Coporate User
+							</div>
+							<a href="/Ambula/registration/regNewCommercialUser/" class="btn btn-primary" role="button" style="margin-left:35%; margin-right: 35%">Join Ambula Promotions</a>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
 			</div>
 
 

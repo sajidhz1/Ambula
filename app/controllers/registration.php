@@ -30,6 +30,10 @@ class Registration extends Controller
             $this->view('Registration/registration');
     }
 
+    public function regNewCommercialUser()
+    {
+        $this->view('Registration/commercial_user_registration');
+    }
 
     public function registerNewUser()
     {

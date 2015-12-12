@@ -26,6 +26,7 @@ class Promotion extends Controller
 		$this->view('promotions/promotionAdderForm');
 	}
 
+	/*
 	public function addPromotionAdder()
 	{
 		if($this->promotion->validateAndInsertPromoAdder() != false){
@@ -34,16 +35,21 @@ class Promotion extends Controller
 			$this->view('promotions/promotionAdderForm');
 		}
 	}
+	*/
 
 	public function addNewPromotion()
 	{
-		$this->promotion->validateAndInsertNewPromo();
+		if($this->promotion->validateAndInsertNewPromo()){
+			$this->view("promotions/promotionSuccessMessage","promotions");
+		}else{
+			$this->view('_template/error', "Error");
+		}
 	}
 
 
 	//returns the user type to the Promotion view by executing the userType($userId) method in the
 	//PromotionModel
-	public function checkUserType()
+	/*public function checkUserType()
 	{
 		$userList = $this->promotion->userType($_POST["userId"]);
 		$row = $userList->fetch(PDO::FETCH_ASSOC);
@@ -53,8 +59,9 @@ class Promotion extends Controller
 			$commUser = false;
 		}
 		echo json_encode($commUser);
-	}
+	}*/
 
+	/*
 	public function checkEmailsInPromoAdder()
 	{
 		$id = $this->promotion->checkEmailsInAdder($_POST["email"]);
@@ -66,7 +73,7 @@ class Promotion extends Controller
 		}
 		echo json_encode($emailAvail);
 	}
-
+	*/
 	public function viewAllPromotions()
 	{
 		$promoList = $this->promotion->viewPromotions($_GET["promtoionType"]);
@@ -89,7 +96,12 @@ class Promotion extends Controller
 		}else{
 			while ($row = $promoList->fetch(PDO::FETCH_ASSOC)) {
 				$promotionName = $row['promotion_name'];
-				$companyName = $row['company_name'];
+
+				//This code is for retrieving the relevent company for each promotion being displayed
+				$promCompanyList = $this->promotion->viewPromotionCompany($row["users_user_id"]);
+				$rowCompany = $promCompanyList->fetch(PDO::FETCH_ASSOC);
+				$companyName = $rowCompany["company_name"];
+
 				$imageUrl = "/Ambula/".$row['image_url'];
 				$description =$row['description'];
 				$startDate = $row['start_date'];

@@ -10,12 +10,8 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Logo Here -->
-<<<<<<< HEAD
             <a class="navbar-brand" href="/Ambula/"><img src="http://localhost/Ambula/public/img/ambula-logo.png"  alt="The Ambula"/></a>
-=======
-            <a class="navbar-brand" href="/home"><img src="http://localhost/Ambula/public/img/ambula-logo.png"
-                                                      alt="The Ambula"/></a>
->>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
+
         </div>
 
         <!-- search box -->
@@ -41,20 +37,11 @@
                 else
                     $d = "" ?>
 
-<<<<<<< HEAD
                 <li><a <?php if($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
                 <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Categories</a></li>
                 <li><a <?php if($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a></li>
                 <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="/Ambula/home/contact">Contact</a></li>
-=======
-                <li><a <?php if ($d == "home") echo "class='current'" ?> href="/">Home</a></li>
-                <li><a <?php if ($d and $data == "categories") echo "class='current'" ?> href="home/categories">Categories</a>
-                </li>
-                <li><a <?php if ($d and $data == "promotions") echo "class='current'" ?> href="home/promotions">Promotions</a>
-                </li>
-                <li><a <?php if ($d and $data == "contact") echo "class='current'" ?> href="home/contact">Contact</a>
-                </li>
->>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if (isset($_SESSION['user_logged_in'])) {
@@ -69,7 +56,7 @@
                             <img src="<?= Session::get('user_avatar_url') ?>" width="35" style="margin-top:7px;"
                                  height="35">
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 0) { ?>
-                            <img src="/public/img/profile_avatar.jpg" width="35" style="margin-top:7px;" height="35">
+                            <img src="/Ambula/public/img/profile_avatar.jpg" width="35" style="margin-top:7px;" height="35">
 
                         <?php } ?>
 
@@ -87,13 +74,12 @@
                                 }
                             } ?>
                             <li class="divider"></li>
-                            <li><a href="http://localhost/Ambula/login/logout">Logout</a></li>
+                            <li><a href="/Ambula/login/logout">Logout</a></li>
                         </ul>
                     </li>
                 <?php
                 } else {
-                    echo '<li style="font-weight: 500;font-size: medium;"> <a  class="pull-right"   style="" href="http://localhost/Ambula/login"><i class="glyphicon glyphicon-user"></i> Sign In</a></li>';
-
+                    echo '<li style="font-weight: 500;font-size: medium;"> <a  class="pull-right"   style="" href="/Ambula/login"><i class="glyphicon glyphicon-user"></i> Sign In</a></li>';
                 }
 
                 ?>
