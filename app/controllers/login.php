@@ -21,7 +21,6 @@ class Login extends Controller{
             $this->view('login/Login',['name' => 'sajidh']);
         else
             header('location:http://localhost/Ambula/');
-
     }
 
     public function login(){
@@ -57,8 +56,9 @@ class Login extends Controller{
 
     public function logout(){
 
-        if($this->login->userLogout())
-            Header('Location:/');
+        if($this->login->userLogout()){
+            header('location:http://localhost/Ambula/');
+        }
     }
 
     //error page

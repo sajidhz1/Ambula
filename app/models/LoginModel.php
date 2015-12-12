@@ -11,8 +11,7 @@ class LoginModel
 
     public function userLogin(){
 
-
-       $sth = $this->db->prepare("SELECT user_id,
+		$sth = $this->db->prepare("SELECT user_id,
                                           user_name,
                                           user_email,
                                           user_password_hash,
@@ -22,7 +21,7 @@ class LoginModel
                                    FROM   users
                                    WHERE  (user_name = :user_name OR user_email = :user_email)
                                           AND user_provider_type = :provider_type");
-        $sth->execute(array(':user_name' => $_POST['username'] ,':user_email' => $_POST['username'] , ':provider_type' => 'DEFAULT'));
+		$sth->execute(array(':user_name' => $_POST['username'] ,':user_email' => $_POST['username'] , ':provider_type' => 'DEFAULT'));
         $count =  $sth->rowCount();
 
             if ($count == 1) {
@@ -45,6 +44,7 @@ class LoginModel
                                    WHERE  users_user_id = '".$result->user_id."'");
                         $st->execute();
                         $user_details = $st->fetch();
+						Session::set('user_avatar',1);
                         Session::set('name',$user_details->company_name);
                         Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/commercial_user/".$result->user_name."/".$result->user_name.".jpg");
 
@@ -58,12 +58,6 @@ class LoginModel
                         Session::set('name',$user_details->first_name . ' ' . $user_details->last_name);
                         Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/".$result->user_name.".jpg");
                     }
-
-
-
-
-
-
 
                     // if user has checked the "remember me" checkbox, then write cookie
                     if (isset($_POST['remember'])) {
@@ -93,7 +87,7 @@ class LoginModel
                     Session::set("feedback_negative","invalid Username or Password");
                     return false;
                    }
-        }else{
+            }else{
                 Session::set("feedback_negative","invalid Username or Password");
                 return false;
             }

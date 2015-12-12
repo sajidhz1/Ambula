@@ -6,4 +6,4 @@
  * Time: 10:06 AM
  */
 
-echo 'blabala';
+echo 'page not found';

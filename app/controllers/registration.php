@@ -24,12 +24,16 @@ class Registration extends Controller
     {
         if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_GET['user']))
             $this->view('Registration/commercial_user_continue');
-       else  if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user")
+        else  if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user")
             $this->view('Registration/commercial_user_registration');
         else
             $this->view('Registration/registration');
     }
 
+    public function regNewCommercialUser()
+    {
+        $this->view('Registration/commercial_user_registration');
+    }
 
     public function registerNewUser()
     {
