@@ -189,7 +189,7 @@ class PromotionModel
 				$startdate_flag = false;
 			} else {
 				$startdate_flag = true;
-				$end_date = date('Y-m-d', strtotime($this->test_input($_POST["start_date"])));
+				$start_date = date('Y-m-d', strtotime($this->test_input($_POST["start_date"])));
 			}
 
 			//end date
