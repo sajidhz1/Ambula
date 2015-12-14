@@ -81,14 +81,11 @@
         }
 
         .category-group label {
-<<<<<<< HEAD
-            min-width: 174px;
-            background-color: #8ABB55;
-=======
+
             min-width: 173px;
             background-color: #ffa366;
 
->>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
+
         }
 
         .category-group input{
@@ -181,131 +178,26 @@
 
                 <div class="col-lg-4">
                     <ul>
-                        <li>
-                            <label for="checkboxes1">Beverages</label>
-                            <input id="checkboxes1" name="checkboxes[]" value="beverages" type="checkbox">
-                        </li>
+                   <?php
+                   $arr = json_decode($this->loadCategories(), true);
+                   $count = 0;
+                   foreach ($arr as $category) {
+                   ?>
 
                         <li>
-                            <label for="checkboxes2">Dairy Products</label>
-                            <input id="checkboxes2" name="checkboxes[]" value="dairyProducts" type="checkbox">
+                            <label for="checkboxes1"><?=$category['title'] ?></label>
+                            <input id="checkboxes1" name="cat_checkbox[]" value="<?=$category['id_product_categories'] ?>" type="checkbox">
                         </li>
 
-                        <li>
-                            <label for="checkboxes3">Frozen Foods</label>
-                            <input id="checkboxes3" name="checkboxes[]" value="frozenFoods" type="checkbox">
-                        </li>
-
-                        <li>
-<<<<<<< HEAD
-                            <label for="checkboxes4">Canned Foods/Meat</label>
-=======
-                            <label for="checkboxes4">Canned Foods/ Meat</label>
->>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
-                            <input id="checkboxes4" name="checkboxes[]" value="cannedFoods" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes5">Jam</label>
-                            <input id="checkboxes5" name="checkboxes[]" value="jam" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes6">Sauces</label>
-                            <input id="checkboxes6" name="checkboxes[]" value="sauces" type="checkbox">
-                        </li>
-
-                        <li>
-<<<<<<< HEAD
-                            <label for="checkboxes7">Processed Meat</label>
-=======
-                            <label for="checkboxes7">Processed Meat </label>
->>>>>>> f5d88dc7134084d3cfc1e050c89a236d6b6c3859
-                            <input id="checkboxes7" name="checkboxes[]" value="processedMeat" type="checkbox">
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="col-lg-4">
-                    <ul>
-                        <li>
-                            <label for="checkboxes8">Noodles</label>
-                            <input id="checkboxes8" name="checkboxes[]" value="noodles" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes9">Pasta/Spagetti</label>
-                            <input id="checkboxes9" name="checkboxes[]" value="Pasta/Spagetti" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes10">Soya Products</label>
-                            <input id="checkboxes10" name="checkboxes[]" value="soyaProducts" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes11">Flour</label>
-                            <input id="checkboxes11" name="checkboxes[]" value="flour" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes12">Spices</label>
-                            <input id="checkboxes12" name="checkboxes[]" value="spices" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes13">Grain Products</label>
-                            <input id="checkboxes13" name="checkboxes[]" value="grainProducts" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes14">Flavour Enhancers</label>
-                            <input id="checkboxes14" name="checkboxes[]" value="flavourEnhancers" type="checkbox">
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="col-lg-4">
-                    <ul>
-                        <li>
-                            <label for="checkboxes15">Biscuits/Cookies</label>
-                            <input id="checkboxes15" name="checkboxes[]" value="biscuits/cookies" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes16">Bee Honey/Kitul Trickle</label>
-                            <input id="checkboxes16" name="checkboxes[]" value="honey/kitulTrickle" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes17">Food Coloring/Flavoring</label>
-                            <input id="checkboxes17" name="checkboxes[]" value="Test" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes18">Ice Cream</label>
-                            <input id="checkboxes18" name="checkboxes[]" value="icecream" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes19">Margarine/Spreads</label>
-                            <input id="checkboxes19" name="checkboxes[]" value="margarine/spreads" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes20">Coconut Oil/Cooking Oil</label>
-                            <input id="checkboxes20" name="checkboxes[]" value="coconutOil" type="checkbox">
-                        </li>
-
-                        <li>
-                            <label for="checkboxes21">Fresh Vegetables/Fruits</label>
-                            <input id="checkboxes21" name="checkboxes[]" value="freshVegetables/fruits" type="checkbox">
-                        </li>
-                    </ul>
-
-                </div>
+                    <?php
+                    $count++;
+                        if($count == 7){
+                            echo '</ul></div><div class="col-lg-4"><ul>';
+                            $count =0;
+                        }
+                    }
+                    ?>
+                </ul></div>
 
             </div>
 

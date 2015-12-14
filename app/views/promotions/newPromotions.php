@@ -29,14 +29,11 @@
 	<link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
 	<link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
 	<link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
-	<link href="http://localhost/Ambula/public/css/recipes-style.css" rel="stylesheet" media="screen"/>
-	<link href="http://localhost/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
 
 	<script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
-	<script type="text/javascript" src="http://localhost/Ambula/public/js/recipes/bootstrap-slider.js"></script>
 	<script src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
@@ -143,7 +140,31 @@
 			height: 150px;
 			border: groove;
 		}
-	</style>
+        .btn-file {
+            position: relative;
+            overflow: hidden;
+            margin-top: 7px;
+
+        }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+
+        }
+
+    </style>
 </head>
 
 <body>
