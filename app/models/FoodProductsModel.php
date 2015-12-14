@@ -101,10 +101,15 @@ class FoodProductsModel {
 
     public function viewUserProducts($cooperate_user_id = ''){
 
-        $result = $this->db->query("SELECT * FROM products WHERE commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE idproducts = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
 
+    }
+
+    public function loadUserCategories(){
+        $sql = $this->db->query("SELECT * FROM cooperate_user_has_product_categories , product_categories WHERE Product_categories_id_product_categories = id_product_categories AND  cooperate_user_id = ".Session::get('coporate_user_id'))->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($sql);
     }
 
 } 

@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - ambula@localhost" uuid="3a0c251e-a2a1-4684-94da-642b89a5208d">
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-pattern>ambula.*</schema-pattern>
-      <default-schemas>ambula.*</default-schemas>
-    </data-source>
+    <data-source name="MySQL - ambula@localhost" uuid="3a0c251e-a2a1-4684-94da-642b89a5208d" />
   </component>
 </project>
+

@@ -189,7 +189,7 @@ class PromotionModel
 				$startdate_flag = false;
 			} else {
 				$startdate_flag = true;
-				$end_date = date('Y-m-d', strtotime($this->test_input($_POST["start_date"])));
+				$start_date = date('Y-m-d', strtotime($this->test_input($_POST["start_date"])));
 			}
 
 			//end date
@@ -214,7 +214,7 @@ class PromotionModel
 
 		}
 
-		$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+		//$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
 
     //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
 
@@ -223,7 +223,7 @@ class PromotionModel
 		}
 		//insert into promotion_adder table
 
-        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES ('".$this->idPromotion_Adder."','".$promotion_type."','".$promotion_name."','".$image_url."','".$description."','".$start_date."','".$end_date."','".$priority."','".$visibility."')";
+        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES ('".$this->idPromotion_Adder."','".$promotion_type."','".$promotion_name."','".$image_url."','".$description."', '$start_date' , '$end_date ,'".$priority."','".$visibility."')";
 		$this->db->prepare($sql)->execute();
 		return $this->db->lastInsertId();
 

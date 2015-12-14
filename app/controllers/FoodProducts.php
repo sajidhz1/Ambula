@@ -33,4 +33,8 @@ class FoodProducts extends Controller{
     public function viewUserProducts($cooperate_user_id = ''){
       return  $this->products->viewUserProducts($cooperate_user_id);
     }
+
+    public function loadUserCategories(){
+        return $this->products->loadUserCategories();
+    }
 } 

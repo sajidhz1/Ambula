@@ -6,6 +6,7 @@ class Home extends Controller{
     public $recipe;
     public $search;
     public $category;
+    protected $foodProducts;
 
     function __construct(){
         parent::__construct();
@@ -77,7 +78,7 @@ class Home extends Controller{
     //profile functions
     public function profile(){
         if($_GET['id']!=null)
-        $this->view('profile');
+        $this->view('user_profile/cooperate_user_profile');
         else
             Header('Location:/');
     }
@@ -121,6 +122,12 @@ class Home extends Controller{
      public function addUserDescription(){
         $this->user->addUserDescription($_POST['val']);
     }
+
+    public function getCooperateUserDetails(){
+        return $this->user->getCooperateUserDetails();
+    }
+
+   
 
 }
 

@@ -272,6 +272,18 @@ class RegistrationModel {
     }
 
 
+    public function checkCooperateUserName($userName=""){
+        $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
+        $query->execute();
+        $count =  $query->rowCount();
+        if($count >= 1){
+            return true;
+        }else{
+            false;
+        }
+    }
+
+
     //register commercial user
     public function register_commercial_user(){
 
@@ -413,6 +425,10 @@ class RegistrationModel {
         $user_name = $_POST["user_name"];
         $description = $_POST["description"];
 
+        $count = count($_POST['cat_checkbox']);
+
+
+
         $path = "uploads/profile/commercial_user/" . $user_name;
         if(!is_dir($path)){
             mkdir($path);
@@ -427,6 +443,17 @@ class RegistrationModel {
             $user_id = $sth->fetch()->user_id;
 
 
+            $sql_4 = "SELECT idcommercial_user FROM commercial_user WHERE users_user_id = ".$user_id ;
+
+            $sth = $this->db->prepare($sql_4);
+            $sth->execute();
+            $cooperate_user_id = $sth->fetch()->idcommercial_user;
+
+            for($i = 0;$i < $count ;$i++){
+                $sql_2 = "INSERT INTO cooperate_user_has_Product_categories (cooperate_user_id , Product_categories_id_product_categories) VALUES ('".$cooperate_user_id."' ,'".$_POST['cat_checkbox'][$i]."')" ;
+                $sth = $this->db->prepare($sql_2);
+                $sth->execute();
+            }
 
             $sql = "UPDATE users SET user_avatar = 'uploads/profile/commercial_user/" . $user_name . "' WHERE user_id =  '".$user_id."' ";
             $result = $this->db->prepare($sql)->execute();
@@ -490,6 +517,15 @@ class RegistrationModel {
                 return false;
             }
         }
+    }
+
+
+    public function loadCategories()
+    {
+        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($result);
+
     }
 
 } 

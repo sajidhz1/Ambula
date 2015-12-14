@@ -22,7 +22,7 @@ class Registration extends Controller
 
     public function index($name = '')
     {
-        if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_GET['user']))
+        if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_GET['user']) && $this->registration->checkCooperateUserName($_GET['user']))
             $this->view('Registration/commercial_user_continue');
         else  if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user")
             $this->view('Registration/commercial_user_registration');
@@ -65,12 +65,18 @@ class Registration extends Controller
         $this->registration->checkUserName($_GET['username']);
     }
 
+
+
     public function register_commercial_user(){
         $this->registration->register_commercial_user();
     }
 
     public function update_commercial_user(){
         $this->registration->update_commercial_user();
+    }
+
+    public function loadCategories(){
+        return $this->registration->loadCategories();
     }
 
 } 

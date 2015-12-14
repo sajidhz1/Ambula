@@ -281,4 +281,9 @@ class HomeModel {
 
         echo "okay".$val.$_POST['uid'];
     }
+
+    public function  getCooperateUserDetails(){
+        $array = $this->db->query("SELECT * FROM commercial_user WHERE idcommercial_user = ".$_GET['id'])->fetch();
+        return json_encode($array);
+    }
 } 
