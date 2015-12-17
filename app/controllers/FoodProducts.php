@@ -23,7 +23,11 @@ class FoodProducts extends Controller{
     }
 
     public function addNewProduct(){
-        $this->view('foodproducts/new_product');
+     if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type']==2) {
+         $this->view('foodproducts/new_product');
+     }else{
+         header('location:http:/Ambula/login');
+     }
     }
 
     public function addProduct(){
@@ -36,5 +40,21 @@ class FoodProducts extends Controller{
 
     public function loadUserCategories(){
         return $this->products->loadUserCategories();
+    }
+
+    public function editProduct(){
+         return $this->products->editProduct();
+    }
+
+    public function updateProduct(){
+        return $this->products->updateProduct();
+    }
+
+    public function deleteProduct(){
+        return $this->products->deleteProduct();
+    }
+
+    public function viewAllProducts($limit =''){
+        return $this->products->viewAllProducts($limit);
     }
 } 

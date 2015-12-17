@@ -6,16 +6,16 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/typeahead.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/typeahead.css" rel="stylesheet" media="screen"/>
 
 
-    <script type="text/javascript" src="/public/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
-    <script src="/public/js/typeahead.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
+    <script src="/Ambula/public/js/typeahead.js"></script>
 
 <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">

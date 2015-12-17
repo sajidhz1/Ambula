@@ -16,7 +16,7 @@
 
         <!-- search box -->
         <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form navbar-left" method="get" role="search" action="/home/search/" id="main-search">
+            <form class="navbar-form navbar-left" method="get" role="search" action="/Ambula/home/search/" id="main-search">
                 <div class="input-group">
                     <input type="text" name="query" class="form-control typeahead" autocomplete="off"
                            data-provide="typeahead" placeholder="Search Recipes" name="q">
@@ -38,9 +38,10 @@
                     $d = "" ?>
 
                 <li><a <?php if($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
-                <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Categories</a></li>
+                <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Recipes</a></li>
+                <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="/Ambula/Foodproducts">Groceries</a></li>
                 <li><a <?php if($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a></li>
-                <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="/Ambula/home/contact">Contact</a></li>
+
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -69,7 +70,8 @@
                             <?php if (isset($_SESSION['user_account_type'])) {
                                 if (Session::get('user_account_type') == 2) {
                                     ?>
-                                    <li><a href="/Ambula/Foodproducts/addnewproduct">Add New Products</a></li>
+                                    <li><a href="/Ambula/Foodproducts/addnewproduct">New Product</a></li>
+                                    <li><a href="/Ambula/promotion">New Promotion</a></li>
                                 <?php
                                 }
                             } ?>

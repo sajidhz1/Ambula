@@ -78,6 +78,14 @@
             margin-bottom: 15px;
             text-align: center;
         }
+
+        .subcat:hover .subcat-tile{
+            border: 1px solid #666;
+        }
+        .subcat:hover {
+            text-decoration: none;
+            display: block;
+        }
     </style>
 </head>
 
@@ -108,7 +116,7 @@
             ?>
 
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 subcat-tile" >
-                <a href="http://localhost/Ambula/recipes/viewRecipe/<?=$subcategory['idRecipe']; ?>">
+                <a class="subcat" href="http://localhost/Ambula/recipes/viewRecipe/<?=$subcategory['idRecipe']; ?>">
            <span>
                <h4 ><?php echo $subcategory['title']; ?></h4>
            </span>

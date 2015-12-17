@@ -101,7 +101,7 @@ class FoodProductsModel {
 
     public function viewUserProducts($cooperate_user_id = ''){
 
-        $result = $this->db->query("SELECT * FROM products , product_categories WHERE idproducts = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE id_product_categories = Product_categories_id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
 
@@ -112,4 +112,45 @@ class FoodProductsModel {
         return json_encode($sql);
     }
 
+    public function editProduct(){
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE idproducts = id_product_categories AND idproducts = ".$_GET['pid'])->fetch();
+
+        echo json_encode($result);
+    }
+
+    public function updateProduct(){
+
+        $title = $_POST['product_name'];
+        $category = $_POST['category'];
+        $description = $_POST['description'];
+        $cooperate_user_id = $_SESSION['coporate_user_id'];
+        $product_id = $_POST['product_id'];
+
+        if($_FILES['product_thumb']['name']=='')
+        {
+            $result = $this->db->query("UPDATE products SET product_name = '".$title."' , description ='".$description."' ,Product_categories_id_product_categories = '".$category."'  WHERE idproducts =".$product_id)->execute();
+
+            $json_array =array('product_id' => $product_id ,'product_name' => $title ,'category' => $category , 'description' => $description , 'thumb_url' => "uploads/food_products/" . $product_id."/".$product_id.".jpg");
+
+            echo json_encode($json_array);
+        }
+
+
+    }
+
+    public function deleteProduct(){
+        $product_id = $_GET['pid'];
+        $cooperate_user_id = $_SESSION['coporate_user_id'];
+        if(isset($_SESSION['coporate_user_id'])){
+            $result = $this->db->query("DELETE FROM products WHERE idproducts ='".$product_id."' AND commercial_user_idcommercial_user  = ".$cooperate_user_id)->execute();
+            echo $result;
+        }
+
+    }
+
+    public function viewAllProducts($limit=''){
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE id_product_categories = Product_categories_id_product_categories LIMIT ".$limit)->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($result);
+    }
 } 

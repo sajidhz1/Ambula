@@ -262,15 +262,7 @@ background :#F3F3EC;
 	flex: 1 0 auto
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    background: #8a8a8a;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 45px;
-    background-color: #080808;
-}
+
 
 
 

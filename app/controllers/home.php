@@ -127,7 +127,10 @@ class Home extends Controller{
         return $this->user->getCooperateUserDetails();
     }
 
-   
+   public function viewUserProducts($uid = ''){
+       return  $this->user->viewUserProducts($uid);
+
+   }
 
 }
 
