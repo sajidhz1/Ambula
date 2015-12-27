@@ -14,9 +14,10 @@
     <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
-    <script src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
+
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -31,15 +32,35 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <style>
+
+        .product-brand{
+            float: none;
+            margin: 0 auto;
+
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
+
         .box {
             padding: 5px;
             text-align: center;
+
+
         }
 
         .box .inner {
+            border: 1px solid #B2B2B2;
             background-color: #eee;
+            height: 275px;
+            display: block;
+
         }
 
+        .product_thumb{
+           position: relative;
+
+        }
         header.carousel {
             height: 50%;
         }
@@ -56,6 +77,8 @@
             background-position: center;
             background-size: cover;
         }
+
+
 
     </style>
 
@@ -77,13 +100,13 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/classicFullWidth/01_classic.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 1</h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/coolFullWidth/04_cool.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 2</h2>
             </div>
@@ -117,116 +140,35 @@
 
         <div class="tab-content" style="margin-top: 20px;">
             <div class="tab-pane fade in active"  id="hom">
-
+            <?php
+                $arr = json_decode($this->viewProducts(16), true);
+                foreach($arr as $product){
+            ?>
                 <div class="col-lg-2 box" style="height: 265px;margin: auto;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
+                    <a class="inner box" >
+                        <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
+                        <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
+                             style="display:block;margin: auto;width: 100%;height: 130px;">
+                        <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
+                    </a>
                 </div>
+                <?php } ?>
+                <?php
 
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
+                foreach($arr as $product){
+                    ?>
+                    <div class="col-lg-2 box" style="height: 265px;margin-bottom: 20px;">
+                        <a class="inner box">
+                            <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
+                            <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
+                                 style="display:block;margin: auto;width: 100%;height: 130px;" >
+                            <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
+                        </a>
                     </div>
-                </div>
+                <?php } ?>
 
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                        <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                             style="display:block;margin: auto;">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">
-                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">View All Products</a>
+                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">Browse Categories</a>
                 </div>
 
             </div>
@@ -300,8 +242,28 @@
             </div>
         </div>
     </div>
+    <div class="row" style="background: #eee;margin-top: 50px;">
+        <h3 class="pg-title txt-red"><span>Categories</span></h3>
+        <ul class="list-inline" style="margin: 20px;">
+            <?php $arrsub = json_decode($this->loadCategories(), true);
 
-    <div class="row" style="height: 300px;background: #eee;margin-top: 50px;"></div>
+            foreach ($arrsub as $category) {
+                ?>
+                 <li class="list-group-item col-lg-2"><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a><span style="margin-left: 5px;"
+                                                                                                                                class="badge">5</span></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="row" style="background: #eee;margin-top: 50px;">
+        <h2 class="pg-title txt-red"><span>Partners</span></h2>
+        <div class="col-lg-2" style="margin-bottom: 20px;">
+            <img src="/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;" class="product-brand" height="120" width="120"  />
+            <h4 style="text-align: center">Name</h4>
+        </div>
+
+
+
+    </div>
 </div>
 
 <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>

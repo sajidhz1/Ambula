@@ -249,7 +249,7 @@ class RegistrationModel {
     }
     
      public function checkEmail($email=""){
-        $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_name = '$email'");
+        $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = '$email'");
         $query->execute();
         $count =  $query->rowCount();
         if($count >= 1){
@@ -397,8 +397,11 @@ class RegistrationModel {
         //mkdir("uploads/profile/commercial_user/" . $username);
         //if($this->imageUpload("company_logo",$username)){
 
-            $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type)
-                VALUES ('".$email."','".$username."','".$password_hash."', 2 ,'DEFAULT' )";
+                //generating activation hash
+               $hash = md5( rand(0,1000) );
+
+            $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type ,user_activation_hash)
+                VALUES ('".$email."','".$username."','".$password_hash."', 2 ,'DEFAULT', '".$hash."' )";
 
                 $result =  $this->db->prepare($sql)->execute();
 
@@ -409,7 +412,8 @@ class RegistrationModel {
 
                 $result2 =  $this->db->prepare($sql_1)->execute();
 
-            return $result2;
+             $this->sendVerificationEmail($email,$username,$password,$hash);
+            return true;
        // }
 
 
@@ -462,6 +466,7 @@ class RegistrationModel {
 
             $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '".$user_id."'" ;
             $result2 = $this->db->prepare($sql_1)->execute();
+
 
             echo $result2;
 
@@ -526,6 +531,28 @@ class RegistrationModel {
 
         return json_encode($result);
 
+    }
+
+    public function sendVerificationEmail($email='',$name ='' ,$password='' ,$hash=''){
+        $to      = $email; // Send email to our user
+        $subject = 'Signup | Verification'; // Give the email a subject
+        $message = '
+
+        Thanks for signing up!
+        Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+
+        ------------------------
+        Username: '.$name.'
+        Password: '.$password.'
+        ------------------------
+
+        Please click this link to activate your account:
+        http://theambula.lk/login/verify?email='.$email.'&hash='.$hash.'
+
+        '; // Our message above including the link
+
+        $headers = 'From:noreply@theambula.lk' . "\r\n"; // Set from headers
+        mail($to, $subject, $message, $headers); // Send our email
     }
 
 } 

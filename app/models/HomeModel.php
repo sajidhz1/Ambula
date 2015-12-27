@@ -286,4 +286,12 @@ class HomeModel {
         $array = $this->db->query("SELECT * FROM commercial_user WHERE idcommercial_user = ".$_GET['id'])->fetch();
         return json_encode($array);
     }
+
+    public function viewUserProducts($cooperate_user_id = ''){
+
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE idproducts = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($result);
+
+    }
 } 

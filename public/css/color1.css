@@ -40,6 +40,15 @@ h3.tags						{background:#86cd52; color:#fff;}
 #services		{background:#dc4238; min-height:700px;}
 #contact		{background:#bdca29; min-height:700px; padding:0px; position:relative;}
 
+.footer {
+    position: relative;
+    bottom: 0;
+    background: #8a8a8a;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 45px;
+    background-color: #080808;
+}
 /*Contact */
 #contact .container	{background:url(../img/dot-green.png) repeat;}
 

@@ -22,7 +22,9 @@
     <script type="text/javascript" src="../public/js/jquery.leanModal.min.js"></script>
 
     <script type="text/javascript" src="../public/js/typeahead.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
+    <script src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../public/css/style.css"/>
 
     <!--[if lt IE 9]>
@@ -57,6 +59,7 @@
 
         .box .inner {
             background-color: #fff;
+            height: 220px;
         }
 
         .social-blue{
@@ -128,12 +131,25 @@
             margin-right: 0px;
         }
 
+        .product_img{
+            position: absolute;bottom:10px;
+            left: 15%;
+            display:block;margin: auto;
+
+        }
+
+        .box  a:hover {
+            text-decoration: none;
+             border: 1px solid yellow;
+        }
+
     </style>
 </head>
 
 <body>
 
-<?php $this->view('_template/navigation_menu',"newRecipe") ?>
+<?php $this->view('_template/navigation_menu',"newRecipe"); ?>
+
   <div class="container-fluid mrg50T mrg50B" >
       <?php $details = json_decode($this->getCooperateUserDetails() ,true);
 
@@ -150,67 +166,33 @@
           <button type="button" class="btn btn-success btn-sm">Ask <span class="glyphicon glyphicon-hand-right"></button>
           <button type="button" class="btn btn-danger btn-sm">About <span class="glyphicon glyphicon-home"></button>
       </div>
-      <a href="" class="btn btn-default btn-lg social-grey" >Website <span class="glyphicon glyphicon-globe"></span></a>
-      <a href="" class="btn btn-default btn-lg social-blue" >Facebook <i class="fa fa-facebook"></i></span></a>
-      <a href="" class="btn btn-default btn-lg social-red" >Youtube <i class="fa fa-youtube"></i></a>
+      <a href="<?=$details["web_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-grey" >Website <span class="glyphicon glyphicon-globe"></span></a>
+      <a href="<?=$details["facebook_url"]; ?> "target="_blank" class="btn btn-default btn-lg social-blue" >Facebook <i class="fa fa-facebook"></i></span></a>
+      <a href="<?=$details["youtube_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-red" >Youtube <i class="fa fa-youtube"></i></a>
   </div>
   <div class="col-lg-9">
         <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;"  >
             <h4>Products</h4>
-            <a href="" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Product <span class="glyphicon glyphicon-plus"></span></a>
-            <div class="col-lg-2 hgt200 box" >
+            <a href="/Ambula/Foodproducts/addnewproduct" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Product <span class="glyphicon glyphicon-plus"></span></a>
+            <?php $array = json_decode($this->viewUserProducts($_GET["id"]),true);
+                foreach($array as $product){
+            ?>
+            <a href="" class="col-lg-2 box" >
                 <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
+                    <h5 style="color: #333333"><?=$product['product_name'] ?></h5>
+                    <img src="/Ambula/<?=$product['img_url'] ?>" width="110" height="110"  class="product_img">
                 </div>
-            </div>
+            </a>
 
-            <div class="col-lg-2 hgt200 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
-                </div>
-            </div>
+            <?php } ?>
 
-            <div class="col-lg-2 hgt200 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
-                </div>
-            </div>
 
-            <div class="col-lg-2 hgt200 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
-                </div>
-            </div>
-
-            <div class="col-lg-2 hgt200 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
-                </div>
-            </div>
-
-            <div class="col-lg-2 hgt200 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333">Kist Mango & Melon jam</h5>
-                    <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
-                         style="display:block;margin: auto;">
-                </div>
-            </div>
             <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         </div>
         <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;"  >
             <h4>Recipes</h4>
-            <a href="" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Recipe <span class="glyphicon glyphicon-plus"></span></a>
+            <a href="/Ambula/recipes/newrecipe" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Recipe <span class="glyphicon glyphicon-plus"></span></a>
             <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>

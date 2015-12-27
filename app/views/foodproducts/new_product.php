@@ -115,7 +115,7 @@
                                placeholder="Example : sugar , salt"/>
                     </div>
                     <div class="dropdown col-xs-3 col-sm-3 col-lg-2">
-                        <select class="form-control" name="category">
+                        <select class="form-control" name="category" id="categories">
                             <option value="">select</option>
                             <?php
                             $array = json_decode($this->loadUserCategories() , true);
@@ -161,7 +161,7 @@
     </div>
         </form>
 
-    <div class="col-lg-12"  >
+    <div class="col-lg-12"  style="margin-bottom: 50px" >
         <?php
         $arr = json_decode($this->viewUserProducts(Session::get('coporate_user_id')), true);
         echo '<span style="color: red">Showing ('.count($arr).') Products</span>'
@@ -176,8 +176,8 @@
                 <td class="col-lg-1"><img style="padding: 2px;" src="/Ambula/<?=$product['img_url'] ?>" height="100" width="100" alt=""/></td>
                 <td class="col-lg-2"><?=$product['title'] ?></td>
 
-                <td class="col-lg-2"><a href="" class="btn btn-default">edit <span class="glyphicon glyphicon-pencil"></span></a>
-                                     <a href="" class="btn btn-danger">remove <span class="glyphicon glyphicon-trash"></span></a>
+                <td class="col-lg-2"><a href="/Ambula/FoodProducts/editProduct/?pid=<?=$product['idproducts'] ?>" class="btn btn-default btn-edit">edit <span class="glyphicon glyphicon-pencil"></span></a>
+                                     <a href="/Ambula/FoodProducts/deleteProduct/?pid=<?=$product['idproducts'] ?>" class="btn btn-danger btn-remove">remove <span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
         <?php } ?>
@@ -185,18 +185,60 @@
          </table>
     </div>
 </div>
+
+<footer class="footer" >
+    <div class="container" style="text-align:center;">
+        <p class="text-muted"  ><p>&copy; 2015 The Ambula<p></p>
+    </div>
+</footer>
 <script>
 
    $(function() {
 
        //Delete button
-       $('#form1').on('submit', function() {
+       $('.btn-edit').on('click', function() {
 
+           $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
+               type: 'GET',
+               url: $(this).attr('href'),
+               success: function (responseText) {
+                   var  data = $.parseJSON(responseText);
+
+                    $('#product_name').val(data.product_name);
+                    $('#description').val(data.description);
+                    $('#categories').val(data.Product_categories_id_product_categories);
+                    $('.thumb').attr('src' ,'/Ambula/'+data.img_url);
+                   $(".btn-add").html('Update');
+                   $("#form1").attr('action' ,"/Ambula/FoodProducts/updateProduct" );
+
+                   $('<input>').attr({
+                       type: 'hidden',
+                       id: 'product_id',
+                       name : 'product_id',
+                       value:  data.idproducts
+                   }).appendTo('#form1');
+               }
+           });
+
+           return false;
+       });
+
+       //Delete button
+       $('.btn-remove').on('click', function() {
+           $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
+               type: 'GET',
+               url: $(this).attr('href'),
+               success: function (responseText) {
+                   if(responseText=='1')
+                   $(this).closest ('tr').remove ();
+               }
+           });
+
+           return false;
        });
 
        //form submit
        $('#form1').on('submit', function() {
-
 
                        $.ajax({
                            url: $(this).attr('action'),
@@ -206,17 +248,16 @@
                            cache: false,             // To unable request pages to be cached
                            processData: false,        // To send DOMDocument or non processed data file it is set to false
                            success: function (json) {
-
                            var  data = $.parseJSON(json);
-                              //  alert(data.product_name);
+
 
                                $('<tr>' +
                                '<td class="col-lg-3" ><label style="font-size: 1.1em;">'+data.product_name+'</label></td>' +
                                '<td class="col-lg-3">'+data.description+'</td>' +
                                '<td class="col-lg-2"><img src="/Ambula/'+data.thumb_url+'" style="padding: 2px;" height="100" width="100"  alt=""/></td>' +
                                '<td class="col-lg-2">'+$("select[name='category'] option:selected").text()+'</td>' +
-                               '<td class="col-lg-2"><a href="" class="btn btn-default">edit <span class="glyphicon glyphicon-pencil"></span></a>'+
-                               ' <a href="" class="btn btn-danger">remove <span class="glyphicon glyphicon-trash"></span></a></td>' +
+                               '<td class="col-lg-2"><a class="btn btn-default btn-edit" href="/Ambula/FoodProducts/editProduct/?pid='+data.product_id+'" >edit <span class="glyphicon glyphicon-pencil"></span></a>'+
+                               ' <a class="btn btn-danger btn-remove" href="/Ambula/FoodProducts/deleteProduct/?pid='+data.product_id+'"  >remove <span class="glyphicon glyphicon-trash"></span></a></td>' +
                                '</tr>').prependTo("table > tbody");
 
 
