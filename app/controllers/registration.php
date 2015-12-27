@@ -68,7 +68,11 @@ class Registration extends Controller
 
 
     public function register_commercial_user(){
-        $this->registration->register_commercial_user();
+        if($this->registration->register_commercial_user()){
+            Header('Location:http:/Ambula/registration/?user_type=commercial_user&user='.$_POST["username"]);
+        }else{
+            Header('Location:http:/Ambula/registration/?user_type=commercial_user');
+        }
     }
 
     public function update_commercial_user(){

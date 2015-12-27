@@ -188,5 +188,9 @@ class LoginModel
 
     }
 
+    public function verify(){
+
+    }
+
 
 } 

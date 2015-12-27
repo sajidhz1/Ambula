@@ -65,4 +65,8 @@ class Login extends Controller{
     public function error_page(){
         $this->view('_template/error');
     }
+
+    public function verify(){
+        $this->login->verify();
+    }
 } 

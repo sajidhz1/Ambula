@@ -32,14 +32,29 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <style>
+
+        .product-brand{
+            float: none;
+            margin: 0 auto;
+
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+        }
+
         .box {
             padding: 5px;
             text-align: center;
+
+
         }
 
         .box .inner {
+            border: 1px solid #B2B2B2;
             background-color: #eee;
             height: 275px;
+            display: block;
+
         }
 
         .product_thumb{
@@ -62,6 +77,8 @@
             background-position: center;
             background-size: cover;
         }
+
+
 
     </style>
 
@@ -124,21 +141,34 @@
         <div class="tab-content" style="margin-top: 20px;">
             <div class="tab-pane fade in active"  id="hom">
             <?php
-                $arr = json_decode($this->viewAllProducts(16), true);
+                $arr = json_decode($this->viewProducts(16), true);
                 foreach($arr as $product){
             ?>
                 <div class="col-lg-2 box" style="height: 265px;margin: auto;">
-                    <div class="inner box">
-                        <h5 style="color: #333333"><?=$product['product_name'] ?></h5>
+                    <a class="inner box" >
+                        <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
                         <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
-                             style="display:block;margin: auto;" height="110" width="125">
-                        <a href="" class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</a>
-                    </div>
+                             style="display:block;margin: auto;width: 100%;height: 130px;">
+                        <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
+                    </a>
                 </div>
+                <?php } ?>
+                <?php
+
+                foreach($arr as $product){
+                    ?>
+                    <div class="col-lg-2 box" style="height: 265px;margin-bottom: 20px;">
+                        <a class="inner box">
+                            <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
+                            <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
+                                 style="display:block;margin: auto;width: 100%;height: 130px;" >
+                            <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
+                        </a>
+                    </div>
                 <?php } ?>
 
                 <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">
-                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">View All Products</a>
+                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">Browse Categories</a>
                 </div>
 
             </div>
@@ -212,8 +242,28 @@
             </div>
         </div>
     </div>
+    <div class="row" style="background: #eee;margin-top: 50px;">
+        <h3 class="pg-title txt-red"><span>Categories</span></h3>
+        <ul class="list-inline" style="margin: 20px;">
+            <?php $arrsub = json_decode($this->loadCategories(), true);
 
-    <div class="row" style="height: 300px;background: #eee;margin-top: 50px;"></div>
+            foreach ($arrsub as $category) {
+                ?>
+                 <li class="list-group-item col-lg-2"><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a><span style="margin-left: 5px;"
+                                                                                                                                class="badge">5</span></li>
+            <?php } ?>
+        </ul>
+    </div>
+    <div class="row" style="background: #eee;margin-top: 50px;">
+        <h2 class="pg-title txt-red"><span>Partners</span></h2>
+        <div class="col-lg-2" style="margin-bottom: 20px;">
+            <img src="/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;" class="product-brand" height="120" width="120"  />
+            <h4 style="text-align: center">Name</h4>
+        </div>
+
+
+
+    </div>
 </div>
 
 <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>

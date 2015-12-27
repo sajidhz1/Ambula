@@ -19,7 +19,14 @@ class FoodProducts extends Controller{
 
     public function index()
     {
-        $this->view('foodproducts/products_view');
+        if(isset($_GET['cat']))
+            $this->view('foodproducts/product_category');
+        else
+            $this->view('foodproducts/products_view');
+    }
+
+    public function allProducts(){
+        $this->view('foodproducts/all_products');
     }
 
     public function addNewProduct(){
@@ -54,7 +61,17 @@ class FoodProducts extends Controller{
         return $this->products->deleteProduct();
     }
 
-    public function viewAllProducts($limit =''){
-        return $this->products->viewAllProducts($limit);
+    public function viewProducts($limit =''){
+        return $this->products->viewProducts($limit);
+    }
+
+
+    public function viewAllProducts(){
+        return $this->products->viewAllProducts();
+    }
+
+    //show filter category list
+    public function loadCategories(){
+        return $this->products->loadCategories();
     }
 } 

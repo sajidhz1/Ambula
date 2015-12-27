@@ -148,9 +148,18 @@ class FoodProductsModel {
 
     }
 
-    public function viewAllProducts($limit=''){
+    public function viewProducts($limit=''){
         $result = $this->db->query("SELECT * FROM products , product_categories WHERE id_product_categories = Product_categories_id_product_categories LIMIT ".$limit)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
+    }
+
+
+    public function loadCategories()
+    {
+        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($result);
+
     }
 } 
