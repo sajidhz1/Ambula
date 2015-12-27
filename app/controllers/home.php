@@ -127,8 +127,9 @@ class Home extends Controller{
         return $this->user->getCooperateUserDetails();
     }
 
-   
-
+   public function admin(){
+       $this->view("administration/adminProfile");
+   }
 }
 
 
