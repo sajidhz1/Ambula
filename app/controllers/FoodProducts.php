@@ -29,6 +29,11 @@ class FoodProducts extends Controller{
         $this->view('foodproducts/all_products');
     }
 
+    //shows single product
+    public function product(){
+        $this->view('foodproducts/view_single_product');
+    }
+
     public function addNewProduct(){
      if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type']==2) {
          $this->view('foodproducts/new_product');
