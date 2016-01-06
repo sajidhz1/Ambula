@@ -9,14 +9,17 @@
     <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/markitup-style.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/markit-up-2.css" rel="stylesheet" media="screen"/>
 
+    <script src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
     <!-- fav icon -->
     <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
-
-    <script src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/food_products/jquery.markitup.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/food_products/set.js"></script>
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -126,10 +129,10 @@
                        <?php } ?>
                         </select>
                     </div>
-                    <div class="col-xs-2 col-sm-2 col-lg-3">
-                        <textarea class="form-control" id="description" name="description" placeholder="short description" type="text" ></textarea>
+                    <div class="col-xs-2 col-sm-2 col-lg-4">
+                        <textarea class="form-control" id="textarea-1" name="description" placeholder="short description" type="text" ></textarea>
                     </div>
-                    <div class="col-xs-1 col-sm-2 col-lg-4"  >
+                    <div class="col-xs-1 col-sm-2 col-lg-3"  >
                         <div class="col-lg-8">
                             <div class="uploader col-lg-6" >
 
@@ -193,7 +196,10 @@
 </footer>
 <script>
 
+
    $(function() {
+
+       $('#textarea-1').markItUp(mySettings);
 
        //Delete button
        $('.btn-edit').on('click', function() {
@@ -239,7 +245,7 @@
 
        //form submit
        $('#form1').on('submit', function() {
-
+                        alert("aad");
                        $.ajax({
                            url: $(this).attr('action'),
                            type: $(this).attr('method'),
@@ -249,7 +255,7 @@
                            processData: false,        // To send DOMDocument or non processed data file it is set to false
                            success: function (json) {
                            var  data = $.parseJSON(json);
-
+                               alert(data);
 
                                $('<tr>' +
                                '<td class="col-lg-3" ><label style="font-size: 1.1em;">'+data.product_name+'</label></td>' +
@@ -273,5 +279,7 @@
    });
 
 </script>
+
+
 </body>
 </html>

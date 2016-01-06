@@ -133,9 +133,7 @@
     <div class="row" style=" margin: 25px 10px;">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
-            <li><a data-toggle="tab" href="#menu1">Brands</a></li>
             <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
-            <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
         </ul>
 
         <div class="tab-content" style="margin-top: 20px;">
@@ -172,74 +170,14 @@
                 </div>
 
             </div>
-            <div id="menu1" class="tab-pane fade">
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
-                <div class="col-lg-2 box" style="height: 265px;">
-                    <div class="inner box">
-                        </div>
-                    </div>
 
-
-            </div>
             <div id="menu2" class="tab-pane fade">
                 <h3>Menu 2</h3>
 
                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
                     totam rem aperiam.</p>
             </div>
-            <div id="menu3" class="tab-pane fade">
-                <h3>Menu 3</h3>
 
-                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                    explicabo.</p>
-            </div>
         </div>
     </div>
     <div class="row" style="background: #eee;margin-top: 50px;">
