@@ -249,8 +249,8 @@ class RegistrationModel {
     }
     
      public function checkEmail($email=""){
-        $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = '$email'");
-        $query->execute();
+        $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = :email");
+        $query->execute(array(':email' => $email));
         $count =  $query->rowCount();
         if($count >= 1){
             http_response_code(400);
@@ -261,8 +261,8 @@ class RegistrationModel {
     }
 
     public function checkUserName($userName=""){
-        $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
-        $query->execute();
+        $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = :user_name");
+        $query->execute(array(':user_name' => $userName));
         $count =  $query->rowCount();
         if($count >= 1){
             http_response_code(400);
@@ -375,7 +375,7 @@ class RegistrationModel {
            }
 
             $city = $_POST["city"];
-            $district = $_POST["district"];
+            $district = $_POST["postal_code"];
            /* //check company logo
            if($_FILES['company_logo']['tmp_name']!='') {
                $company_logo_flag = true;
@@ -399,20 +399,30 @@ class RegistrationModel {
 
                 //generating activation hash
                $hash = md5( rand(0,1000) );
+        /*
+        $query = $this->db->prepare("SELECT user_id, user_name, user_email, user_password_hash, user_active,
+                                          user_account_type,  user_avatar,  user_last_failed_login, user_personal_iduser_personal
+                                     FROM users
+                                     WHERE user_id = :user_id
+                                       AND user_rememberme_token = :user_rememberme_token
+                                       AND user_rememberme_token IS NOT NULL
+                                       AND user_provider_type = :provider_type");
+        $query->execute(array(':user_id' => $user_id, ':user_rememberme_token' => $token, ':provider_type' => 'DEFAULT'));
 
+        */
             $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type ,user_activation_hash)
-                VALUES ('".$email."','".$username."','".$password_hash."', 2 ,'DEFAULT', '".$hash."' )";
-
-                $result =  $this->db->prepare($sql)->execute();
+                VALUES (:email , :user_name , :password_hash, :user_account_type , :user_provider_type , :hash )";
+                $result =  $this->db->prepare($sql);
+                $result->execute(array(':email' => $email, ':user_name' => $username, ':password_hash' => $password_hash,':user_account_type' => 2 ,':user_provider_type' => "DEFAULT" ,':hash' =>$hash ));
 
                 $user_id = $this->db->lastInsertId();
 
-            $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city )
-                VALUES ($user_id, '".$company_name."','".$address."', '".$telephone1."','".$telephone2."','".$city."')";
+                $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city )
+                VALUES ( :user_id, :company_name , :address ,:telephone1 , :telephone2 ,:city)";
+                $result2 =  $this->db->prepare($sql_1);
+                 $result2->execute(array(':user_id'=> $user_id ,':company_name' => $company_name ,':address' => $address ,':telephone1' => $telephone1 ,':telephone2' =>$telephone2 , ':city' =>$city ));
 
-                $result2 =  $this->db->prepare($sql_1)->execute();
-
-             $this->sendVerificationEmail($email,$username,$password,$hash);
+              $this->sendVerificationEmail($email,$username,$password,$hash);
             return true;
        // }
 

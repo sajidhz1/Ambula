@@ -63,7 +63,8 @@
         }
 
         #recipe_img{
-            width: 120px;
+            width: 100%;
+
         }
 
         .subcat-tile {
@@ -74,7 +75,7 @@
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             height: 220px;
-            margin-right: 5px;
+            margin-right: 6px;
             margin-bottom: 15px;
             text-align: center;
         }
@@ -84,7 +85,7 @@
         }
         .subcat:hover {
             text-decoration: none;
-            display: block;
+
         }
     </style>
 </head>
@@ -118,13 +119,15 @@
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 subcat-tile" >
                 <a class="subcat" href="http://localhost/Ambula/recipes/viewRecipe/<?=$subcategory['idRecipe']; ?>">
            <span>
-               <h4 ><?php echo $subcategory['title']; ?></h4>
+               <h4 style="height: 50px;" ><?php echo $subcategory['title']; ?></h4>
            </span>
-                        <img height="100" width="125" src="http://localhost/Ambula/uploads/<?=$subcategory['idRecipe']; ?>/thumb.jpg" id="recipe_img">
-                    <br>
+                    <div style="height: 120px;overflow: hidden;">
+                        <img   src="http://localhost/Ambula/uploads/<?=$subcategory['idRecipe']; ?>/thumb.jpg" id="recipe_img">
+                    </div>
+
                      <?php  $result = $this->getRecipeBy($subcategory['idRecipe']);  ?>
                      <?php echo ($result  != null ? 
-                     '<span class="txt-red" >Recipe by <a href="/home/profile?id='.$result->users_user_id.'">'.$result->first_name.'</a><span>' : '' ); ?>
+                     '<span style="padding: 2px;" class="txt-red" >Recipe by <a href="/home/profile?id='.$result->users_user_id.'">'.$result->first_name.'</a><span>' : '' ); ?>
                 </a>
             </div>
 

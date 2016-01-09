@@ -245,9 +245,11 @@
                 {
                     ?>
                     <div class="item <?php if($i==1) echo "active" ?>">
-                        <div class="col-md-2 col-sm-6 col-xs-12"><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>"><img
+                        <div class="col-md-2 col-sm-6 col-xs-12" ><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>">
+                                <div style="height: 100px;overflow: hidden;">
+                                <img
                                     src="http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg"
-                                    class="img-responsive" style="height: 125px;">
+                                    class="img-responsive" style=""></div>
                                 <span style="text-align: center;"><h5><?php echo $recipe['title']; ?> </h5></span>
 
 

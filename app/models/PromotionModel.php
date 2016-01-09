@@ -223,8 +223,18 @@ class PromotionModel
 		}
 		//insert into promotion_adder table
 
-        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES ('".$this->idPromotion_Adder."','".$promotion_type."','".$promotion_name."','".$image_url."','".$description."', '$start_date' , '$end_date ,'".$priority."','".$visibility."')";
-		$this->db->prepare($sql)->execute();
+        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES
+                  (:user_id ,:promotion_type ,:promotion_name ,:image_url ,:description ,:start_date ,:end_date ,:priority ,:visibility)";
+		$query = $this->db->prepare($sql);
+        $query->execute(array(':user_id'=>$this->idPromotion_Adder,
+                                ':promotion_type'=>$promotion_type,
+                                ':promotion_name'=>$promotion_name,
+                                ':image_url'=>$image_url,
+                                ':description'=>$description,
+                                ':start_date'=>$start_date,
+                                ':end_date'=>$end_date,
+                                ':priority'=>$priority,
+                                ':visibility'=>$visibility));
 		return $this->db->lastInsertId();
 
 	}
