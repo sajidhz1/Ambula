@@ -162,4 +162,10 @@ class FoodProductsModel {
         return json_encode($result);
 
     }
+
+    //grocery main view
+    public function getAllCooperateProfiles(){
+        $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+    }
 } 

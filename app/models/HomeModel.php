@@ -270,13 +270,13 @@ class HomeModel {
     }
 
     public function  getCooperateUserDetails($user_name=''){
-        $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_name = '$user_name'")->fetch();
+        $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
         return json_encode($array);
     }
 
     public function viewUserProducts($cooperate_user_id = ''){
 
-        $result = $this->db->query("SELECT * FROM products , product_categories WHERE idproducts = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE Product_categories_id_product_categories = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
 

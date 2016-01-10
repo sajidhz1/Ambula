@@ -22,7 +22,7 @@ class FoodProducts extends Controller{
         if(isset($_GET['cat']))
             $this->view('foodproducts/product_category');
         else
-            $this->view('foodproducts/products_view');
+            $this->view('foodproducts/grocery_main');
     }
 
     public function allProducts(){
@@ -78,5 +78,10 @@ class FoodProducts extends Controller{
     //show filter category list
     public function loadCategories(){
         return $this->products->loadCategories();
+    }
+
+    //grocery main view
+    public function  getAllCooperateProfiles(){
+        return  $this->products->getAllCooperateProfiles();
     }
 } 

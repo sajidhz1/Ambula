@@ -194,13 +194,16 @@
     </div>
     <div class="row" style="background: #eee;margin-top: 50px;">
         <h2 class="pg-title txt-red"><span>Partners</span></h2>
+        <?php $partners = json_decode($this->getAllCooperateProfiles(), true);
+
+        foreach($partners as $partner){ ?>
+        <a href="/Ambula/home/profile/<?=$partner['user_name'] ?>">
         <div class="col-lg-2" style="margin-bottom: 20px;">
-            <img src="/Ambula/public/img/no_preview_available.jpg" style="display:block;margin: auto;" class="product-brand" height="120" width="120"  />
-            <h4 style="text-align: center">Name</h4>
+            <img src="/Ambula/uploads/profile/commercial_user/<?=$partner['user_name'] ?>/<?=$partner['user_name'] ?>.jpg" style="display:block;margin: auto;" class="product-brand" height="120" width="120"  />
+            <h4 style="text-align: center"><?=$partner['company_name'] ?></h4>
         </div>
-
-
-
+        </a>
+        <?php } ?>
     </div>
 </div>
 

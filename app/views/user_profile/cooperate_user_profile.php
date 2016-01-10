@@ -155,7 +155,7 @@
       <?php $details = json_decode($this->getCooperateUserDetails() ,true);
 
       ?>
-  <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;">
+  <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;border:1px solid brown">
       <img id="company_logo" src="/Ambula/public/img/no_preview_available.jpg"  height="150" width="150" alt=""/>
       <div class="profile-usertitle">
       <div  class="profile-usertitle-name"><?=$details["company_name"]; ?></div>
@@ -176,6 +176,7 @@
             <h4>Products</h4>
             <a href="/Ambula/Foodproducts/addnewproduct" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Product <span class="glyphicon glyphicon-plus"></span></a>
             <?php $array = json_decode($this->viewUserProducts($details["idcommercial_user"]),true);
+
                 foreach($array as $product){
             ?>
             <a href="" class="col-lg-2 box" >

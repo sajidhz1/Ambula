@@ -77,13 +77,13 @@ class Home extends Controller{
     }
 
     //profile functions
-    public function profile($user_name =''){
-      if ($this->user->checkUserExistAndGetType($user_name)!=''){
-          if ($this->user->checkUserExistAndGetType($user_name)->user_account_type == 1) {
-              $this->user_name = $user_name;
+    public function profile($user =''){
+      if ($this->user->checkUserExistAndGetType($user)!=''){
+          if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
+              $this->user_name = $user;
               $this->view('user_profile/normal_user_profile');
-          } else if ($this->user->checkUserExistAndGetType($user_name)->user_account_type == 2) {
-              $this->user_name = $user_name;
+          } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
+              $this->user_name = $user;
               $this->view('user_profile/cooperate_user_profile');
           }
       }else{
