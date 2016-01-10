@@ -134,12 +134,14 @@ class Home extends Controller{
     public function getCooperateUserDetails(){
         return $this->user->getCooperateUserDetails($this->user_name);
     }
-
-   public function viewUserProducts($uid = ''){
+   	public function viewUserProducts($uid = ''){
        return  $this->user->viewUserProducts($uid);
 
-   }
+   	}
 
+    public function admin(){
+        $this->view("administration/adminProfile");
+    }
 }
 
 

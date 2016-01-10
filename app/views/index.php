@@ -243,7 +243,7 @@
                 <?php
                 foreach($ar as $recipe)
                 {
-                    ?>
+                 ?>
                     <div class="item <?php if($i==1) echo "active" ?>">
                         <div class="col-md-2 col-sm-6 col-xs-12" ><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>">
                                 <div style="height: 100px;overflow: hidden;">
@@ -253,22 +253,23 @@
                                 <span style="text-align: center;"><h5><?php echo $recipe['title']; ?> </h5></span>
 
 
-                            </a></div>
+                            </a>
+                        </div>
                     </div>
                 <?php
                     $i++;
                 }
                 ?>
-        </div>
+            </div>
             <a class="left carousel-control" href="" data-slide="prev"><i
                     class="glyphicon glyphicon-chevron-left"></i></a>
             <a class="right carousel-control" href="" data-slide="next"><i
                     class="glyphicon glyphicon-chevron-right"></i></a>
+        </div>
     </div>
 </div>
 
 <!-- End of Ingredients Row -->
-</div>
 
 </div>
 </div>

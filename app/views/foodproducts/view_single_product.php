@@ -178,7 +178,20 @@
             font-size: 0.8em;
         }
 
+		[data-link] {
+			cursor: pointer;
+		}
+
     </style>
+
+	<script>
+		$(document).ready(function() {
+			$("[data-link]").click(function() {
+				window.location.href = $(this).attr("data-link");
+				return false;
+			});
+		});
+	</script>
 
 </head>
 
@@ -190,9 +203,10 @@
 <div class="container-fluid" style="margin-top: 60px;" >
     <div class="col-lg-7 hgt600" style="">
      <div style="height: 350px;background: #e5e5e5;border-bottom: 1px solid black;">
-         <img src="/Ambula/public/img/no_preview_available.jpg"  height="175" width="175" style="margin-top: 20px;margin-left: 20px;" alt=""/>
-         <h4 class="pg-title txt-red" style="display: inline-block;vertical-align: top;margin-left: 20px;"><span>Kist Strawberry Jam</span></h4>
-         <p style="font-size: 14px;margin: 8px;color: #222">  is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software lik</p>
+         <?php $product = json_decode($this->viewSingleProduct(), true); ?>
+         <img src="/Ambula/<?=$product[0]['img_url'] ?>"  height="175" width="175" style="margin-top: 20px;margin-left: 20px;" alt=""/>
+         <h4 class="pg-title txt-red" style="display: inline-block;vertical-align: top;margin-left: 20px;"><span><?=$product[0]['product_name'] ?></span></h4>
+         <p style="font-size: 14px;margin: 8px;color: #222"><?=$product[0]['description'] ?></p>
 
      </div>
      <div>
@@ -255,34 +269,14 @@
     <div class="col-lg-3 hgt600" >
         <h4 style="text-align: center">Similar Products</h4>
         <ul id="similar_products">
-        <li>
-            <img src="http://lorempixum.com/100/100/nature/1" >
-            <h4>The Grasslands</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </li>
- <li>
-            <img src="http://lorempixum.com/100/100/nature/1" >
-            <h4>The Grasslands</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </li>
- <li>
-            <img src="http://lorempixum.com/100/100/nature/1" >
-            <h4>The Grasslands</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </li>
-        <li>
-            <img src="http://lorempixum.com/100/100/nature/1" >
-            <h4>The Grasslands</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </li>
-            <li>
-                <img src="http://lorempixum.com/100/100/nature/1" >
-                <h4>The Grasslands</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </li>
-
-
-
+			<?php $simiProducts = json_decode($this->similarProductsToSingleProduct(),true);
+			foreach ($simiProducts as $smProduct){?>
+				<li>
+					<img src="/Ambula/<?=$smProduct['img_url']?>" height="100" width="100" style="margin-top: 20px;margin-left: 20px;" alt="" class="product_thumb" >
+					<h4><?= $smProduct['product_name']?></h4>
+					<p><?= $smProduct['description']?></p>
+				</li>
+			<?php }?>
         </ul>
     </div>
     <div class="col-lg-2 hgt600 ad">
@@ -291,87 +285,21 @@
     </div>
    <div class="col-lg-6" style="margin-top: 50px;">
       <h4> More Products from Kist</h4>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
+	   <?php
+		$sameProducts = json_decode($this->singleProductsOwnersOtherProducts(),true);
+		foreach ($sameProducts as $ownerProduct){ ?>
+       <div class="col-lg-4 box" style="height: 265px;margin: auto;" data-link="/Ambula/FoodProducts/product?productId=<?=$ownerProduct['idproducts']?>">
            <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
+               <h5 style="color: #333333;height: 65px;"><?= $ownerProduct['product_name']?></h5>
+               <img class="product_thumb" src="/Ambula/<?=$ownerProduct['img_url'] ?>"
                     style="display:block;margin: auto;width: 100%;height: 130px;">
            </a>
        </div>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-           <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                    style="display:block;margin: auto;width: 100%;height: 130px;">
-           </a>
-       </div>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-           <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                    style="display:block;margin: auto;width: 100%;height: 130px;">
-           </a>
-       </div>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-           <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                    style="display:block;margin: auto;width: 100%;height: 130px;">
-           </a>
-       </div>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-           <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                    style="display:block;margin: auto;width: 100%;height: 130px;">
-           </a>
-       </div>
-       <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-           <a class="inner box" >
-               <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-               <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                    style="display:block;margin: auto;width: 100%;height: 130px;">
-           </a>
-       </div>
+	   <?php } ?>
    </div>
 
     <div class="col-lg-6" style="margin-top: 50px;">
         <h4> Related Recipes</h4>
-        <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-            <a class="inner box" >
-                <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-                <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                     style="display:block;margin: auto;width: 100%;height: 130px;">
-            </a>
-        </div>
-        <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-            <a class="inner box" >
-                <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-                <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                     style="display:block;margin: auto;width: 100%;height: 130px;">
-            </a>
-        </div>
-        <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-            <a class="inner box" >
-                <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-                <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                     style="display:block;margin: auto;width: 100%;height: 130px;">
-            </a>
-        </div>
-        <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-            <a class="inner box" >
-                <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-                <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                     style="display:block;margin: auto;width: 100%;height: 130px;">
-            </a>
-        </div>
-        <div class="col-lg-4 box" style="height: 265px;margin: auto;">
-            <a class="inner box" >
-                <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
-                <img class="product_thumb" src="/Ambula/public/img/no_preview_available.jpg"
-                     style="display:block;margin: auto;width: 100%;height: 130px;">
-            </a>
-        </div>
         <div class="col-lg-4 box" style="height: 265px;margin: auto;">
             <a class="inner box" >
                 <h5 style="color: #333333;height: 65px;">Kist Strawberry Jam</h5>
