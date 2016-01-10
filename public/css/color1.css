@@ -41,7 +41,7 @@ h3.tags						{background:#86cd52; color:#fff;}
 #contact		{background:#bdca29; min-height:700px; padding:0px; position:relative;}
 
 .footer {
-    position: relative;
+    position: absolute;
     bottom: 0;
     background: #8a8a8a;
     width: 100%;

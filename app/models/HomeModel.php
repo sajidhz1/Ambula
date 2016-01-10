@@ -166,10 +166,9 @@ class HomeModel {
     }
 
     //user profile
-    public function getRecipesByUser($userId=''){
-        $array = $this->db->query("SELECT r.idRecipe,r.title,ri.image_url
-                                    FROM recipes r JOIN recipe_img ri
-                                      ON r.idRecipe = ri.Recipe_idRecipe  WHERE r.users_user_id =".$userId." GROUP BY r.idRecipe")->fetchAll(PDO::FETCH_ASSOC);
+    public function getRecipesByUser($user_name=''){
+        $array = $this->db->query("SELECT idRecipe,title
+                                    FROM recipes ,users  WHERE users_user_id = user_id AND user_name = '$user_name'")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
@@ -194,26 +193,14 @@ class HomeModel {
         return $result;
     }
 
-    public function getUser($userId=''){
+    public function getUser($user_name=''){
 
 
-      //  $sql1 = "SELECT * FROM users WHERE user_id = ".$userId." UNION ALL SELECT * FROM user_personal WHERE  users_user_id = ".$userId;
-
-        $results = array();
-
-        $sth_a = $this->db->prepare("SELECT * FROM users WHERE user_id = ".$userId);
-        $sth_a->execute();
-        while($row = $sth_a->fetch(PDO::FETCH_ASSOC))
-            $results[] = $row;
-
-        $sth_b = $this->db->prepare("SELECT * FROM user_personal WHERE  users_user_id = ".$userId);
-        $sth_b->execute();
-        while($row = $sth_b->fetch(PDO::FETCH_ASSOC))
-            $results[] = $row;
+        $sth_a = $this->db->query("SELECT * FROM users ,user_personal WHERE users_user_id = user_id AND user_name = '$user_name'")->fetch(PDO::FETCH_ASSOC);
 
 
 
-        return json_encode($results);
+        return json_encode($sth_a);
 
     }
     
@@ -282,8 +269,8 @@ class HomeModel {
         echo "okay".$val.$_POST['uid'];
     }
 
-    public function  getCooperateUserDetails(){
-        $array = $this->db->query("SELECT * FROM commercial_user WHERE idcommercial_user = ".$_GET['id'])->fetch();
+    public function  getCooperateUserDetails($user_name=''){
+        $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_name = '$user_name'")->fetch();
         return json_encode($array);
     }
 
@@ -293,5 +280,10 @@ class HomeModel {
 
         return json_encode($result);
 
+    }
+
+    public function checkUserExistAndGetType($user_name = ''){
+       $result = $this->db->query("SELECT user_account_type FROM users WHERE user_name = '$user_name'")->fetch();
+        return $result;
     }
 } 

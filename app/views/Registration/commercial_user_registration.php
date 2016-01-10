@@ -36,7 +36,7 @@
     <![endif]-->
 
     <style>
-        .registration-container-1, .registration-container-2{
+        .registration-container-1{
             background: rgb(255, 255, 255); /* for IE */
             padding: 2%;
             /* Rounded Corners */
@@ -72,7 +72,7 @@
         }
 
         .registration-container-2{
-            display: none;
+
         }
         .btn-file {
             margin-left: 12px;
@@ -113,9 +113,9 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
-<div class="container">
+<div class="container" style="background: #fff">
     <form data-toggle="validator" role="form" action="http://localhost/Ambula/registration/register_commercial_user"  method="POST"  >
-    <div class="col-lg-6 registration-container-1">
+    <div class="col-lg-6 " style="margin-top: 80px;">
         <div id="legend">
             <legend class="">Company Details</legend>
         </div>
@@ -200,7 +200,7 @@
             <a href="" id="continue" class="btn btn-success">Continue </a>
             </div>
     </div>
-    <div class="col-lg-6 registration-container-2">
+    <div class="col-lg-6 registration-container-2" style="display:none;border-left: 1px solid #B2B2B2;margin-top: 80px;padding-left: 25px;">
 
         <div id="legend">
             <legend class="">Login Details</legend>
@@ -261,7 +261,7 @@
 
                 <!-- Submit Button -->
                 <div class="controls">
-                    <button class="btn btn-default back" >Back</button>
+
                     <button class="btn btn-success">Register</button>
                 </div>
             </div>
@@ -275,16 +275,12 @@
     //Continue button
     $(document).on('click', '#continue', function (e) {
         e.preventDefault();
+        $(this).hide();
         $('.registration-container-1').hide();
         $('.registration-container-2').show();
     });
 
-    //back button
-    $(document).on('click', '.back', function (e) {
-        e.preventDefault();
-        $('.registration-container-1').show();
-        $('.registration-container-2').hide();
-    });
+
 
 
 </script>

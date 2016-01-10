@@ -6,6 +6,7 @@ class Home extends Controller{
     public $recipe;
     public $search;
     public $category;
+    public $user_name;
     protected $foodProducts;
 
     function __construct(){
@@ -76,16 +77,23 @@ class Home extends Controller{
     }
 
     //profile functions
-    public function profile(){
-        if($_GET['id']!=null)
-        $this->view('user_profile/cooperate_user_profile');
-        else
-            Header('Location:/');
+    public function profile($user_name =''){
+      if ($this->user->checkUserExistAndGetType($user_name)!=''){
+          if ($this->user->checkUserExistAndGetType($user_name)->user_account_type == 1) {
+              $this->user_name = $user_name;
+              $this->view('user_profile/normal_user_profile');
+          } else if ($this->user->checkUserExistAndGetType($user_name)->user_account_type == 2) {
+              $this->user_name = $user_name;
+              $this->view('user_profile/cooperate_user_profile');
+          }
+      }else{
+          $this->view('_template/error');
+      }
     }
 
     //profile function
     public function getUser(){
-        return $this->user->getUser($_GET['id']);
+        return $this->user->getUser($this->user_name);
     }
 
     public function getRecipesByUser($userId=''){
@@ -124,7 +132,7 @@ class Home extends Controller{
     }
 
     public function getCooperateUserDetails(){
-        return $this->user->getCooperateUserDetails();
+        return $this->user->getCooperateUserDetails($this->user_name);
     }
    	public function viewUserProducts($uid = ''){
        return  $this->user->viewUserProducts($uid);

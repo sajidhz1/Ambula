@@ -120,7 +120,7 @@ class LoginModel
 
         // get real token from database (and all other data)
         $query = $this->db->prepare("SELECT user_id, user_name, user_email, user_password_hash, user_active,
-                                          user_account_type,  user_avatar,  user_last_failed_login, user_personal_iduser_personal
+                                          user_account_type,  user_avatar,  user_last_failed_login , user_personal_iduser_personal
                                      FROM users
                                      WHERE user_id = :user_id
                                        AND user_rememberme_token = :user_rememberme_token

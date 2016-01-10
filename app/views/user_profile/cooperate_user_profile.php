@@ -6,26 +6,26 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="=../public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../public/css/slider.css">
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Ambula/public/css/slider.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- fav icon -->
-    <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="../public/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../public/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery.leanModal.min.js"></script>
 
-    <script type="text/javascript" src="../public/js/typeahead.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
     <script src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="../public/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/Ambula/public/css/style.css"/>
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -59,7 +59,7 @@
 
         .box .inner {
             background-color: #fff;
-            height: 220px;
+            height: 200px;
         }
 
         .social-blue{
@@ -131,12 +131,13 @@
             margin-right: 0px;
         }
 
-        .product_img{
-            position: absolute;bottom:10px;
-            left: 15%;
-            display:block;margin: auto;
-
+        .product_img_wrapper{
+            height: 50px;overflow: hidden;padding: 0px;
         }
+        .product_img{
+            position: absolute;bottom:10px;left: 5px;
+            width: 140px;
+                    }
 
         .box  a:hover {
             text-decoration: none;
@@ -154,7 +155,7 @@
       <?php $details = json_decode($this->getCooperateUserDetails() ,true);
 
       ?>
-  <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;border:1px solid brown">
+  <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;">
       <img id="company_logo" src="/Ambula/public/img/no_preview_available.jpg"  height="150" width="150" alt=""/>
       <div class="profile-usertitle">
       <div  class="profile-usertitle-name"><?=$details["company_name"]; ?></div>
@@ -174,13 +175,15 @@
         <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;"  >
             <h4>Products</h4>
             <a href="/Ambula/Foodproducts/addnewproduct" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Product <span class="glyphicon glyphicon-plus"></span></a>
-            <?php $array = json_decode($this->viewUserProducts($_GET["id"]),true);
+            <?php $array = json_decode($this->viewUserProducts($details["idcommercial_user"]),true);
                 foreach($array as $product){
             ?>
             <a href="" class="col-lg-2 box" >
                 <div class="inner box">
                     <h5 style="color: #333333"><?=$product['product_name'] ?></h5>
-                    <img src="/Ambula/<?=$product['img_url'] ?>" width="110" height="110"  class="product_img">
+                    <div class="product_img_wrapper">
+                    <img src="/Ambula/<?=$product['img_url'] ?>"   class="product_img">
+                    </div>
                 </div>
             </a>
 

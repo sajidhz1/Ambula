@@ -72,14 +72,14 @@ class Recipe
 
             if ($ingredient != null) {
                 //insert to ingredient if does not exists
-                $sql4 = "INSERT IGNORE INTO ingredients (title) VALUES ('" . $ingredient . "')";
+                $sql4 = "INSERT IGNORE INTO ingredients (title) VALUES ( :ingredient )";
                 $sth = $this->db->prepare($sql4);
-                $sth->execute();
+                $sth->execute(array(':ingredient'=> $ingredient ));
 
                 //search from ingredients to get the id
-                $ingredientSql = "SELECT idIngredients FROM ingredients WHERE title = '" . $ingredient . "'";
+                $ingredientSql = "SELECT idIngredients FROM ingredients WHERE title = :ingredient";
                 $sth = $this->db->prepare($ingredientSql);
-                $sth->execute();
+                $sth->execute(array(':ingredient'=> $ingredient ));
 
                 //fetch ingredient id
                 $result = $sth->fetch()->idIngredients;
@@ -123,10 +123,10 @@ class Recipe
         }
 
 
-     $sql = "INSERT INTO recipe_si ( title, ingredients, description, Recipes_idRecipe ) VALUES ( '$title' , '$ingredients' , '$description' , $idrecipe  )";
+     $sql = "INSERT INTO recipe_si ( title, ingredients, description, Recipes_idRecipe ) VALUES ( :title , :ingredients , :description , :idrecipe )";
         $query = $this->db->prepare($sql);
 
-      $query->execute();
+      $query->execute(array(':title'=>$title , ':ingredients'=> $ingredients ,':description'=>$description , ':idrecipe' => $idrecipe));
     }
     
     //get sinhala description from the database
@@ -242,7 +242,7 @@ class Recipe
                 $dir = "uploads/" . $recipeId . "/" . $file_name;
 
                 if ($_POST['steps'][$key] != null) {
-                    $sql5 = "INSERT INTO recipe_description (description_en,Recipe_idRecipe,image_url) VALUES ('" . $_POST['steps'][$key] . "','" . $recipeId . "','" . $dir . "')";
+                    $sql5 = "INSERT INTO recipe_description (description_en,Recipe_idRecipe,image_url) VALUES (:description_en , :recipe_id, :dir)";
                 }
 
                 $desired_dir = "uploads";
@@ -257,7 +257,11 @@ class Recipe
                         rename($file_tmp, $new_dir);
                     }
                     $sth = $this->db->prepare($sql5);
-                    $sth->execute();
+                    $sth->execute(array(
+                        ':description_en'=> $_POST['steps'][$key],
+                        ':recipe_id'=>$recipeId,
+                        ':dir'=>$dir
+                    ));
                 } else {
                     print_r($errors);
                     return false;

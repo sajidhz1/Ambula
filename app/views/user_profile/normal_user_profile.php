@@ -6,23 +6,23 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="=../public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../public/css/slider.css">
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/Ambula/public/css/slider.css">
 
     <!-- fav icon -->
-    <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="../public/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../public/js/jquery.leanModal.min.js"></script>
-    
-    <script type="text/javascript" src="../public/js/typeahead.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery.leanModal.min.js"></script>
 
-    <link type="text/css" rel="stylesheet" href="../public/css/style.css"/>
+    <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="/Ambula/public/css/style.css"/>
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -83,7 +83,7 @@
     }
 
     .profile-usertitle-job {
-       
+
         color: #5b9bd1;
         font-size: 14px;
         font-weight: 500;
@@ -163,7 +163,7 @@
         margin-bottom: 15px;
         text-align: center;
     }
-     .btn-file {
+    .btn-file {
         position: relative;
         overflow: hidden;
     }
@@ -188,55 +188,56 @@
 <div class="container" style="margin-top: 60px;">
     <div class="row profile">
         <div class="col-md-3">
-             <div class="profile-sidebar">
+            <div class="profile-sidebar">
                 <?php
-                 $result =  json_decode($this->getUser(),true);
+                $result =  json_decode($this->getUser(),true);
 
                 ?>
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <?php if($result[0]['user_provider_type'] == 'FACEBOOK')  {?>
-                    <img src="https://graph.facebook.com/<?=$result[0]['user_facebook_uid']?>/picture?type=large" class="img-responsive" alt="">
-                    <?php } else if($result[0]['user_avatar']==1){ ?>
-                    <img src="http://localhost/Ambula/uploads/profile/<?=$result[0]['user_name'] ?>.jpg" class="img-responsive" alt="">
+                    <?php if($result['user_provider_type'] == 'FACEBOOK')  {?>
+                        <img src="https://graph.facebook.com/<?=$result[0]['user_facebook_uid']?>/picture?type=large" class="img-responsive" alt="">
+                    <?php } else if($result['user_avatar']==1){ ?>
+                        <img src="http://localhost/Ambula/uploads/profile/<?=$result['user_name'] ?>.jpg" class="img-responsive" alt="">
                     <?php } else {  ?>
-                    <img src="http://localhost/Ambula/public/img/profile_avatar.jpg" class="img-responsive" alt="">
+                        <img src="http://localhost/Ambula/public/img/profile_avatar.jpg" class="img-responsive" alt="">
                     <?php } ?>
-                     <?php
-                     if(isset($_SESSION['uid']))
-                     if( $_SESSION['uid'] == $_GET['id']){ ?>
-                        <form   role="form" method="POST" enctype="multipart/form-data" action="uploadUserPhoto"
-                               id="formphoto">
+                    <?php
+                    if(isset($_SESSION['uid']))
+                        if( $_SESSION['uid'] == $_GET['id']){ ?>
+                            <form   role="form" method="POST" enctype="multipart/form-data" action="uploadUserPhoto"
+                                    id="formphoto">
                             <span class="file-input btn btn-default btn-file glyphicon glyphicon-edit" style="position:absolute;top:0;right: 0;">
                             <input  id="input-2" type="file" name="profile" class="btn btn-success"  data-show-upload="false" multiple>
                             </span>
-                        </form>
-                       
+                            </form>
 
-                    <?php }  ?>
-                    
+
+                        <?php }  ?>
+
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        <?php if($result[0]['user_provider_type'] == "FACEBOOK") {
-                            echo $result[0]['user_name'];
+                        <?php if($result['user_provider_type'] == "FACEBOOK") {
+                            echo $result['user_name'];
                         }else{
-                            echo $result[1]['first_name'].' '.$result[1]['last_name'];
+                            echo $result['first_name'].' '.$result['last_name'];
                         }
                         ?>
                     </div>
                     <div class="profile-usertitle-job">
-                        <span id="desc-val"><?php if($result[1]['description'] ==  null) echo "Short Description";
-                         else
-                             echo $result[1]['description'];
-                        ?></span>
+                        <span id="desc-val"><?php if($result['description'] ==  null) echo "Short Description";
+                            else
+                                echo $result['description'];
+                                echo $result['description'];
+                            ?></span>
                         <?php
-                     if(isset($_SESSION['uid']))
-                     if( $_SESSION['uid'] == $_GET['id']){ ?>
-                         <button style="color: #343434;margin-left: 5px;" class="btn btn-default glyphicon glyphicon-edit" id="description-edit"></button>
-			<?php } ?>
+                        if(isset($_SESSION['uid']))
+                            if( $_SESSION['uid'] == $_GET['id']){ ?>
+                                <button style="color: #343434;margin-left: 5px;" class="btn btn-default glyphicon glyphicon-edit" id="description-edit"></button>
+                            <?php } ?>
                         <div class="controls" id="description-edit-box"  style="margin-top: 8px;background: #e1e1e1;padding: 4px;display: none;">
                             <textarea class="form-control" id="description" placeholder="description"></textarea>
                             <button class="btn btn-success glyphicon glyphicon-ok" id="description-edit-save"></button>
@@ -251,18 +252,21 @@
                     <button type="button" class="btn btn-danger btn-sm">Message</button>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
-                
+
             </div>
         </div>
-        <div class="col-sm-12 col-md-9">
+        <div class="col-sm-12 col-md-9" >
             <div class="profile-content">
-            <?php $arrrecipe = json_decode($this->getRecipesByUser($_GET['id']), true);
-              foreach ($arrrecipe as $recipe) {
-                ?>
-                  <div class="col-sm-6 col-md-3 profile-recipe-tile" style="margin: 3px; ">
-                      <h4 style="color: #8F0000"><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>" ><?=$recipe['title']; ?></a></h4>
-                      <img src="http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg" width="175" height="120">
-                  </div>
+                <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
+                foreach ($arrrecipe as $recipe) {
+                    ?>
+                    <div class="col-sm-6 col-md-3 profile-recipe-tile" style="margin: 5px; ">
+                        <h4 style="color: #8F0000;height: 50px;"><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>" ><?=$recipe['title']; ?></a></h4>
+                        <div style="height: 100px;overflow: hidden;">
+                            <img  src="http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg" >
+                        </div>
+
+                    </div>
                 <?php } ?>
             </div>
         </div>
@@ -284,7 +288,7 @@
                 contentType: false,
                 processData: false,
                 success:function(data){
-                   $('#input-2').hide();
+                    $('#input-2').hide();
 
 
                 },
@@ -295,7 +299,7 @@
             });
         }));
 
-         $('#description-edit-save').on('click',(function(e) {
+        $('#description-edit-save').on('click',(function(e) {
 
             $.ajax({
                 type:'POST',
@@ -303,7 +307,7 @@
                 data:{uid:<?php echo $_GET['id'];?>, val: $('#description').val() },
                 success:function(data){
                     $('#desc-val').text($('#description').val());
-                     $('#description-edit-box').hide();
+                    $('#description-edit-box').hide();
                 },
                 error: function(data){
                     console.log("error");
@@ -319,7 +323,7 @@
         });
 
         $("#description-edit").on("click", function() {
-           $('#description-edit-box').show();
+            $('#description-edit-box').show();
         });
 
         $("#description-edit-close").on("click", function() {
