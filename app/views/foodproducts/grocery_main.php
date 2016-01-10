@@ -130,7 +130,7 @@
 
 <div class="container-fluid">
 
-    <div class="row" style=" margin: 25px 10px;">
+    <div class="row" style="margin: 25px 10px;">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
             <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
@@ -151,25 +151,8 @@
                     </a>
                 </div>
                 <?php } ?>
-                <?php
-
-                foreach($arr as $product){
-                    ?>
-                    <div class="col-lg-2 box" style="height: 265px;margin-bottom: 20px;">
-                        <a class="inner box">
-                            <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
-                            <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
-                                 style="display:block;margin: auto;width: 100%;height: 130px;" >
-                            <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
-                        </a>
-                    </div>
-                <?php } ?>
-
-                <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">
-                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">Browse Categories</a>
-                </div>
-
             </div>
+
 
             <div id="menu2" class="tab-pane fade">
                 <h3>Menu 2</h3>
@@ -180,15 +163,33 @@
 
         </div>
     </div>
-    <div class="row" style="background: #eee;margin-top: 50px;">
+
+    <div class="col-lg-2 col-lg-offset-5 row" style="">
+        <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">Browse Categories</a>
+    </div>
+
+    <div class="row" style="background: #eee;margin-top: 75px;">
         <h3 class="pg-title txt-red"><span>Categories</span></h3>
         <ul class="list-inline" style="margin: 20px;">
-            <?php $arrsub = json_decode($this->loadCategories(), true);
-
-            foreach ($arrsub as $category) {
+            <?php
+			//this method call is no-longer needed
+			//$arrsub = json_decode($this->loadCategories(), true);
+			$arrPoductNum = json_decode($this->getProductCountofCategories(), true);
+            foreach ($arrPoductNum as $category) {
                 ?>
-                 <li class="list-group-item col-lg-2"><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a><span style="margin-left: 5px;"
-                                                                                                                                class="badge">5</span></li>
+                 <li class="list-group-item col-lg-2">
+					 <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?>
+					 </a>
+					 <span style="margin-left: 5px;" class="badge">
+						 <?php
+						 	if(is_null($category['product_count'])){
+								echo 0;
+							}else{
+								echo $category['product_count'];
+							}
+						 ?>
+					 </span>
+				 </li>
             <?php } ?>
         </ul>
     </div>

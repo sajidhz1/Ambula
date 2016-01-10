@@ -109,10 +109,19 @@ class FoodProducts extends Controller{
 	{
 		return $this->products->similarProductsToSingleProduct();
 	}
-    
+
     //grocery main view
     public function  getAllCooperateProfiles(){
+
         return  $this->products->getAllCooperateProfiles();
+
+    }
+
+    //number of products each product category has
+    public function getProductCountofCategories(){
+
+        return $this->products->getProductCountofCategories();
+
     }
 } 
 
