@@ -163,6 +163,7 @@ class FoodProductsModel {
 
     }
 
+<<<<<<< HEAD
 	//To retrieve a single product form DB
     public function viewSingleProduct()
 	{
@@ -192,4 +193,11 @@ class FoodProductsModel {
 		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
+=======
+    //grocery main view
+    public function getAllCooperateProfiles(){
+        $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+    }
+>>>>>>> upstream/master
 } 
