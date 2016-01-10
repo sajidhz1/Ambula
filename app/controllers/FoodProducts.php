@@ -31,7 +31,12 @@ class FoodProducts extends Controller{
 
     //shows single product
     public function product(){
-        $this->view('foodproducts/view_single_product');
+        if($_GET["productId"] != null){
+			$this->view('foodproducts/view_single_product');
+		}else{
+			Header("Location:/");
+		}
+
     }
 
     public function addNewProduct(){
@@ -80,8 +85,35 @@ class FoodProducts extends Controller{
         return $this->products->loadCategories();
     }
 
+
     //grocery main view
     public function  getAllCooperateProfiles(){
         return  $this->products->getAllCooperateProfiles();
     }
-} 
+
+	//To Display the details about single product
+	public function viewSingleProduct()
+	{
+		return $this->products->viewSingleProduct();
+	}
+
+	//To Display other products by the owner of single product
+	public function singleProductsOwnersOtherProducts()
+	{
+		return $this->products->singleProductsOwnersOtherProducts();
+	}
+
+	//to display related recipes of a single product
+	public function relatedRecipesOfSingleProduct()
+	{
+		return $this->products->relatedRecipesOfSingleProduct();
+	}
+
+	//to display similar products to the single product
+	public function similarProductsToSingleProduct()
+	{
+		return $this->products->similarProductsToSingleProduct();
+	}
+
+}
+

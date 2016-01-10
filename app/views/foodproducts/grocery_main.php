@@ -142,27 +142,14 @@
                 $arr = json_decode($this->viewProducts(16), true);
                 foreach($arr as $product){
             ?>
-                <div class="col-lg-2 box" style="height: 265px;margin: auto;">
-                    <a class="inner box" >
+                <div class="col-lg-2 box" style="height: 280px;margin: auto;">
+                    <a class="inner box" href="/Ambula/FoodProducts/product?productId=<?=$product['idproducts']?>">
                         <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
                         <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
                              style="display:block;margin: auto;width: 100%;height: 130px;">
                         <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
                     </a>
                 </div>
-                <?php } ?>
-                <?php
-
-                foreach($arr as $product){
-                    ?>
-                    <div class="col-lg-2 box" style="height: 265px;margin-bottom: 20px;">
-                        <a class="inner box">
-                            <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
-                            <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
-                                 style="display:block;margin: auto;width: 100%;height: 130px;" >
-                            <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
-                        </a>
-                    </div>
                 <?php } ?>
 
                 <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">

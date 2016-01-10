@@ -64,10 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5510563" vertical-offset="4328" max-vertical-offset="4913">
+            <state vertical-scroll-proportion="-12.038462" vertical-offset="4328" max-vertical-offset="4913">
               <caret line="278" column="126" selection-start-line="278" selection-start-column="126" selection-end-line="278" selection-end-column="126" />
               <folding>
                 <marker date="1452419714837" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
@@ -102,35 +102,68 @@
       <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.230769" vertical-offset="1986" max-vertical-offset="2567">
-              <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2020" max-vertical-offset="2601">
+              <caret line="137" column="51" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cooperate_user_profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php">
+      <file leaf-file-name="FoodProducts.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.346154" vertical-offset="2679" max-vertical-offset="4420">
-              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1204" max-vertical-offset="2040">
+              <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FoodProductsModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/FoodProductsModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.307692" vertical-offset="2736" max-vertical-offset="3434">
+              <caret line="197" column="266" selection-start-line="197" selection-start-column="266" selection-end-line="197" selection-end-column="266" />
               <folding>
-                <element signature="n#style#0;n#h5#0;n#div#0;n#a#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1452425914421" expanded="true" signature="481:751" placeholder="INSERT INTO ..." />
+                <marker date="1452425914421" expanded="true" signature="1180:1244" placeholder="UPDATE produ..." />
+                <marker date="1452425914421" expanded="true" signature="3389:3544" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="3716:3885" placeholder="SELECT * FRO..cooperate_user_has_product_categories..." />
+                <marker date="1452425914421" expanded="true" signature="4062:4164" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="4602:4763" placeholder="UPDATE produ..." />
+                <marker date="1452425914421" expanded="true" signature="5300:5398" placeholder="DELETE FROM ..." />
+                <marker date="1452425914421" expanded="true" signature="5557:5678" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="5842:5874" placeholder="SELECT * FRO..product_categories..." />
+                <marker date="1452425914421" expanded="true" signature="6036:6123" placeholder="SELECT user_..commercial_user..." />
+                <marker date="1452425914421" expanded="true" signature="6348:6390" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="6681:6843" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="7198:7428" placeholder="SELECT * FRO..products..." />
+                <marker date="1452425914421" expanded="true" signature="7229:7309" placeholder="SELECT Produ..products..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navigation_menu.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
+      <file leaf-file-name="view_single_product.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/foodproducts/view_single_product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-43.153847" vertical-offset="0" max-vertical-offset="2244">
-              <caret line="66" column="78" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
+            <state vertical-scroll-proportion="-12.692307" vertical-offset="4311" max-vertical-offset="5423">
+              <caret line="273" column="100" selection-start-line="273" selection-start-column="20" selection-end-line="273" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="grocery_main.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.79049295" vertical-offset="2288" max-vertical-offset="3638">
+              <caret line="161" column="31" selection-start-line="161" selection-start-column="31" selection-end-line="161" selection-end-column="31" />
               <folding>
-                <marker date="1452419336863" expanded="false" signature="4687:4722" placeholder="..." />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +172,7 @@
       <file leaf-file-name="LoginModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-64.73077" vertical-offset="391" max-vertical-offset="3417">
+            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3417">
               <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
               <folding>
                 <marker date="1452250983999" expanded="true" signature="175:761" placeholder="SELECT user_..users..." />
@@ -170,7 +203,6 @@
         <option value="$PROJECT_DIR$/app/views/foodproducts/all_products.php" />
         <option value="$PROJECT_DIR$/app/views/foodproducts/product_category.php" />
         <option value="$PROJECT_DIR$/app/views/foodproducts/products_view.php" />
-        <option value="$PROJECT_DIR$/app/views/foodproducts/view_single_product.php" />
         <option value="$PROJECT_DIR$/public/css/MooEditable.css" />
         <option value="$PROJECT_DIR$/app/views/foodproducts/new_product.php" />
         <option value="$PROJECT_DIR$/public/css/markitup-style.css" />
@@ -192,13 +224,14 @@
         <option value="$PROJECT_DIR$/app/views/Registration/commercial_user_registration.php" />
         <option value="$PROJECT_DIR$/app/controllers/Admin.php" />
         <option value="$PROJECT_DIR$/app/views/admin/admin_home.php" />
-        <option value="$PROJECT_DIR$/app/models/FoodProductsModel.php" />
-        <option value="$PROJECT_DIR$/app/controllers/FoodProducts.php" />
-        <option value="$PROJECT_DIR$/app/views/foodproducts/grocery_main.php" />
         <option value="$PROJECT_DIR$/app/controllers/home.php" />
         <option value="$PROJECT_DIR$/app/views/_template/navigation_menu.php" />
         <option value="$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php" />
         <option value="$PROJECT_DIR$/app/models/HomeModel.php" />
+        <option value="$PROJECT_DIR$/app/controllers/FoodProducts.php" />
+        <option value="$PROJECT_DIR$/app/models/FoodProductsModel.php" />
+        <option value="$PROJECT_DIR$/app/views/foodproducts/view_single_product.php" />
+        <option value="$PROJECT_DIR$/app/views/foodproducts/grocery_main.php" />
       </list>
     </option>
   </component>
@@ -235,6 +268,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -629,7 +663,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -870,13 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/view_single_product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.653847" vertical-offset="5484" max-vertical-offset="6647">
-          <caret line="291" column="23" selection-start-line="291" selection-start-column="23" selection-end-line="291" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/food_products/jquery.markitup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10982">
@@ -972,7 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1139">
           <caret line="53" column="25" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,11 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0598592" vertical-offset="4192" max-vertical-offset="4981">
           <caret line="282" column="3" selection-start-line="282" selection-start-column="3" selection-end-line="282" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -999,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.423077" vertical-offset="4056" max-vertical-offset="6749">
           <caret line="253" column="0" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1007,7 +1026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7306338" vertical-offset="2424" max-vertical-offset="3009">
           <caret line="167" column="63" selection-start-line="167" selection-start-column="63" selection-end-line="167" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,15 +1033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/_template/error.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="680">
-          <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +1040,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="221">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1039,45 +1047,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46815833" vertical-offset="0" max-vertical-offset="581">
           <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/FoodProductsModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.192307" vertical-offset="1761" max-vertical-offset="2907">
-          <caret line="167" column="123" selection-start-line="167" selection-start-column="123" selection-end-line="167" selection-end-column="123" />
-          <folding>
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="UPDATE produ..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..products..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..cooperate_user_has_product_categories..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..products..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="UPDATE produ..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..products..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..product_categories..." />
-            <marker date="1452409893469" expanded="true" signature="-1:-1" placeholder="SELECT user_..commercial_user..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46126762" vertical-offset="3121" max-vertical-offset="3859">
-          <caret line="199" column="65" selection-start-line="199" selection-start-column="65" selection-end-line="199" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#a#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9122203" vertical-offset="813" max-vertical-offset="1479">
-          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1085,60 +1054,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3714789" vertical-offset="979" max-vertical-offset="1547">
           <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.230769" vertical-offset="1986" max-vertical-offset="2567">
-          <caret line="134" column="51" selection-start-line="134" selection-start-column="51" selection-end-line="134" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-64.73077" vertical-offset="391" max-vertical-offset="3417">
-          <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
-          <folding>
-            <marker date="1452250983999" expanded="true" signature="175:761" placeholder="SELECT user_..users..." />
-            <marker date="1452250983999" expanded="true" signature="1660:1837" placeholder="SELECT compa..commercial_user..." />
-            <marker date="1452250983999" expanded="true" signature="2380:2587" placeholder="SELECT first..user_personal..." />
-            <marker date="1452250983999" expanded="true" signature="3305:3393" placeholder="UPDATE users..." />
-            <marker date="1452250983999" expanded="true" signature="5414:5972" placeholder="SELECT user_..users..." />
-            <marker date="1452250983999" expanded="true" signature="6296:6527" placeholder="SELECT first..user_personal..." />
-            <marker date="1452250983999" expanded="true" signature="7803:7899" placeholder="UPDATE users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-43.153847" vertical-offset="0" max-vertical-offset="2244">
-          <caret line="66" column="78" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
-          <folding>
-            <marker date="1452419336863" expanded="false" signature="4687:4722" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.346154" vertical-offset="2679" max-vertical-offset="4420">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#h5#0;n#div#0;n#a#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5510563" vertical-offset="4328" max-vertical-offset="4913">
+        <state vertical-scroll-proportion="-12.038462" vertical-offset="4328" max-vertical-offset="4913">
           <caret line="278" column="126" selection-start-line="278" selection-start-column="126" selection-end-line="278" selection-end-column="126" />
           <folding>
             <marker date="1452419714837" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
@@ -1165,6 +1086,104 @@
             <marker date="1452419714837" expanded="true" signature="9569:9709" placeholder="SELECT comme..users..." />
             <marker date="1452419714837" expanded="true" signature="9865:10020" placeholder="SELECT * FRO..products..." />
             <marker date="1452419714837" expanded="true" signature="10215:10281" placeholder="SELECT user_..users..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/_template/error.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="680">
+          <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2020" max-vertical-offset="2601">
+          <caret line="137" column="51" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9753522" vertical-offset="0" max-vertical-offset="2244">
+          <caret line="66" column="78" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3417">
+          <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
+          <folding>
+            <marker date="1452250983999" expanded="true" signature="175:761" placeholder="SELECT user_..users..." />
+            <marker date="1452250983999" expanded="true" signature="1660:1837" placeholder="SELECT compa..commercial_user..." />
+            <marker date="1452250983999" expanded="true" signature="2380:2587" placeholder="SELECT first..user_personal..." />
+            <marker date="1452250983999" expanded="true" signature="3305:3393" placeholder="UPDATE users..." />
+            <marker date="1452250983999" expanded="true" signature="5414:5972" placeholder="SELECT user_..users..." />
+            <marker date="1452250983999" expanded="true" signature="6296:6527" placeholder="SELECT first..user_personal..." />
+            <marker date="1452250983999" expanded="true" signature="7803:7899" placeholder="UPDATE users..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1204" max-vertical-offset="2040">
+          <caret line="94" column="9" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/FoodProductsModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.307692" vertical-offset="2736" max-vertical-offset="3434">
+          <caret line="197" column="266" selection-start-line="197" selection-start-column="266" selection-end-line="197" selection-end-column="266" />
+          <folding>
+            <marker date="1452425914421" expanded="true" signature="481:751" placeholder="INSERT INTO ..." />
+            <marker date="1452425914421" expanded="true" signature="1180:1244" placeholder="UPDATE produ..." />
+            <marker date="1452425914421" expanded="true" signature="3389:3544" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="3716:3885" placeholder="SELECT * FRO..cooperate_user_has_product_categories..." />
+            <marker date="1452425914421" expanded="true" signature="4062:4164" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="4602:4763" placeholder="UPDATE produ..." />
+            <marker date="1452425914421" expanded="true" signature="5300:5398" placeholder="DELETE FROM ..." />
+            <marker date="1452425914421" expanded="true" signature="5557:5678" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="5842:5874" placeholder="SELECT * FRO..product_categories..." />
+            <marker date="1452425914421" expanded="true" signature="6036:6123" placeholder="SELECT user_..commercial_user..." />
+            <marker date="1452425914421" expanded="true" signature="6348:6390" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="6681:6843" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="7198:7428" placeholder="SELECT * FRO..products..." />
+            <marker date="1452425914421" expanded="true" signature="7229:7309" placeholder="SELECT Produ..products..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63669723" vertical-offset="2696" max-vertical-offset="4420">
+          <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/view_single_product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.692307" vertical-offset="4311" max-vertical-offset="5423">
+          <caret line="273" column="100" selection-start-line="273" selection-start-column="20" selection-end-line="273" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79049295" vertical-offset="2288" max-vertical-offset="3638">
+          <caret line="161" column="31" selection-start-line="161" selection-start-column="31" selection-end-line="161" selection-end-column="31" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

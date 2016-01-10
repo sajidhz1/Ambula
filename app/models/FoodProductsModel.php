@@ -163,9 +163,40 @@ class FoodProductsModel {
 
     }
 
-    //grocery main view
+
     public function getAllCooperateProfiles(){
         $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
     }
+
+	//To retrieve a single product form DB
+    public function viewSingleProduct()
+	{
+		$productId = $_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products WHERE idproducts = $productId")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
+	//ro retrieve products infor of the co-oporate user whose single product infor was retrieved
+	public function singleProductsOwnersOtherProducts()
+	{
+		$productId =$_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products AS p1, Products AS p2 WHERE p1.idproducts= $productId AND p1.commercial_user_idcommercial_user=p2.commercial_user_idcommercial_user LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
+	//to retrieve related recipes of a single product from db
+	public function relatedRecipesOfSingleProduct()
+	{
+
+	}
+
+	//to retrieve similar products to the single product
+	public function similarProductsToSingleProduct()
+	{
+		$productId = $_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 4")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
 } 
