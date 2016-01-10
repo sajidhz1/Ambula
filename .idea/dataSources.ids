@@ -95,17 +95,16 @@
     </table>
     <table name="products" schema="" catalog="ambula" type="TABLE">
       <column name="idproducts" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
-      <column name="units" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12"/>
+      <column name="product_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
       <column name="img_url" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="added_on" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="added_on" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <column name="commercial_user_idcommercial_user" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="commercial_user_users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="Product_categories_id_product_categories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="idproducts"/>
-      <foreign-key name="fk_products_Product_categories1" columns="Product_categories_id_product_categories" ref-table="product_categories" ref-schema="" ref-catalog="ambula" ref-columns="id_product_categories" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_products_commercial_user1" columns="commercial_user_idcommercial_user,commercial_user_users_user_id" ref-table="commercial_user" ref-schema="" ref-catalog="ambula" ref-columns="idcommercial_user,users_user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_products_Product_categories1" columns="Product_categories_id_product_categories" ref-table="product_categories" ref-schema="" ref-catalog="ambula" ref-columns="id_product_categories" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="fk_products_commercial_user1_idx" unique="false" columns="commercial_user_idcommercial_user,commercial_user_users_user_id"/>
       <index name="fk_products_Product_categories1_idx" unique="false" columns="Product_categories_id_product_categories"/>
     </table>
