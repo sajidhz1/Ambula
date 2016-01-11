@@ -133,7 +133,7 @@
     </a>
 </header>
 <div class="container-fluid">
-    <h3 class="pg-title txt-red"><span>Dairy Products</span></h3>
+    <h3 class="pg-title txt-red"><span><?php echo $_GET['cat'];?></span></h3>
     <div class="dropdown" style="position:absolute;right: 0;margin-right:80px;top: 320px;">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Select Category
