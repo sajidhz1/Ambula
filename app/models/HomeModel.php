@@ -135,15 +135,16 @@ class HomeModel {
             $result->execute(array(':Recipe_idRecipe' => $recipeRow['idRecipe']));
 
             $r = $result->fetch();
-            $img = ' <img class="center-block" src="/uploads/'.$recipeRow['idRecipe'].'/thumb.jpg" height="125" width="125">';
-            $title = '<a href="/recipes/viewRecipe/'.$recipeRow['idRecipe'].'">'.$img.'<h4 style ="text-align:center;">'.$recipeRow['title'].'</h4></a>';
+            $img = ' <img class="center-block" src="/Ambula/uploads/'.$recipeRow['idRecipe'].'/thumb.jpg" height="125" width="125">';
+            $title = '<a href="/Ambula/recipes/viewRecipe/'.$recipeRow['idRecipe'].'">'.$img.'<h4 style ="text-align:center;">'.$recipeRow['title'].'</h4></a>';
            
             $result_html .= $div.$br.'<div class="tile tile-wide" style="height: 150px;">'.$br.$title.$br.$br.'</div></div>';
 
 
         }
 
-        $pagination = '<div class="row col-lg-offset-3">
+        $pagination = '<div class=" col-lg-12">
+                        <div class=" col-lg-offset-4">
                     <ul class="pagination pagination-lg">';
                     
         $offset = 0;
@@ -159,7 +160,7 @@ class HomeModel {
             else
                 $pagination .= '<li><a href="#" >'.$i.'</a></li>';
         }
-        $pagination.= '</ul></div>';
+        $pagination.= '</ul></div></div>';
         $result_html .= $pagination;
 
         echo  $result_html;

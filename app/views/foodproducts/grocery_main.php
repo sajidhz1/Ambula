@@ -51,8 +51,8 @@
 
         .box .inner {
             border: 1px solid #B2B2B2;
-            background-color: #eee;
-            height: 275px;
+            background-color: #f2f2f2;
+            height:225px;
             display: block;
 
         }
@@ -78,6 +78,24 @@
             background-size: cover;
         }
 
+        .subcat-tile {
+            padding: 5px;
+            border: 1px solid #B2B2B2;
+            /* Rounded Corners */
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            margin-right: 6px;
+            text-align: center;
+        }
+
+        .subcat:hover .subcat-tile{
+            border: 1px solid #666;
+        }
+        .subcat-tile:hover {
+            text-decoration: none;
+
+        }
 
 
     </style>
@@ -130,7 +148,8 @@
 
 <div class="container-fluid">
 
-    <div class="row" style=" margin: 25px 10px;">
+    <div class="row" style="margin: 25px 10px;">
+        <div class="col-lg-9">
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
             <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
@@ -142,21 +161,19 @@
                 $arr = json_decode($this->viewProducts(16), true);
                 foreach($arr as $product){
             ?>
-                <div class="col-lg-2 box" style="height: 280px;margin: auto;">
-                    <a class="inner box" href="/Ambula/FoodProducts/product?productId=<?=$product['idproducts']?>">
-                        <h5 style="color: #333333;height: 65px;"><?=$product['product_name'] ?></h5>
+                <div class="col-lg-3 box" style="margin: auto;">
+                    <a class="inner box subcat-tile" href="/Ambula/FoodProducts/product?productId=<?=$product['idproducts']?>">
+                        <h5 style="color: #333333;height: 50px;"><?=$product['product_name'] ?></h5>
+                        <div style="height: 130px;overflow: hidden;">
                         <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
-                             style="display:block;margin: auto;width: 100%;height: 130px;">
-                        <button class="btn btn-default" style="margin-top: 5px;margin-bottom: 5px;">Quick View</button>
+                             style="display:block;margin: auto;width: 100%;">
+                         </div>
                     </a>
                 </div>
                 <?php } ?>
 
-                <div class="col-lg-2 col-lg-offset-5" style="margin-top: 20px;">
-                    <a href="" class="btn btn-lg btn-default" style="display:block;margin: auto;">Browse Categories</a>
-                </div>
-
             </div>
+
 
             <div id="menu2" class="tab-pane fade">
                 <h3>Menu 2</h3>
@@ -166,19 +183,35 @@
             </div>
 
         </div>
+       </div>
+        <div class="col-lg-3">
+            <h3 class="pg-title txt-red"><span>Categories</span></h3>
+            <ul class="list-group" style="margin: 20px;">
+                <?php
+                //this method call is no-longer needed
+                //$arrsub = json_decode($this->loadCategories(), true);
+                $arrPoductNum = json_decode($this->getProductCountofCategories(), true);
+                foreach ($arrPoductNum as $category) {
+                    ?>
+                    <li class="list-group-item">
+                        <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?>
+                        </a>
+					 <span style="margin-left: 5px;" class="badge">
+						 <?php
+                         if(is_null($category['product_count'])){
+                             echo 0;
+                         }else{
+                             echo $category['product_count'];
+                         }
+                         ?>
+					 </span>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
-    <div class="row" style="background: #eee;margin-top: 50px;">
-        <h3 class="pg-title txt-red"><span>Categories</span></h3>
-        <ul class="list-inline" style="margin: 20px;">
-            <?php $arrsub = json_decode($this->loadCategories(), true);
 
-            foreach ($arrsub as $category) {
-                ?>
-                 <li class="list-group-item col-lg-2"><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a><span style="margin-left: 5px;"
-                                                                                                                                class="badge">5</span></li>
-            <?php } ?>
-        </ul>
-    </div>
+
     <div class="row" style="background: #eee;margin-top: 50px;">
         <h2 class="pg-title txt-red"><span>Partners</span></h2>
         <?php $partners = json_decode($this->getAllCooperateProfiles(), true);

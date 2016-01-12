@@ -271,7 +271,9 @@
         <ul id="similar_products">
 			<?php $simiProducts = json_decode($this->similarProductsToSingleProduct(),true);
 			foreach ($simiProducts as $smProduct){?>
+
 				<li data-link="/Ambula/FoodProducts/product?productId=<?=$smProduct['idproducts']?>" >
+
 					<img src="/Ambula/<?=$smProduct['img_url']?>" height="100" width="100" style="margin-top: 20px;margin-left: 20px;" alt="" class="product_thumb" >
 					<h4><?= $smProduct['product_name']?></h4>
 					<p><?= $smProduct['description']?></p>
@@ -289,7 +291,9 @@
 		$sameProducts = json_decode($this->singleProductsOwnersOtherProducts(),true);
 		foreach ($sameProducts as $ownerProduct){ ?>
        <div class="col-lg-4 box" style="height: 265px;margin: auto;" data-link="/Ambula/FoodProducts/product?productId=<?=$ownerProduct['idproducts']?>">
+
            <a class="inner box"  >
+
                <h5 style="color: #333333;height: 65px;"><?= $ownerProduct['product_name']?></h5>
                <img class="product_thumb" src="/Ambula/<?=$ownerProduct['img_url'] ?>"
                     style="display:block;margin: auto;width: 100%;height: 130px;">

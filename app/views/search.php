@@ -190,7 +190,7 @@
             <h4>Ad space</h4>
         </div>
 </div>
- <footer class="footer" style="background:#0C0C0C;width:100%" >
+ <footer class="footer" style="position:relative;bottom:0;background:#0C0C0C;width:100%;margin: 0;" >
         <div class="container" style="text-align:center;">
             <p class="text-muted"  ><p>&copy; 2015 The Ambula<p></p>
         </div>

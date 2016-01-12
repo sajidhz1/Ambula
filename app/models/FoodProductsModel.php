@@ -155,8 +155,7 @@ class FoodProductsModel {
     }
 
 
-    public function loadCategories()
-    {
+    public function loadCategories(){
         $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
@@ -164,30 +163,23 @@ class FoodProductsModel {
     }
 
 
-    public function getAllCooperateProfiles(){
-        $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
-        return json_encode($result);
-    }
 
 	//To retrieve a single product form DB
-    public function viewSingleProduct()
-	{
+    public function viewSingleProduct(){
 		$productId = $_GET['productId'];
 		$result = $this->db->query("SELECT * FROM products WHERE idproducts = $productId")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
 
 	//ro retrieve products infor of the co-oporate user whose single product infor was retrieved
-	public function singleProductsOwnersOtherProducts()
-	{
+	public function singleProductsOwnersOtherProducts(){
 		$productId =$_GET['productId'];
 		$result = $this->db->query("SELECT * FROM products AS p1, Products AS p2 WHERE p1.idproducts= $productId AND p1.commercial_user_idcommercial_user=p2.commercial_user_idcommercial_user LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
 
 	//to retrieve related recipes of a single product from db
-	public function relatedRecipesOfSingleProduct()
-	{
+	public function relatedRecipesOfSingleProduct(){
 
 	}
 
@@ -198,5 +190,20 @@ class FoodProductsModel {
 		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 4")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
+
+    public function getAllCooperateProfiles(){
+        $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+    }
+
+
+
+    //to get the count of products for each product category
+    public function getProductCountofCategories(){
+
+        $result = $this->db->query("SELECT mt.product_count, pc.title, pc.id_product_categories FROM (SELECT Product_categories_id_product_categories as category_id, COUNT(Product_categories_id_product_categories) AS product_count FROM products group by Product_categories_id_product_categories) AS mt RIGHT JOIN product_categories AS pc ON mt.category_id=pc.id_product_categories order by pc.id_product_categories")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
 
 } 
