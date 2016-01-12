@@ -133,7 +133,7 @@
     </a>
 </header>
 <div class="container-fluid">
-    <h3 class="pg-title txt-red"><span>Dairy Products</span></h3>
+    <h3 class="pg-title txt-red"><span><?php echo $_GET['cat'];?></span></h3>
     <div class="dropdown" style="position:absolute;right: 0;margin-right:80px;top: 320px;">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Select Category
@@ -151,60 +151,15 @@
 
     <div class="row">
         <div class="col-lg-10 hgt500" >
+            <?php $productCategoryList = json_decode($this->getAllProductsOfSingleCategory($_GET['cat']),true);
+			foreach ($productCategoryList as $catProd){ ?>
             <div class="col-lg-2 box">
                 <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies nestle product</p>
+                    <img src="/Ambula/<?= $catProd['img_url']?>" style="width: 100%;height:175px; ">
+                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222"><?= $catProd['product_name']?></p>
                 </div>
             </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
-            <div class="col-lg-2 box">
-                <div class="inner">
-                    <img src="/Ambula/public/img/no_preview_available.jpg" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222">Chocolate chip Cookies</p>
-                </div>
-            </div>
+			<?php }?>
         </div>
         <div class="col-lg-2 ad hgt500" >
             <div class="" style="background: #999;height: 300px;"></div>

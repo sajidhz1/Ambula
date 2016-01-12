@@ -155,9 +155,10 @@ class FoodProductsModel {
     }
 
 
-    public function loadCategories(){
-        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
 
+    public function loadCategories(){
+
+        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
 
     }
@@ -202,4 +203,11 @@ class FoodProductsModel {
         return json_encode($result);
 
     }
+
+	//to get all the products of a single product category
+	public function getAllProductsOfSingleCategory($catType){
+
+		$result = $this->db->query("SELECT p.idproducts, p.product_name, p.img_url, p.description, p.commercial_user_idcommercial_user FROM products AS p JOIN (SELECT id_product_categories from product_categories WHERE title='$catType') AS pc ON p.Product_categories_id_product_categories=pc.id_product_categories LIMIT 12;")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
 } 
