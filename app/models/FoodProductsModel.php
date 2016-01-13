@@ -164,6 +164,7 @@ class FoodProductsModel {
     }
 
 
+
 	//To retrieve a single product form DB
     public function viewSingleProduct(){
 		$productId = $_GET['productId'];
@@ -187,14 +188,16 @@ class FoodProductsModel {
 	public function similarProductsToSingleProduct()
 	{
 		$productId = $_GET['productId'];
-		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 4")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
-    //grocery main view
+
     public function getAllCooperateProfiles(){
         $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
     }
+
+
 
     //to get the count of products for each product category
     public function getProductCountofCategories(){
@@ -210,4 +213,5 @@ class FoodProductsModel {
 		$result = $this->db->query("SELECT p.idproducts, p.product_name, p.img_url, p.description, p.commercial_user_idcommercial_user FROM products AS p JOIN (SELECT id_product_categories from product_categories WHERE title='$catType') AS pc ON p.Product_categories_id_product_categories=pc.id_product_categories LIMIT 12;")->fetchAll(PDO::FETCH_ASSOC);
 		return json_encode($result);
 	}
+
 } 

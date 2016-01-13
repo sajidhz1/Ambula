@@ -110,6 +110,7 @@ class FoodProducts extends Controller{
 		return $this->products->similarProductsToSingleProduct();
 	}
 
+
     //grocery main view
     public function  getAllCooperateProfiles(){
 
@@ -124,10 +125,11 @@ class FoodProducts extends Controller{
 
     }
 
-	//
+
 	public function getAllProductsOfSingleCategory($catType){
 
 		return $this->products->getAllProductsOfSingleCategory($catType);
 	}
 } 
+
 

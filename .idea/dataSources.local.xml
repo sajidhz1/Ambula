@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<project version="4" />
+
+=======
+<project version="4" />
+>>>>>>> 7cc6089f3dd61895aca36bb7c977894c24373360
+=======
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="MySQL - ambula@localhost" uuid="191bc4e5-ef8e-4759-8719-41ee2deec552">
@@ -9,3 +17,4 @@
     </data-source>
   </component>
 </project>
+>>>>>>> ac19b83d3c35caed84f1d41db59b7f2fc016916b
