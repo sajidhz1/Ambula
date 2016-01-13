@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - ambula@localhost" uuid="191bc4e5-ef8e-4759-8719-41ee2deec552">
+    <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="ambula"/>
+    <table name="comments" schema="" catalog="ambula" type="TABLE">
+      <column name="idcomments" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="text" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Recipes_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idcomments,Recipes_idRecipe,users_user_id"/>
+      <index name="fk_comments_Recipes1_idx" unique="false" columns="Recipes_idRecipe"/>
+      <index name="fk_comments_users1_idx" unique="false" columns="users_user_id"/>
+    </table>
+    <table name="commercial_user" schema="" catalog="ambula" type="TABLE">
+      <column name="idcommercial_user" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="company_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="web_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="facebook_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="youtube_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="telephone_1" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone_2" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address_1" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="dXNlciB0eXBlIHNwZWNpYWxseSBSZXN0YXVyYW50cyAvIE1hbnVmYWN0dXJlIC8g"/>
+      <column name="verified" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date_updated" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="city" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="district" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idcommercial_user,users_user_id"/>
+      <foreign-key name="fk_commercial_user_users1" columns="users_user_id" ref-table="users" ref-schema="" ref-catalog="ambula" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_Manufacture_has_Product_categories_Manufacture1" table="cooperate_user_has_product_categories" schema="" catalog="ambula" columns="cooperate_user_id"/>
+      <exported-key name="fk_products_commercial_user1" table="products" schema="" catalog="ambula" columns="commercial_user_idcommercial_user,commercial_user_users_user_id"/>
+      <index name="fk_commercial_user_users1_idx" unique="false" columns="users_user_id"/>
+    </table>
+    <table name="cooperate_user_has_product_categories" schema="" catalog="ambula" type="TABLE">
+      <column name="cooperate_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Product_categories_id_product_categories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="id_products_has_categories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id_products_has_categories"/>
+      <foreign-key name="fk_Manufacture_has_Product_categories_Manufacture1" columns="cooperate_user_id" ref-table="commercial_user" ref-schema="" ref-catalog="ambula" ref-columns="idcommercial_user" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Manufacture_has_Product_categories_Product_categories1" columns="Product_categories_id_product_categories" ref-table="product_categories" ref-schema="" ref-catalog="ambula" ref-columns="id_product_categories" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Manufacture_has_Product_categories_Manufacture1_idx" unique="false" columns="cooperate_user_id"/>
+      <index name="fk_Manufacture_has_Product_categories_Product_categories1_idx" unique="false" columns="Product_categories_id_product_categories"/>
+    </table>
+    <table name="ingredient_image" schema="" catalog="ambula" type="TABLE">
+      <column name="id_ing_image" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="image_url" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Ingredient_imagecol" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Ingredients_idIngredients" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_ing_image,Ingredients_idIngredients"/>
+      <foreign-key name="fk_Ingredient_image_Ingredients1" columns="Ingredients_idIngredients" ref-table="ingredients" ref-schema="" ref-catalog="ambula" ref-columns="idIngredients" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Ingredient_image_Ingredients1_idx" unique="false" columns="Ingredients_idIngredients"/>
+    </table>
+    <table name="ingredients" schema="" catalog="ambula" type="TABLE">
+      <column name="idIngredients" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="ing_si" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idIngredients"/>
+      <exported-key name="fk_Ingredient_image_Ingredients1" table="ingredient_image" schema="" catalog="ambula" columns="Ingredients_idIngredients"/>
+      <exported-key name="fk_Ingredients_has_product_brand_Ingredients1" table="ingredients_has_product_brand" schema="" catalog="ambula" columns="Ingredients_idIngredients"/>
+      <index name="title" unique="true" columns="title"/>
+    </table>
+    <table name="ingredients_has_product_brand" schema="" catalog="ambula" type="TABLE">
+      <column name="Ingredients_idIngredients" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="product_brand_idproduct_brand" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Ingredients_idIngredients,product_brand_idproduct_brand"/>
+      <foreign-key name="fk_Ingredients_has_product_brand_Ingredients1" columns="Ingredients_idIngredients" ref-table="ingredients" ref-schema="" ref-catalog="ambula" ref-columns="idIngredients" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_Ingredients_has_product_brand_product_brand1" columns="product_brand_idproduct_brand" ref-table="product_brand" ref-schema="" ref-catalog="ambula" ref-columns="idproduct_brand" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_Ingredients_has_product_brand_Ingredients1_idx" unique="false" columns="Ingredients_idIngredients"/>
+      <index name="fk_Ingredients_has_product_brand_product_brand1_idx" unique="false" columns="product_brand_idproduct_brand"/>
+    </table>
+    <table name="product_brand" schema="" catalog="ambula" type="TABLE">
+      <column name="idproduct_brand" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="web_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo_url" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idproduct_brand"/>
+      <exported-key name="fk_Ingredients_has_product_brand_product_brand1" table="ingredients_has_product_brand" schema="" catalog="ambula" columns="product_brand_idproduct_brand"/>
+    </table>
+    <table name="product_categories" schema="" catalog="ambula" type="TABLE">
+      <column name="id_product_categories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id_product_categories"/>
+      <exported-key name="fk_Manufacture_has_Product_categories_Product_categories1" table="cooperate_user_has_product_categories" schema="" catalog="ambula" columns="Product_categories_id_product_categories"/>
+      <exported-key name="fk_products_Product_categories1" table="products" schema="" catalog="ambula" columns="Product_categories_id_product_categories"/>
+    </table>
+    <table name="products" schema="" catalog="ambula" type="TABLE">
+      <column name="idproducts" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="product_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="img_url" sqlType="VARCHAR" precision="225" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="added_on" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="commercial_user_idcommercial_user" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="commercial_user_users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Product_categories_id_product_categories" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idproducts"/>
+      <foreign-key name="fk_products_commercial_user1" columns="commercial_user_idcommercial_user,commercial_user_users_user_id" ref-table="commercial_user" ref-schema="" ref-catalog="ambula" ref-columns="idcommercial_user,users_user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_products_Product_categories1" columns="Product_categories_id_product_categories" ref-table="product_categories" ref-schema="" ref-catalog="ambula" ref-columns="id_product_categories" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_products_commercial_user1_idx" unique="false" columns="commercial_user_idcommercial_user,commercial_user_users_user_id"/>
+      <index name="fk_products_Product_categories1_idx" unique="false" columns="Product_categories_id_product_categories"/>
+    </table>
+    <table name="promotion" schema="" catalog="ambula" type="TABLE">
+      <column name="idPromotion" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="promotion_type" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
+      <column name="promotion_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="image_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="start_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="end_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="priority" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="date_time_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="visibility" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="idPromotion,users_user_id"/>
+    </table>
+    <table name="promotion_adder" schema="" catalog="ambula" type="TABLE">
+      <column name="idPromotion_Adder" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="company" sqlType="VARCHAR" precision="150" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone_number" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idPromotion_Adder"/>
+    </table>
+    <table name="ratings" schema="" catalog="ambula" type="TABLE">
+      <column name="Recipes_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="idratings" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="rating" sqlType="DECIMAL" precision="11" scale="0" nullable="true" jdbcType="3"/>
+      <primary-key name="PRIMARY" columns="idratings"/>
+      <index name="fk_Recipes_has_users_Recipes1_idx" unique="false" columns="Recipes_idRecipe"/>
+      <index name="fk_Recipes_has_users_users1_idx" unique="false" columns="users_user_id"/>
+    </table>
+    <table name="recipe_category" schema="" catalog="ambula" type="TABLE">
+      <column name="idCategory" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="thumb_url" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idCategory"/>
+    </table>
+    <table name="recipe_description" schema="" catalog="ambula" type="TABLE">
+      <column name="idDescription" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="description_en" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="description_sinhala" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="image_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Recipe_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idDescription,Recipe_idRecipe"/>
+      <index name="fk_Recipe_Description_Recipe1_idx" unique="false" columns="Recipe_idRecipe"/>
+    </table>
+    <table name="recipe_has_ingredients" schema="" catalog="ambula" type="TABLE">
+      <column name="id_recipe_has_ingredients" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Recipe_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Ingredients_idIngredients" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="units" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="qty" sqlType="VARCHAR" precision="11" scale="0" nullable="true" jdbcType="12" def="JzAn"/>
+      <column name="brand_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id_recipe_has_ingredients"/>
+      <index name="fk_Recipe_has_Ingredients_Ingredients1_idx" unique="false" columns="Ingredients_idIngredients"/>
+      <index name="fk_Recipe_has_Ingredients_Recipe1_idx" unique="false" columns="Recipe_idRecipe"/>
+    </table>
+    <table name="recipe_img" schema="" catalog="ambula" type="TABLE">
+      <column name="idRecipe_img" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="image_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Recipe_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="idRecipe_img,Recipe_idRecipe"/>
+      <index name="fk_Recipe_img_Recipe_idx" unique="false" columns="Recipe_idRecipe"/>
+    </table>
+    <table name="recipe_si" schema="" catalog="ambula" type="TABLE">
+      <column name="idrecipe_si" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ingredients" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="Recipes_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idrecipe_si,Recipes_idRecipe"/>
+      <foreign-key name="fk_recipe_si_Recipes1" columns="Recipes_idRecipe" ref-table="recipes" ref-schema="" ref-catalog="ambula" ref-columns="idRecipe" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_recipe_si_Recipes1_idx" unique="false" columns="Recipes_idRecipe"/>
+    </table>
+    <table name="recipe_sub_category" schema="" catalog="ambula" type="TABLE">
+      <column name="idRecipe_sub_category" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="img_url" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Recipe_Category_idCategory" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idRecipe_sub_category,Recipe_Category_idCategory"/>
+      <index name="fk_Recipe_sub_category_Recipe_Category1_idx" unique="false" columns="Recipe_Category_idCategory"/>
+    </table>
+    <table name="recipes" schema="" catalog="ambula" type="TABLE">
+      <column name="idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="tags" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="filters" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="est_time" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="subcategory_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="views" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="rating" sqlType="DECIMAL" precision="10" scale="1" nullable="false" jdbcType="3" def="MC4w"/>
+      <column name="verified" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <primary-key name="PRIMARY" columns="idRecipe,category_id,users_user_id"/>
+      <exported-key name="fk_recipe_si_Recipes1" table="recipe_si" schema="" catalog="ambula" columns="Recipes_idRecipe"/>
+      <index name="fk_Recipe_Recipe_Category1_idx" unique="false" columns="category_id"/>
+      <index name="fk_Recipe_users1_idx" unique="false" columns="users_user_id"/>
+    </table>
+    <table name="user_personal" schema="" catalog="ambula" type="TABLE">
+      <column name="iduser_personal" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="tel_home" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tel_mobile" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="iduser_personal,users_user_id"/>
+      <index name="fk_user_personal_users_idx" unique="false" columns="users_user_id"/>
+    </table>
+    <table name="users" schema="" catalog="ambula" type="TABLE">
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="YXV0byBpbmNyZW1lbnRpbmcgdXNlcl9pZCBvZiBlYWNoIHVzZXIsIHVuaXF1ZSBpbmRleA==" autoIncrement="true"/>
+      <column name="user_name" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="dXNlcidzIG5hbWUsIHVuaXF1ZQ=="/>
+      <column name="user_password_hash" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" remarks="dXNlcidzIHBhc3N3b3JkIGluIHNhbHRlZCBhbmQgaGFzaGVkIGZvcm1hdA=="/>
+      <column name="user_email" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12" remarks="dXNlcidzIGVtYWlsLCB1bmlxdWU="/>
+      <column name="user_active" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA==" remarks="dXNlcidzIGFjdGl2YXRpb24gc3RhdHVz"/>
+      <column name="user_account_type" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ==" remarks="dXNlcidzIGFjY291bnQgdHlwZSAoYmFzaWMsIHByZW1pdW0sIGV0Yyk="/>
+      <column name="user_avatar" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12" def="JzAn" remarks="MSBpZiB1c2VyIGhhcyBhIGxvY2FsIGF2YXRhciwgMCBpZiBub3Q="/>
+      <column name="user_rememberme_token" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12" remarks="dXNlcidzIHJlbWVtYmVyLW1lIGNvb2tpZSB0b2tlbg=="/>
+      <column name="user_creation_timestamp" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5" remarks="dGltZXN0YW1wIG9mIHRoZSBjcmVhdGlvbiBvZiB1c2VyJ3MgYWNjb3VudA=="/>
+      <column name="user_last_login_timestamp" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5" remarks="dGltZXN0YW1wIG9mIHVzZXIncyBsYXN0IGxvZ2lu"/>
+      <column name="user_last_failed_login" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="dW5peCB0aW1lc3RhbXAgb2YgbGFzdCBmYWlsZWQgbG9naW4gYXR0ZW1wdA=="/>
+      <column name="user_activation_hash" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12" remarks="dXNlcidzIGVtYWlsIHZlcmlmaWNhdGlvbiBoYXNoIHN0cmluZw=="/>
+      <column name="user_password_reset_hash" sqlType="CHAR" precision="40" scale="0" nullable="true" jdbcType="1" remarks="dXNlcidzIHBhc3N3b3JkIHJlc2V0IGNvZGU="/>
+      <column name="user_password_reset_timestamp" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5" remarks="dGltZXN0YW1wIG9mIHRoZSBwYXNzd29yZCByZXNldCByZXF1ZXN0"/>
+      <column name="user_provider_type" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="user_facebook_uid" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5" remarks="b3B0aW9uYWwgLSBmYWNlYm9vayBVSUQ="/>
+      <primary-key name="PRIMARY" columns="user_id"/>
+      <exported-key name="fk_commercial_user_users1" table="commercial_user" schema="" catalog="ambula" columns="users_user_id"/>
+      <index name="user_email" unique="true" columns="user_email"/>
+      <index name="user_name" unique="true" columns="user_name"/>
+      <index name="user_facebook_uid" unique="false" columns="user_facebook_uid"/>
+    </table>
+  </data-source>
+</component>

@@ -51,7 +51,7 @@
 
         .box .inner {
             border: 1px solid #B2B2B2;
-            background-color: #f2f2f2;
+            background: #fff;
             height:225px;
             display: block;
 
@@ -146,7 +146,7 @@
     </a>
 </header>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #f2f2f2;">
 
     <div class="row" style="margin: 25px 10px;">
         <div class="col-lg-9">
@@ -194,7 +194,7 @@
                 foreach ($arrPoductNum as $category) {
                     ?>
                     <li class="list-group-item">
-                        <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?>
+                        <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;font-weight: 500;color: brown;" ><?php echo $category['title']; ?>
                         </a>
 					 <span style="margin-left: 5px;" class="badge">
 						 <?php
@@ -212,7 +212,7 @@
     </div>
 
 
-    <div class="row" style="background: #eee;margin-top: 50px;">
+    <div class="row" style="background: #fff;margin-top: 50px;">
         <h2 class="pg-title txt-red"><span>Partners</span></h2>
         <?php $partners = json_decode($this->getAllCooperateProfiles(), true);
 

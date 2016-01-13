@@ -126,8 +126,10 @@ class FoodProducts extends Controller{
     }
 
 
+	public function getAllProductsOfSingleCategory($catType){
 
-
+		return $this->products->getAllProductsOfSingleCategory($catType);
+	}
 } 
 
 
