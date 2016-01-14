@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
     <script src="/Ambula/public/js/typeahead.js"></script>
 
-<!-- fav icon -->
+    <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -48,9 +48,10 @@
         }
         .recipe-item{
             border-bottom: 1px dotted #a1a1a1;
+            height: 240px;
         }
 
-        </style>
+    </style>
 </head>
 
 <body style="">
@@ -58,142 +59,42 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
-<script type="text/javascript">
-
-    $(document).on("click", ".pagination li a", function() {
-        //e.preventDefault();
-        var filter = '';
-        if($('#q156,#q157').is(':checked'))  {
-            filter = $(this).html();
-        }
-
-        $.ajax({
-            url: '/home/searchRecipes/<?php echo $this->search; ?>',
-            type: 'POST',
-            dataType: '',
-            data: {page: $(this).html() },
-            beforeSend: function() { $('#search-content').html('<img src="/public/img/loading.gif" />'); },
-            success: function (data) {
-                $('#search-content').empty();
-                $('#search-content').append(data);
-            }
-        });
-    });
-
-    //change subcategory
-    $(document).on('change', '#category', function(e) {
-
-        alert($(this).val());
-        $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
-            type : 'POST',
-            dataType: "json",
-            url  : '/home/getSubCategoriesByID/'+$(this).val(),
-            data : {},
-            success: function(responseText){
-                // Get the result and asign to each cases
-                var subcateories = $('#subcategory');
-                subcateories.empty();
-
-                var json = responseText;
-                for(var i = 0; i < json.length; i++) {
-                    var obj = json[i];
-
-                    subcateories.append($("<option></option>")
-                        .attr("value", obj.idRecipe_sub_category).text(obj.title));
-                }
-            }
-        });
-
-    });
-
-    $(function () {
-
-
-
-        $("#filters").on( "change", "#q156,#q157", function (e) {
-            $('#search-content').empty();
-            e.preventDefault();
-            $.ajax({
-                url: '/home/searchRecipes/<?php echo $this->search; ?>',
-                type: 'POST',
-                dataType: '',
-                data: {filter: $(this).val()},
-                beforeSend: function() { $('#search-content').html('<img style="margin:25% 25%;" src="/public/img/loading.gif" />'); },
-                success: function (data) {
-                    $('#search-content').empty();
-                    $('#search-content').append(data);
-                }
-            });
-
-        });
-
-    });
-</script>
-
-<div class="container-fluid" style="margin-top: 75px;">
-    <div class="search row">
-        <div class="col-lg-6 col-md-offset-3">
-            <div class="input-group">
-                <input type="text" class="form-control" id="search" data-provide="typeahead" autocomplete="off" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search</button>
-                  </span>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
+<div class="container-fluid" style="margin-top: 50px;">
+    <div class="col-lg-2" style="height: 400px;">
+        <h4>Search</h4>
+        <select class="form-control" id="category">
+            <option value="0">All</option>
+            <option value="1">Recipes</option>
+            <option value="2">Groceries</option>
+        </select>
+        <br>
+        <h4>Filters</h4>
+        <ul style="list-style-type: none;">
+            <li><label><input type="checkbox" value="vegetarian" name="filter"> vegetarian</label></li>
+            <li><label><input type="checkbox" value="vegetarian" name="filter"> non vegetarian</label></li>
+            <li><label><input type="checkbox" value="vegetarian" name="filter"> vegetarian</label></li>
+        </ul>
     </div>
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-lg-2" style="background:#f4f4f4;" >
-            <h3>Filter Results</h3>
-            <div class="col-lg-12">
-                <span><h5>Choose Category</h5></span>
-                <select class="form-control" id="category">
-                    <?php
-                    $arr=json_decode($this->viewCategories(),true);
-                    foreach($arr as $category)
-                    {
-                        ?>
-                        <option value="<?=$category['idCategory']; ?>"><?=$category['title']; ?></option>
-                    <?php } ?>
-                </select>
-                <br>
-                <span><h5>Choose SubCategory</h5></span>
-                <select class="form-control" name="subcategory" id="subcategory">
-                    <option value="0" >select sub category</option>
-                </select>
-                <br>
-                <span><h5>filter by</h5></span>
-                <div id="filters">
-                    <label>
-                        <input type="radio" id="q156" name="quality[25]" value="1" /> Vegetarian
-                    </label>
-                    <label>
-                        <input type="radio" id="q157" name="quality[25]" value="2" /> Non-Vegetarian
-                    </label>
-                    <label>
-                        <input type="radio" id="q157" name="quality[25]" value="" /> All
-                    </label>
-                 </div>
-                </div>
-        </div>
-        <div class="col-lg-8" >
-            <?php if(isset($_GET['query'])) { ?>
-            <h3 class="search-result-heading">Showing results for "<?=$_GET['query'] ?>"</h3>
+    <div class="col-lg-8" style="height: 400px;">
+        <div class="col-lg-12" style="background: #999999;height: 75px;"></div>
+        <div id="search-content">
+        <?php $recipe_array = json_decode($this->searchResults(),true);
 
-
-            <div id="search-content" >
-                <?php $this->searchRecipes($this->search,$filter ='',1); ?>
-
+           foreach($recipe_array as $recipe){
+        ?>
+               <a class="col-lg-4 recipe-item" href="/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe'] ?>" style="display: block;">
+                   <div style="height: 150px;overflow: hidden;"><img  class="center-block" src="/Ambula/uploads/<?=$recipe['idRecipe'] ?>/thumb.jpg" style="width: 150px;margin-top: 10px;"> </div>
+                   <h4 style="text-align: center;"><?=$recipe['title'] ?></h4>
+               </a>
+        <?php } ?>
             </div>
-            <?php } ?>
     </div>
-        <div class="col-lg-2" style="height: 400px;border: 1px solid #222;">
-            <h4>Ad space</h4>
-        </div>
+    <div class="col-lg-2" style="height: 400px;background: #888888;">
+
+
+    </div>
+
+
 </div>
- <footer class="footer" style="position:relative;bottom:0;background:#0C0C0C;width:100%;margin: 0;" >
-        <div class="container" style="text-align:center;">
-            <p class="text-muted"  ><p>&copy; 2015 The Ambula<p></p>
-        </div>
-    </footer>
 </body>
 </html>

@@ -142,6 +142,10 @@ class Home extends Controller{
     public function admin(){
         $this->view("administration/adminProfile");
     }
+
+    public function searchResults(){
+        return $this->user->searchResults();
+    }
 }
 
 

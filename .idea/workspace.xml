@@ -64,128 +64,144 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2370" max-vertical-offset="4930">
-              <caret line="162" column="34" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
-              <folding>
-                <marker date="1452531075568" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
-                <marker date="1452531075568" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
-                <marker date="1452531075568" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452531075568" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452531075568" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452531075568" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
-                <marker date="1452531075568" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="false" signature="2772:2785" placeholder="..." />
-                <marker date="1452531075568" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
-                <marker date="1452531075568" expanded="true" signature="5136:5249" placeholder="..." />
-                <marker date="1452531075568" expanded="true" signature="5191:5249" placeholder="..." />
-                <marker date="1452531075568" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
-                <marker date="1452531075568" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
-                <marker date="1452531075568" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
-                <marker date="1452531075568" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
-                <marker date="1452531075568" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
-                <marker date="1452531075568" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
-                <marker date="1452531075568" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
-                <marker date="1452531075568" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2020" max-vertical-offset="2601">
-              <caret line="137" column="51" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
+            <state vertical-scroll-proportion="-17.76923" vertical-offset="2020" max-vertical-offset="2669">
+              <caret line="146" column="14" selection-start-line="146" selection-start-column="14" selection-end-line="146" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FoodProducts.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/search/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1731" max-vertical-offset="2312">
-              <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FoodProductsModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/FoodProductsModel.php">
+      <file leaf-file-name="search_old.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/search_old.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.423077" vertical-offset="3121" max-vertical-offset="3689">
-              <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-              <folding>
-                <marker date="1452612318204" expanded="true" signature="481:751" placeholder="INSERT INTO ..." />
-                <marker date="1452612318204" expanded="true" signature="1180:1244" placeholder="UPDATE produ..." />
-                <marker date="1452612318204" expanded="true" signature="3389:3544" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="3716:3885" placeholder="SELECT * FRO..cooperate_user_has_product_categories..." />
-                <marker date="1452612318204" expanded="true" signature="4062:4164" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="4602:4763" placeholder="UPDATE produ..." />
-                <marker date="1452612318204" expanded="true" signature="5300:5398" placeholder="DELETE FROM ..." />
-                <marker date="1452612318204" expanded="true" signature="5557:5678" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="5839:5871" placeholder="SELECT * FRO..product_categories..." />
-                <marker date="1452612318204" expanded="true" signature="6096:6138" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="6427:6589" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="6942:7172" placeholder="SELECT * FRO..products..." />
-                <marker date="1452612318204" expanded="true" signature="6973:7053" placeholder="SELECT Produ..products..." />
-                <marker date="1452612318204" expanded="true" signature="7322:7409" placeholder="SELECT user_..commercial_user..." />
-                <marker date="1452612318204" expanded="true" signature="7637:8015" placeholder="SELECT mt.pr..Product_categories_id_product_categories..." />
-                <marker date="1452612318204" expanded="true" signature="7703:7895" placeholder="SELECT Produ..products..." />
-                <marker date="1452612318204" expanded="true" signature="8238:8524" placeholder="SELECT p.idp..products..." />
-                <marker date="1452612318204" expanded="true" signature="8362:8437" placeholder="SELECT id_pr..product_categories..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view_single_product.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/foodproducts/view_single_product.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4362" max-vertical-offset="5491">
-              <caret line="275" column="0" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="grocery_main.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5510563" vertical-offset="3019" max-vertical-offset="4199">
-              <caret line="196" column="148" selection-start-line="196" selection-start-column="148" selection-end-line="196" selection-end-column="148" />
+            <state vertical-scroll-proportion="-12.692307" vertical-offset="2764" max-vertical-offset="3468">
+              <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="36" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1452696552696" expanded="true" signature="4232:4247" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3417">
-              <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
+            <state vertical-scroll-proportion="0.3983287" vertical-offset="1285" max-vertical-offset="1785">
+              <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
               <folding>
-                <marker date="1452250983999" expanded="true" signature="175:761" placeholder="SELECT user_..users..." />
-                <marker date="1452250983999" expanded="true" signature="1660:1837" placeholder="SELECT compa..commercial_user..." />
-                <marker date="1452250983999" expanded="true" signature="2380:2587" placeholder="SELECT first..user_personal..." />
-                <marker date="1452250983999" expanded="true" signature="3305:3393" placeholder="UPDATE users..." />
-                <marker date="1452250983999" expanded="true" signature="5414:5972" placeholder="SELECT user_..users..." />
-                <marker date="1452250983999" expanded="true" signature="6296:6527" placeholder="SELECT first..user_personal..." />
-                <marker date="1452250983999" expanded="true" signature="7803:7899" placeholder="UPDATE users..." />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5" vertical-offset="2101" max-vertical-offset="5508">
+              <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="46" />
+              <folding>
+                <marker date="1452789111470" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
+                <marker date="1452789111470" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
+                <marker date="1452789111470" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
+                <marker date="1452789111470" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
+                <marker date="1452789111470" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
+                <marker date="1452789111470" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
+                <marker date="1452789111470" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="false" signature="2772:2785" placeholder="..." />
+                <marker date="1452789111470" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
+                <marker date="1452789111470" expanded="true" signature="5136:5249" placeholder="..." />
+                <marker date="1452789111470" expanded="true" signature="5191:5249" placeholder="..." />
+                <marker date="1452789111470" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
+                <marker date="1452789111470" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
+                <marker date="1452789111470" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
+                <marker date="1452789111470" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
+                <marker date="1452789111470" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
+                <marker date="1452789111470" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
+                <marker date="1452789111470" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
+                <marker date="1452789111470" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
+                <marker date="1452789111470" expanded="true" signature="10929:10955" placeholder="SELECT idRec..recipes..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recipe.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="11798">
+              <caret line="47" column="31" selection-start-line="37" selection-start-column="9" selection-end-line="47" selection-end-column="31" />
+              <folding>
+                <marker date="1452276110278" expanded="true" signature="312:356" placeholder="SELECT title..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="786:976" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="1446:1621" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="2749:2812" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="3958:4093" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="4390:4439" placeholder="SELECT * FRO..recipe_si..." />
+                <marker date="1452276110278" expanded="true" signature="4673:4722" placeholder="SELECT * FRO..recipe_si..." />
+                <marker date="1452276110278" expanded="true" signature="4963:5027" placeholder="SELECT title..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="6764:6869" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="7982:8099" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="9455:9557" placeholder="SELECT idRec..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="10015:10116" placeholder="SELECT Ingre..recipe_has_ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="10321:10408" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="10943:11011" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="11251:11733" placeholder="SELECT ingre..ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="11940:12124" placeholder="SELECT image..recipe_img..." />
+                <marker date="1452276110278" expanded="true" signature="12160:12319" placeholder="SELECT image..recipe_description..." />
+                <marker date="1452276110278" expanded="true" signature="12492:12570" placeholder="SELECT descr..recipe_description..." />
+                <marker date="1452276110278" expanded="true" signature="13765:13819" placeholder="SELECT idCat..recipe_category..." />
+                <marker date="1452276110278" expanded="true" signature="14017:14120" placeholder="SELECT idRec..recipe_sub_category..." />
+                <marker date="1452276110278" expanded="true" signature="14267:14593" placeholder="SELECT user_..user_personal..." />
+                <marker date="1452276110278" expanded="true" signature="14801:14860" placeholder="SELECT verif..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="15440:15478" placeholder="SELECT * FRO..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="15635:15988" placeholder="SELECT * FRO..ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="16466:16517" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="16661:16749" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="16924:17010" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="17257:17304" placeholder="SELECT * FRO..comments..." />
+                <marker date="1452276110278" expanded="true" signature="17459:17588" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="18771:18823" placeholder="SELECT ratin..ratings..." />
+                <marker date="1452276110278" expanded="true" signature="18992:19036" placeholder="SELECT ratin..recipes..." />
+                <marker date="1452276110278" expanded="true" signature="19252:19304" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="19448:19580" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="19992:20058" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="20335:20403" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="20679:20743" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="21027:21100" placeholder="UPDATE recip..." />
+                <marker date="1452276110278" expanded="true" signature="21314:21383" placeholder="DELETE FROM ..." />
+                <marker date="1452276110278" expanded="true" signature="21707:21882" placeholder="INSERT INTO ..." />
+                <marker date="1452276110278" expanded="true" signature="22435:22508" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1452276110278" expanded="true" signature="23361:23414" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -227,15 +243,15 @@
         <option value="$PROJECT_DIR$/app/views/Registration/commercial_user_registration.php" />
         <option value="$PROJECT_DIR$/app/controllers/Admin.php" />
         <option value="$PROJECT_DIR$/app/views/admin/admin_home.php" />
-        <option value="$PROJECT_DIR$/app/controllers/home.php" />
-        <option value="$PROJECT_DIR$/app/views/_template/navigation_menu.php" />
         <option value="$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php" />
         <option value="$PROJECT_DIR$/app/views/foodproducts/view_single_product.php" />
-        <option value="$PROJECT_DIR$/app/views/search.php" />
-        <option value="$PROJECT_DIR$/app/models/HomeModel.php" />
         <option value="$PROJECT_DIR$/app/controllers/FoodProducts.php" />
         <option value="$PROJECT_DIR$/app/models/FoodProductsModel.php" />
         <option value="$PROJECT_DIR$/app/views/foodproducts/grocery_main.php" />
+        <option value="$PROJECT_DIR$/app/views/_template/navigation_menu.php" />
+        <option value="$PROJECT_DIR$/app/controllers/home.php" />
+        <option value="$PROJECT_DIR$/app/models/HomeModel.php" />
+        <option value="$PROJECT_DIR$/app/views/search.php" />
       </list>
     </option>
   </component>
@@ -314,73 +330,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commercial_user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="uploads" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commercial_user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dd1234" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -397,6 +347,32 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -427,204 +403,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user_profile" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Registration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Recipes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promotions" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="login" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="foodproducts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ambula" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -702,15 +480,15 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -730,7 +508,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -740,17 +518,17 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17715959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -770,24 +548,18 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/models/HomeModel.php</url>
+          <line>319</line>
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2244">
@@ -942,13 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-61.5" vertical-offset="526" max-vertical-offset="11798">
-          <caret line="125" column="146" selection-start-line="125" selection-start-column="146" selection-end-line="125" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/PromotionModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="15.653846" vertical-offset="4249" max-vertical-offset="6290">
@@ -1054,26 +819,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9753522" vertical-offset="0" max-vertical-offset="2244">
-          <caret line="66" column="78" selection-start-line="66" selection-start-column="78" selection-end-line="66" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3417">
           <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
-          <folding>
-            <marker date="1452250983999" expanded="true" signature="175:761" placeholder="SELECT user_..users..." />
-            <marker date="1452250983999" expanded="true" signature="1660:1837" placeholder="SELECT compa..commercial_user..." />
-            <marker date="1452250983999" expanded="true" signature="2380:2587" placeholder="SELECT first..user_personal..." />
-            <marker date="1452250983999" expanded="true" signature="3305:3393" placeholder="UPDATE users..." />
-            <marker date="1452250983999" expanded="true" signature="5414:5972" placeholder="SELECT user_..users..." />
-            <marker date="1452250983999" expanded="true" signature="6296:6527" placeholder="SELECT first..user_personal..." />
-            <marker date="1452250983999" expanded="true" signature="7803:7899" placeholder="UPDATE users..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1084,14 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2020" max-vertical-offset="2601">
-          <caret line="137" column="51" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.81284404" vertical-offset="1053" max-vertical-offset="2533">
@@ -1099,98 +840,168 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.765845" vertical-offset="1761" max-vertical-offset="4199">
+          <caret line="196" column="148" selection-start-line="196" selection-start-column="148" selection-end-line="196" selection-end-column="148" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/foodproducts/view_single_product.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4362" max-vertical-offset="5491">
+        <state vertical-scroll-proportion="0.5510563" vertical-offset="4362" max-vertical-offset="5491">
           <caret line="275" column="0" selection-start-line="275" selection-start-column="0" selection-end-line="275" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3761468" vertical-offset="2906" max-vertical-offset="3468">
-          <caret line="183" column="55" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2370" max-vertical-offset="4930">
-          <caret line="162" column="34" selection-start-line="162" selection-start-column="34" selection-end-line="162" selection-end-column="34" />
-          <folding>
-            <marker date="1452531075568" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
-            <marker date="1452531075568" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
-            <marker date="1452531075568" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452531075568" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452531075568" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452531075568" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
-            <marker date="1452531075568" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="false" signature="2772:2785" placeholder="..." />
-            <marker date="1452531075568" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
-            <marker date="1452531075568" expanded="true" signature="5136:5249" placeholder="..." />
-            <marker date="1452531075568" expanded="true" signature="5191:5249" placeholder="..." />
-            <marker date="1452531075568" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
-            <marker date="1452531075568" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
-            <marker date="1452531075568" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
-            <marker date="1452531075568" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
-            <marker date="1452531075568" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
-            <marker date="1452531075568" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
-            <marker date="1452531075568" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
-            <marker date="1452531075568" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1731" max-vertical-offset="2312">
-          <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/FoodProductsModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.423077" vertical-offset="3121" max-vertical-offset="3689">
+        <state vertical-scroll-proportion="0.43133804" vertical-offset="3121" max-vertical-offset="3689">
           <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70740104" vertical-offset="1731" max-vertical-offset="2312">
+          <caret line="131" column="5" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="2244">
+          <caret line="24" column="90" selection-start-line="24" selection-start-column="90" selection-end-line="24" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="11798">
+          <caret line="47" column="31" selection-start-line="37" selection-start-column="9" selection-end-line="47" selection-end-column="31" />
           <folding>
-            <marker date="1452612318204" expanded="true" signature="481:751" placeholder="INSERT INTO ..." />
-            <marker date="1452612318204" expanded="true" signature="1180:1244" placeholder="UPDATE produ..." />
-            <marker date="1452612318204" expanded="true" signature="3389:3544" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="3716:3885" placeholder="SELECT * FRO..cooperate_user_has_product_categories..." />
-            <marker date="1452612318204" expanded="true" signature="4062:4164" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="4602:4763" placeholder="UPDATE produ..." />
-            <marker date="1452612318204" expanded="true" signature="5300:5398" placeholder="DELETE FROM ..." />
-            <marker date="1452612318204" expanded="true" signature="5557:5678" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="5839:5871" placeholder="SELECT * FRO..product_categories..." />
-            <marker date="1452612318204" expanded="true" signature="6096:6138" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="6427:6589" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="6942:7172" placeholder="SELECT * FRO..products..." />
-            <marker date="1452612318204" expanded="true" signature="6973:7053" placeholder="SELECT Produ..products..." />
-            <marker date="1452612318204" expanded="true" signature="7322:7409" placeholder="SELECT user_..commercial_user..." />
-            <marker date="1452612318204" expanded="true" signature="7637:8015" placeholder="SELECT mt.pr..Product_categories_id_product_categories..." />
-            <marker date="1452612318204" expanded="true" signature="7703:7895" placeholder="SELECT Produ..products..." />
-            <marker date="1452612318204" expanded="true" signature="8238:8524" placeholder="SELECT p.idp..products..." />
-            <marker date="1452612318204" expanded="true" signature="8362:8437" placeholder="SELECT id_pr..product_categories..." />
+            <marker date="1452276110278" expanded="true" signature="312:356" placeholder="SELECT title..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="786:976" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="1446:1621" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="2749:2812" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="3958:4093" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="4390:4439" placeholder="SELECT * FRO..recipe_si..." />
+            <marker date="1452276110278" expanded="true" signature="4673:4722" placeholder="SELECT * FRO..recipe_si..." />
+            <marker date="1452276110278" expanded="true" signature="4963:5027" placeholder="SELECT title..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="6764:6869" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="7982:8099" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="9455:9557" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="10015:10116" placeholder="SELECT Ingre..recipe_has_ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="10321:10408" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="10943:11011" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="11251:11733" placeholder="SELECT ingre..ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="11940:12124" placeholder="SELECT image..recipe_img..." />
+            <marker date="1452276110278" expanded="true" signature="12160:12319" placeholder="SELECT image..recipe_description..." />
+            <marker date="1452276110278" expanded="true" signature="12492:12570" placeholder="SELECT descr..recipe_description..." />
+            <marker date="1452276110278" expanded="true" signature="13765:13819" placeholder="SELECT idCat..recipe_category..." />
+            <marker date="1452276110278" expanded="true" signature="14017:14120" placeholder="SELECT idRec..recipe_sub_category..." />
+            <marker date="1452276110278" expanded="true" signature="14267:14593" placeholder="SELECT user_..user_personal..." />
+            <marker date="1452276110278" expanded="true" signature="14801:14860" placeholder="SELECT verif..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="15440:15478" placeholder="SELECT * FRO..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="15635:15988" placeholder="SELECT * FRO..ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="16466:16517" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="16661:16749" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="16924:17010" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="17257:17304" placeholder="SELECT * FRO..comments..." />
+            <marker date="1452276110278" expanded="true" signature="17459:17588" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="18771:18823" placeholder="SELECT ratin..ratings..." />
+            <marker date="1452276110278" expanded="true" signature="18992:19036" placeholder="SELECT ratin..recipes..." />
+            <marker date="1452276110278" expanded="true" signature="19252:19304" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="19448:19580" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="19992:20058" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="20335:20403" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="20679:20743" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="21027:21100" placeholder="UPDATE recip..." />
+            <marker date="1452276110278" expanded="true" signature="21314:21383" placeholder="DELETE FROM ..." />
+            <marker date="1452276110278" expanded="true" signature="21707:21882" placeholder="INSERT INTO ..." />
+            <marker date="1452276110278" expanded="true" signature="22435:22508" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1452276110278" expanded="true" signature="23361:23414" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/grocery_main.php">
+    <entry file="file://$PROJECT_DIR$/public/js/search/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5510563" vertical-offset="3019" max-vertical-offset="4199">
-          <caret line="196" column="148" selection-start-line="196" selection-start-column="148" selection-end-line="196" selection-end-column="148" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5" vertical-offset="2101" max-vertical-offset="5508">
+          <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="46" />
+          <folding>
+            <marker date="1452789111470" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
+            <marker date="1452789111470" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
+            <marker date="1452789111470" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
+            <marker date="1452789111470" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
+            <marker date="1452789111470" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
+            <marker date="1452789111470" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
+            <marker date="1452789111470" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="false" signature="2772:2785" placeholder="..." />
+            <marker date="1452789111470" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
+            <marker date="1452789111470" expanded="true" signature="5136:5249" placeholder="..." />
+            <marker date="1452789111470" expanded="true" signature="5191:5249" placeholder="..." />
+            <marker date="1452789111470" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
+            <marker date="1452789111470" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
+            <marker date="1452789111470" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
+            <marker date="1452789111470" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
+            <marker date="1452789111470" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
+            <marker date="1452789111470" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
+            <marker date="1452789111470" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
+            <marker date="1452789111470" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
+            <marker date="1452789111470" expanded="true" signature="10929:10955" placeholder="SELECT idRec..recipes..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.76923" vertical-offset="2020" max-vertical-offset="2669">
+          <caret line="146" column="14" selection-start-line="146" selection-start-column="14" selection-end-line="146" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/search_old.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.692307" vertical-offset="2764" max-vertical-offset="3468">
+          <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="36" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1452696552696" expanded="true" signature="4232:4247" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3983287" vertical-offset="1285" max-vertical-offset="1785">
+          <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
