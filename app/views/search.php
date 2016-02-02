@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The Ambula</title>
+    <title>Search Results for '<?=$_GET['q'] ?>'</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
@@ -18,7 +18,7 @@
     <script src="/Ambula/public/js/typeahead.js"></script>
 
     <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -74,10 +74,24 @@
             <li><label><input type="checkbox" value="vegetarian" name="filter"> non vegetarian</label></li>
             <li><label><input type="checkbox" value="vegetarian" name="filter"> vegetarian</label></li>
         </ul>
+        <br>
+        <h4>Categories</h4>
+        <ul style="list-style-type: none;">
+        <?php
+        $arr=json_decode($this->viewCategories(),true);
+        foreach($arr as $category)
+        {
+        ?>
+            <li><a href="" style=""> <?=$category['title'] ?></a> <span style="color: brown;font-weight: 500;">></span></li>
+        <?php } ?>
+
+        </ul>
     </div>
     <div class="col-lg-8" style="height: 400px;">
+        <h3 class="search-result-heading">Showing results for "<?=$_GET['q'] ?>"</h3>
         <div class="col-lg-12" style="background: #999999;height: 75px;"></div>
         <div id="search-content">
+
         <?php $recipe_array = json_decode($this->searchResults(),true);
 
            foreach($recipe_array as $recipe){

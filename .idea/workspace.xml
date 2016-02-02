@@ -64,93 +64,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
+      <file leaf-file-name="new_recipe_updated.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/Recipes/new_recipe_updated.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.76923" vertical-offset="2020" max-vertical-offset="2669">
-              <caret line="146" column="14" selection-start-line="146" selection-start-column="14" selection-end-line="146" selection-end-column="14" />
+            <state vertical-scroll-proportion="-115.07692" vertical-offset="0" max-vertical-offset="6800">
+              <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/search/search.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_old.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/search_old.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.692307" vertical-offset="2764" max-vertical-offset="3468">
-              <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1452696552696" expanded="true" signature="4232:4247" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3983287" vertical-offset="1285" max-vertical-offset="1785">
-              <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h4#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5" vertical-offset="2101" max-vertical-offset="5508">
-              <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="46" />
-              <folding>
-                <marker date="1452789111470" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
-                <marker date="1452789111470" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
-                <marker date="1452789111470" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452789111470" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452789111470" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452789111470" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
-                <marker date="1452789111470" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="false" signature="2772:2785" placeholder="..." />
-                <marker date="1452789111470" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
-                <marker date="1452789111470" expanded="true" signature="5136:5249" placeholder="..." />
-                <marker date="1452789111470" expanded="true" signature="5191:5249" placeholder="..." />
-                <marker date="1452789111470" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
-                <marker date="1452789111470" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
-                <marker date="1452789111470" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
-                <marker date="1452789111470" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
-                <marker date="1452789111470" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
-                <marker date="1452789111470" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
-                <marker date="1452789111470" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
-                <marker date="1452789111470" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
-                <marker date="1452789111470" expanded="true" signature="10929:10955" placeholder="SELECT idRec..recipes..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -158,51 +77,84 @@
       <file leaf-file-name="Recipe.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="11798">
-              <caret line="47" column="31" selection-start-line="37" selection-start-column="9" selection-end-line="47" selection-end-column="31" />
+            <state vertical-scroll-proportion="454.15384" vertical-offset="12420" max-vertical-offset="13141">
+              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
               <folding>
-                <marker date="1452276110278" expanded="true" signature="312:356" placeholder="SELECT title..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="786:976" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="1446:1621" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="2749:2812" placeholder="SELECT idIng..ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="3958:4093" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="4390:4439" placeholder="SELECT * FRO..recipe_si..." />
-                <marker date="1452276110278" expanded="true" signature="4673:4722" placeholder="SELECT * FRO..recipe_si..." />
-                <marker date="1452276110278" expanded="true" signature="4963:5027" placeholder="SELECT title..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="6764:6869" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="7982:8099" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="9455:9557" placeholder="SELECT idRec..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="10015:10116" placeholder="SELECT Ingre..recipe_has_ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="10321:10408" placeholder="SELECT idIng..ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="10943:11011" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="11251:11733" placeholder="SELECT ingre..ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="11940:12124" placeholder="SELECT image..recipe_img..." />
-                <marker date="1452276110278" expanded="true" signature="12160:12319" placeholder="SELECT image..recipe_description..." />
-                <marker date="1452276110278" expanded="true" signature="12492:12570" placeholder="SELECT descr..recipe_description..." />
-                <marker date="1452276110278" expanded="true" signature="13765:13819" placeholder="SELECT idCat..recipe_category..." />
-                <marker date="1452276110278" expanded="true" signature="14017:14120" placeholder="SELECT idRec..recipe_sub_category..." />
-                <marker date="1452276110278" expanded="true" signature="14267:14593" placeholder="SELECT user_..user_personal..." />
-                <marker date="1452276110278" expanded="true" signature="14801:14860" placeholder="SELECT verif..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="15440:15478" placeholder="SELECT * FRO..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="15635:15988" placeholder="SELECT * FRO..ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="16466:16517" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="16661:16749" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="16924:17010" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="17257:17304" placeholder="SELECT * FRO..comments..." />
-                <marker date="1452276110278" expanded="true" signature="17459:17588" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="18771:18823" placeholder="SELECT ratin..ratings..." />
-                <marker date="1452276110278" expanded="true" signature="18992:19036" placeholder="SELECT ratin..recipes..." />
-                <marker date="1452276110278" expanded="true" signature="19252:19304" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="19448:19580" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="19992:20058" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="20335:20403" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="20679:20743" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="21027:21100" placeholder="UPDATE recip..." />
-                <marker date="1452276110278" expanded="true" signature="21314:21383" placeholder="DELETE FROM ..." />
-                <marker date="1452276110278" expanded="true" signature="21707:21882" placeholder="INSERT INTO ..." />
-                <marker date="1452276110278" expanded="true" signature="22435:22508" placeholder="SELECT idIng..ingredients..." />
-                <marker date="1452276110278" expanded="true" signature="23361:23414" placeholder="DELETE FROM ..." />
+                <marker date="1454085073629" expanded="true" signature="340:384" placeholder="SELECT title..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="814:1008" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="1487:1662" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="2366:2429" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="3031:3148" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="3875:4010" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="4307:4356" placeholder="SELECT * FRO..recipe_si..." />
+                <marker date="1454085073629" expanded="true" signature="4590:4639" placeholder="SELECT * FRO..recipe_si..." />
+                <marker date="1454085073629" expanded="true" signature="4880:4944" placeholder="SELECT title..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="6681:6786" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="7899:8016" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="9372:9474" placeholder="SELECT idRec..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="9932:10033" placeholder="SELECT Ingre..recipe_has_ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="10238:10325" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="10860:10928" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="11168:11650" placeholder="SELECT ingre..ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="11857:12041" placeholder="SELECT image..recipe_img..." />
+                <marker date="1454085073629" expanded="true" signature="12077:12236" placeholder="SELECT image..recipe_description..." />
+                <marker date="1454085073629" expanded="true" signature="12409:12487" placeholder="SELECT descr..recipe_description..." />
+                <marker date="1454085073629" expanded="true" signature="13682:13736" placeholder="SELECT idCat..recipe_category..." />
+                <marker date="1454085073629" expanded="true" signature="13934:14037" placeholder="SELECT idRec..recipe_sub_category..." />
+                <marker date="1454085073629" expanded="true" signature="14184:14510" placeholder="SELECT user_..user_personal..." />
+                <marker date="1454085073629" expanded="true" signature="14718:14777" placeholder="SELECT verif..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="15357:15395" placeholder="SELECT * FRO..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="15552:15905" placeholder="SELECT * FRO..ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="16383:16434" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="16578:16666" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="16841:16927" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="17174:17221" placeholder="SELECT * FRO..comments..." />
+                <marker date="1454085073629" expanded="true" signature="17376:17505" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="19060:19112" placeholder="SELECT ratin..ratings..." />
+                <marker date="1454085073629" expanded="true" signature="19281:19325" placeholder="SELECT ratin..recipes..." />
+                <marker date="1454085073629" expanded="true" signature="19541:19593" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="19737:19869" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="20281:20347" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="20624:20692" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="20968:21032" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="21316:21389" placeholder="UPDATE recip..." />
+                <marker date="1454085073629" expanded="true" signature="21603:21672" placeholder="DELETE FROM ..." />
+                <marker date="1454085073629" expanded="true" signature="21996:22171" placeholder="INSERT INTO ..." />
+                <marker date="1454085073629" expanded="true" signature="22724:22797" placeholder="SELECT idIng..ingredients..." />
+                <marker date="1454085073629" expanded="true" signature="23650:23703" placeholder="DELETE FROM ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/js/recipes/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.51943463" vertical-offset="5860" max-vertical-offset="6426">
+              <caret line="362" column="23" selection-start-line="362" selection-start-column="22" selection-end-line="362" selection-end-column="23" />
+              <folding>
+                <marker date="1454085439278" expanded="true" signature="4630:4644" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="recipes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/recipes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2683" max-vertical-offset="3332">
+              <caret line="184" column="13" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeModel.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3902" max-vertical-offset="5508">
+              <caret line="211" column="59" selection-start-line="211" selection-start-column="59" selection-end-line="211" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -232,7 +184,6 @@
         <option value="$PROJECT_DIR$/app/controllers/registration.php" />
         <option value="$PROJECT_DIR$/app/models/RegistrationModel.php" />
         <option value="$PROJECT_DIR$/app/models/PromotionModel.php" />
-        <option value="$PROJECT_DIR$/app/models/Recipe.php" />
         <option value="$PROJECT_DIR$/app/views/user_profile/profile.php" />
         <option value="$PROJECT_DIR$/app/views/user_profile/normal_user.php" />
         <option value="$PROJECT_DIR$/app/views/user_profile/normal_user_profile.php" />
@@ -252,6 +203,13 @@
         <option value="$PROJECT_DIR$/app/controllers/home.php" />
         <option value="$PROJECT_DIR$/app/models/HomeModel.php" />
         <option value="$PROJECT_DIR$/app/views/search.php" />
+        <option value="$PROJECT_DIR$/app/views/Recipes/recipe.php" />
+        <option value="$PROJECT_DIR$/public/js/recipes/bootstrap-tagsinput.min.js" />
+        <option value="$PROJECT_DIR$/public/css/bootstrap-tagsinput.css" />
+        <option value="$PROJECT_DIR$/app/controllers/recipes.php" />
+        <option value="$PROJECT_DIR$/app/models/Recipe.php" />
+        <option value="$PROJECT_DIR$/public/js/recipes/script.js" />
+        <option value="$PROJECT_DIR$/app/views/Recipes/new_recipe_updated.php" />
       </list>
     </option>
   </component>
@@ -288,6 +246,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -330,6 +289,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="recipes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="temp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -370,7 +365,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
+              <option name="myItemId" value="recipes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -420,6 +433,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Recipes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="promotions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="foodproducts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ambula" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -444,7 +523,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -453,9 +531,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Ambula\public\js\recipes" />
+      <recent name="C:\xampp\htdocs\Ambula\public\css" />
       <recent name="C:\xampp\htdocs\Ambula\public\img" />
       <recent name="C:\xampp\htdocs\Ambula\public\js\food_products" />
-      <recent name="C:\xampp\htdocs\Ambula\public\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Ambula\public\css\images" />
@@ -518,11 +597,11 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17715959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32913387" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -555,106 +634,40 @@
           <line>319</line>
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/_template/navigation_menu.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/recipes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2244">
-          <caret line="41" column="111" selection-start-line="41" selection-start-column="111" selection-end-line="41" selection-end-column="111" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2683" max-vertical-offset="3332">
+          <caret line="192" column="29" selection-start-line="192" selection-start-column="29" selection-end-line="192" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/category.php">
+    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2482">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3902" max-vertical-offset="5508">
+          <caret line="211" column="59" selection-start-line="211" selection-start-column="59" selection-end-line="211" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/FoodProducts.php">
+    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3902" max-vertical-offset="5508">
+          <caret line="211" column="59" selection-start-line="211" selection-start-column="59" selection-end-line="211" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/login.php">
+    <entry file="file://$PROJECT_DIR$/app/controllers/recipes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Registration/commercial_user_continue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4862385" vertical-offset="3535" max-vertical-offset="4080">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Registration/registration_success.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/brand_view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="584">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/recipes/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7740806" vertical-offset="0" max-vertical-offset="4675">
-          <caret line="26" column="7" selection-start-line="13" selection-start-column="3" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/Promotion.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8336252" vertical-offset="1292" max-vertical-offset="9027">
-          <caret line="104" column="67" selection-start-line="104" selection-start-column="67" selection-end-line="104" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7659208" vertical-offset="728" max-vertical-offset="1309">
-          <caret line="69" column="31" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321918" vertical-offset="3104" max-vertical-offset="8721">
-          <caret line="194" column="18" selection-start-line="194" selection-start-column="18" selection-end-line="194" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Recipes/recipe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.209507" vertical-offset="2679" max-vertical-offset="5474">
-          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2615" max-vertical-offset="3264">
+          <caret line="183" column="35" selection-start-line="183" selection-start-column="35" selection-end-line="183" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -683,13 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="594">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/new_product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="4947">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -819,13 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="3417">
-          <caret line="122" column="99" selection-start-line="122" selection-start-column="99" selection-end-line="122" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/user_profile/cooperate_user_profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.63669723" vertical-offset="2696" max-vertical-offset="4420">
@@ -875,133 +874,178 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="11798">
-          <caret line="47" column="31" selection-start-line="37" selection-start-column="9" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <marker date="1452276110278" expanded="true" signature="312:356" placeholder="SELECT title..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="786:976" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="1446:1621" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="2749:2812" placeholder="SELECT idIng..ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="3958:4093" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="4390:4439" placeholder="SELECT * FRO..recipe_si..." />
-            <marker date="1452276110278" expanded="true" signature="4673:4722" placeholder="SELECT * FRO..recipe_si..." />
-            <marker date="1452276110278" expanded="true" signature="4963:5027" placeholder="SELECT title..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="6764:6869" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="7982:8099" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="9455:9557" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="10015:10116" placeholder="SELECT Ingre..recipe_has_ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="10321:10408" placeholder="SELECT idIng..ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="10943:11011" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="11251:11733" placeholder="SELECT ingre..ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="11940:12124" placeholder="SELECT image..recipe_img..." />
-            <marker date="1452276110278" expanded="true" signature="12160:12319" placeholder="SELECT image..recipe_description..." />
-            <marker date="1452276110278" expanded="true" signature="12492:12570" placeholder="SELECT descr..recipe_description..." />
-            <marker date="1452276110278" expanded="true" signature="13765:13819" placeholder="SELECT idCat..recipe_category..." />
-            <marker date="1452276110278" expanded="true" signature="14017:14120" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452276110278" expanded="true" signature="14267:14593" placeholder="SELECT user_..user_personal..." />
-            <marker date="1452276110278" expanded="true" signature="14801:14860" placeholder="SELECT verif..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="15440:15478" placeholder="SELECT * FRO..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="15635:15988" placeholder="SELECT * FRO..ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="16466:16517" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="16661:16749" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="16924:17010" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="17257:17304" placeholder="SELECT * FRO..comments..." />
-            <marker date="1452276110278" expanded="true" signature="17459:17588" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="18771:18823" placeholder="SELECT ratin..ratings..." />
-            <marker date="1452276110278" expanded="true" signature="18992:19036" placeholder="SELECT ratin..recipes..." />
-            <marker date="1452276110278" expanded="true" signature="19252:19304" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="19448:19580" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="19992:20058" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="20335:20403" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="20679:20743" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="21027:21100" placeholder="UPDATE recip..." />
-            <marker date="1452276110278" expanded="true" signature="21314:21383" placeholder="DELETE FROM ..." />
-            <marker date="1452276110278" expanded="true" signature="21707:21882" placeholder="INSERT INTO ..." />
-            <marker date="1452276110278" expanded="true" signature="22435:22508" placeholder="SELECT idIng..ingredients..." />
-            <marker date="1452276110278" expanded="true" signature="23361:23414" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/search/search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="607">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5" vertical-offset="2101" max-vertical-offset="5508">
-          <caret line="137" column="26" selection-start-line="137" selection-start-column="26" selection-end-line="137" selection-end-column="46" />
-          <folding>
-            <marker date="1452789111470" expanded="true" signature="433:494" placeholder="SELECT idCat..recipe_category..." />
-            <marker date="1452789111470" expanded="true" signature="585:639" placeholder="SELECT idCat..recipe_category..." />
-            <marker date="1452789111470" expanded="true" signature="838:941" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452789111470" expanded="true" signature="1184:1286" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452789111470" expanded="true" signature="1374:1491" placeholder="SELECT idRec..recipe_sub_category..." />
-            <marker date="1452789111470" expanded="true" signature="1678:1893" placeholder="SELECT ri.* ..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="2082:2149" placeholder="SELECT image..recipe_img..." />
-            <marker date="1452789111470" expanded="true" signature="2332:2448" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="false" signature="2772:2785" placeholder="..." />
-            <marker date="1452789111470" expanded="true" signature="3159:3258" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="3475:3527" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="3674:3798" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="4050:4127" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="4376:4473" placeholder="SELECT image..recipe_img..." />
-            <marker date="1452789111470" expanded="true" signature="5136:5249" placeholder="..." />
-            <marker date="1452789111470" expanded="true" signature="5191:5249" placeholder="..." />
-            <marker date="1452789111470" expanded="true" signature="5938:6075" placeholder="SELECT idRec..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="6265:6498" placeholder="SELECT ri.* ..recipes..." />
-            <marker date="1452789111470" expanded="true" signature="6658:6984" placeholder="SELECT user_..user_personal..." />
-            <marker date="1452789111470" expanded="true" signature="7198:7291" placeholder="SELECT * FRO..users..." />
-            <marker date="1452789111470" expanded="true" signature="8968:9016" placeholder="UPDATE users..." />
-            <marker date="1452789111470" expanded="true" signature="9338:9406" placeholder="UPDATE user_..." />
-            <marker date="1452789111470" expanded="true" signature="9635:9775" placeholder="SELECT comme..users..." />
-            <marker date="1452789111470" expanded="true" signature="9931:10086" placeholder="SELECT * FRO..products..." />
-            <marker date="1452789111470" expanded="true" signature="10281:10347" placeholder="SELECT user_..users..." />
-            <marker date="1452789111470" expanded="true" signature="10929:10955" placeholder="SELECT idRec..recipes..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/home.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.76923" vertical-offset="2020" max-vertical-offset="2669">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="2669">
           <caret line="146" column="14" selection-start-line="146" selection-start-column="14" selection-end-line="146" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/search_old.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.692307" vertical-offset="2764" max-vertical-offset="3468">
-          <caret line="182" column="17" selection-start-line="182" selection-start-column="17" selection-end-line="182" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1452696552696" expanded="true" signature="4232:4247" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="2118" max-vertical-offset="3468">
+          <caret line="153" column="26" selection-start-line="149" selection-start-column="19" selection-end-line="153" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3983287" vertical-offset="1285" max-vertical-offset="1785">
-          <caret line="84" column="80" selection-start-line="84" selection-start-column="80" selection-end-line="84" selection-end-column="80" />
+        <state vertical-scroll-proportion="-7.8461537" vertical-offset="765" max-vertical-offset="2023">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="61" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Recipes/recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.546296" vertical-offset="4495" max-vertical-offset="5474">
+          <caret line="120" column="117" selection-start-line="119" selection-start-column="11" selection-end-line="120" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/foodproducts/new_product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5193663" vertical-offset="2203" max-vertical-offset="4947">
+          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Recipes/newrecipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4335" max-vertical-offset="5525">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/recipes/bootstrap-datetimepicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="43384">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/promotions/viewPromotions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3614679" vertical-offset="2203" max-vertical-offset="3281">
+          <caret line="123" column="0" selection-start-line="115" selection-start-column="8" selection-end-line="123" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/promotions/newPromotions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.59331" vertical-offset="3177" max-vertical-offset="4896">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/LoginModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3323263" vertical-offset="2270" max-vertical-offset="3417">
+          <caret line="140" column="44" selection-start-line="140" selection-start-column="42" selection-end-line="140" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/HomeModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3902" max-vertical-offset="5508">
+          <caret line="211" column="59" selection-start-line="211" selection-start-column="59" selection-end-line="211" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/recipes/bootstrap-tagsinput.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="153">
+          <caret line="5" column="2694" selection-start-line="5" selection-start-column="2692" selection-end-line="5" selection-end-column="2694" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/bootstrap-tagsinput.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="385" max-vertical-offset="1071">
+          <caret line="44" column="8" selection-start-line="44" selection-start-column="8" selection-end-line="44" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/recipes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2683" max-vertical-offset="3332">
+          <caret line="184" column="13" selection-start-line="184" selection-start-column="13" selection-end-line="184" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/Recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="454.15384" vertical-offset="12420" max-vertical-offset="13141">
+          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#a#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1454085073629" expanded="true" signature="340:384" placeholder="SELECT title..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="814:1008" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="1487:1662" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="2366:2429" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="3031:3148" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="3875:4010" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="4307:4356" placeholder="SELECT * FRO..recipe_si..." />
+            <marker date="1454085073629" expanded="true" signature="4590:4639" placeholder="SELECT * FRO..recipe_si..." />
+            <marker date="1454085073629" expanded="true" signature="4880:4944" placeholder="SELECT title..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="6681:6786" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="7899:8016" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="9372:9474" placeholder="SELECT idRec..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="9932:10033" placeholder="SELECT Ingre..recipe_has_ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="10238:10325" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="10860:10928" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="11168:11650" placeholder="SELECT ingre..ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="11857:12041" placeholder="SELECT image..recipe_img..." />
+            <marker date="1454085073629" expanded="true" signature="12077:12236" placeholder="SELECT image..recipe_description..." />
+            <marker date="1454085073629" expanded="true" signature="12409:12487" placeholder="SELECT descr..recipe_description..." />
+            <marker date="1454085073629" expanded="true" signature="13682:13736" placeholder="SELECT idCat..recipe_category..." />
+            <marker date="1454085073629" expanded="true" signature="13934:14037" placeholder="SELECT idRec..recipe_sub_category..." />
+            <marker date="1454085073629" expanded="true" signature="14184:14510" placeholder="SELECT user_..user_personal..." />
+            <marker date="1454085073629" expanded="true" signature="14718:14777" placeholder="SELECT verif..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="15357:15395" placeholder="SELECT * FRO..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="15552:15905" placeholder="SELECT * FRO..ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="16383:16434" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="16578:16666" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="16841:16927" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="17174:17221" placeholder="SELECT * FRO..comments..." />
+            <marker date="1454085073629" expanded="true" signature="17376:17505" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="19060:19112" placeholder="SELECT ratin..ratings..." />
+            <marker date="1454085073629" expanded="true" signature="19281:19325" placeholder="SELECT ratin..recipes..." />
+            <marker date="1454085073629" expanded="true" signature="19541:19593" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="19737:19869" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="20281:20347" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="20624:20692" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="20968:21032" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="21316:21389" placeholder="UPDATE recip..." />
+            <marker date="1454085073629" expanded="true" signature="21603:21672" placeholder="DELETE FROM ..." />
+            <marker date="1454085073629" expanded="true" signature="21996:22171" placeholder="INSERT INTO ..." />
+            <marker date="1454085073629" expanded="true" signature="22724:22797" placeholder="SELECT idIng..ingredients..." />
+            <marker date="1454085073629" expanded="true" signature="23650:23703" placeholder="DELETE FROM ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Recipes/new_recipe_updated.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-115.07692" vertical-offset="0" max-vertical-offset="6800">
+          <caret line="176" column="28" selection-start-line="176" selection-start-column="28" selection-end-line="176" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/recipes/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51943463" vertical-offset="5860" max-vertical-offset="6426">
+          <caret line="362" column="23" selection-start-line="362" selection-start-column="22" selection-end-line="362" selection-end-column="23" />
+          <folding>
+            <marker date="1454085439278" expanded="true" signature="4630:4644" placeholder="..." />
           </folding>
         </state>
       </provider>

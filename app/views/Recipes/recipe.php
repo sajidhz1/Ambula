@@ -273,7 +273,7 @@
         $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
             type: 'POST',
             data: {text: $('#comment').val()},
-            url: '/recipes/addComment/<?=$this->recipes->recipeId ?>',
+            url: '/Ambula/recipes/addComment/<?=$this->recipes->recipeId ?>',
             success: function (responseText) {
               
                 $('.commentList').append(' <li><div class="commenterImage"><img src="http://lorempixel.com/50/50/people/6" /></div>'
@@ -297,7 +297,7 @@
         $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
             type: 'POST',
             data: {val: $(this).val()},
-            url: '/recipes/addRating/<?=$this->recipes->recipeId ?>',
+            url: '/Ambula/recipes/addRating/<?=$this->recipes->recipeId ?>',
             success: function (responseText) {
               // alert(responseText);
             }
