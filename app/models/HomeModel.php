@@ -287,4 +287,38 @@ class HomeModel {
        $result = $this->db->query("SELECT user_account_type FROM users WHERE user_name = '$user_name'")->fetch();
         return $result;
     }
+
+    public function searchResults(){
+        $q = $_GET['q'];
+        $sql = "SELECT idRecipe, recipes.title ";
+
+        if(isset($_GET['type'])) {
+
+
+            if($_GET['type'] =='recipes'){
+
+                $sql .='FROM recipes ';
+
+                if(isset($_GET['category'])){
+                    $category = $_GET['category'];
+                    $sql.=", recipe_category WHERE idCategory = category_id AND recipe_category.title ='$category' AND recipes.title LIKE '%$q%'";
+                }else {
+
+                    $sql .= "WHERE recipes.title LIKE '%$q%'";
+                }
+
+            }else if($_GET['type'] =='recipes'){
+
+            }
+        }
+        else{
+            $sql .= " FROM recipes WHERE recipes.title LIKE '%$q%'";
+        }
+
+
+
+        $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($result);
+    }
 } 

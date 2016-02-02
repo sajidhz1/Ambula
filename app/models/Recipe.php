@@ -11,6 +11,8 @@ class Recipe
     public $view;
     public $ratings;
 
+    public $file_name = 1;
+
     public function __construct(DataBase $db)
     {
         $this->db = $db;
@@ -35,17 +37,17 @@ class Recipe
         for($i=0 ; $i< count($_POST['tags']) ; $i++)
             if(isset($_POST['tags'][$i]))    $tags .= $_POST['tags'][$i].',';
 
-          $sql = "INSERT INTO recipes (title, created_at, category_id, users_user_id, est_time,tags)
-                VALUES (:title, :created_at, :recipe_category_idcategory, :users_user_id, :est_time, :tags)";
+          $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags )
+                VALUES (:title,  :recipe_category_idcategory, :users_user_id, :prep_time ,:cook_time, :tags)";
 
         $query = $this->db->prepare($sql);
 
         $query->execute(array(':title' => $_POST['recipetitle'],
-            ':created_at' => $user_creation_timestamp,
             ':recipe_category_idcategory' => $_POST['category'],
             ':users_user_id' => Session::get('uid'),
-            ':est_time' => $_POST['time'],
-            ':tags' => $tags));
+            ':prep_time' => $_POST['prep_time'],
+            ':cook_time' => $_POST['cook_time'],
+            ':tags' => $_POST['tags']));
 
         $recipeid = $this->db->lastInsertId();
 
@@ -54,12 +56,7 @@ class Recipe
                 VALUES (:Recipe_idRecipe, :Ingredients_idIngredients, :units, :qty)";
 
         mkdir("uploads/" . $recipeid);
-        $this->imageUpload("recipephoto1", $recipeid, 1);
-        $this->imageUpload("recipephoto2", $recipeid, 1);
-        $this->imageUpload("recipephoto3", $recipeid, 1);
-        
-        $this->make_thumb("uploads/".$recipeid."/".$_FILES["recipephoto1"]["name"],"uploads/".$recipeid."/thumb.jpg",200);
-	$this->make_thumb("uploads/".$recipeid."/".$_FILES["recipephoto1"]["name"],"uploads/".$recipeid."/facebook.jpg",800);
+
 
         //loop through ingredients fields
         $count = count($_POST['ingname']);
@@ -97,15 +94,24 @@ class Recipe
         }
 
 
-        if ($this->multipleImageUpload($recipeid)) {
-              
-           
-        } else {
-            return false;
-        };
-        
-      
-	echo ":".$recipeid.";";
+        $sql5 = "INSERT INTO recipe_description (description_en,Recipe_idRecipe,image_url) VALUES (:description_en , :recipe_id, :dir)";
+
+
+
+        foreach ($_POST['steps'] as $key => $tmp_name) {
+
+
+            $sth = $this->db->prepare($sql5);
+            $sth->execute(array(
+                ':description_en' => $_POST['steps'][$key],
+                ':recipe_id' => $recipeid,
+                ':dir' => "dsds"
+            ));
+        }
+
+
+
+        echo ":".$recipeid.";";
     }
 
  //add sinhala description
@@ -503,9 +509,24 @@ class Recipe
      function make_thumb($src, $dest, $desired_width) {
 
         /* read the source image */
-        $source_image = imagecreatefromjpeg($src);
-        $width = imagesx($source_image);
-        $height = imagesy($source_image);
+         $what = getimagesize($src);
+
+         switch(strtolower($what['mime']))
+         {
+             case 'image/png':
+                 $img = imagecreatefrompng($src);
+                 break;
+             case 'image/jpeg':
+                 $img = imagecreatefromjpeg($src);
+                 break;
+             case 'image/gif':
+                 $img = imagecreatefromgif($src);
+                 break;
+             default: die();
+         }
+
+        $width = imagesx($img);
+        $height = imagesy($img);
 
         /* find the "desired height" of this thumbnail, relative to the desired width  */
         $desired_height = floor($height * ($desired_width / $width));
@@ -514,7 +535,7 @@ class Recipe
         $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
 
         /* copy source image at a resized size */
-        imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+        imagecopyresampled($virtual_image, $img, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
 
         /* create the physical thumbnail image to its destination */
         imagejpeg($virtual_image, $dest);
@@ -684,6 +705,64 @@ class Recipe
     }
 
 
+    //testing for dropzone js
+    public function testDropZone(){
+
+   /*
+        $target_dir = "uploads/" . $path . "/";
+        $target_file = $target_dir . basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
+   */
+        if (!file_exists('uploads/recipes/temp/'.Session::get('username'))) {
+            mkdir('uploads/recipes/temp/'.Session::get('username'),0777,true);
+        }
+        $ds          = '/';  //1
+
+        $storeFolder = 'uploads/recipes/temp/'.Session::get('username');
+
+        if (!empty($_FILES)) {
 
 
+
+            $tempFile = $_FILES['file']['tmp_name'];          //3
+
+            $targetPath =  $storeFolder . $ds;  //4
+
+            $targetFile =  $targetPath. basename($_FILES['file']['name']);  //5
+            $imageFileType = pathinfo($targetFile, PATHINFO_EXTENSION);
+            move_uploaded_file($tempFile,$storeFolder.'/'.$_GET['name'].".".$imageFileType); //6
+
+            $this->make_thumb($storeFolder.'/'.$_GET['name'].'.'.$imageFileType,$storeFolder.'/'.$_GET['name'].'_thumb.'.$imageFileType,200);
+
+            echo $_GET['name'].".".$imageFileType;
+        }
+
+
+    }
+
+
+
+    public function showImages(){
+        $urls[] = array();
+        $i = 0;
+
+        $handle = opendir('uploads/recipes/temp/'.Session::get('username'));
+        while($file = readdir($handle)){
+            if($file !== '.' && $file !== '..' && preg_match('/thumb/',$file)){
+                $urls[$i] = $file;
+                $i++;
+
+            }
+        }
+
+        echo json_encode($urls);
+    }
+
+    public function deleteRecipeImage($name=''){
+        unlink("uploads/recipes/temp/".Session::get('username')."/".$_POST['name']);
+
+        unlink("uploads/recipes/temp/".Session::get('username')."/".explode(".",$_POST['name'])[0]."_thumb.".explode(".",$_POST['name'])[1]);
+    }
 } 

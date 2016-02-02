@@ -123,6 +123,10 @@ class recipes extends Controller {
         $this->view('Recipes/recipe_success');
     }
 
+    public function newRecipeupdated(){
+        $this->view('Recipes/new_recipe_updated');
+    }
+
     public function getIngredientBrands($ingId =''){
         return $this->recipes->getIngredientBrands($ingId);
     }
@@ -175,4 +179,17 @@ class recipes extends Controller {
         $this->recipes->deleteRecipeDescription();
     }
 
+    //updated view
+
+    public function testDropZone(){
+       return $this->recipes->testDropZone();
+    }
+
+    public function showImages(){
+       return  $this->recipes->showImages();
+    }
+
+    public function deleteRecipeImage($name=''){
+       echo  $this->recipes->deleteRecipeImage($name='');
+    }
 }
