@@ -35,7 +35,7 @@ class recipes extends Controller {
     //add sinhala translation
     public function addRecipeSi(){
        $this->recipes->addRecipeSi();
-      //  Header('Location:/Ambula/recipes/viewRecipe/'.$_POST['idrecipe']);
+      //Header('Location:/Ambula/recipes/viewRecipe/'.$_POST['idrecipe']);
     }
 
      //view sinhala view

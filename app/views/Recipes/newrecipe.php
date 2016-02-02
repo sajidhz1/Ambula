@@ -267,7 +267,7 @@
                     </div>
                     <div class="col-lg-2 col-sm-2">
                         <br>
-                        <img src="/public/img/no_preview_available.jpg" class="output" width="75" height="75">
+                        <img src="Ambula/public/img/no_preview_available.jpg" class="output" width="75" height="75">
                     </div>
                     <div class="col-lg-2 col-sm-1">
                         <br><br>

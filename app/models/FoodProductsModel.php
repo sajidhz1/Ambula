@@ -214,4 +214,65 @@ class FoodProductsModel {
 		return json_encode($result);
 	}
 
+	public function checkUserReviewAvailability(){
+
+		$uid = Session::get('uid');
+		$prodId = Session::get('productId');
+		$result = $this->db->query("SELECT idproduct_review, products_idproducts, users_user_id FROM product_review WHERE users_user_id = '$uid' AND products_idproducts = '$prodId';")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+
+	}
+
+	//Adding a product review by user to the db
+    public function addProductReview(){
+
+        $sql = "INSERT INTO product_review (review, rating, products_idproducts, users_user_id)
+                VALUES (:review, :rating, :products_idproducts, :users_user_id)";
+
+        $query = $this->db->prepare($sql);
+
+        $query->execute(array(':review' => $_POST['reviewTxt'],
+            ':rating' => $_POST['ratingStr'],
+            ':products_idproducts' => Session::get('productId'),
+            ':users_user_id' => Session::get('uid')));
+
+		$reviewId = $this->db->lastInsertId();
+		return $reviewId;
+
+	}
+
+    //Retrieving reviews of a product form DB
+    public function viewReviewForSingleProduct(){
+
+        $productId = Session::get('productId');
+        $result = $this->db->query("SELECT pr.idproduct_review, pr.timeAdded, pr.review, pr.rating, pr.users_user_id, usr.user_id, usr.user_name, usr.user_avatar FROM (SELECT idproduct_review, timeAdded, review, rating, users_user_id FROM product_review WHERE products_idproducts= '$productId') AS pr  INNER JOIN users AS usr ON pr.users_user_id=usr.user_id;")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
+
+    //getting the review by user logged in for editting
+    public function viewReviewFromAUserForProduct(){
+
+        $productId = Session::get('productId');
+        $uid = Session::get('uid');
+        $result = $this->db->query("SELECT idproduct_review, timeAdded, review, rating, products_idproducts, users_user_id FROM product_review WHERE users_user_id = '$uid' AND products_idproducts = '$productId' LIMIT 1;")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
+
+    public function updateUserReview($reviewId){
+
+        $currentDate = new DateTime('now');
+        $sql = "UPDATE product_review SET timeAdded=:timeAdded, review=:review, rating=:rating WHERE idproduct_review = '$reviewId'";
+
+        $query = $this->db->prepare($sql);
+
+        $updatedReviewId = $query->execute(array(':timeAdded'=>$currentDate->getTimestamp(),
+            ':review'=>$_POST['editReviewTxt'],
+            ':rating'=>$_POST['ratingStrEdit']));
+
+        return $updatedReviewId;
+
+    }
+
 } 

@@ -14,6 +14,7 @@ class FoodProducts extends Controller{
     {
         parent::__construct();
         $this->products = $this->model('FoodProductsModel');
+		$singleProdImg = "";
 
     }
 
@@ -125,11 +126,61 @@ class FoodProducts extends Controller{
 
     }
 
-
+    //get all the products of a category
 	public function getAllProductsOfSingleCategory($catType){
 
 		return $this->products->getAllProductsOfSingleCategory($catType);
+
 	}
+
+    //check whether user has a review for a product
+    public function checkUserReviewAvailability(){
+
+		$result = json_decode($this->products->checkUserReviewAvailability());
+		if(!empty($result)){
+			return true;
+		}else{
+			return false;
+		}
+
+
+    }
+
+	//Inserting the product review for a product by a user
+	public function addProductReview(){
+
+		if($this->products->addProductReview()){
+			header('Location: /Ambula/FoodProducts/product?productId='.Session::get('productId'));
+		}else{
+			$this->view('_template/error', "Error");
+		}
+
+	}
+
+    //Displaying all the reviews there are for a single product
+    public function viewReviewForSingleProduct(){
+
+        return $this->products->viewReviewForSingleProduct();
+
+    }
+
+    //Displaying the review by the logged in user to edit it
+    public function viewReviewFromAUserForProduct(){
+
+        return $this->products->viewReviewFromAUserForProduct();
+
+    }
+
+    //Updating the product review by the logged in user
+    public function updateUserReview($reviewId=""){
+
+        if($this->products->updateUserReview($reviewId)){
+            header('Location: /Ambula/FoodProducts/product?productId='.Session::get('productId'));
+        }else{
+            $this->view('_template/error', "Error");
+        }
+
+    }
 } 
 
 

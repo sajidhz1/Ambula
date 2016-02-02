@@ -30,6 +30,8 @@
 	<link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
 	<link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
 
+	<!-- fav icon -->
+	<link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 	<script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
