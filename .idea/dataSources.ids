@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="MySQL - ambula@localhost" uuid="191bc4e5-ef8e-4759-8719-41ee2deec552">
+  <data-source name="MySQL - ambula@localhost" uuid="cc90ebd4-f0d9-434b-827e-0569d759ec30">
     <database-info product="MySQL" version="5.6.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
       <extra-name-characters>#@</extra-name-characters>
       <identifier-quote-string>`</identifier-quote-string>
@@ -93,6 +93,21 @@
       <exported-key name="fk_Manufacture_has_Product_categories_Product_categories1" table="cooperate_user_has_product_categories" schema="" catalog="ambula" columns="Product_categories_id_product_categories"/>
       <exported-key name="fk_products_Product_categories1" table="products" schema="" catalog="ambula" columns="Product_categories_id_product_categories"/>
     </table>
+    <table name="product_review" schema="" catalog="ambula" type="TABLE">
+      <column name="idproduct_review" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="timeAdded" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
+      <column name="review" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="rating" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="visiblity" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <column name="products_idproducts" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idproduct_review,products_idproducts,users_user_id"/>
+      <foreign-key name="fk_product_review_products1" columns="products_idproducts" ref-table="products" ref-schema="" ref-catalog="ambula" ref-columns="idproducts" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_product_review_users1" columns="users_user_id" ref-table="users" ref-schema="" ref-catalog="ambula" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="idproduct_review_UNIQUE" unique="true" columns="idproduct_review"/>
+      <index name="fk_product_review_products1_idx" unique="false" columns="products_idproducts"/>
+      <index name="fk_product_review_users1_idx" unique="false" columns="users_user_id"/>
+    </table>
     <table name="products" schema="" catalog="ambula" type="TABLE">
       <column name="idproducts" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="product_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
@@ -105,6 +120,7 @@
       <primary-key name="PRIMARY" columns="idproducts"/>
       <foreign-key name="fk_products_commercial_user1" columns="commercial_user_idcommercial_user,commercial_user_users_user_id" ref-table="commercial_user" ref-schema="" ref-catalog="ambula" ref-columns="idcommercial_user,users_user_id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_products_Product_categories1" columns="Product_categories_id_product_categories" ref-table="product_categories" ref-schema="" ref-catalog="ambula" ref-columns="id_product_categories" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_product_review_products1" table="product_review" schema="" catalog="ambula" columns="products_idproducts"/>
       <index name="fk_products_commercial_user1_idx" unique="false" columns="commercial_user_idcommercial_user,commercial_user_users_user_id"/>
       <index name="fk_products_Product_categories1_idx" unique="false" columns="Product_categories_id_product_categories"/>
     </table>
@@ -121,15 +137,7 @@
       <column name="date_time_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <column name="visibility" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="idPromotion,users_user_id"/>
-    </table>
-    <table name="promotion_adder" schema="" catalog="ambula" type="TABLE">
-      <column name="idPromotion_Adder" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="first_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
-      <column name="last_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
-      <column name="company" sqlType="VARCHAR" precision="150" scale="0" nullable="false" jdbcType="12"/>
-      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
-      <column name="phone_number" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="idPromotion_Adder"/>
+      <foreign-key name="promotion_ibfk_1" columns="users_user_id" ref-table="users" ref-schema="" ref-catalog="ambula" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="ratings" schema="" catalog="ambula" type="TABLE">
       <column name="Recipes_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -244,6 +252,8 @@
       <column name="user_facebook_uid" sqlType="BIGINT UNSIGNED" precision="20" scale="0" nullable="true" jdbcType="-5" remarks="b3B0aW9uYWwgLSBmYWNlYm9vayBVSUQ="/>
       <primary-key name="PRIMARY" columns="user_id"/>
       <exported-key name="fk_commercial_user_users1" table="commercial_user" schema="" catalog="ambula" columns="users_user_id"/>
+      <exported-key name="fk_product_review_users1" table="product_review" schema="" catalog="ambula" columns="users_user_id"/>
+      <exported-key name="promotion_ibfk_1" table="promotion" schema="" catalog="ambula" columns="users_user_id"/>
       <index name="user_email" unique="true" columns="user_email"/>
       <index name="user_name" unique="true" columns="user_name"/>
       <index name="user_facebook_uid" unique="false" columns="user_facebook_uid"/>

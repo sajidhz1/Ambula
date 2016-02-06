@@ -22,7 +22,7 @@
     <link href="http://localhost/Ambula/public/css/star-rating.min.css" rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
 

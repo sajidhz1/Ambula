@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta property="og:image"              content="http://theambula.lk/uploads/categories/curries.jpg" />
-	<meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe/<?=$this->recipes->recipeId; ?>" />
+	<meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe" />
 	<meta property="og:type"               content="article" />
 	<meta property="og:title"              content="Curries" />
 	

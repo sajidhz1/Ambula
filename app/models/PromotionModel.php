@@ -10,109 +10,15 @@ class PromotionModel
 {
 
 
-	public function __construct(DataBase $db)
-	{
+	public function __construct(DataBase $db){
 		$this->db = $db;
 		$this->idPromotion_Adder ="";
 		$this->idpromo_adderErr ="";
 		$this->idpromo_adder_flag = false;
 	}
 
-	/*
-	public function validateAndInsertPromoAdder()
-	{
 
-		$first_name_flag = $last_name_flag = $company_flag = $email_flag = $phone_number_flag = false;
-		$first_nameErr = $last_nameErr = $companyErr = $emailErr = $phone_numberErr = "";
-		$first_name = $last_name = $company = $email = $phone_number = "";
-
-
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-			//firstname validation
-			if (empty($_POST["first_name"])) {
-				$first_nameErr = "firstName is required";
-				$first_name_flag = false;
-			} else {
-				$first_name_flag = true;
-				$first_name = $this->test_input($_POST["first_name"]);
-				// check if first name only contains letters and whitespace
-				if (!preg_match("/^[a-zA-Z ]*$/",$first_name)) {
-					$first_name_flag = false;
-					$first_nameErr = "Only letters and white space allowed";
-				}
-			}
-
-			//lastname validation
-			if(empty($_POST["last_name"])){
-				$last_nameErr = "last name is required";
-				$last_name_flag = false;
-			}else{
-				$last_name_flag  = true;
-				$last_name = $this->test_input($_POST["last_name"]);
-				// check if last name only contains letters and whitespace
-				if (!preg_match("/^[a-zA-Z ]*$/",$last_name)) {
-					$last_name_flag = false;
-					$last_nameErr = "Only letters and white space allowed";
-				}
-			}
-
-			//company validation
-			if (empty($_POST["company"])) {
-				$companyErr = "Company name is required";
-				$company_flag = false;
-			} else {
-				$company_flag = true;
-				$company = $this->test_input($_POST["company"]);
-				// check if name only contains letters and whitespace
-			}
-
-			//email validation
-			if (empty($_POST["email"])) {
-				$emailErr = "Email is required";
-				$email_flag = false;
-			} else {
-				$email_flag = true;
-				$email = $this->test_input($_POST["email"]);
-				// check if e-mail address is well-formed
-				if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-					$this->flag_log = false;
-					$email_flag = false;
-					$emailErr = "Invalid email format";
-				}
-			}
-
-			//email validation
-			if (empty($_POST["phone_number"])) {
-				$phone_numberErr = "Contatct number is required";
-				$phone_number_flag = false;
-			} else {
-				$phone_number_flag = true;
-				$phone_number = $this->test_input($_POST["phone_number"]);
-				if (!preg_match("/^\d{3}[\s-]?\d{3}[\s-]?\d{4}$/",$phone_number)) {
-					$phone_number_flag = false;
-					$last_nameErr = "Enter a valid phone number";
-				}
-			}
-
-
-		}
-
-		if(!$first_name_flag || !$last_name_flag || !$company_flag || !$email_flag || !$phone_number){
-			return false;
-		}
-
-		$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-
-		//insert into promotion_adder table
-		$sql = "INSERT INTO promotion_adder (first_name,last_name,company, email, phone_number) VALUES ('".$first_name."','".$last_name."','".$company."','".$email."','".$phone_number."')";
-		$this->db->prepare($sql)->execute();
-		return $this->db->lastInsertId();
-	}
-	*/
-
-	public function validateAndInsertNewPromo()
-	{
+	public function validateAndInsertNewPromo(){
 
 		$this->idpromo_adder_flag = $promo_type_flag = $promo_name_flag = $description_flag = $startdate_flag = $enddate_flag = $priority_flag = false;
 		$this->idpromo_adderErr = $promo_typeErr = $promo_nameErr = $promo_imageErr = $descriptionErr = $startdateErr = $enddateErr =  $priorityErr = $datetime_adderdErr = $visibilityErr = "";
@@ -239,43 +145,6 @@ class PromotionModel
 
 	}
 
-	/*
-	public function checkEmailsInAdder($email)
-	{
-		$sql = "SELECT * FROM promotion_adder WHERE email = ? LIMIT 1";
-		$query = $this->db->prepare($sql);
-		$query->bindParam(1, $email, PDO::PARAM_STR);
-		$query->execute();
-		if($query->rowCount() == 0)
-		{
-			$this->idpromo_adderErr = "you haven't been registered before";
-			$this->idpromo_adder_flag = false;
-			return $query;
-		}else{
-			$this->idpromo_adder_flag = true;
-			$this->idPromotion_Adder = $query->fetchColumn();
-			return $query;
-		}
-	}
-	*/
-
-	//This function is used to check whether a logged in user is a personal or a corporate user
-	//user type is returned to Promotion Controller wheich is called by checkUserType() method
-	/*public function userType($userId)
-	{
-		$sql = "SELECT user_account_type FROM users WHERE user_id = ?";
-		$query = $this->db->prepare($sql);
-		$query->bindParam(1,$userId, PDO::PARAM_STR);
-		$query->execute();
-
-		if($query->rowCount() == 0){
-			return $query;
-		}else{
-			return $query;
-		}
-
-	}*/
-
 	public function viewPromotions($promotion_type)
 	{
 		$sql = "SELECT * FROM promotion WHERE promotion_type = ?";
@@ -304,6 +173,15 @@ class PromotionModel
 			return $query;
 		}
 	}
+//==================================================Testing=======================================//
+	public function viewPromotionsTest($promotion_type){
+
+		$result = $this->db->query("SELECT pr.*, usr.idcommercial_user, usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+	}
+
+//=================================================================================================//
 
 	function test_input($data) {
 		$data = trim($data);

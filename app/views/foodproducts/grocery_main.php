@@ -18,7 +18,6 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
-
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -33,7 +32,7 @@
     <![endif]-->
     <style>
 
-        .product-brand{
+        .product-brand {
             float: none;
             margin: 0 auto;
 
@@ -46,21 +45,21 @@
             padding: 5px;
             text-align: center;
 
-
         }
 
         .box .inner {
             border: 1px solid #B2B2B2;
             background: #fff;
-            height:225px;
+            height: 225px;
             display: block;
 
         }
 
-        .product_thumb{
-           position: relative;
+        .product_thumb {
+            position: relative;
 
         }
+
         header.carousel {
             height: 50%;
         }
@@ -89,14 +88,14 @@
             text-align: center;
         }
 
-        .subcat:hover .subcat-tile{
+        .subcat:hover .subcat-tile {
             border: 1px solid #666;
         }
+
         .subcat-tile:hover {
             text-decoration: none;
 
         }
-
 
     </style>
 
@@ -118,13 +117,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/classicFullWidth/01_classic.jpg');"></div>
+            <div class="fill"
+                 style="background-image:url('http://www.responsivejqueryslider.com/images/classicFullWidth/01_classic.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 1</h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/coolFullWidth/04_cool.jpg');"></div>
+            <div class="fill"
+                 style="background-image:url('http://www.responsivejqueryslider.com/images/coolFullWidth/04_cool.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 2</h2>
             </div>
@@ -150,40 +151,50 @@
 
     <div class="row" style="margin: 25px 10px;">
         <div class="col-lg-9">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
-            <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
-        </ul>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#hom">Latest</a></li>
+                <li><a data-toggle="tab" href="#menu2">Find a Product</a></li>
+            </ul>
 
-        <div class="tab-content" style="margin-top: 20px;">
-            <div class="tab-pane fade in active"  id="hom">
-            <?php
-                $arr = json_decode($this->viewProducts(16), true);
-                foreach($arr as $product){
-            ?>
-                <div class="col-lg-3 box" style="margin: auto;">
-                    <a class="inner box subcat-tile" href="/Ambula/FoodProducts/product?productId=<?=$product['idproducts']?>">
-                        <h5 style="color: #333333;height: 50px;"><?=$product['product_name'] ?></h5>
-                        <div style="height: 130px;overflow: hidden;">
-                        <img class="product_thumb" src="/Ambula/<?=$product['img_url'] ?>"
-                             style="display:block;margin: auto;width: 100%;">
-                         </div>
-                    </a>
+            <div class="tab-content" style="margin-top: 20px;">
+                <div class="tab-pane fade in active" id="hom">
+                    <?php
+                    $arr = json_decode($this->viewProducts(16), true);
+                    foreach ($arr as $product) {
+                        ?>
+                        <div class="col-lg-3 box" style="margin: auto;">
+                            <a class="inner box subcat-tile"
+                               href="/Ambula/FoodProducts/product?productId=<?= $product['idproducts'] ?>">
+                                <h5 style="color: #333333;height: 50px;"><?= $product['product_name'] ?></h5>
+
+                                <div style="height: 130px;overflow: hidden;">
+                                    <img class="product_thumb" src="/Ambula/<?= $product['img_url'] ?>"
+                                         style="display:block;margin: auto;width: 100%;">
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <?php } ?>
+
+
+                <div id="menu2" class="tab-pane fade">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-lg" placeholder="Search for Products...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search input-lg"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
-
-            <div id="menu2" class="tab-pane fade">
-                <h3>Menu 2</h3>
-
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam.</p>
-            </div>
-
         </div>
-       </div>
         <div class="col-lg-3">
             <h3 class="pg-title txt-red"><span>Categories</span></h3>
             <ul class="list-group" style="margin: 20px;">
@@ -194,13 +205,14 @@
                 foreach ($arrPoductNum as $category) {
                     ?>
                     <li class="list-group-item">
-                        <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;font-weight: 500;color: brown;" ><?php echo $category['title']; ?>
+                        <a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"
+                           style="font-size: 0.9em;font-weight: 500;color: brown;"><?php echo $category['title']; ?>
                         </a>
 					 <span style="margin-left: 5px;" class="badge">
 						 <?php
-                         if(is_null($category['product_count'])){
+                         if (is_null($category['product_count'])) {
                              echo 0;
-                         }else{
+                         } else {
                              echo $category['product_count'];
                          }
                          ?>
@@ -216,13 +228,15 @@
         <h2 class="pg-title txt-red"><span>Partners</span></h2>
         <?php $partners = json_decode($this->getAllCooperateProfiles(), true);
 
-        foreach($partners as $partner){ ?>
-        <a href="/Ambula/home/profile/<?=$partner['user_name'] ?>">
-        <div class="col-lg-2" style="margin-bottom: 20px;">
-            <img src="/Ambula/uploads/profile/commercial_user/<?=$partner['user_name'] ?>/<?=$partner['user_name'] ?>.jpg" style="display:block;margin: auto;" class="product-brand" height="120" width="120"  />
-            <h4 style="text-align: center"><?=$partner['company_name'] ?></h4>
-        </div>
-        </a>
+        foreach ($partners as $partner) { ?>
+            <a href="/Ambula/home/profile/<?= $partner['user_name'] ?>">
+                <div class="col-lg-2" style="margin-bottom: 20px;">
+                    <img
+                        src="/Ambula/uploads/profile/commercial_user/<?= $partner['user_name'] ?>/<?= $partner['user_name'] ?>.jpg"
+                        style="display:block;margin: auto;" class="product-brand" height="120" width="120"/>
+                    <h4 style="text-align: center"><?= $partner['company_name'] ?></h4>
+                </div>
+            </a>
         <?php } ?>
     </div>
 </div>

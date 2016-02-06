@@ -54,6 +54,7 @@
             background-color: #eee;
             height: 225px;
             display: block;
+            cursor: pointer;
 
         }
 
@@ -84,9 +85,16 @@
             background-size: cover;
         }
 
-
-
     </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("[data-link]").click(function () {
+                window.location.href = $(this).attr("data-link");
+                return false;
+            });
+        });
+    </script>
 
 </head>
 
@@ -144,7 +152,7 @@
 
         foreach ($arrsub as $category) {
             ?>
-            <li class=""><a href="#"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a></li>
+            <li class=""><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a></li>
         <?php } ?>
     </ul>
         </div>
@@ -153,7 +161,7 @@
         <div class="col-lg-10 hgt500" >
             <?php $productCategoryList = json_decode($this->getAllProductsOfSingleCategory($_GET['cat']),true);
 			foreach ($productCategoryList as $catProd){ ?>
-            <div class="col-lg-2 box">
+            <div class="col-lg-2 box" data-link="/Ambula/FoodProducts/product?productId=<?= $catProd['idproducts'] ?>">
                 <div class="inner">
                     <img src="/Ambula/<?= $catProd['img_url']?>" style="width: 100%;height:175px; ">
                     <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222"><?= $catProd['product_name']?></p>

@@ -28,6 +28,8 @@
 	<link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
 	<link href="../public/css/registration.css" rel="stylesheet" media="screen"/>
 
+	<!-- fav icon -->
+	<link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 	<script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
