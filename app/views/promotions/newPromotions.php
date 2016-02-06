@@ -233,7 +233,7 @@
 						<label class="control-label" for="description">Promotion Description</label>
 
 						<div class="controls">
-							<textarea id="description" name="description" placeholder=""
+							<textarea id="description" name="description"
 								   class="form-control" style="height: 120px; resize: none;" required>
 							</textarea>
 						</div>
