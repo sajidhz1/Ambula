@@ -218,12 +218,41 @@ $(document).on('click', '#updateTags', function (e) {
 
 $(function () {
 
-    $('#ex1').slider().on('slide', function (ev) {
-        $('#time').html($('#ex1').data('slider').getValue() + " Hours and " + $('#ex2').data('slider').getValue() +" Minutes");
+    var dateNow = new Date();
+    $('#datetimepicker1').datetimepicker(
+        {format: 'HH:mm',
+            defaultDate:moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+        }
+    );
+
+    $('#datetimepicker2').datetimepicker(
+        {format: 'HH:mm',
+            defaultDate:moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+        }
+    );
+
+
+    $('#datetimepicker1').on("dp.change", function (e) {
+        var time = $('#prep_time').val().split(":");
+
+        if(time[0] < 2){
+            $('#time-data').html(time[0]+" Hour and "+time[1]+" Minutes");
+        }else{
+            $('#time-data').html(time[0]+" Hours and "+time[1]+" Minutes");
+        }
+
     });
 
-    $('#ex2').slider().on('slide', function (ev) {
-        $('#time').html($('#ex1').data('slider').getValue() + " Hours and " + $('#ex2').data('slider').getValue()+ " Minutes");
+
+    $('#datetimepicker2').on("dp.change", function (e) {
+        var time = $('#cook_time').val().split(":");
+
+        if(time[0] < 2){
+            $('#time-data-2').html(time[0]+" Hour and "+time[1]+" Minutes");
+        }else{
+            $('#time-data-2').html(time[0]+" Hours and "+time[1]+" Minutes");
+        }
     });
+
 
 });

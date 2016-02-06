@@ -143,8 +143,10 @@
         </div>
 
         <div class="form-group col-lg-9 col-sm-12">
-            <label class="control-label" for="category">Tags</label>
-            <input type="text"  name="tags" value="Sri lankan,Dessert"  data-role="tagsinput" />
+            <label class="control-label" for="tags">Tags</label>
+            <div class="controls">
+            <input type="text"  name="tags" id="tags" value="Sri lankan,Dessert"  data-role="tagsinput" />
+               </div>
         </div>
 
     </div>
@@ -161,7 +163,7 @@
         <div class="entry">
             <div class="input-group">
                 <div class="col-xs-5 col-sm-5">
-                    <input class="form-control" name="ingname[]" type="text"
+                    <input class="form-control" id="recipetitle" name="ingname[]" type="text"
                            placeholder="Example : sugar , salt"/>
                 </div>
                 <div class="col-xs-2 col-sm-2">
@@ -232,7 +234,7 @@
 
             </div>
             <div class="input-group">
-                <span><h5>Cook time</h5></span>
+                <span><h5>Cooking time</h5></span>
 
                 <div class='input-group date' id='datetimepicker2'>
                     <input type='text' id="cook_time" name="cook_time" class="form-control" />
@@ -300,6 +302,7 @@
             <div class="col-lg-2 col-sm-2">
                 <br>
                 <img src="/Ambula/public/img/no_preview_available.jpg" class="output" width="75" height="75">
+                <input name="des_img[]" class="des_img" type="hidden"/>
             </div>
             <div class="col-lg-2 col-sm-1">
                 <br><br>

@@ -147,6 +147,29 @@ $(window).on("navigate", function (event, data) {
 //onload
 $(function () {
 
+
+    $('#ingtitle').typeahead
+    ({
+
+        items: 5,
+        source: function (query, process) {
+            $.ajax({
+                url: '/Ambula/recipes/getIngredientSuggestions',
+                type: 'POST',
+                dataType: 'JSON',
+                data: 'query=' + query,
+                success: function (data) {
+                    var myarr = [];
+
+                    $.each(data, function (i, item) {
+                        myarr.push(item.title);
+                    });
+                    process(myarr);
+                }
+            });
+        }
+    });
+
      myDropzone = new Dropzone("#mydropzone",
         {
             url: "/Ambula/recipes/testDropZone?name="+name,
@@ -246,9 +269,9 @@ $(function () {
                                 window.onbeforeunload = function () {
                                     return null;
                                 };
-                                //alert(json);
+                                alert(json);
                                 var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                                window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
+                                //window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
                             }
                         });
 
@@ -352,7 +375,9 @@ $(document).on('click', '.select-image', function (e) {
     $(this).toggleClass('selected-image').siblings().removeClass('selected-image');
 
     //sets the selected image to the recipe step image object
-    recipeStep.attr('src',$(this).attr('src'));
+    recipeStep.find('.output').attr('src',$(this).attr('src'));
+    recipeStep.find('input').val($(this).attr('src'));
+
 
     //hide popup model
     $('#myModal2').hide();
@@ -365,7 +390,7 @@ $(document).on('click', '.choose-image', function (e) {
 
 
     //gets the closest image object to the button that opens the modal
-    recipeStep = $(this).closest('div').prev('div').find('.output');
+    recipeStep = $(this).closest('div').prev('div');
 
 });
 

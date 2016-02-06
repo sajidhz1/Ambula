@@ -64,8 +64,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<!--Header START -->
-<?php $this->view('_template/navigation_menu', "newRecipe") ?>
+
 
 <div class="container-fluid pages">
    

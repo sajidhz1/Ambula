@@ -192,4 +192,9 @@ class recipes extends Controller {
     public function deleteRecipeImage($name=''){
        echo  $this->recipes->deleteRecipeImage($name='');
     }
+
+     public function getIngredientSuggestions(){
+
+        $this->recipes->getIngredientSuggestions();
+    }
 }
