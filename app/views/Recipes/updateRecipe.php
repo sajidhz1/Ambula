@@ -12,7 +12,10 @@
     <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/range-slider.css" rel="stylesheet" media="screen"/>
-    
+
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen"/>
+
+
     <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
@@ -20,8 +23,10 @@
     <script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../public/js/registration/validator.js"></script>
-    <script type="text/javascript" src="../public/js/recipes/bootstrap-slider.js"></script>
     <script src="../public/js/typeahead.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -88,7 +93,7 @@
 
 <fieldset style="padding-top: 45px;">
 <div id="legend">
-    <legend class="new-recipe">Update Recipe           <a href="/recipes/newrecipe?lang=si&r=<?=$_GET['id'] ?>" class="btn btn-info">සිංහලෙන්</a></legend>
+    <legend class="new-recipe">Update Recipe  <a href="/recipes/newrecipe?lang=si&r=<?=$_GET['id'] ?>" class="btn btn-info">සිංහලෙන්</a></legend>
     
 </div>
 
@@ -242,25 +247,34 @@
     <div class="col-lg-3 col-sm-12" id="recipePart2" style="margin-top: 20px;">
 
         <div id="fields">
-            <label class="control-label" for="field1"><h2>Estimated time</h2></label>
+
+
 
             <div class="input-group">
-                <span><h4>Hours</h4></span>
-                <input style="width: 100%;" id="ex1" data-slider-id='ex1Slider' data-slider-value="3" type="text"
-                       data-slider-min="0"
-                       data-slider-max="6" data-slider-step="1"/>
+                <span><h5>Preparation time</h5></span>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' id="prep_time" value="<?=$result[0]['prep_time'] ?>" name="prep_time" class="form-control" onchange="alert('lala')" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+                <h5><span id="time"><?php $time = explode(":", $result[0]['prep_time']); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours "; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes"; ?></span></h5>
+
             </div>
+
             <div class="input-group">
-                <span><h4>Minutes</h4></span>
-                <input style="width: 100%;" id="ex2" data-slider-id='ex2Slider' type="text" data-slider-min="0"
-                       data-slider-max="60" data-slider-step="5"/>
+                <span><h5>Cooking time</h5></span>
+                <div class='input-group date' id='datetimepicker2'>
+                    <input type='text' id="cook_time" value="<?=$result[0]['cook_time'] ?>" name="cook_time" class="form-control" onchange="alert('lala')" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+                <h5><span id="time"><?php $time = explode(":", $result[0]['cook_time']); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours "; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes"; ?></span></h5>
+
             </div>
-            <div class="input-group">
-                <h4><span
-                        id="time"><?php $time = explode(":", $result[0]['est_time']); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours "; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes"; ?></span>
-                </h4>
-                <a style="margin: 10px" id="updateTime" class="btn btn-success"> Save Time </a>
-            </div>
+
+
             <div>
                 <span><h2>Tags</h2></span>
                 <span>separate tags by a "," </span>
@@ -268,6 +282,7 @@
                 <a style="margin: 10px" id="updateTags" class="btn btn-success"> Save Tags </a>
             </div>
         </div>
+
 
     </div>
     <div class="directions-control col-lg-9 col-sm-12" style="margin-top: 20px;border: none;border : 1px solid #e1e1e1;height: 600px; overflow-y: scroll;"
@@ -363,7 +378,6 @@
 </div>
 
 
-<script type="text/javascript" src="../public/js/registration/validator.js"></script>
 <script type="text/javascript" src="../public/js/recipes/updateScript.js"></script>
 
 

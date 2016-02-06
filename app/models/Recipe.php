@@ -51,14 +51,33 @@ class Recipe
 
         $recipeid = $this->db->lastInsertId();
 
+        mkdir("uploads/" . $recipeid);
+        $src = "uploads/recipes/temp/".Session::get('username')."/".$_POST['name'];
+        $dst = "uploads/".$recipeid;
+
+        $this->rcopy($src, $dst);
+
+        //store recipe img url to db
+        $handle = opendir('uploads/'.$recipeid);
+        while($file = readdir($handle)){
+            if($file !== '.' && $file !== '..' && !preg_match('/thumb/',$file)){
+                $sql = "INSERT INTO recipe_img (image_url, Recipe_idRecipe)
+                VALUES (:image_url, :Recipe_idRecipe)";
+
+                $query = $this->db->prepare($sql);
+                $query->execute(array(':image_url' => 'uploads/'.$recipeid.'/'.$file,
+                    ':Recipe_idRecipe' => $recipeid));
+            }
+        }
+
+
         //query for recipe has ingredients
         $sql2 = "INSERT INTO recipe_has_ingredients (Recipe_idRecipe, Ingredients_idIngredients, units, qty)
                 VALUES (:Recipe_idRecipe, :Ingredients_idIngredients, :units, :qty)";
 
-        mkdir("uploads/" . $recipeid);
-
-
-        //loop through ingredients fields
+        //recipe compulsory image
+        $this->imageUpload('recipephoto1', $recipeid, 1);
+               //loop through ingredients fields
         $count = count($_POST['ingname']);
 
         for ($i = 0; $i < $count; $i++) {
@@ -105,7 +124,7 @@ class Recipe
             $sth->execute(array(
                 ':description_en' => $_POST['steps'][$key],
                 ':recipe_id' => $recipeid,
-                ':dir' => "dsds"
+                ':dir' => $_POST['des_img'][$key]
             ));
         }
 
@@ -208,20 +227,17 @@ class Recipe
             return false;
 // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir.'/0.'.$imageFileType)) {
 
+                $this->make_thumb($target_dir.'/0.'.$imageFileType, $target_dir.'/thumb.jpg', 200);
 
-                if ($type == 1) {
-                    $sql = "INSERT INTO recipe_img (image_url, Recipe_idRecipe)
+                $sql = "INSERT INTO recipe_img (image_url, Recipe_idRecipe)
                 VALUES (:image_url, :Recipe_idRecipe)";
 
-                    $query = $this->db->prepare($sql);
-                    $query->execute(array(':image_url' => $target_file,
-                        ':Recipe_idRecipe' => $path));
+                $query = $this->db->prepare($sql);
+                $query->execute(array(':image_url' => 'uploads/'.$path.'/0.'.$imageFileType,
+                    ':Recipe_idRecipe' => $path));
 
-
-
-                }
                 return true;
             } else {
                 return false;
@@ -765,4 +781,42 @@ class Recipe
 
         unlink("uploads/recipes/temp/".Session::get('username')."/".explode(".",$_POST['name'])[0]."_thumb.".explode(".",$_POST['name'])[1]);
     }
+
+    public function getIngredientSuggestions(){
+        $array = $this->db->query("SELECT title FROM ingredients")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($array);
+    }
+
+
+
+ // Call function
+// Function to Copy folders and files
+    function rcopy($src, $dst) {
+        if (file_exists ( $dst ))
+            $this->rrmdir ( $dst );
+        if (is_dir ( $src )) {
+            mkdir ( $dst );
+            $files = scandir ( $src );
+            foreach ( $files as $file )
+                if ($file != "." && $file != "..")
+                    $this->rcopy ( "$src/$file", "$dst/$file" );
+
+        } else if (file_exists ( $src ))
+            copy ( $src, $dst );
+        $this->rrmdir ( $src );
+    }
+
+// Function to remove folders and files
+    function rrmdir($dir) {
+        if (is_dir($dir)) {
+            $files = scandir($dir);
+            foreach ($files as $file)
+                if ($file != "." && $file != "..") rrmdir("$dir/$file");
+
+            rmdir($dir);
+        }
+        else if (file_exists($dir)) unlink($dir);
+    }
+
+
 } 
