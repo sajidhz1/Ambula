@@ -150,8 +150,7 @@
                 <label class="control-label" for="Telephone_1"><span class="compulsory">*</span> Telephone(hotline)</label>
 
                 <div class="controls">
-                    <input type="text" id="Telephone_1" pattern="\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})" data-minlength="10" data-error="invalid Telephone Number" name="telephone_1" placeholder="" class="form-control"
-                           required>
+                    <input type="text" id="Telephone_1" name="telephone_1" pattern="\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})" data-minlength="10" data-error="Invalid Telephone Number" placeholder="" class="form-control" required>
 
                     <p class="help-block with-errors"></p>
                 </div>
@@ -161,9 +160,7 @@
                 <label class="control-label" for="Telephone_2">Telephone 2</label>
 
                 <div class="controls">
-                    <input type="text" id="Telephone2"  name="Telephone_2"
-                           placeholder=""
-                           class="form-control">
+                    <input type="text" id="Telephone_2" name="telephone_2" pattern="\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})" data-minlength="10" data-error="Invalid Telephone Number" placeholder="" class="form-control">
 
                     <p class="help-block with-errors"></p>
                 </div>
@@ -184,13 +181,12 @@
             </div>
             <div class="form-group col-lg-4">
                 <!-- Password -->
-                <label class="control-label" for="postal_code"><span class="compulsory">*</span> District</label>
+                <label class="control-label" for="district"><span class="compulsory">*</span> District</label>
 
                 <div class="controls">
-                    <input type="postal_code" id="postal_code"  name="postal_code"
+                    <input type="postal_code" id="district"  name="district"
                            placeholder=""
                            class="form-control">
-
                     <p class="help-block with-errors"></p>
                 </div>
             </div>

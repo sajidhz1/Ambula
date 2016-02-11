@@ -21,14 +21,16 @@ use Facebook\GraphSessionInfo;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-class RegistrationModel {
+class RegistrationModel
+{
 
     public function __construct(DataBase $db)
     {
         $this->db = $db;
     }
 
-      public function validateFields(){
+    public function validateFields()
+    {
 
         $first_name_flag = $last_name_flag = $email_flag = $password_flag = $username_flag = false;
         $nameErr = $emailErr = $last_nameErr = $passwordErr = $usernameErr = "";
@@ -45,16 +47,16 @@ class RegistrationModel {
                 $first_name_flag = true;
                 $first_name = $this->test_input($_POST["first_name"]);
                 // check if name only contains letters and whitespace
-                if (!preg_match("/^[a-zA-Z ]*$/",$first_name)) {
+                if (!preg_match("/^[a-zA-Z ]*$/", $first_name)) {
                     $first_name_flag = false;
                     $nameErr = "Only letters and white space allowed";
                 }
             }
 
-            if(empty($_POST["username"])){
+            if (empty($_POST["username"])) {
                 $usernameErr = "username required";
                 $username_flag = false;
-            }else{
+            } else {
                 $username = $this->test_input($_POST["username"]);
                 $username_flag = true;
             }
@@ -67,7 +69,7 @@ class RegistrationModel {
                 $last_name_flag = true;
                 $last_name = $this->test_input($_POST["last_name"]);
                 // check if name only contains letters and whitespace
-                if (!preg_match("/^[a-zA-Z ]*$/",$last_name)) {
+                if (!preg_match("/^[a-zA-Z ]*$/", $last_name)) {
                     $last_name_flag = false;
                     $nameErr = "last nameletters and white space allowed";
                 }
@@ -81,7 +83,7 @@ class RegistrationModel {
                 $password_flag = true;
                 $password = $this->test_input($_POST["password"]);
                 // check if name only contains letters and whitespace
-                if (!preg_match("/^[a-zA-Z0-9]*$/",$password)) {
+                if (!preg_match("/^[a-zA-Z0-9]*$/", $password)) {
                     $password_flag = false;
                     $nameErr = "pass letters and white space allowed";
                 }
@@ -105,12 +107,12 @@ class RegistrationModel {
 
         }
 
-        if(!$first_name_flag || !$last_name_flag || !$email_flag || !$password_flag || !$username_flag){
-           return false;
+        if (!$first_name_flag || !$last_name_flag || !$email_flag || !$password_flag || !$username_flag) {
+            return false;
         }
 
         $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-        $password_hash =   password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
+        $password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
 
         // generate integer-timestamp for saving of account-creating date
         $user_creation_timestamp = time();
@@ -132,17 +134,18 @@ class RegistrationModel {
 
         $user_personal_id = $this->db->lastInsertId();
 
-        $sql = "INSERT INTO user_personal (first_name,last_name,users_user_id) VALUES ('".$first_name."','".$last_name."','".$user_personal_id."')";
-       $this->db->prepare($sql)->execute();
+        $sql = "INSERT INTO user_personal (first_name,last_name,users_user_id) VALUES ('" . $first_name . "','" . $last_name . "','" . $user_personal_id . "')";
+        $this->db->prepare($sql)->execute();
 
-        Session::set('refferer','registration');
+        Session::set('refferer', 'registration');
         return $result;
 
 
     }
-    
-    
-    function test_input($data) {
+
+
+    function test_input($data)
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -150,29 +153,28 @@ class RegistrationModel {
     }
 
 
-
     //register with facebook
     public function registerWithFacebook()
     {
         // instantiate the facebook object
-        FacebookSession::setDefaultApplication( FACEBOOK_APP_ID,FACEBOOK_APP_SECRET );
+        FacebookSession::setDefaultApplication(FACEBOOK_APP_ID, FACEBOOK_APP_SECRET);
 
-        $helper = new FacebookRedirectLoginHelper('http://theambula.lk/registration/registerWithFacebook' );
+        $helper = new FacebookRedirectLoginHelper('http://theambula.lk/registration/registerWithFacebook');
 
 
         try {
             $session = $helper->getSessionFromRedirect();
-        } catch( FacebookRequestException $ex ) {
+        } catch (FacebookRequestException $ex) {
             echo $ex;
-        } catch( Exception $ex ) {
+        } catch (Exception $ex) {
             echo $ex;
         }
-       
+
 // see if we have a session
         if ($session) {
-               
+
             // graph api request for user data
-            $request = new FacebookRequest( $session, 'GET', '/me' );
+            $request = new FacebookRequest($session, 'GET', '/me');
             $response = $request->execute();
             // get response
             $graphObject = $response->getGraphObject();
@@ -181,27 +183,28 @@ class RegistrationModel {
             $femail = $graphObject->getProperty('email');    // To Get Facebook email ID
 
             //Session::init();
-            Session::set('name',$fbfullname);
-            Session::set('username',$femail);
-            Session::set('fbid',$fbid);
+            Session::set('name', $fbfullname);
+            Session::set('username', $femail);
+            Session::set('fbid', $fbid);
             Session::set('user_logged_in', true);
 
-            if($this->checkFacebookUIDExistsinDatabase($fbid)){
+            if ($this->checkFacebookUIDExistsinDatabase($fbid)) {
                 return true;
-            }else{
+            } else {
                 $this->registerNewUserWithFacebook($graphObject);
             }
 
 
-        }else {
+        } else {
             $loginUrl = $helper->getLoginUrl(array('email'));
 
-          header("Location: ".$loginUrl);
+            header("Location: " . $loginUrl);
         }
 
     }
 
-    public function checkFacebookUIDExistsinDatabase($uid=''){
+    public function checkFacebookUIDExistsinDatabase($uid = '')
+    {
         $query = $this->db->prepare("SELECT user_id FROM users WHERE user_facebook_uid = :user_facebook_uid");
         $query->execute(array(':user_facebook_uid' => $uid));
 
@@ -247,158 +250,166 @@ class RegistrationModel {
         // default return
         return false;
     }
-    
-     public function checkEmail($email=""){
+
+    public function checkEmail($email = "")
+    {
         $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = :email");
         $query->execute(array(':email' => $email));
-        $count =  $query->rowCount();
-        if($count >= 1){
+        $count = $query->rowCount();
+        if ($count >= 1) {
             http_response_code(400);
-        }else{
+        } else {
             http_response_code(200);
         }
 
     }
 
-    public function checkUserName($userName=""){
+    public function checkUserName($userName = "")
+    {
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = :user_name");
         $query->execute(array(':user_name' => $userName));
-        $count =  $query->rowCount();
-        if($count >= 1){
+        $count = $query->rowCount();
+        if ($count >= 1) {
             http_response_code(400);
-        }else{
+        } else {
             http_response_code(200);
         }
     }
 
 
-    public function checkCooperateUserName($userName=""){
+    public function checkCooperateUserName($userName = "")
+    {
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
         $query->execute();
-        $count =  $query->rowCount();
-        if($count >= 1){
+        $count = $query->rowCount();
+        if ($count >= 1) {
             return true;
-        }else{
+        } else {
             false;
         }
     }
 
 
     //register commercial user
-    public function register_commercial_user(){
+    public function register_commercial_user()
+    {
 
-       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-           $company_name_flag = $address_flag = $telephone1_flag = $city_flag = $email_flag = $password_flag = $company_logo_flag = $username_flag = false;
-           $nameErr = $emailErr = $teleErr = $passwordErr = $cityErr = $logoErr = $addresErr = $usernameErr = "";
-           $company_name = $address = $telephone1 = $telephone2 = $city = $company_logo = $email = $password = $username = "";
+            $company_name_flag = $address_flag = $telephone1_flag = $telephone2_flag = $city_flag = $email_flag = $password_flag = $company_logo_flag = $username_flag = false;
+            $nameErr = $emailErr = $teleErr = $teleErr2 = $passwordErr = $cityErr = $districtErr = $logoErr = $addresErr = $usernameErr = "";
+            $company_name = $address = $telephone1 = $telephone2 = $city = $district = $company_logo = $email = $password = $username = "";
 
-           //companyname validation
-           if (empty($_POST["company_name"])) {
-               $nameErr = "company name is required";
-               $company_name_flag = false;
-           } else {
-               $company_name_flag = true;
-               $company_name = $this->test_input($_POST["company_name"]);
-               // check if name only contains letters and whitespace
-               /*if (!preg_match("/^[a-zA-Z0-9 ]*$/",$company_name)) {
-                   $company_name_flag = false;
-                   $nameErr = "Only letters and white space allowed";
-               }*/
-           }
+            //companyname validation
+            if (empty($_POST["company_name"])) {
+                $nameErr = "company name is required";
+                $company_name_flag = false;
+            } else {
+                $company_name_flag = true;
+                $company_name = $this->test_input($_POST["company_name"]);
+                // check if name only contains letters and whitespace
+                /*if (!preg_match("/^[a-zA-Z0-9 ]*$/",$company_name)) {
+                    $company_name_flag = false;
+                    $nameErr = "Only letters and white space allowed";
+                }*/
+            }
 
-           //address validation
-           if (empty($_POST["address_1"])) {
-               $addresErr = "address is required";
-               $address_flag = false;
-           } else {
-               $address_flag = true;
-               $address = $this->test_input($_POST["address_1"]);
-               // check if name only contains letters and whitespace
-               if (!preg_match("/^[a-z0-9- ]+$/i",$address)) {
-                   $address_flag = false;
-                   $addressErr = "Only letters and white space and numbers allowed";
-               }
-           }
+            //address validation
+            if (empty($_POST["address_1"])) {
+                $addresErr = "address is required";
+                $address_flag = false;
+            } else {
+                $address_flag = true;
+                $address = $this->test_input($_POST["address_1"]);
+                // check if name only contains letters and whitespace
+                if (!preg_match("/^[a-z0-9- ]+$/i", $address)) {
+                    $address_flag = false;
+                    $addressErr = "Only letters and white space and numbers allowed";
+                }
+            }
 
-           //validate password
-           if (empty($_POST["password"]) || empty($_POST["password_confirm"])) {
-               $nameErr = "password is needed";
-               $password_flag = false;
-           } else {
-               $password_flag = true;
-               $password = $this->test_input($_POST["password"]);
-               // check if name only contains letters and whitespace
-               if (!preg_match("/^[a-zA-Z0-9]*$/",$password)) {
-                   $password_flag = false;
-                   $nameErr = "pass letters and white space allowed";
-               }
-           }
+            //validate password
+            if (empty($_POST["password"]) || empty($_POST["password_confirm"])) {
+                $nameErr = "password is needed";
+                $password_flag = false;
+            } else {
+                $password_flag = true;
+                $password = $this->test_input($_POST["password"]);
+                // check if name only contains letters and whitespace
+                if (!preg_match("/^[a-zA-Z0-9]*$/", $password)) {
+                    $password_flag = false;
+                    $nameErr = "pass letters and white space allowed";
+                }
+            }
 
-           //validate email
-           if (empty($_POST["email"])) {
-               $emailErr = "Email is required";
-               $email_flag = false;
-           } else {
-               $email_flag = true;
-               $email = $this->test_input($_POST["email"]);
-               // check if e-mail address is well-formed
-               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                   $this->flag_log = false;
-                   $emailErr = "Invalid email format";
-               }
-           }
+            //validate email
+            if (empty($_POST["email"])) {
+                $emailErr = "Email is required";
+                $email_flag = false;
+            } else {
+                $email_flag = true;
+                $email = $this->test_input($_POST["email"]);
+                // check if e-mail address is well-formed
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $this->flag_log = false;
+                    $emailErr = "Invalid email format";
+                }
+            }
 
-           //validate telephone
-           if (empty($_POST["telephone_1"])) {
-               $teleErr = "Hotline is required";
-               $telephone1_flag = false;
-           } else {
-               $telephone1_flag = true;
-               $telephone1 = $this->test_input($_POST["telephone_1"]);
-               // check if name only contains letters and whitespace
+            //validate telephone_1
+            if (empty($_POST["telephone_1"])) {
+                $teleErr = "Hotline is required";
+                $telephone1_flag = false;
+            } else {
+                $telephone1_flag = true;
+                $telephone1 = $this->test_input($_POST["telephone_1"]);
+                // check if name only contains letters and whitespace
 
-           }
+            }
 
-           //username validation
-           if (empty($_POST["username"])) {
-               $usernameErr = "Username is required";
-               $username_flag = false;
-           } else {
-               $username_flag = true;
-               $username = $this->test_input($_POST["username"]);
-               // check if name only contains letters and whitespace
-               if (!preg_match("/^[A-Za-z0-9_-]{3,16}$/",$username)) {
-                   $username_flag= false;
-                   $usernameErr = "Only letters and white space allowed";
-               }
-           }
+            //validate telephone_2
+            if (empty($_POST["telephone_2"])) {
+                $teleErr = "Secondary Telephone is required";
+                $telephone2_flag = false;
+            } else {
+                $telephone2_flag = true;
+                $telephone2 = $this->test_input($_POST["telephone_2"]);
+                // check if name only contains letters and whitespace
+
+            }
+
+            //username validation
+            if (empty($_POST["username"])) {
+                $usernameErr = "Username is required";
+                $username_flag = false;
+            } else {
+                $username_flag = true;
+                $username = $this->test_input($_POST["username"]);
+                // check if name only contains letters and whitespace
+                if (!preg_match("/^[A-Za-z0-9_-]{3,16}$/", $username)) {
+                    $username_flag = false;
+                    $usernameErr = "Only letters and white space allowed";
+                }
+            }
 
             $city = $_POST["city"];
-            $district = $_POST["postal_code"];
-           /* //check company logo
-           if($_FILES['company_logo']['tmp_name']!='') {
-               $company_logo_flag = true;
-           } else {
-              $company_logo_flag = false;
+            $district = $_POST["district"];
 
-           }*/
-
-           $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-           $password_hash =   password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
+            $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+            $password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
 
 
-           //  echo "name".$company_name_flag."add" .$address_flag ."tel".$telephone1_flag ."em".$email_flag ."pass".$password_flag."logo".$company_logo_flag ."user".$username_flag."";
-    if(!$company_name_flag && !$address_flag && !$telephone1_flag && !$email_flag && !$password_flag && !$company_logo_flag && !$username_flag)
-         return false;
+            //  echo "name".$company_name_flag."add" .$address_flag ."tel".$telephone1_flag ."em".$email_flag ."pass".$password_flag."logo".$company_logo_flag ."user".$username_flag."";
+            if (!$company_name_flag && !$address_flag && !$telephone1_flag && !$email_flag && !$password_flag && !$company_logo_flag && !$username_flag)
+                return false;
 
-       }
+        }
 
         //mkdir("uploads/profile/commercial_user/" . $username);
         //if($this->imageUpload("company_logo",$username)){
 
-                //generating activation hash
-               $hash = md5( rand(0,1000) );
+        //generating activation hash
+        $hash = md5(rand(0, 1000));
         /*
         $query = $this->db->prepare("SELECT user_id, user_name, user_email, user_password_hash, user_active,
                                           user_account_type,  user_avatar,  user_last_failed_login, user_personal_iduser_personal
@@ -410,28 +421,29 @@ class RegistrationModel {
         $query->execute(array(':user_id' => $user_id, ':user_rememberme_token' => $token, ':provider_type' => 'DEFAULT'));
 
         */
-            $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type ,user_activation_hash)
+        $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type ,user_activation_hash)
                 VALUES (:email , :user_name , :password_hash, :user_account_type , :user_provider_type , :hash )";
-                $result =  $this->db->prepare($sql);
-                $result->execute(array(':email' => $email, ':user_name' => $username, ':password_hash' => $password_hash,':user_account_type' => 2 ,':user_provider_type' => "DEFAULT" ,':hash' =>$hash ));
+        $result = $this->db->prepare($sql);
+        $result->execute(array(':email' => $email, ':user_name' => $username, ':password_hash' => $password_hash, ':user_account_type' => 2, ':user_provider_type' => "DEFAULT", ':hash' => $hash));
 
-                $user_id = $this->db->lastInsertId();
+        $user_id = $this->db->lastInsertId();
 
-                $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city )
-                VALUES ( :user_id, :company_name , :address ,:telephone1 , :telephone2 ,:city)";
-                $result2 =  $this->db->prepare($sql_1);
-                 $result2->execute(array(':user_id'=> $user_id ,':company_name' => $company_name ,':address' => $address ,':telephone1' => $telephone1 ,':telephone2' =>$telephone2 , ':city' =>$city ));
+        $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city, district )
+                VALUES ( :user_id, :company_name , :address ,:telephone1 , :telephone2 ,:city , :district)";
+        $result2 = $this->db->prepare($sql_1);
+        $result2->execute(array(':user_id' => $user_id, ':company_name' => $company_name, ':address' => $address, ':telephone1' => $telephone1, ':telephone2' => $telephone2, ':city' => $city, ':district' => $district));
 
-              $this->sendVerificationEmail($email,$username,$password,$hash);
-            return true;
-       // }
+        $this->sendVerificationEmail($email, $username, $password, $hash);
+        return true;
+        // }
 
 
     }
 
-    public function update_commercial_user(){
+    public function update_commercial_user()
+    {
 
-      //  $website = $facebook = $youtube = $description = $user_name  = '' ;
+        //  $website = $facebook = $youtube = $description = $user_name  = '' ;
 
         $website = $_POST["web_site_url"];
         $facebook = $_POST["facebook_url"];
@@ -442,39 +454,37 @@ class RegistrationModel {
         $count = count($_POST['cat_checkbox']);
 
 
-
         $path = "uploads/profile/commercial_user/" . $user_name;
-        if(!is_dir($path)){
+        if (!is_dir($path)) {
             mkdir($path);
         }
 
-        if($this->imageUpload("company_logo", $user_name)) {
+        if ($this->imageUpload("company_logo", $user_name)) {
 
-            $sql_0 = "SELECT user_id FROM users WHERE user_name = '".$user_name."'" ;
+            $sql_0 = "SELECT user_id FROM users WHERE user_name = '" . $user_name . "'";
 
             $sth = $this->db->prepare($sql_0);
             $sth->execute();
             $user_id = $sth->fetch()->user_id;
 
 
-            $sql_4 = "SELECT idcommercial_user FROM commercial_user WHERE users_user_id = ".$user_id ;
+            $sql_4 = "SELECT idcommercial_user FROM commercial_user WHERE users_user_id = " . $user_id;
 
             $sth = $this->db->prepare($sql_4);
             $sth->execute();
             $cooperate_user_id = $sth->fetch()->idcommercial_user;
 
-            for($i = 0;$i < $count ;$i++){
-                $sql_2 = "INSERT INTO cooperate_user_has_Product_categories (cooperate_user_id , Product_categories_id_product_categories) VALUES ('".$cooperate_user_id."' ,'".$_POST['cat_checkbox'][$i]."')" ;
+            for ($i = 0; $i < $count; $i++) {
+                $sql_2 = "INSERT INTO cooperate_user_has_Product_categories (cooperate_user_id , Product_categories_id_product_categories) VALUES ('" . $cooperate_user_id . "' ,'" . $_POST['cat_checkbox'][$i] . "')";
                 $sth = $this->db->prepare($sql_2);
                 $sth->execute();
             }
 
-            $sql = "UPDATE users SET user_avatar = 'uploads/profile/commercial_user/" . $user_name . "' WHERE user_id =  '".$user_id."' ";
+            $sql = "UPDATE users SET user_avatar = 'uploads/profile/commercial_user/" . $user_name . "' WHERE user_id =  '" . $user_id . "' ";
             $result = $this->db->prepare($sql)->execute();
 
 
-
-            $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '".$user_id."'" ;
+            $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '" . $user_id . "'";
             $result2 = $this->db->prepare($sql_1)->execute();
 
 
@@ -524,9 +534,9 @@ class RegistrationModel {
             return false;
 // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir.$path.'.'.$imageFileType)) {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir . $path . '.' . $imageFileType)) {
 
-            return true;
+                return true;
 
             } else {
                 return false;
@@ -543,8 +553,9 @@ class RegistrationModel {
 
     }
 
-    public function sendVerificationEmail($email='',$name ='' ,$password='' ,$hash=''){
-        $to      = $email; // Send email to our user
+    public function sendVerificationEmail($email = '', $name = '', $password = '', $hash = '')
+    {
+        $to = $email; // Send email to our user
         $subject = 'Signup | Verification'; // Give the email a subject
         $message = '
 
@@ -552,12 +563,12 @@ class RegistrationModel {
         Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
 
         ------------------------
-        Username: '.$name.'
-        Password: '.$password.'
+        Username: ' . $name . '
+        Password: ' . $password . '
         ------------------------
 
         Please click this link to activate your account:
-        http://theambula.lk/login/verify?email='.$email.'&hash='.$hash.'
+        http://theambula.lk/login/verify?email=' . $email . '&hash=' . $hash . '
 
         '; // Our message above including the link
 
