@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c0a852b-0355-4c60-bcf3-9bb192977a09" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\wamp\www\Ambula\.idea\codeStyleSettings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\Ambula\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\Ambula\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\Ambula\.idea\inspectionProfiles\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\wamp\www\Ambula\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Ambula.iml" afterPath="$PROJECT_DIR$/.idea/Ambula.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/Promotion.php" afterPath="$PROJECT_DIR$/app/controllers/Promotion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/PromotionModel.php" afterPath="$PROJECT_DIR$/app/models/PromotionModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/RegistrationModel.php" afterPath="$PROJECT_DIR$/app/models/RegistrationModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Registration/commercial_user_registration.php" afterPath="$PROJECT_DIR$/app/views/Registration/commercial_user_registration.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/promotions/newPromotions.php" afterPath="$PROJECT_DIR$/app/views/promotions/newPromotions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/promotions/viewPromotions.php" afterPath="$PROJECT_DIR$/app/views/promotions/viewPromotions.php" />
-      <change type="MOVED" beforePath="E:\wamp\www\Ambula\public\js\calendar\jquery-ui.min.css" afterPath="$PROJECT_DIR$/public/js/promotion/jquery-ui.min.css" />
-      <change type="MOVED" beforePath="E:\wamp\www\Ambula\public\js\calendar\jquery-ui.min.js" afterPath="$PROJECT_DIR$/public/js/promotion/jquery-ui.min.js" />
-    </list>
+    <list default="true" id="8c0a852b-0355-4c60-bcf3-9bb192977a09" name="Default" comment="" />
     <ignored path="Ambula.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -84,7 +63,7 @@
       <file leaf-file-name="PromotionModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/PromotionModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="177" column="4" selection-start-line="177" selection-start-column="4" selection-end-line="177" selection-end-column="4" />
               <folding>
                 <marker date="1455035274934" expanded="true" signature="2369:2436" placeholder="SELECT idPro..promotion..." />
@@ -634,6 +613,14 @@
             <marker date="1455123985746" expanded="true" signature="4997:5084" placeholder="..." />
             <marker date="1455123985746" expanded="true" signature="5139:5288" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
