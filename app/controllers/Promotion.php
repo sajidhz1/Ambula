@@ -36,7 +36,8 @@ class Promotion extends Controller
     }
 
 
-    public function viewAllPromotions(){
+    public function viewAllPromotions()
+    {
         $promoList = $this->promotion->viewPromotions($_GET["promtoionType"]);
         switch ($_GET["promtoionType"]) {
             case 'restaurant':
@@ -61,35 +62,81 @@ class Promotion extends Controller
 
     }
 
-	public function viewPromotionsTest(){
+    //==================================================Now implemented=======================================//
 
-        $promotion_type = $_POST["promtoionType"];
+    public function viewPromotionsTest(){
 
-        $promoList =  json_decode($this->promotion->viewPromotionsTest($promotion_type),true);
+        $promotion_type = $_POST["promotoionType"];
 
-        $text="";
+        $promoList = json_decode($this->promotion->viewPromotionsTest($promotion_type), true);
 
-        foreach($promoList as $promo){
+        $text = "";
+
+        foreach ($promoList as $promo) {
+            $promotionId = $promo['idPromotion'];
             $promotionName = $promo['promotion_name'];
             $imageUrl = $promo['image_url'];
             $description = $promo['description'];
             $startDate = $promo['start_date'];
             $endDate = $promo['end_date'];
             $companyName = $promo['company_name'];
-            $text = $text."<div class='col-sm-4' xmlns=\"http://www.w3.org/1999/html\">
+            /*$text = $text."<div class='col-sm-4' xmlns=\"http://www.w3.org/1999/html\">
                                 <div class='thumbnail card' style='padding: 15px'>
                                     <img src=/Ambula/$imageUrl alt='' style='width: 170px; height: 150px;'>
-                                        <h3 style='overflow-x: hidden'>$promotionName</h3>
-                                        <h5 style='overflow-x: hidden'>(Offered By $companyName)</h5>
-                                        <p style='display: block; overflow-x: hidden'>$description</p>
-                                        <span class='glyphicon glyphicon-calendar' aria-hidden='true'> Starting Date: </span>$startDate</br></br>
-                                        <span class='glyphicon glyphicon-calendar' aria-hidden='true'> Ending Date: </span>$endDate</br></br>
-                                        <p class='promoViewButton'><a href='#' class='btn btn-primary' role='button'>View Full</a></p>
+                                    <h3 style='overflow-x: hidden'>$promotionName</h3>
+                                    <h5 style='overflow-x: hidden'>(Offered By $companyName)</h5>
+                                    <p style='display: block; overflow-x: hidden'>$description</p>
+                                    <span class='glyphicon glyphicon-calendar' aria-hidden='true'> Starting Date: </span>$startDate</br></br>
+                                    <span class='glyphicon glyphicon-calendar' aria-hidden='true'> Ending Date: </span>$endDate</br></br>
+                                    <p class='promoViewButton'><a href='#' class='btn btn-primary' role='button'>View Full</a></p>
                                 </div>
+                            </div>";*/
+
+            $text = $text . "<div class='col-sm-3 singlePromo' id='$promotionId' style='background:url(/Ambula/$imageUrl) no-repeat; background-size:cover; margin: 10px; padding: 0px;'>
+                                <p class='promoName'>$promotionName</p>
+                                <p style='height: 180px'></p>
+                                <p class='promoCompany'>$companyName</p>
                             </div>";
         }
 
         echo $text;
+
+    }
+
+    //to display information about a single promotion on a modal when a promotion tile is clicked
+    public function viewSinglePromotion(){
+
+        $promoId = $_POST["promotoionId"];
+
+        /*$singlePromotion = json_decode($this->promotion->viewSinglePromotion($promoId), true);
+        $promoId = $singlePromotion[0]['idPromotion'];
+        $imageUrl = $singlePromotion[0]['image_url'];
+        $description = $singlePromotion[0]['description'];
+        $startDate = $singlePromotion[0]['start_date'];
+        $endDate = $singlePromotion[0]['end_date'];
+
+        $text = "<div class='modal fade' id='promoViewModal' role='dialog'>
+                    <div class='modal-dialog'>
+                        <!-- Modal content-->
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                                <h4 class='modal-title'>$promoId</h4>
+                            </div>
+                            <div class='modal-body'>
+                                <p>$description</p>
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+
+        echo $text;*/
+
+        echo $this->promotion->viewSinglePromotion($promoId);
+
 
     }
 }
