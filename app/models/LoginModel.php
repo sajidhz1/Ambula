@@ -192,5 +192,86 @@ class LoginModel
 
     }
 
+    public function sendPasswordResetEmail(){
+
+        $sth = $this->db->prepare("SELECT user_id ,
+                                          user_email ,
+                                          user_provider_type
+                                   FROM   users
+                                   WHERE   user_email = :user_email
+                                          AND user_provider_type = :provider_type");
+        $sth->execute(array(':user_email' => $_POST['useremail'] , ':provider_type' => 'DEFAULT'));
+        $count =  $sth->rowCount();
+
+        if ($count == 1) {
+            $result = $sth->fetch();
+            $hash = md5( rand(0,1000) );
+
+            $sql2 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_id ='.$result->user_id);
+            $sql2->execute(array(':user_password_reset_hash' => $hash));
+            $to      = $result->user_email; // Send email to our user
+            $subject = 'Password Reset | The Ambula'; // Give the email a subject
+            $message = '
+
+
+        Please click this link to reset your password:
+        http://theambula.lk/login/passwordReset?email='.$to.'&h='.$hash.'
+
+        '; // Our message above including the link
+
+            $headers = 'From:noreply@theambula.lk' . "\r\n"; // Set from headers
+            mail($to, $subject, $message, $headers); // Send our email
+
+            return 1;
+        }else{
+            return 0;
+        }
+
+    }
+
+    public function changePassword(){
+
+        $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
+        $password_hash =   password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
+
+                    $sql2 = $this->db->prepare('UPDATE users SET user_password_hash = :user_password_hash , user_password_reset_timestamp = :user_password_reset_timestamp WHERE user_email = :user_email AND user_password_reset_hash = :user_password_reset_hash');
+             $result =  $sql2->execute(array(':user_password_reset_hash' => $_GET['h'] ,':user_email' =>$_GET['email'] , ':user_password_hash' => $password_hash , ':user_password_reset_timestamp' =>  time() ));
+
+
+             $sql1 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_email = :user_email');
+             $result2 =  $sql1->execute(array(':user_password_reset_hash' =>'',':user_email' =>$_GET['email'] ));
+
+
+             return  $result2;
+
+    }
+
+      public function checkHash()
+      {
+
+          $sql0 = $this->db->prepare('SELECT user_password_reset_hash,user_email FROM users WHERE user_email = :user_email');
+          $sql0->execute(array(':user_email' => $_GET['email']));
+
+          $count =  $sql0->rowCount();
+
+          if($count != 1){
+              return 2;
+
+          }else{
+
+              $result = $sql0->fetch();
+
+              if ($result->user_password_reset_hash != null) {
+
+                  return 1;
+
+              } else {
+                  //password_reset link expired
+                  return 2;
+              }
+          }
+
+      }
+
 
 } 

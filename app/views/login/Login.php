@@ -55,7 +55,7 @@
         <div class="panel panel-default" >
             <div class="panel-heading">
                 <div class="panel-title">Sign In</div>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px;font-size: 1.0em;padding-bottom:10px;font-weight: 200;"></div>
             </div>
 
             <div style="padding-top:30px" class="panel-body" >
@@ -92,6 +92,7 @@
                     </div>
 
 
+
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
@@ -100,6 +101,11 @@
 
                         </div>
                     </div>
+                    <div style="margin: 10px;">
+                        <a style="color: brown;" href="passwordReset">Forgot password?</a>
+                    </div>
+
+
 
 
                     <div class="form-group">
