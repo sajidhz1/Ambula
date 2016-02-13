@@ -80,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-6">
-                    <!-- Username -->
+                    <!-- First Name -->
                     <label class="control-label" for="first_name">First Name</label>
 
                     <div class="controls">

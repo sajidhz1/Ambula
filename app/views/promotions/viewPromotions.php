@@ -10,227 +10,420 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-	<meta charset="utf-8">
-	<title>The Ambula</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>The Ambula</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-	<link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-	<link href="/Ambula/public/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/>
-	<link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/style.css" rel="stylesheet" media="screen"/>
 
-	<!-- fav icon -->
-	<link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <!-- fav icon -->
+    <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
-	<script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
 
-	<!--[if lt IE 9]>
-	<script src="css/font-awesome-ie7.min.css"></script>
-	<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="css/font-awesome-ie7.min.css"></script>
+    <![endif]-->
 
-	<!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
-	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet'
-		  type='text/css'>
+    <!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet'
+          type='text/css'>
 
-	<!-- ##### Le HTML5 shim, for IE6-8 support of HTML5 elements ##### -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!-- ##### Le HTML5 shim, for IE6-8 support of HTML5 elements ##### -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
 
+    <style>
 
-	<style>
-		.navbar-promo{
-			background: rgba(237, 146, 8, 0.84); /* for IE */
-			border-radius: 5px;
-			border: 1px solid #E0D6CC;
-			margin-right: 7.55%;
-			margin-left: 7.55%;
-			margin-top: 51px;
+    .hovereffect {
+        width:300px;
+        height:300px;
+        float:left;
+        overflow:hidden;
+        position:relative;
+        text-align:center;
+        cursor:default;
+        margin-bottom: 10px;
+        border: 1px solid #e3e3e3;
+    }
+
+    .hovereffect .overlay {
+        width:100%;
+        height:100%;
+        position:absolute;
+        overflow:hidden;
+        top:0;
+        left:0;
+        opacity:0;
+        background-color:rgba(0,0,0,0.5);
+        -webkit-transition:all .4s ease-in-out;
+        transition:all .4s ease-in-out
+    }
+
+    .hovereffect img {
+        display:block;
+        min-height: 300px;
+        -webkit-transition:all .4s linear;
+        transition:all .4s linear;
+    }
+
+    .hovereffect h2 {
+        text-transform:uppercase;
+        color:#fff;
+        text-align:center;
+        position:relative;
+        font-size:17px;
+        background:rgba(0,0,0,0.6);
+        -webkit-transform:translatey(-100px);
+        -ms-transform:translatey(-100px);
+        transform:translatey(-100px);
+        -webkit-transition:all .2s ease-in-out;
+        transition:all .2s ease-in-out;
+        padding:10px;
+    }
+
+    .hovereffect a.info {
+        text-decoration:none;
+        display:inline-block;
+        text-transform:uppercase;
+        color:#fff;
+        border:1px solid #fff;
+        background-color:transparent;
+        opacity:0;
+        filter:alpha(opacity=0);
+        -webkit-transition:all .2s ease-in-out;
+        transition:all .2s ease-in-out;
+        margin:50px 0 0;
+        padding:7px 14px;
+    }
+
+    .hovereffect a.info:hover {
+        box-shadow:0 0 5px #fff;
+    }
+
+    .hovereffect:hover img {
+        -ms-transform:scale(1.2);
+        -webkit-transform:scale(1.2);
+        transform:scale(1.2);
+    }
+
+    .hovereffect:hover .overlay {
+        opacity:1;
+        filter:alpha(opacity=100);
+    }
+
+    .hovereffect:hover h2,.hovereffect:hover a.info {
+        opacity:1;
+        filter:alpha(opacity=100);
+        -ms-transform:translatey(0);
+        -webkit-transform:translatey(0);
+        transform:translatey(0);
+    }
+
+    .hovereffect:hover a.info {
+        -webkit-transition-delay:.2s;
+        transition-delay:.2s;
+    }
+
+
+        .navbar-promo {
+            background: #ff960e; /* for IE */
+            border-radius: 5px;
+            border: 1px solid #E0D6CC;
+            margin-right: 7.55%;
+            margin-left: 7.55%;
+            margin-top: 51px;
             padding: 0px;
-            color: #337ab7;
+            color: #fff;
             font-size: 20px;
-		}
+        }
 
-		label.valid {
-			width: 24px;
-			height: 24px;
-			background: url(<?php echo URL; ?>../public/img/valid.png) center center no-repeat;
-			display: inline-block;
-			text-indent: -9999px;
-		}
+        label.valid {
+            width: 24px;
+            height: 24px;
+            background: url(<?php echo URL; ?>../public/img/valid.png) center center no-repeat;
+            display: inline-block;
+            text-indent: -9999px;
+        }
 
-		label.error {
-			font-weight: bold;
-			color: red;
-			padding: 2px 8px;
-			margin-top: 2px;
-		}
+        label.error {
+            font-weight: bold;
+            color: red;
+            padding: 2px 8px;
+            margin-top: 2px;
+        }
 
-		#promotionContainer{
-			margin: 20px;
-		}
+        #promotionContainer {
+            padding-left: 4%;
+        }
 
-		.promoViewButton{
-		}
+        .modal {
+            background: rgba(000, 000, 000, 0.7);
+            min-height: 1000000px;
+        }
 
-		.modal {
-			background: rgba(000, 000, 000, 0.7);
-			min-height:1000000px;
-		}
+        .modal-dialog-center {
+            margin-top: 15%;
+        }
 
-		.modal-dialog-center {
-			margin-top: 15%;
-		}
-
-		.modal-header {
-			background: #e78f08;
-			color: white;
-		}
+        .modal-header {
+            background: #e78f08;
+            color: white;
+        }
 
         .btn {
             border-radius: 0px;
         }
 
-        div.card{
+        .card div {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
 
-        /*.navbar .navbar-nav {
-            display: inline-block;
-            float: none;
-            vertical-align: top;
+        .icon-bar {
+            background: #337AB7;
         }
 
-        .navbar .navbar-collapse {
-            text-align: center;
-        */}
+        .myCollapseBar li {
+            border-right: 2px solid #fff;
 
-        .icon-bar{
-           background: #337AB7;
+
         }
 
-        .myCollapseBar li{
-            border-right: 2px solid #0480be;
+        .myCollapseBar a{
+            color: #fff;
         }
 
-	</style>
+        .thumbnail-grid div {
+            position: inherit;
+            width: 300px;
+            height: 300px;
+            border-radius: 3px;
+            margin: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            transition: all .5s ease-in-out;
+        }
+
+        .thumbnail-grid div:hover {
+            /*box-shadow: inset 0 -300px 0 0 rgba(0, 0, 0, 0.5);*/
+            box-shadow: none;
+            transition: all .5s ease-in-out;
+        }
+
+
+
+        #promoViewModal {
+            margin: 0px;
+            max-height: 100%;
+            z-index: 100;
+        }
+
+        #modalDialog {
+            margin-top: 0px;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            z-index: 1040;
+        }
+
+        #modalContent{
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 0;
+        }
+
+
+
+        #singlePromoModalDesc{
+
+        }
+
+        #singlePromoModalImg{
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+    </style>
 
     <script type="text/javascript">
-         var onResize = function() {
-         // apply dynamic padding at the top of the body according to the fixed navbar height
-         $("#promonav").css("margin-top", $(".navbar-fixed-top").height());
-         };
+        var onResize = function () {
+            // apply dynamic padding at the top of the body according to the fixed navbar height
+            $("#promonav").css("margin-top", $(".navbar-fixed-top").height());
+        };
 
-         // attach the function to the window resize event
-         $(window).resize(onResize);
+        // attach the function to the window resize event
+        $(window).resize(onResize);
 
-        //ajax method for displaying the promotions in types selected
+        //to view all 'restaurent' type promotions onload of the view (all document ready functions go here)
+        $(document).ready(function (e) {
+            var type = "restaurant";
+            $.ajax({
+                type: "POST",
+                url: "/Ambula/Promotion/viewPromotionsTest",
+                dataType: "html",
+                data: {promotoionType: type},
+                success: function (response) {
+                    var text = response;
+
+                    $("#promotionContainer").html(text);
+                }
+            });
+            onResize();
+        });
+
+        //ajax method for displaying all the promotions in the type selected
         $(document).on('click', '.promoType', function (e) {
             var type = $(this).attr('id');
             $.ajax({
-                type:"POST",
-                url:  "/Ambula/Promotion/viewPromotionsTest",
+                type: "POST",
+                url: "/Ambula/Promotion/viewPromotionsTest",
                 dataType: "html",
-                data: {promtoionType: type},
+                data: {promotoionType: type},
                 success: function (response) {
-                    var text=response;
+                    var text = response;
 
                     $("#promotionContainer").html(text);
                 }
             });
         });
 
-         //to view all 'restaurent' type promotions onload of the view
-         $(document).ready(function (e) {
-             var type = "restaurant";
-             $.ajax({
-                 type:"POST",
-                 url:  "/Ambula/Promotion/viewPromotionsTest",
-                 dataType: "html",
-                 data: {promtoionType: type},
-                 success: function (response) {
-                     var text=response;
-
-                     $("#promotionContainer").html(text);
-                 }
-             });
-         });
-
-
+        //ajx method to view a single promotion enlarged
+        $(document).on('click', '.singlePromo', function (e) {
+            var id = $(this).attr('id');
+            $.ajax({
+                type: "POST",
+                url: "/Ambula/Promotion/viewSinglePromotion",
+                data: {promotoionId: id},
+                success: function (response) {
+                    var myVar = JSON.parse(response);
+                    var pId, pUId, pType, pName, pImg, pDescription, pStartDate, pEndDate, pDateAdded;
+                    pId = myVar[0].idPromotion;
+                    pUId = myVar[0].users_user_id;
+                    pType = myVar[0].promotion_type;
+                    pName = myVar[0].promotion_name;
+                    pImg = myVar[0].image_url;
+                    pDescription = myVar[0].description;
+                    pStartDate = myVar[0].start_date;
+                    pEndDate = myVar[0].end_date;
+                    pDateAdded = myVar[0].date_time_added;
+                    $('#promoViewModal').modal({show: true, keyboard: true});  // put your modal id
+                    $("#singlePromoModalImg > img").attr("src", "/Ambula/" + pImg);
+                    $("#singlePromoModalDesc > p").show().html(myVar[0].promotion_type + "  " + myVar[0].promotion_name);
+                }
+            });
+        });
     </script>
 </head>
 
 <!--Header START -->
 <body>
-	<?php $this->view('_template/navigation_menu', "viewPromotion") ?>
+<?php $this->view('_template/navigation_menu', "viewPromotion") ?>
 
-    <!-- Tesing promo nav bar-->
-    <nav class="navbar navbar-promo" id="promonav">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar" style="background: #337AB7;"></span>
-                    <span class="icon-bar" style="background: #337AB7;" ></span>
-                    <span class="icon-bar" style="background: #337AB7;"></span>
-                </button>
-                <?php if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2){ ?>
-                    <a class="navbar-brand myCollapseBar" href="/Ambula/Promotion/index" style="float: left; overflow-x: hidden; border-right: 2px solid #0480be;">Add New Promotions</a>
-                <?php }else{ ?>
-                    <a class="navbar-brand myCollapseBar" href="#" style="float: left; overflow-x: hidden; border-right: 2px solid #0480be;" data-toggle="modal" data-target="#myModal">Join Ambula Promotions</a>
-                <?php }?>
-            </div>
-            <div class="collapse navbar-collapse myCollapseBar" id="myNavbar">
-                <ul class="nav navbar-nav" style="color: #c12e2a">
-                    <li class="active"><a id="restaurant" class="promoType" href="#">Restaurents</a></li>
-                    <li><a id="foodproduct" class="promoType" href="#">All You can eat</a></li>
-                    <li><a id="culinary_equipment" class="promoType" href="#">Best Cook wear deals</a></li>
-                </ul>
-            </div>
+<!-- Tesing promo nav bar-->
+<nav class="navbar navbar-promo " id="promonav">
+    <div class="container-fluid">
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar" style="background: #337AB7;"></span>
+                <span class="icon-bar" style="background: #337AB7;"></span>
+                <span class="icon-bar" style="background: #337AB7;"></span>
+            </button>
+            <?php if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2) { ?>
+                <a class="navbar-brand myCollapseBar" href="/Ambula/Promotion/index"
+                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff;">Add New Promotions</a>
+            <?php } else { ?>
+                <a class="navbar-brand myCollapseBar" href="#"
+                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff" data-toggle="modal"
+                   data-target="#myModal">Join Ambula Promotions</a>
+            <?php } ?>
         </div>
-    </nav>
+        <div class="collapse navbar-collapse myCollapseBar" id="myNavbar">
+            <ul class="nav navbar-nav" style="color: #c12e2a;">
+                <li class="active"><a id="restaurant" class="promoType" href="#">Restaurents</a></li>
+                <li><a id="foodproduct" class="promoType" href="#">All You can eat</a></li>
+                <li><a id="culinary_equipment" class="promoType" href="#">Best Cook wear deals</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    <!-------------------- Modal --------------------->
+<!-------------------- Modal --------------------->
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;" data-backdrop="false">
-        <div class="container">
-            <div class="row">
-                <div class="modal-dialog modal-dialog-center col-m-12">
-                    <div class="modal-content row">
-                        <div class="col-lg-12">
-                            <div class="modal-header row">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Signup As a Coporate User</h4>
-                            </div>
-                            <div class="modal-body row">
-                                <div class="col-sm-12">
-                                    <div class="alert alert-info row">
-                                        You must be signed in as an Ambula&trade; coporate user to add new Promotions to Ambula&trade; promotions.
-                                        Sign Up here as a Coporate User
-                                    </div>
-                                    <div class="row">
-                                        <a href="/Ambula/registration/regNewCommercialUser/" class="btn btn-primary btn-block" role="button">Join Ambula Promotions</a>
-                                        <a href="/Ambula/login" class="btn btn-block" role="button" style="border: 2px solid">Already a Member, Log In</a>
-                                    </div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
+    <div class="container">
+        <div class="row">
+            <div class="modal-dialog modal-dialog-center col-m-12">
+                <div class="modal-content row">
+                    <div class="col-lg-12">
+                        <div class="modal-header row">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Signup As a Coporate User</h4>
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-sm-12">
+                                <div class="alert alert-info row">
+                                    You must be signed in as an Ambula&trade; coporate user to add new Promotions to
+                                    Ambula&trade; promotions.
+                                    Sign Up here as a Coporate User
+                                </div>
+                                <div class="row">
+                                    <a href="/Ambula/registration/regNewCommercialUser/"
+                                       class="btn btn-primary btn-block" role="button">Join Ambula Promotions</a>
+                                    <a href="/Ambula/login" class="btn btn-block" role="button"
+                                       style="border: 2px solid">Already a Member, Log In</a>
                                 </div>
                             </div>
-                            <div class="modal-footer row">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer row">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <div class="row" style="margin: 0px">
-        <div id="promotionContainer" class="col-lg-12" style="margin: 0px">
+<div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"  data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center" style="width: 90%;height:500px;;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="singlePromoModalImg"  style="overflow: hidden"><img src=""  style="max-height: 500px;max-width: 800px;" alt=""/></div>
+            </div>
 
         </div>
-	</div>
+    </div>
+</div>
+
+
+<!-- div tag for containing promotions -->
+
+<div class="row" style="width: 100%;">
+    <div id="promotionContainer" class="col-lg-12 style="margin: 0px; ">
+
+    </div>
+</div>
+
+<!-- single promotion displaying modal-->
+
+
+
+
 </body>
 </html>
 
