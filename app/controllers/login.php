@@ -23,6 +23,10 @@ class Login extends Controller{
             header('location:http://localhost/Ambula/');
     }
 
+    public function success(){
+        $this->view('login/change_password_success');
+    }
+
     public function login(){
 
         if(isset($_SERVER['HTTP_REFERER'])){
@@ -36,7 +40,50 @@ class Login extends Controller{
         }
     }
 
+    //validate and show password reset view
+    public function passwordReset(){
 
+        if(isset($_GET['email']) &&  isset($_GET['h'])) {
+            if ($this->login->checkHash() == 1) {
+
+
+                $this->view('login/change_new_password');
+
+
+            } else if ($this->login->checkHash() == 2) {
+                Header('Location: /Ambula/login/success?reset_link_expired');
+            }
+        } else{
+
+                $this->view('login/password_reset');
+
+        }
+    }
+
+    //change password in db
+    public function changePassword(){
+
+        //check whether the hash is available in db
+        if(isset($_GET['email']) &&  isset($_GET['h'])) {
+            if ($this->login->changePassword() == 1) {
+                Header('Location: /Ambula/login/success?password_changed');
+            } else {
+                //handle
+            }
+        }
+    }
+
+    //sends reset password email
+    public function sendPasswordResetEmail(){
+
+        if($this->login->sendPasswordResetEmail() == 1){
+            Header('Location: /Ambula/login/success?email_sent');
+        }else{
+            //handle
+        }
+
+
+    }
 
     function loginWithCookie()
     {

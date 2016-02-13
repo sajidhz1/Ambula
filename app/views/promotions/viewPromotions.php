@@ -41,15 +41,107 @@
 
 
     <style>
+
+    .hovereffect {
+        width:300px;
+        height:300px;
+        float:left;
+        overflow:hidden;
+        position:relative;
+        text-align:center;
+        cursor:default;
+        margin-bottom: 10px;
+        border: 1px solid #e3e3e3;
+    }
+
+    .hovereffect .overlay {
+        width:100%;
+        height:100%;
+        position:absolute;
+        overflow:hidden;
+        top:0;
+        left:0;
+        opacity:0;
+        background-color:rgba(0,0,0,0.5);
+        -webkit-transition:all .4s ease-in-out;
+        transition:all .4s ease-in-out
+    }
+
+    .hovereffect img {
+        display:block;
+        min-height: 300px;
+        -webkit-transition:all .4s linear;
+        transition:all .4s linear;
+    }
+
+    .hovereffect h2 {
+        text-transform:uppercase;
+        color:#fff;
+        text-align:center;
+        position:relative;
+        font-size:17px;
+        background:rgba(0,0,0,0.6);
+        -webkit-transform:translatey(-100px);
+        -ms-transform:translatey(-100px);
+        transform:translatey(-100px);
+        -webkit-transition:all .2s ease-in-out;
+        transition:all .2s ease-in-out;
+        padding:10px;
+    }
+
+    .hovereffect a.info {
+        text-decoration:none;
+        display:inline-block;
+        text-transform:uppercase;
+        color:#fff;
+        border:1px solid #fff;
+        background-color:transparent;
+        opacity:0;
+        filter:alpha(opacity=0);
+        -webkit-transition:all .2s ease-in-out;
+        transition:all .2s ease-in-out;
+        margin:50px 0 0;
+        padding:7px 14px;
+    }
+
+    .hovereffect a.info:hover {
+        box-shadow:0 0 5px #fff;
+    }
+
+    .hovereffect:hover img {
+        -ms-transform:scale(1.2);
+        -webkit-transform:scale(1.2);
+        transform:scale(1.2);
+    }
+
+    .hovereffect:hover .overlay {
+        opacity:1;
+        filter:alpha(opacity=100);
+    }
+
+    .hovereffect:hover h2,.hovereffect:hover a.info {
+        opacity:1;
+        filter:alpha(opacity=100);
+        -ms-transform:translatey(0);
+        -webkit-transform:translatey(0);
+        transform:translatey(0);
+    }
+
+    .hovereffect:hover a.info {
+        -webkit-transition-delay:.2s;
+        transition-delay:.2s;
+    }
+
+
         .navbar-promo {
-            background: rgba(237, 146, 8, 0.5); /* for IE */
+            background: #ff960e; /* for IE */
             border-radius: 5px;
             border: 1px solid #E0D6CC;
             margin-right: 7.55%;
             margin-left: 7.55%;
             margin-top: 51px;
             padding: 0px;
-            color: #337ab7;
+            color: #fff;
             font-size: 20px;
         }
 
@@ -69,7 +161,7 @@
         }
 
         #promotionContainer {
-            margin: 20px;
+            padding-left: 4%;
         }
 
         .modal {
@@ -99,7 +191,13 @@
         }
 
         .myCollapseBar li {
-            border-right: 2px solid #0480be;
+            border-right: 2px solid #fff;
+
+
+        }
+
+        .myCollapseBar a{
+            color: #fff;
         }
 
         .thumbnail-grid div {
@@ -118,33 +216,12 @@
             transition: all .5s ease-in-out;
         }
 
-        p.promoName {
-            height: 50px;
-            background: linear-gradient(rgba(0, 0, 0, 1), rgba(7, 100, 180, 0.3));
-            text-align: center;
-            padding-top: 20px;
-            padding-left: 5px;
-            padding-right: 5px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            text-transform: uppercase;
-            font-size: large;
-            color: #ffffff;
-        }
 
-        p.promoCompany {
-            height: 50px;
-            padding-top: 20px;
-            padding-left: 5px;
-            padding-right: 5px;
-            background: linear-gradient(rgba(7, 100, 180, 0.3), rgba(0, 0, 0, 1));
-            font-size: large;
-            color: #ffffff;
-        }
 
         #promoViewModal {
             margin: 0px;
             max-height: 100%;
+            z-index: 100;
         }
 
         #modalDialog {
@@ -163,11 +240,7 @@
             border-radius: 0;
         }
 
-        #singlePromoModalImg {
-            background-size: contain;
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
+
 
         #singlePromoModalDesc{
 
@@ -241,7 +314,7 @@
                     pStartDate = myVar[0].start_date;
                     pEndDate = myVar[0].end_date;
                     pDateAdded = myVar[0].date_time_added;
-                    $('#promoViewModal').modal({show: true, backdrop: true, keyboard: true});  // put your modal id
+                    $('#promoViewModal').modal({show: true, keyboard: true});  // put your modal id
                     $("#singlePromoModalImg > img").attr("src", "/Ambula/" + pImg);
                     $("#singlePromoModalDesc > p").show().html(myVar[0].promotion_type + "  " + myVar[0].promotion_name);
                 }
@@ -255,9 +328,9 @@
 <?php $this->view('_template/navigation_menu', "viewPromotion") ?>
 
 <!-- Tesing promo nav bar-->
-<nav class="navbar navbar-promo" id="promonav">
+<nav class="navbar navbar-promo " id="promonav">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-header ">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar" style="background: #337AB7;"></span>
                 <span class="icon-bar" style="background: #337AB7;"></span>
@@ -265,10 +338,10 @@
             </button>
             <?php if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2) { ?>
                 <a class="navbar-brand myCollapseBar" href="/Ambula/Promotion/index"
-                   style="float: left; overflow-x: hidden; border-right: 2px solid #0480be;">Add New Promotions</a>
+                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff;">Add New Promotions</a>
             <?php } else { ?>
                 <a class="navbar-brand myCollapseBar" href="#"
-                   style="float: left; overflow-x: hidden; border-right: 2px solid #0480be;" data-toggle="modal"
+                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff" data-toggle="modal"
                    data-target="#myModal">Join Ambula Promotions</a>
             <?php } ?>
         </div>
@@ -321,30 +394,36 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"  data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center" style="width: 90%;height:500px;;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="singlePromoModalImg"  style="overflow: hidden"><img src=""  style="max-height: 500px;max-width: 800px;" alt=""/></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <!-- div tag for containing promotions -->
 
-<div class="row" style="">
-    <div id="promotionContainer" class="col-lg-12 thumbnail-grid" style="margin: 0px; padding: 0 8% 0 8%;">
+<div class="row" style="width: 100%;">
+    <div id="promotionContainer" class="col-lg-12 style="margin: 0px; ">
 
     </div>
 </div>
 
 <!-- single promotion displaying modal-->
 
-<div class='modal fade row' id='promoViewModal' role='dialog'>
-    <div class="modal-dialog col-lg-12" id="modalDialog">
-        <div class="modal-content row" id="modalContent">
-            <div class="col-md-9" id="singlePromoModalImg" style="padding: 0px">
-                <img src="" id="singPromoImage">
-            </div>
-            <div class="col-md-3" id="singlePromoModalDesc" style="">
-                <p>
 
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+
+
 </body>
 </html>
 
