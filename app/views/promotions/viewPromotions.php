@@ -144,7 +144,7 @@
 
         #promoViewModal {
             margin: 0px;
-            overflow: scroll;
+            max-height: 100%;
         }
 
         #modalDialog {
@@ -247,14 +247,6 @@
                 }
             });
         });
-
-        $(document).keyup(function(e) {
-            if (e.keyCode == 27) {
-
-            }
-        });
-
-
     </script>
 </head>
 

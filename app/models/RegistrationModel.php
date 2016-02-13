@@ -296,7 +296,7 @@ class RegistrationModel
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            $company_name_flag = $address_flag = $telephone1_flag = $telephone2_flag = $city_flag = $email_flag = $password_flag = $company_logo_flag = $username_flag = false;
+            $company_name_flag = $address_flag = $telephone1_flag = $telephone2_flag = $city_flag = $district_flag = $email_flag = $password_flag = $company_logo_flag = $username_flag = false;
             $nameErr = $emailErr = $teleErr = $teleErr2 = $passwordErr = $cityErr = $districtErr = $logoErr = $addresErr = $usernameErr = "";
             $company_name = $address = $telephone1 = $telephone2 = $city = $district = $company_logo = $email = $password = $username = "";
 
@@ -392,8 +392,24 @@ class RegistrationModel
                 }
             }
 
-            $city = $_POST["city"];
-            $district = $_POST["district"];
+            //to validate the city field
+            if (empty($_POST["city"])) {
+                $cityErr = "Nearest City is required";
+                $cityErr = false;
+            } else {
+                $city_flag = true;
+                $city = $this->test_input($_POST["city"]);
+            }
+
+            //To validate the district field
+            if (empty($_POST["district"])) {
+                $districtErr = "District is required";
+                $district_flag = false;
+            } else {
+                $district_flag = true;
+                $district = $this->test_input($_POST["district"]);
+
+            }
 
             $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
             $password_hash = password_hash($password, PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
