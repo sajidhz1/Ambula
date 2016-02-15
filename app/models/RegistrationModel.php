@@ -29,8 +29,9 @@ class RegistrationModel
         $this->db = $db;
     }
 
-    public function validateFields()
-    {
+
+    // model method for inserting new personal user in to the data base
+    public function validateFields(){
 
         $first_name_flag = $last_name_flag = $email_flag = $password_flag = $username_flag = false;
         $nameErr = $emailErr = $last_nameErr = $passwordErr = $usernameErr = "";
@@ -138,24 +139,21 @@ class RegistrationModel
         $this->db->prepare($sql)->execute();
 
         Session::set('refferer', 'registration');
-        return $result;
 
+        return $result;
 
     }
 
 
-    function test_input($data)
-    {
+    function test_input($data){
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
     }
 
-
     //register with facebook
-    public function registerWithFacebook()
-    {
+    public function registerWithFacebook(){
         // instantiate the facebook object
         FacebookSession::setDefaultApplication(FACEBOOK_APP_ID, FACEBOOK_APP_SECRET);
 
@@ -203,8 +201,7 @@ class RegistrationModel
 
     }
 
-    public function checkFacebookUIDExistsinDatabase($uid = '')
-    {
+    public function checkFacebookUIDExistsinDatabase($uid = ''){
         $query = $this->db->prepare("SELECT user_id FROM users WHERE user_facebook_uid = :user_facebook_uid");
         $query->execute(array(':user_facebook_uid' => $uid));
 
@@ -215,8 +212,7 @@ class RegistrationModel
         return false;
     }
 
-    public function registerNewUserWithFacebook($graphObject)
-    {
+    public function registerNewUserWithFacebook($graphObject){
         $fbid = $graphObject->getProperty('id');              // To Get Facebook ID
         $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
         $femail = $graphObject->getProperty('email');    // To Get Facebook email ID
@@ -251,8 +247,7 @@ class RegistrationModel
         return false;
     }
 
-    public function checkEmail($email = "")
-    {
+    public function checkEmail($email = ""){
         $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = :email");
         $query->execute(array(':email' => $email));
         $count = $query->rowCount();
@@ -264,8 +259,7 @@ class RegistrationModel
 
     }
 
-    public function checkUserName($userName = "")
-    {
+    public function checkUserName($userName = ""){
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = :user_name");
         $query->execute(array(':user_name' => $userName));
         $count = $query->rowCount();
@@ -277,8 +271,7 @@ class RegistrationModel
     }
 
 
-    public function checkCooperateUserName($userName = "")
-    {
+    public function checkCooperateUserName($userName = ""){
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
         $query->execute();
         $count = $query->rowCount();
@@ -290,9 +283,8 @@ class RegistrationModel
     }
 
 
-    //register commercial user
-    public function register_commercial_user()
-    {
+    //register new commercial user
+    public function register_commercial_user(){
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -421,22 +413,9 @@ class RegistrationModel
 
         }
 
-        //mkdir("uploads/profile/commercial_user/" . $username);
-        //if($this->imageUpload("company_logo",$username)){
-
         //generating activation hash
         $hash = md5(rand(0, 1000));
-        /*
-        $query = $this->db->prepare("SELECT user_id, user_name, user_email, user_password_hash, user_active,
-                                          user_account_type,  user_avatar,  user_last_failed_login, user_personal_iduser_personal
-                                     FROM users
-                                     WHERE user_id = :user_id
-                                       AND user_rememberme_token = :user_rememberme_token
-                                       AND user_rememberme_token IS NOT NULL
-                                       AND user_provider_type = :provider_type");
-        $query->execute(array(':user_id' => $user_id, ':user_rememberme_token' => $token, ':provider_type' => 'DEFAULT'));
 
-        */
         $sql = "INSERT INTO users (user_email, user_name, user_password_hash, user_account_type , user_provider_type ,user_activation_hash)
                 VALUES (:email , :user_name , :password_hash, :user_account_type , :user_provider_type , :hash )";
         $result = $this->db->prepare($sql);
@@ -450,14 +429,12 @@ class RegistrationModel
         $result2->execute(array(':user_id' => $user_id, ':company_name' => $company_name, ':address' => $address, ':telephone1' => $telephone1, ':telephone2' => $telephone2, ':city' => $city, ':district' => $district));
 
         $this->sendVerificationEmail($email, $username, $password, $hash);
-        return true;
-        // }
 
+        return true;
 
     }
 
-    public function update_commercial_user()
-    {
+    public function update_commercial_user(){
 
         //  $website = $facebook = $youtube = $description = $user_name  = '' ;
 
@@ -503,8 +480,9 @@ class RegistrationModel
             $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '" . $user_id . "'";
             $result2 = $this->db->prepare($sql_1)->execute();
 
+            Session::set('reffererCommercial', 'registrationCommercial');
 
-            echo $result2;
+            return true;
 
         }
 

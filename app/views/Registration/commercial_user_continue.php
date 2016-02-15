@@ -48,7 +48,7 @@
 
         }
 
-        h4,h5 {
+        h4, h5 {
             text-align: center;
         }
 
@@ -76,7 +76,7 @@
 
         }
 
-        .category-group{
+        .category-group {
             margin-bottom: 25px;
         }
 
@@ -85,18 +85,17 @@
             min-width: 173px;
             background-color: #ffa366;
 
-
         }
 
-        .category-group input{
+        .category-group input {
             /*margin-right: 2%;*/
         }
 
-        .category-group div{
+        .category-group div {
             display: inline-block;
         }
 
-        .container{
+        .container {
             width: 99%;
         }
     </style>
@@ -108,110 +107,115 @@
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
 <div class="container">
-    <form data-toggle="validator" role="form" action='http://localhost/Ambula/registration/update_commercial_user' method="POST"  enctype="multipart/form-data">
-    <div class="container mrg50T">
-        <h4 class="txt-red">Almost There Just One Step to go !</h4>
+    <form data-toggle="validator" role="form" action='http://localhost/Ambula/registration/update_commercial_user'
+          method="POST" enctype="multipart/form-data">
+        <div class="container mrg50T">
+            <h4 class="txt-red">Almost There Just One More Step to go !</h4>
 
-        <div class="col-lg-4 hgt600" style="border: 1px solid #b2b2b2">
-            <h4>Company Logo</h4>
-            <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
-                 id="profile_img" alt=""/>
+            <div class="col-lg-4 hgt600" style="border: 1px solid #b2b2b2">
+                <h4>Company Logo</h4>
+                <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
+                     id="profile_img" alt=""/>
 
-            <div class="text-center">
+                <div class="text-center">
                 <span class="btn btn-default btn-file">
                      Browse <input type="file"
-                                   onchange="$('#profile_img').attr('src' ,window.URL.createObjectURL(this.files[0]));$('.logo-save').show();" name="company_logo">
+                                   onchange="$('#profile_img').attr('src' ,window.URL.createObjectURL(this.files[0]));$('.logo-save').show();"
+                                   name="company_logo">
                 </span>
 
-            </div>
-            <br>
-
-            <div class="col-lg-11" style="margin-bottom:15px;margin-top: 20px;">
-                <label class="control-label" for="last_name">Website </label>
-                <div class="input-group ">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                    <input id="login-username" type="text" class="form-control" name="web_site_url" value=""
-                           placeholder="http://theambula.lk/">
                 </div>
-            </div>
+                <br>
 
-            <div class="col-lg-11" style="margin-bottom:15px;">
-                <label class="control-label" for="last_name">Facebook Page URL </label>
-                <div class="input-group ">
-                    <span class="input-group-addon" style="font-weight: 600;">f</span>
-                    <input id="login-username" type="text" class="form-control" name="facebook_url" value=""
-                           placeholder="https://www.facebook.com/the.ambula">
+                <div class="col-lg-11" style="margin-bottom:15px;margin-top: 20px;">
+                    <label class="control-label" for="last_name">Website </label>
+
+                    <div class="input-group ">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="web_site_url" value=""
+                               placeholder="http://theambula.lk/">
+                    </div>
                 </div>
-            </div>
 
+                <div class="col-lg-11" style="margin-bottom:15px;">
+                    <label class="control-label" for="last_name">Facebook Page URL </label>
 
-
-
-            <div class="col-lg-11">
-                <label class="control-label" for="last_name">Youtube channel URL</label>
-                <div class="input-group ">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-play"></i></span>
-                    <input id="login-username" type="text" class="form-control" name="youtube_url" value=""
-                           placeholder="username or email">
+                    <div class="input-group ">
+                        <span class="input-group-addon" style="font-weight: 600;">f</span>
+                        <input id="login-username" type="text" class="form-control" name="facebook_url" value=""
+                               placeholder="https://www.facebook.com/the.ambula">
+                    </div>
                 </div>
+
+
+                <div class="col-lg-11">
+                    <label class="control-label" for="last_name">Youtube channel URL</label>
+
+                    <div class="input-group ">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-play"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="youtube_url" value=""
+                               placeholder="username or email">
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+            <div class="col-lg-8 hgt600" style="padding-top:15px;background: #e8e8e8;">
 
-        <div class="col-lg-8 hgt600" style="padding-top:15px;background: #e8e8e8;">
+                <div class="col-lg-12">
+                    <h4 style="margin-bottom: 15px;"> Short Description</h4>
 
-            <div class="col-lg-12">
-                <h4 style="margin-bottom: 15px;"> Short Description</h4>
-
-                <div class="input-group" style="width: 100%">
-                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                    <div class="input-group" style="width: 100%">
+                        <div class="col-lg-12 col-xs-12 col-sm-12">
                         <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
                                   cols="40"></textarea>
 
+                        </div>
+                        <br>
                     </div>
-                    <br>
                 </div>
-            </div>
 
-            <div class="col-lg-12 category-group">
-                <h5 style="margin-bottom: 15px;margin-top: 25px;"> Categories</h5>
+                <div class="col-lg-12 category-group">
+                    <h5 style="margin-bottom: 15px;margin-top: 25px;"> Categories</h5>
 
-                <div class="col-lg-4">
-                    <ul>
-                   <?php
-                   $arr = json_decode($this->loadCategories(), true);
-                   $count = 0;
-                   foreach ($arr as $category) {
-                   ?>
+                    <div class="col-lg-4">
+                        <ul>
+                            <?php
+                            $arr = json_decode($this->loadCategories(), true);
+                            $count = 0;
+                            foreach ($arr as $category) {
+                                ?>
 
-                        <li>
-                            <label for="checkboxes1"><?=$category['title'] ?></label>
-                            <input id="checkboxes1" name="cat_checkbox[]" value="<?=$category['id_product_categories'] ?>" type="checkbox">
-                        </li>
+                                <li>
+                                    <label for="checkboxes1"><?= $category['title'] ?></label>
+                                    <input id="checkboxes1" name="cat_checkbox[]"
+                                           value="<?= $category['id_product_categories'] ?>" type="checkbox">
+                                </li>
 
-                    <?php
-                    $count++;
-                        if($count == 7){
-                            echo '</ul></div><div class="col-lg-4"><ul>';
-                            $count =0;
-                        }
-                    }
-                    ?>
-                </ul></div>
+                                <?php
+                                $count++;
+                                if ($count == 7) {
+                                    echo '</ul></div><div class="col-lg-4"><ul>';
+                                    $count = 0;
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </div>
+
+                </div>
+
 
             </div>
 
 
         </div>
+        <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
+            <a href="" class="btn btn-default ">Skip >></a>
+            <button class="btn btn-success">Save</button>
 
-
-    </div>
-    <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
-        <a href="" class="btn btn-default ">Skip >></a>
-        <button class="btn btn-success">Save</button>
-
-    </div>
-      <input type="hidden" name="user_name" value="<?php echo $_GET['user']; ?>" />
+        </div>
+        <input type="hidden" name="user_name" value="<?php echo $_GET['user']; ?>"/>
     </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor
@@ -227,8 +231,8 @@
 
     </script>
 
-    <script type="text/javascript" src="../public/js/registration/validator.js"></script>
-    <script type="text/javascript" src="../public/js/recipes/script.js"></script>
+    <script type="text/javascript" src="/Ambbula/public/js/registration/validator.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/recipes/script.js"></script>
     <script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
 </div>
 </body>
