@@ -458,7 +458,7 @@
 <!-- div tag for containing promotions -->
 
 <div class="row" style="width: 100%;">
-    <div id="promotionContainer" class="col-lg-12 style="margin: 0px; ">
+    <div id="promotionContainer" class="col-lg-12" style="margin: 0px; ">
 
     </div>
 </div>
