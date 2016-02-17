@@ -11,14 +11,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The Ambula</title>
+    <title>The Ambula | Promotions</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image"              content="http://theambula.lk/public/img/food_tile.jpg" />
+    <meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe/" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="<?php echo $this->recipes->recipename; ?>" />
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/style.css" rel="stylesheet" media="screen"/>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- fav icon -->
     <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
@@ -325,6 +331,15 @@
                 }
             });
         });
+
+        // facebook share
+        function share_facebook(url,name){
+            u=url;
+            t=document.title;
+            d=name;
+            window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'t='+encodeURIComponent(t)+'&d='+encodeURIComponent(d),'sharer','toolbar=0,status=0,width=626,height=436');
+            return false;
+        }
     </script>
 </head>
 
@@ -427,7 +442,9 @@
                     <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
                     <br>
 
-                    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                        <i class="fa fa-facebook-square"></i> Share on Facebook
+                    </a>
 
                     <a href="">Twitter</a>
                 </div>
