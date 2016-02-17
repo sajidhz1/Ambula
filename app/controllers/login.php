@@ -16,8 +16,6 @@ class Login extends Controller
 
     public function index($name = '')
     {
-
-
         //  $this->loadModel('LoginModel')->login();
         if (!Session::get('user_logged_in'))
             $this->view('login/Login', ['name' => 'sajidh']);
