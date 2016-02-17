@@ -222,8 +222,8 @@
 
                         <div class="controls">
 
-                            <textarea id="description" name="description" class="form-control"
-                                      style="resize: none; height: 100px" placeholder="" required>
+                            <textarea id="description" name="description" maxlength="255" class="form-control"
+                                      style="resize: none; height: 100px" placeholder="max 255 characters" required>
 
                             </textarea>
                             <!--<textarea id="description" name="description" class="form-control" style="height: 120px; resize: none;" required>
@@ -258,21 +258,21 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <!-- Promotion priority -->
-                        <label class="control-label" for="priority">Promotion Priority</label>
-
-                        <div class="controls">
-                            <select class="form-control" id="priority" name="priority" required>
-                                <option value="normal">Normal</option>
-                                <option value="medium">Medium(+500 Rs)</option>
-                                <option value="high">High(+1000 Rs)</option>
-                            </select>
-                        </div>
-                        <span class="help-block with-errors"></span>
-                    </div>
-                </div>
+<!--                <div class="row">-->
+<!--                    <div class="form-group col-lg-6">-->
+<!--                        <!-- Promotion priority -->
+<!--                        <label class="control-label" for="priority">Promotion Priority</label>-->
+<!---->
+<!--                        <div class="controls">-->
+<!--                            <select class="form-control" id="priority" name="priority" required>-->
+<!--                                <option value="normal">Normal</option>-->
+<!--                                <option value="medium">Medium(+500 Rs)</option>-->
+<!--                                <option value="high">High(+1000 Rs)</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <span class="help-block with-errors"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div class="row">
                     <div class="form-group col-lg-3">

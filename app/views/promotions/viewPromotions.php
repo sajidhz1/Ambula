@@ -11,14 +11,20 @@
 
 <head>
     <meta charset="utf-8">
-    <title>The Ambula</title>
+    <title>The Ambula | Promotions</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image"              content="http://theambula.lk/public/img/food_tile.jpg" />
+    <meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe/" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="<?php echo $this->recipes->recipename; ?>" />
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/style.css" rel="stylesheet" media="screen"/>
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
     <!-- fav icon -->
     <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
@@ -246,10 +252,7 @@
 
         }
 
-        #singlePromoModalImg{
-            max-height: 100%;
-            max-width: 100%;
-        }
+
 
     </style>
 
@@ -316,15 +319,42 @@
                     pDateAdded = myVar[0].date_time_added;
                     $('#promoViewModal').modal({show: true, keyboard: true});  // put your modal id
                     $("#singlePromoModalImg > img").attr("src", "/Ambula/" + pImg);
-                    $("#singlePromoModalDesc > p").show().html(myVar[0].promotion_type + "  " + myVar[0].promotion_name);
+                   $("#modal-title").html(myVar[0].promotion_name);
+                   $("#modal-description").html(pDescription);
+                   $("#from").html(pStartDate);
+                   $("#till").html(pEndDate);
+
+                    if($('#singlePromoModalImg > img').width() > 600 )
+                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
+                    else
+                        $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
                 }
             });
         });
+
+        // facebook share
+        function share_facebook(url,name){
+            u=url;
+            t=document.title;
+            d=name;
+            window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'t='+encodeURIComponent(t)+'&d='+encodeURIComponent(d),'sharer','toolbar=0,status=0,width=626,height=436');
+            return false;
+        }
     </script>
 </head>
 
 <!--Header START -->
 <body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=753864634705819";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 <?php $this->view('_template/navigation_menu', "viewPromotion") ?>
 
 <!-- Tesing promo nav bar-->
@@ -396,14 +426,28 @@
 
 
 <div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"  data-backdrop="false">
-    <div class="modal-dialog modal-dialog-center" style="width: 90%;height:500px;;">
-        <div class="modal-content">
+    <div class="modal-dialog modal-dialog-center"  id="modalBody" style="height:500px;">
+        <div class="modal-content" style="">
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
-            <div class="modal-body">
-                <div id="singlePromoModalImg"  style="overflow: hidden"><img src=""  style="max-height: 500px;max-width: 800px;" alt=""/></div>
+            <div class="modal-body"  style="height: 550px;">
+                <div id="singlePromoModalImg"  class="col-lg-8"  ><img src=""  style="max-height: 500px;max-width: 800px;" alt=""/></div>
+                <div  class="col-lg-4">
+                    <h3 id="modal-title" class="pg-title" style="text-align: center;color: red" >Title here</h3>
+                    <p id="modal-description"></p>
+
+                    <span style="font-size: 1.1em;font-weight:800;">Valid From : <span id="from" class="txt-red"></span></span><br><br>
+                    <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
+                    <br>
+
+                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                        <i class="fa fa-facebook-square"></i> Share on Facebook
+                    </a>
+
+                    <a href="">Twitter</a>
+                </div>
             </div>
 
         </div>
