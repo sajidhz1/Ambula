@@ -1,151 +1,179 @@
-<?php 
+<?php
 
-class Home extends Controller{
+class Home extends Controller
+{
 
-	protected $user;
+    protected $user;
     public $recipe;
     public $search;
     public $category;
     public $user_name;
     protected $foodProducts;
 
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         $this->user = $this->model('HomeModel');
 
     }
 
-  public function index($name =''){
-
-     // $this->user->checkLogin();
-	$this->view('index',[]);
-
-  }
-  public function search(){
-
-      $this->search = $_GET['query'];
-     $this->view('search');
-
-  }
-
-  public function searchRecipes($query='',$filter ='',$number=''){
-
-       $this->user->searchRecipes($query,$filter,$number);
-  }
-    //categories without parameters
-  public function categories(){
-      $this->view('home/categories');
-  }
-    //view for category
-  public function category($category=''){
-      $this->category = $category;
-      if(isset($_GET['id']) && !isset($_GET['sid']))
-      $this->view('home/category');
-
-      if(isset($_GET['id']) && isset($_GET['sid']))
-      $this->view('home/subcategory');
-
-
-  }
-
-    //getsubcategory Array
-  public function getSubCategoryArray(){
-        return $this->user->getSubcategoryArray();
-  }
-
-  //getsubcategory Arrayby id
-  public function getSubCategoriesByID($id='',$limit=''){
-        return $this->user->getSubCategoriesByID($id,$limit);
-  }
-
-    public function viewCategories($limit='')
+    public function index($name = '')
     {
-      return  $this->user->viewCategories($limit);
+
+        // $this->user->checkLogin();
+        $this->view('index', []);
+
     }
 
-  public function getImageUrl($idrecipe='')
-  {
-        return $this->user->getImageUrl($idrecipe);
-  }
+    public function search()
+    {
+        $this->search = $_GET['q'];
+        $this->view('search');
+    }
 
-    public function getRecipesArray($idCategory =''){
+    public function searchRecipes($query = '', $filter = '', $number = '')
+    {
+        $this->user->searchRecipes($query, $filter, $number);
+    }
+
+    //categories without parameters
+    public function categories()
+    {
+        $this->view('home/categories');
+    }
+
+    //view for category
+    public function category($category = '')
+    {
+        $this->category = $category;
+        if (isset($_GET['id']) && !isset($_GET['sid']))
+            $this->view('home/category');
+
+        if (isset($_GET['id']) && isset($_GET['sid']))
+            $this->view('home/subcategory');
+
+
+    }
+
+    //getsubcategory Array
+    public function getSubCategoryArray()
+    {
+        return $this->user->getSubcategoryArray();
+    }
+
+    //getsubcategory Arrayby id
+    public function getSubCategoriesByID($id = '', $limit = '')
+    {
+        return $this->user->getSubCategoriesByID($id, $limit);
+    }
+
+    public function viewCategories($limit = '')
+    {
+        return $this->user->viewCategories($limit);
+    }
+
+    public function getImageUrl($idrecipe = '')
+    {
+        return $this->user->getImageUrl($idrecipe);
+    }
+
+    public function getRecipesArray($idCategory = '')
+    {
         return $this->user->getRecipesArray($idCategory);
     }
 
-    public function viewRecent(){
+    public function viewRecent()
+    {
         return $this->user->viewRecent();
     }
 
     //profile functions
-    public function profile($user =''){
-      if ($this->user->checkUserExistAndGetType($user)!=''){
-          if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
-              $this->user_name = $user;
-              $this->view('user_profile/normal_user_profile');
-          } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
-              $this->user_name = $user;
-              $this->view('user_profile/cooperate_user_profile');
-          }
-      }else{
-          $this->view('_template/error');
-      }
+    public function profile($user = '')
+    {
+        if ($this->user->checkUserExistAndGetType($user) != '') {
+            if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
+                $this->user_name = $user;
+                $this->view('user_profile/normal_user_profile');
+            } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
+                $this->user_name = $user;
+                $this->view('user_profile/cooperate_user_profile');
+            }
+        } else {
+            $this->view('_template/error');
+        }
     }
 
     //profile function
-    public function getUser(){
+    public function getUser()
+    {
         return $this->user->getUser($this->user_name);
     }
 
-    public function getRecipesByUser($userId=''){
+    public function getRecipesByUser($userId = '')
+    {
         return $this->user->getRecipesByUser($userId);
     }
-        //subcategory view
-    public function getRecipesByCategory($category=''){
+
+    //subcategory view
+    public function getRecipesByCategory($category = '')
+    {
         return $this->user->getRecipesByCategory($category);
     }
 
     // get added user
-    public function getRecipeBy($recipeId=''){
+    public function getRecipeBy($recipeId = '')
+    {
         return $this->user->getRecipeBy($recipeId);
     }
 
-    public function error_page(){
+    public function error_page()
+    {
         $this->view('_template/error');
     }
-    
-    
-    public function contact(){
+
+
+    public function contact()
+    {
         $this->view('contact');
     }
 
 
-    public function promotions(){
+    public function promotions()
+    {
         $this->view('promotions/viewPromotions');
     }
-    
-     public function uploadUserPhoto(){
+
+    public function uploadUserPhoto()
+    {
         $this->user->uploadUserPhoto();
     }
-    
-     public function addUserDescription(){
+
+    public function addUserDescription()
+    {
         $this->user->addUserDescription($_POST['val']);
     }
 
-    public function getCooperateUserDetails(){
+    public function getCooperateUserDetails()
+    {
         return $this->user->getCooperateUserDetails($this->user_name);
     }
-   	public function viewUserProducts($uid = ''){
-       return  $this->user->viewUserProducts($uid);
 
-   	}
+    public function viewUserProducts($uid = '')
+    {
+        return $this->user->viewUserProducts($uid);
 
-    public function admin(){
+    }
+
+    public function admin()
+    {
         $this->view("administration/adminProfile");
     }
 
-    public function searchResults(){
+    public function searchResults()
+    {
         return $this->user->searchResults();
     }
+
 }
 
 

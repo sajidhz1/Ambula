@@ -38,8 +38,7 @@
                 foreach($arr as $category)
                 {
                     ?>
-                    <div class="col-lg-2 col-sm-6"
-                         style="background:url(http://localhost/Ambula/uploads/<?php echo $category['thumb_url']; ?>) no-repeat center;">
+                    <div class="col-lg-2 col-sm-6" style="background:url(http://localhost/Ambula/uploads/<?php echo $category['thumb_url']; ?>) no-repeat center;">
                         <a href="category/<?php echo $category['title']; ?>/?id=<?php echo $category['idCategory']; ?>"  class="flex-item">
                             <span><h3 style="text-shadow: 2px 2px #222;"><?php echo $category['title']; ?></h3></span>
                         </a>

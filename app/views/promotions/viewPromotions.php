@@ -14,10 +14,10 @@
     <title>The Ambula | Promotions</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image"              content="http://theambula.lk/public/img/food_tile.jpg" />
-    <meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe/" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="<?php echo $this->recipes->recipename; ?>" />
+    <meta property="og:image" content="http://theambula.lk/public/img/food_tile.jpg"/>
+    <meta property="og:url" content="http://theambula.lk/recipes/viewRecipe/"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content=""/>
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
@@ -48,96 +48,95 @@
 
     <style>
 
-    .hovereffect {
-        width:300px;
-        height:300px;
-        float:left;
-        overflow:hidden;
-        position:relative;
-        text-align:center;
-        cursor:default;
-        margin-bottom: 10px;
-        border: 1px solid #e3e3e3;
-    }
+        .hovereffect {
+            width: 300px;
+            height: 300px;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            cursor: default;
+            margin-bottom: 10px;
+            border: 1px solid #e3e3e3;
+        }
 
-    .hovereffect .overlay {
-        width:100%;
-        height:100%;
-        position:absolute;
-        overflow:hidden;
-        top:0;
-        left:0;
-        opacity:0;
-        background-color:rgba(0,0,0,0.5);
-        -webkit-transition:all .4s ease-in-out;
-        transition:all .4s ease-in-out
-    }
+        .hovereffect .overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out
+        }
 
-    .hovereffect img {
-        display:block;
-        min-height: 300px;
-        -webkit-transition:all .4s linear;
-        transition:all .4s linear;
-    }
+        .hovereffect img {
+            display: block;
+            min-height: 300px;
+            -webkit-transition: all .4s linear;
+            transition: all .4s linear;
+        }
 
-    .hovereffect h2 {
-        text-transform:uppercase;
-        color:#fff;
-        text-align:center;
-        position:relative;
-        font-size:17px;
-        background:rgba(0,0,0,0.6);
-        -webkit-transform:translatey(-100px);
-        -ms-transform:translatey(-100px);
-        transform:translatey(-100px);
-        -webkit-transition:all .2s ease-in-out;
-        transition:all .2s ease-in-out;
-        padding:10px;
-    }
+        .hovereffect h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-transform: translatey(-100px);
+            -ms-transform: translatey(-100px);
+            transform: translatey(-100px);
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            padding: 10px;
+        }
 
-    .hovereffect a.info {
-        text-decoration:none;
-        display:inline-block;
-        text-transform:uppercase;
-        color:#fff;
-        border:1px solid #fff;
-        background-color:transparent;
-        opacity:0;
-        filter:alpha(opacity=0);
-        -webkit-transition:all .2s ease-in-out;
-        transition:all .2s ease-in-out;
-        margin:50px 0 0;
-        padding:7px 14px;
-    }
+        .hovereffect a.info {
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid #fff;
+            background-color: transparent;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            margin: 50px 0 0;
+            padding: 7px 14px;
+        }
 
-    .hovereffect a.info:hover {
-        box-shadow:0 0 5px #fff;
-    }
+        .hovereffect a.info:hover {
+            box-shadow: 0 0 5px #fff;
+        }
 
-    .hovereffect:hover img {
-        -ms-transform:scale(1.2);
-        -webkit-transform:scale(1.2);
-        transform:scale(1.2);
-    }
+        .hovereffect:hover img {
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
 
-    .hovereffect:hover .overlay {
-        opacity:1;
-        filter:alpha(opacity=100);
-    }
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
 
-    .hovereffect:hover h2,.hovereffect:hover a.info {
-        opacity:1;
-        filter:alpha(opacity=100);
-        -ms-transform:translatey(0);
-        -webkit-transform:translatey(0);
-        transform:translatey(0);
-    }
+        .hovereffect:hover h2, .hovereffect:hover a.info {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-transform: translatey(0);
+            -webkit-transform: translatey(0);
+            transform: translatey(0);
+        }
 
-    .hovereffect:hover a.info {
-        -webkit-transition-delay:.2s;
-        transition-delay:.2s;
-    }
-
+        .hovereffect:hover a.info {
+            -webkit-transition-delay: .2s;
+            transition-delay: .2s;
+        }
 
         .navbar-promo {
             background: #ff960e; /* for IE */
@@ -199,10 +198,9 @@
         .myCollapseBar li {
             border-right: 2px solid #fff;
 
-
         }
 
-        .myCollapseBar a{
+        .myCollapseBar a {
             color: #fff;
         }
 
@@ -222,8 +220,6 @@
             transition: all .5s ease-in-out;
         }
 
-
-
         #promoViewModal {
             margin: 0px;
             max-height: 100%;
@@ -238,7 +234,7 @@
             z-index: 1040;
         }
 
-        #modalContent{
+        #modalContent {
             margin-left: 20px;
             margin-right: 20px;
             margin-top: 20px;
@@ -246,12 +242,9 @@
             border-radius: 0;
         }
 
-
-
-        #singlePromoModalDesc{
+        #singlePromoModalDesc {
 
         }
-
 
 
     </style>
@@ -319,13 +312,13 @@
                     pDateAdded = myVar[0].date_time_added;
                     $('#promoViewModal').modal({show: true, keyboard: true});  // put your modal id
                     $("#singlePromoModalImg > img").attr("src", "/Ambula/" + pImg);
-                   $("#modal-title").html(myVar[0].promotion_name);
-                   $("#modal-description").html(pDescription);
-                   $("#from").html(pStartDate);
-                   $("#till").html(pEndDate);
+                    $("#modal-title").html(myVar[0].promotion_name);
+                    $("#modal-description").html(pDescription);
+                    $("#from").html(pStartDate);
+                    $("#till").html(pEndDate);
 
-                    if($('#singlePromoModalImg > img').width() > 600 )
-                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
+                    if ($('#singlePromoModalImg > img').width() > 600)
+                        $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
                     else
                         $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
                 }
@@ -333,11 +326,11 @@
         });
 
         // facebook share
-        function share_facebook(url,name){
-            u=url;
-            t=document.title;
-            d=name;
-            window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'t='+encodeURIComponent(t)+'&d='+encodeURIComponent(d),'sharer','toolbar=0,status=0,width=626,height=436');
+        function share_facebook(url, name) {
+            u = url;
+            t = document.title;
+            d = name;
+            window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(u) + 't=' + encodeURIComponent(t) + '&d=' + encodeURIComponent(d), 'sharer', 'toolbar=0,status=0,width=626,height=436');
             return false;
         }
     </script>
@@ -347,10 +340,11 @@
 <body>
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=753864634705819";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
@@ -368,7 +362,8 @@
             </button>
             <?php if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2) { ?>
                 <a class="navbar-brand myCollapseBar" href="/Ambula/Promotion/index"
-                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff;">Add New Promotions</a>
+                   style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff;">Add New
+                    Promotions</a>
             <?php } else { ?>
                 <a class="navbar-brand myCollapseBar" href="#"
                    style="float: left; overflow-x: hidden; border-right: 2px solid #fff;color: #fff" data-toggle="modal"
@@ -424,25 +419,31 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"  data-backdrop="false">
-    <div class="modal-dialog modal-dialog-center"  id="modalBody" style="height:500px;">
+<!-- single promotion displaying modal-->
+<div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center" id="modalBody" style="height:500px;">
         <div class="modal-content" style="">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
             </div>
-            <div class="modal-body"  style="height: 550px;">
-                <div id="singlePromoModalImg"  class="col-lg-8"  ><img src=""  style="max-height: 500px;max-width: 800px;" alt=""/></div>
-                <div  class="col-lg-4">
-                    <h3 id="modal-title" class="pg-title" style="text-align: center;color: red" >Title here</h3>
+            <div class="modal-body" style="height: 550px;">
+                <div id="singlePromoModalImg" class="col-lg-8"><img src="" style="max-height: 500px;max-width: 800px;" alt=""/></div>
+                <div class="col-lg-4">
+                    <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
+
                     <p id="modal-description"></p>
 
                     <span style="font-size: 1.1em;font-weight:800;">Valid From : <span id="from" class="txt-red"></span></span><br><br>
                     <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
                     <br>
 
-                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                    <a class="btn btn-primary"
+                       href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12"
+                       onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')"
+                       target="_blank">
                         <i class="fa fa-facebook-square"></i> Share on Facebook
                     </a>
 
@@ -462,11 +463,6 @@
 
     </div>
 </div>
-
-<!-- single promotion displaying modal-->
-
-
-
 
 </body>
 </html>

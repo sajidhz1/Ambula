@@ -39,9 +39,9 @@ class Registration extends Controller
     public function registerNewUser()
     {
         if ($this->registration->validateFields() == 1) {
-            Header('Location:http:/login');
+            Header('Location:http:/Ambula/login');
         } else {
-            Header('Location:http:/registration');
+            Header('Location:http:/Ambula/registration');
         }
     }
 
