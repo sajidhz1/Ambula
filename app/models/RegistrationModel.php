@@ -178,21 +178,22 @@ class RegistrationModel
             $response = $request->execute();
             // get response
             $graphObject = $response->getGraphObject();
-            $fbid = $graphObject->getProperty('id');              // To Get Facebook ID
-            $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
-            $femail = $graphObject->getProperty('email');    // To Get Facebook email ID
+
+           // $fusername = $graphObject->getProperty('username');    // To Get Facebook email ID
 
             //Session::init();
-            Session::set('name', $fbfullname);
-            Session::set('username', $femail);
-            Session::set('fbid', $fbid);
-            Session::set('user_logged_in', true);
 
-            if ($this->checkFacebookUIDExistsinDatabase($fbid)) {
+            if ($this->checkFacebookUIDExistsinDatabase($graphObject)) {
+
+                return true;
+            }else if($this->checkEmailExistingInDataBase($graphObject)){
+
                 return true;
             } else {
                 $this->registerNewUserWithFacebook($graphObject);
             }
+
+
 
 
         } else {
@@ -203,16 +204,67 @@ class RegistrationModel
 
     }
 
-    public function checkFacebookUIDExistsinDatabase($uid = '')
+    public function initSession($object , $uid='' , $username =''){
+
+        $fbfullname = $object->getProperty('first_name'); // To Get Facebook full name
+        $femail = $object->getProperty('email');    // To Get Facebook email ID
+
+        $fbid = $object->getProperty('id');              // To Get Facebook ID
+
+        Session::set('name', $fbfullname);
+        Session::set('username', $username);
+        Session::set('email', $femail);
+        Session::set('fbid', $fbid);
+        Session::set('user_logged_in', true);
+        Session::set('uid', $uid);
+    }
+
+    public function checkFacebookUIDExistsinDatabase($object = '')
     {
-        $query = $this->db->prepare("SELECT user_id FROM users WHERE user_facebook_uid = :user_facebook_uid");
-        $query->execute(array(':user_facebook_uid' => $uid));
+        $fbid = $object->getProperty('id');              // To Get Facebook ID
+
+
+        $query = $this->db->prepare("SELECT user_id,user_name FROM users WHERE user_facebook_uid = :user_facebook_uid");
+        $query->execute(array(':user_facebook_uid' => $fbid));
+
+        if ($query->rowCount() == 1) {
+
+            $query->fetch();
+            $this->initSession($object , $query->user_id , $query->user_name);
+            return true;
+        }
+        // default return
+        return false;
+    }
+
+    public function getIdOfUser($object){
+
+        $email = $object->getProperty('email');
+            echo $email;
+        $query = $this->db->prepare("SELECT user_email,user_id , user_name FROM users WHERE user_email = :user_email");
+        $query->execute(array(':user_email' => $email));
+
+        if ($query->rowCount() == 1) {
+            $query->fetch();
+            $this->initSession($object , $query->user_id , $query->user_name);
+            return true;
+        }
+        // default return
+        return false;
+    }
+
+
+    public function checkEmailExistingInDataBase($email=''){
+
+        $query = $this->db->prepare("SELECT user_email FROM users WHERE user_email = :user_email");
+        $query->execute(array(':user_email' => $email));
 
         if ($query->rowCount() == 1) {
             return true;
         }
         // default return
         return false;
+
     }
 
     public function registerNewUserWithFacebook($graphObject)
@@ -442,6 +494,7 @@ class RegistrationModel
         $result = $this->db->prepare($sql);
         $result->execute(array(':email' => $email, ':user_name' => $username, ':password_hash' => $password_hash, ':user_account_type' => 2, ':user_provider_type' => "DEFAULT", ':hash' => $hash));
 
+        Session::set('username',$username);
         $user_id = $this->db->lastInsertId();
 
         $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city, district )
@@ -464,7 +517,7 @@ class RegistrationModel
         $website = $_POST["web_site_url"];
         $facebook = $_POST["facebook_url"];
         $youtube = $_POST["youtube_url"];
-        $user_name = $_POST["user_name"];
+        $user_name = $_SESSION["username"];
         $description = $_POST["description"];
 
         $count = count($_POST['cat_checkbox']);
@@ -496,7 +549,7 @@ class RegistrationModel
                 $sth->execute();
             }
 
-            $sql = "UPDATE users SET user_avatar = 'uploads/profile/commercial_user/" . $user_name . "' WHERE user_id =  '" . $user_id . "' ";
+            $sql = "UPDATE users SET user_avatar = '1" . $user_name . "' WHERE user_id =  '" . $user_id . "' ";
             $result = $this->db->prepare($sql)->execute();
 
 

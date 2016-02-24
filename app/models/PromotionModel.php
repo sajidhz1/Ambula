@@ -110,13 +110,13 @@ class PromotionModel
             }
 
             //priority
-            if (empty($_POST["priority"])) {
-                $priorityErr = "priority is required to choose";
-                $priority_flag = false;
-            } else {
-                $priority_flag = true;
-                $priority = $this->test_input($_POST["priority"]);
-            }
+//            if (empty($_POST["priority"])) {
+//                $priorityErr = "priority is required to choose";
+//                $priority_flag = false;
+//            } else {
+//                $priority_flag = true;
+//                $priority = $this->test_input($_POST["priority"]);
+//            }
 
             $visibility = false;
 
@@ -126,13 +126,13 @@ class PromotionModel
 
         //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
 
-        if (!$promo_type_flag || !$promo_name_flag || !$image_url || !$description_flag || !$startdate_flag || !$enddate_flag || !$priority_flag) {
+        if (!$promo_type_flag || !$promo_name_flag || !$image_url || !$description_flag || !$startdate_flag || !$enddate_flag) {
             return false;
         }
         //insert into promotion_adder table
 
-        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date, priority, visibility) VALUES
-                  (:user_id ,:promotion_type ,:promotion_name ,:image_url ,:description ,:start_date ,:end_date ,:priority ,:visibility)";
+        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date,  visibility) VALUES
+                  (:user_id ,:promotion_type ,:promotion_name ,:image_url ,:description ,:start_date ,:end_date ,:visibility)";
         $query = $this->db->prepare($sql);
         $query->execute(array(':user_id' => $this->idPromotion_Adder,
             ':promotion_type' => $promotion_type,
@@ -141,9 +141,9 @@ class PromotionModel
             ':description' => $description,
             ':start_date' => $start_date,
             ':end_date' => $end_date,
-            ':priority' => $priority,
             ':visibility' => $visibility));
-        return $this->db->lastInsertId();
+
+        return true;
 
     }
 

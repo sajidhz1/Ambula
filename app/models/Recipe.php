@@ -52,9 +52,10 @@ class Recipe
         $recipeid = $this->db->lastInsertId();
 
         mkdir("uploads/" . $recipeid);
-        $src = "uploads/recipes/temp/".Session::get('username')."/".$_POST['name'];
+        $src = "uploads/recipes/temp/".Session::get('username');
         $dst = "uploads/".$recipeid;
 
+        if(is_dir($src))
         $this->rcopy($src, $dst);
 
         //store recipe img url to db
@@ -303,7 +304,7 @@ class Recipe
         $this->recipeId = $recipeid;
 	
         $ingredients = array();
-        $sql = "SELECT idRecipe,title,tags,users_user_id,est_time,views,rating FROM recipes WHERE idRecipe = :idRecipe";
+        $sql = "SELECT idRecipe,title,tags,users_user_id,prep_time ,cook_time ,views,rating FROM recipes WHERE idRecipe = :idRecipe";
 
         $query = $this->db->prepare($sql);
         $query->execute(array(':idRecipe' => $recipeid));
@@ -312,7 +313,7 @@ class Recipe
         if ($count == 1) {
             $results = $query->fetch();
             $this->recipename = $results->title;
-            $this->time = $results->est_time;
+            $this->time = $results->cook_time;
             $this->tag = $results->tags;
             $this->view  = $results->views;
             $this->ratings = $results->rating;

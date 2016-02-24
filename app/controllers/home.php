@@ -23,7 +23,7 @@ class Home extends Controller{
   }
   public function search(){
 
-      $this->search = $_GET['query'];
+      $this->search = $_GET['q'];
      $this->view('search');
 
   }
@@ -84,7 +84,7 @@ class Home extends Controller{
               $this->view('user_profile/normal_user_profile');
           } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
               $this->user_name = $user;
-              $this->view('user_profile/cooperate_user_profile');
+              $this->view('user_profile/cooperate_user_updated');
           }
       }else{
           $this->view('_template/error');

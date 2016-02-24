@@ -114,8 +114,8 @@
     </div>
 
     <div class="row" style="background:#ffffff;">
-        <form data-toggle="validator" role="form" action="http://localhost/Ambula/registration/register_commercial_user"
-              method="POST">
+        <form data-toggle="validator" role="form" action="/Ambula/registration/register_commercial_user"
+              method="POST" onsubmit="$(this).hide();">
             <div class="col-lg-6" style="padding-top: 10px">
                 <div id="legend">
                     <legend class="">Company Details</legend>

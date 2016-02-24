@@ -324,6 +324,9 @@
                    $("#from").html(pStartDate);
                    $("#till").html(pEndDate);
 
+                    $('meta[name=og\\:image]').attr('content', pImg);
+                    $('meta[name=og\\:title]').attr('content', pName);
+
                     if($('#singlePromoModalImg > img').width() > 600 )
                     $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
                     else
@@ -441,12 +444,14 @@
                     <span style="font-size: 1.1em;font-weight:800;">Valid From : <span id="from" class="txt-red"></span></span><br><br>
                     <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
                     <br>
+                    <br>
 
                     <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
-                        <i class="fa fa-facebook-square"></i> Share on Facebook
+                        <i class="fa fa-facebook"></i> Share on Facebook
                     </a>
 
-                    <a href="">Twitter</a>
+                    <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
+
                 </div>
             </div>
 

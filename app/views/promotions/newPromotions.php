@@ -204,7 +204,7 @@
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Browse&hellip; <input type="file" name="promo_image" id="promo_image"
-                                                          onchange="readURL(this);">
+                                                          onchange="readURL(this);" data-filesize="3000" data-filesize-error="Max 3000B" accept="image/*" required>
 								</span>
 								<img id="image" src="/Ambula/public/img/default_promotion.jpg" alt="default image"/>
 							</span>

@@ -207,11 +207,11 @@
 
     </div>
     <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
-        <a href="" class="btn btn-default ">Skip >></a>
+        <a href="/Ambula/login" class="btn btn-default ">Skip >></a>
         <button class="btn btn-success">Save</button>
 
     </div>
-      <input type="hidden" name="user_name" value="<?php echo $_GET['user']; ?>" />
+
     </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor

@@ -18,7 +18,7 @@
         <div class="col-sm-3 col-md-3 pull-left">
             <form class="navbar-form navbar-left" method="get" role="search" action="/Ambula/home/search/" id="main-search">
                 <div class="input-group">
-                    <input type="text" name="query" class="form-control typeahead" autocomplete="off"
+                    <input type="text" class="form-control typeahead" autocomplete="off"
                            data-provide="typeahead" placeholder="Search Recipes" name="q">
 
                     <div class="input-group-btn">

@@ -28,8 +28,8 @@ class Promotion extends Controller
 
     public function addNewPromotion()
     {
-        if ($this->promotion->validateAndInsertNewPromo()) {
-            $this->view("promotions/promotionSuccessMessage", "promotions");
+       if($this->promotion->validateAndInsertNewPromo()){
+           $this->view("promotions/promotionSuccessMessage", "promotions");
         } else {
             $this->view('_template/error', "Error");
         }
