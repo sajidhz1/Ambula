@@ -40,7 +40,7 @@
     <![endif]-->
 
     <style>
-        p{
+        p {
             font-size: 18px;
             color: #262626;
         }
@@ -50,46 +50,47 @@
 <body>
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 <div class="mrg50T" style="margin-top: 100px;">
-<?php $array = json_decode($this->getRecipe_si(), true); ?>
+    <?php $array = json_decode($this->getRecipe_si(), true); ?>
 
-<div  class="col-lg-4" style="padding-top: 25px;">
+    <div class="col-lg-4" style="padding-top: 25px;">
 
-                <div>
+        <div>
+            <?php
+            $arr = json_decode($this->getRecipeImages($_GET['r']), true);
+            foreach ($arr as $img) {
+                if (file_exists($img['image_url'])) {
+                    ?>
+
+                    <a href="/<?= $img['image_url']; ?>" title="<?php echo $array[0]['title'] ?>" data-gallery=""
+                       style="margin-left: 12px;"><img
+                            src="/<?= $img['image_url']; ?>" height="100" width="100"/></a>
+
                     <?php
-                    $arr = json_decode($this->getRecipeImages($_GET['r']), true);
-                    foreach ($arr as $img) {
-                        if (file_exists($img['image_url'])) {
-                            ?>
+                } else {
+                }
+            } ?>
+        </div>
 
-                            <a href="/<?= $img['image_url']; ?>" title="<?php echo $array[0]['title'] ?>" data-gallery="" style="margin-left: 12px;"><img
-                                src="/<?= $img['image_url']; ?>" height="100" width="100"/></a>
+        <div>
+            <br>
+            <h4>අවශ්‍ය දෑ</h4>
+            <ol style="color: #343434;font-size: 1.1em;"> <?php
+                $exp = array();
+                $exp = explode("<br>", $array[0]['ingredients']);
 
-                        <?php
-                        } else {
-                        }
-                    } ?>
-</div>
-
-    <div>
-        <br>
-        <h4>අවශ්‍ය දෑ</h4>
-         <ol style="color: #343434;font-size: 1.1em;"> <?php
-            $exp = array();
-            $exp = explode("<br>", $array[0]['ingredients']);
-
-            foreach($exp as $i)
-              if($i != null)
-                echo '<li style="margin-top:5px;color : #626262">'.$i.'</li>';
-           ?>
+                foreach ($exp as $i)
+                    if ($i != null)
+                        echo '<li style="margin-top:5px;color : #626262">' . $i . '</li>';
+                ?>
             </ol>
-    </div>
+        </div>
 
-</div>
-<div class="col-lg-7">
-    <h2 class="txt-red"><?=$array[0]['title'] ?></h2>
-    <br><br>
-    <?=$array[0]['description'] ?>
-</div>
+    </div>
+    <div class="col-lg-7">
+        <h2 class="txt-red"><?= $array[0]['title'] ?></h2>
+        <br><br>
+        <?= $array[0]['description'] ?>
+    </div>
 
 
 </div>

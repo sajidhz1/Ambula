@@ -179,7 +179,6 @@ class FoodProducts extends Controller{
         }else{
             $this->view('_template/error', "Error");
         }
-
     }
 } 
 

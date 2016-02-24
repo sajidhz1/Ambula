@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Search Results for '<?=$_GET['q'] ?>'</title>
+    <title>Search Results for <?=$_GET['q'] ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
@@ -93,7 +93,6 @@
         <div id="search-content">
 
         <?php $recipe_array = json_decode($this->searchResults(),true);
-
            foreach($recipe_array as $recipe){
         ?>
                <a class="col-lg-4 recipe-item" href="/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe'] ?>" style="display: block;">

@@ -13,7 +13,7 @@
     <link href="http://localhost/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
 	 <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.9.1.min.js"></script>

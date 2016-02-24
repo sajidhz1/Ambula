@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Sajidh
  * Date: 1/6/2015
  * Time: 4:17 AM
  */
-
-class HomeModel {
+class HomeModel
+{
 
 
     public function __construct(DataBase $db)
@@ -15,10 +16,11 @@ class HomeModel {
     }
 
 
-    public function checkLogin(){
+    public function checkLogin()
+    {
 
 
-        if(isset($_SESSION["username"])) {
+        if (isset($_SESSION["username"])) {
 
         }
 
@@ -26,11 +28,11 @@ class HomeModel {
 
 
     /* Categories */
-    public function viewCategories($limit= '')
+    public function viewCategories($limit = '')
     {
 
-        if($limit!=NULL)
-            $array = $this->db->query("SELECT idCategory,title,thumb_url from recipe_category LIMIT ".$limit)->fetchAll(PDO::FETCH_ASSOC);
+        if ($limit != NULL)
+            $array = $this->db->query("SELECT idCategory,title,thumb_url from recipe_category LIMIT " . $limit)->fetchAll(PDO::FETCH_ASSOC);
         else
             $array = $this->db->query("SELECT idCategory,title,thumb_url from recipe_category")->fetchAll(PDO::FETCH_ASSOC);
 
@@ -38,20 +40,22 @@ class HomeModel {
     }
 
     //return subcategory array (get method)
-    public function getSubCategoryArray(){
+    public function getSubCategoryArray()
+    {
 
-        $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory = ".$_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory = " . $_GET['id'])->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
 
     }
 
     //return subcategoryByID
-    public function getSubCategoriesByID($id='',$limit =''){
+    public function getSubCategoriesByID($id = '', $limit = '')
+    {
 
-        if($limit==NULL)
-            $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory =".$id)->fetchAll(PDO::FETCH_ASSOC);
-            else
-        $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory = ".$id." LIMIT ".$limit)->fetchAll(PDO::FETCH_ASSOC);
+        if ($limit == NULL)
+            $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory =" . $id)->fetchAll(PDO::FETCH_ASSOC);
+        else
+            $array = $this->db->query("SELECT idRecipe_sub_category,title,img_url from recipe_sub_category WHERE Recipe_Category_idCategory = " . $id . " LIMIT " . $limit)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($array);
 
@@ -67,43 +71,45 @@ class HomeModel {
     }
 
     //getrecipe thumbnailUrl
-    public function getImageUrl($idrecipe='')
+    public function getImageUrl($idrecipe = '')
     {
-       $dat =  $this->db->query("SELECT image_url FROM recipe_img WHERE Recipe_idRecipe = 23 LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+        $dat = $this->db->query("SELECT image_url FROM recipe_img WHERE Recipe_idRecipe = 23 LIMIT 1")->fetch(PDO::FETCH_ASSOC);
         return $dat['image_url'];
     }
 
     //get recipe array
-    public function getRecipesArray($idCategory =''){
+    public function getRecipesArray($idCategory = '')
+    {
 
-        $array = $this->db->query("SELECT idRecipe,title FROM recipes WHERE category_id=".$idCategory." AND verified = 1 ORDER BY idRecipe DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT idRecipe,title FROM recipes WHERE category_id=" . $idCategory . " AND verified = 1 ORDER BY idRecipe DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
     //search for recipes
-    public function searchRecipes($q='',$f=''){
+    public function searchRecipes($q = '', $f = '')
+    {
 
         $items_per_page = 9;
-        $page_number =1;
-        $f ='';
+        $page_number = 1;
+        $f = '';
         $recipe = array();
         $count = 0;
 
         $div = '<div class="col-lg-4 recipe-item" style="height:250px;" >';
-        $br ='<br>';
-        $img = $time =$title =$tags = $pagination ='';
+        $br = '<br>';
+        $img = $time = $title = $tags = $pagination = '';
         $result_html = '';
 
-        if(isset($_POST['page']))
-            $page_number =$_POST['page'];
+        if (isset($_POST['page']))
+            $page_number = $_POST['page'];
 
-        if(isset($_POST['filter'])){
+        if (isset($_POST['filter'])) {
             $f = $_POST['filter'];
         }
 
-        $pageposition = ($page_number-1)*$items_per_page;
+        $pageposition = ($page_number - 1) * $items_per_page;
 
-        if($f == NULL) {
+        if ($f == NULL) {
             $sql = "SELECT idRecipe,title,tags,users_user_id FROM recipes WHERE title LIKE :title LIMIT $pageposition ,$items_per_page ";
 
             $query = $this->db->prepare($sql);
@@ -114,7 +120,7 @@ class HomeModel {
             $countq->execute(array(':title' => '%' . $q . '%'));
             $count = $countq->rowCount();
 
-        }else{
+        } else {
             $sql = "SELECT idRecipe,title,tags,users_user_id FROM recipes WHERE title LIKE :title AND filters LIKE :filter LIMIT $pageposition ,$items_per_page";
 
             $query = $this->db->prepare($sql);
@@ -127,7 +133,7 @@ class HomeModel {
             $count = $countq->rowCount();
         }
 
-        while($recipeRow = $query->fetch(PDO::FETCH_ASSOC)){
+        while ($recipeRow = $query->fetch(PDO::FETCH_ASSOC)) {
 
             $sth = "SELECT image_url,Recipe_idRecipe FROM recipe_img WHERE Recipe_idRecipe = :Recipe_idRecipe LIMIT 1";
 
@@ -135,10 +141,10 @@ class HomeModel {
             $result->execute(array(':Recipe_idRecipe' => $recipeRow['idRecipe']));
 
             $r = $result->fetch();
-            $img = ' <img class="center-block" src="/Ambula/uploads/'.$recipeRow['idRecipe'].'/thumb.jpg" height="125" width="125">';
-            $title = '<a href="/Ambula/recipes/viewRecipe/'.$recipeRow['idRecipe'].'">'.$img.'<h4 style ="text-align:center;">'.$recipeRow['title'].'</h4></a>';
-           
-            $result_html .= $div.$br.'<div class="tile tile-wide" style="height: 150px;">'.$br.$title.$br.$br.'</div></div>';
+            $img = ' <img class="center-block" src="/Ambula/uploads/' . $recipeRow['idRecipe'] . '/thumb.jpg" height="125" width="125">';
+            $title = '<a href="/Ambula/recipes/viewRecipe/' . $recipeRow['idRecipe'] . '">' . $img . '<h4 style ="text-align:center;">' . $recipeRow['title'] . '</h4></a>';
+
+            $result_html .= $div . $br . '<div class="tile tile-wide" style="height: 150px;">' . $br . $title . $br . $br . '</div></div>';
 
 
         }
@@ -146,44 +152,47 @@ class HomeModel {
         $pagination = '<div class=" col-lg-12">
                         <div class=" col-lg-offset-4">
                     <ul class="pagination pagination-lg">';
-                    
-        $offset = 0;
-        if(($count%$items_per_page)>0){
-        	$offset = ($count/$items_per_page) +1;
-        }else{
-        	$offset = ($count/$items_per_page);
-        }            
 
-        for($i= 1;$i<= $offset ;$i++) {
-            if ($i==$page_number)
-                $pagination .= '<li><a href="#" class="active">'.$i.'</a></li>';
-            else
-                $pagination .= '<li><a href="#" >'.$i.'</a></li>';
+        $offset = 0;
+        if (($count % $items_per_page) > 0) {
+            $offset = ($count / $items_per_page) + 1;
+        } else {
+            $offset = ($count / $items_per_page);
         }
-        $pagination.= '</ul></div></div>';
+
+        for ($i = 1; $i <= $offset; $i++) {
+            if ($i == $page_number)
+                $pagination .= '<li><a href="#" class="active">' . $i . '</a></li>';
+            else
+                $pagination .= '<li><a href="#" >' . $i . '</a></li>';
+        }
+        $pagination .= '</ul></div></div>';
         $result_html .= $pagination;
 
-        echo  $result_html;
+        echo $result_html;
     }
 
     //user profile
-    public function getRecipesByUser($user_name=''){
+    public function getRecipesByUser($user_name = '')
+    {
         $array = $this->db->query("SELECT idRecipe,title
                                     FROM recipes ,users  WHERE users_user_id = user_id AND user_name = '$user_name'")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
     //subcategory view
-    public function getRecipesByCategory($category=''){
+    public function getRecipesByCategory($category = '')
+    {
 
         $array = $this->db->query("SELECT  ri.* , r.*
                                     FROM recipes r JOIN recipe_img ri
-                                      ON r.idRecipe = ri.Recipe_idRecipe AND r.category_id =".$category." AND r.verified = 1 GROUP BY r.idRecipe")->fetchAll(PDO::FETCH_ASSOC);
+                                      ON r.idRecipe = ri.Recipe_idRecipe AND r.category_id =" . $category . " AND r.verified = 1 GROUP BY r.idRecipe")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
     //categories user
-    public function getRecipeBy($recipeId=''){
+    public function getRecipeBy($recipeId = '')
+    {
         $sql = "SELECT user_personal.first_name, user_personal.last_name,user_personal.users_user_id
                                    FROM user_personal INNER JOIN  recipes
                                    WHERE recipes.idRecipe =" . $recipeId . "
@@ -194,19 +203,20 @@ class HomeModel {
         return $result;
     }
 
-    public function getUser($user_name=''){
+    public function getUser($user_name = '')
+    {
 
 
         $sth_a = $this->db->query("SELECT * FROM users ,user_personal WHERE users_user_id = user_id AND user_name = '$user_name'")->fetch(PDO::FETCH_ASSOC);
 
 
-
         return json_encode($sth_a);
 
     }
-    
+
     //upload user photo
-       public function uploadUserPhoto(){
+    public function uploadUserPhoto()
+    {
 
         $target_dir = "uploads/profile/";
         $target_file = $target_dir . basename($_FILES["profile"]["name"]);
@@ -245,13 +255,13 @@ class HomeModel {
             return false;
 // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES["profile"]["tmp_name"], $target_dir.$_GET['username'].'.'.$imageFileType)) {
+            if (move_uploaded_file($_FILES["profile"]["tmp_name"], $target_dir . $_GET['username'] . '.' . $imageFileType)) {
 
-                $sql = "UPDATE users SET user_avatar = 1 WHERE user_id =".$_GET['user_id'];
+                $sql = "UPDATE users SET user_avatar = 1 WHERE user_id =" . $_GET['user_id'];
                 $sth = $this->db->prepare($sql);
 
                 $sth->execute();
-		Session::set('user_avatar',1);
+                Session::set('user_avatar', 1);
 
                 return true;
             } else {
@@ -259,62 +269,65 @@ class HomeModel {
             }
         }
     }
-    
-       public function addUserDescription($val =''){
 
-        $sql = "UPDATE user_personal SET  description = '$val' WHERE users_user_id = ".$_POST['uid'];
+    public function addUserDescription($val = '')
+    {
+
+        $sql = "UPDATE user_personal SET  description = '$val' WHERE users_user_id = " . $_POST['uid'];
         $sth = $this->db->prepare($sql);
 
         $sth->execute();
 
-        echo "okay".$val.$_POST['uid'];
+        echo "okay" . $val . $_POST['uid'];
     }
 
-    public function  getCooperateUserDetails($user_name=''){
+    public function  getCooperateUserDetails($user_name = '')
+    {
         $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
         return json_encode($array);
     }
 
-    public function viewUserProducts($cooperate_user_id = ''){
+    public function viewUserProducts($cooperate_user_id = '')
+    {
 
-        $result = $this->db->query("SELECT * FROM products , product_categories WHERE Product_categories_id_product_categories = id_product_categories AND commercial_user_idcommercial_user = ".$cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT * FROM products , product_categories WHERE Product_categories_id_product_categories = id_product_categories AND commercial_user_idcommercial_user = " . $cooperate_user_id)->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($result);
 
     }
 
-    public function checkUserExistAndGetType($user_name = ''){
-       $result = $this->db->query("SELECT user_account_type FROM users WHERE user_name = '$user_name'")->fetch();
+    public function checkUserExistAndGetType($user_name = '')
+    {
+        $result = $this->db->query("SELECT user_account_type FROM users WHERE user_name = '$user_name'")->fetch();
         return $result;
     }
 
-    public function searchResults(){
+    public function searchResults()
+    {
         $q = $_GET['q'];
         $sql = "SELECT idRecipe, recipes.title ";
 
-        if(isset($_GET['type'])) {
+        if (isset($_GET['type'])) {
 
 
-            if($_GET['type'] =='recipes'){
+            if ($_GET['type'] == 'recipes') {
 
-                $sql .='FROM recipes ';
+                $sql .= 'FROM recipes ';
 
-                if(isset($_GET['category'])){
+                if (isset($_GET['category'])) {
                     $category = $_GET['category'];
-                    $sql.=", recipe_category WHERE idCategory = category_id AND recipe_category.title ='$category' AND recipes.title LIKE '%$q%'";
-                }else {
+                    $sql .= ", recipe_category WHERE idCategory = category_id AND recipe_category.title ='$category' AND recipes.title LIKE '%$q%'";
+                } else {
 
                     $sql .= "WHERE recipes.title LIKE '%$q%'";
                 }
 
-            }else if($_GET['type'] =='recipes'){
+            } else if ($_GET['type'] == 'recipes') {
 
             }
-        }
-        else{
+        } else {
             $sql .= " FROM recipes WHERE recipes.title LIKE '%$q%'";
         }
-
 
 
         $result = $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
