@@ -22,10 +22,8 @@ class Home extends Controller
 
         // $this->user->checkLogin();
         $this->view('index', []);
-        $this->search = $_GET['q'];
-        $this->view('search');
-    }
 
+    }
     public function search()
     {
         $this->search = $_GET['q'];
@@ -89,7 +87,8 @@ class Home extends Controller
     }
 
     //profile functions
-    public function profile($user = '')
+
+    public function profile($user ='')
     {
         if ($this->user->checkUserExistAndGetType($user) != '') {
             if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
@@ -97,10 +96,7 @@ class Home extends Controller
                 $this->view('user_profile/normal_user_profile');
             } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
                 $this->user_name = $user;
-                $this->view('user_profile/cooperate_user_profile');
-            }else if($this->user->checkUserExistAndGetType($user)->user_account_type == 3){
-                $this->user_name = $user;
-                $this->view('user_profile/normal_user_profile');
+                $this->view('user_profile/cooperate_user_updated');
             }
         } else {
             $this->view('_template/error');
@@ -178,6 +174,19 @@ class Home extends Controller
         return $this->user->searchResults();
     }
 
+
+    //user_profile
+    public function getAllPromotionsByUser($user_name =""){
+       return  $this->user->getAllPromotionsByUser($user_name);
+    }
+
+    public function getAllRecipesByUser($user_name = ""){
+        return  $this->user->getAllRecipesByUser($user_name);
+    }
+
+    public function getCategoriesByUser($cooperate_user_id = ""){
+        return  $this->user->getCategoriesByUser($cooperate_user_id);
+    }
 }
 
 

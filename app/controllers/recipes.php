@@ -71,9 +71,8 @@ class recipes extends Controller
     public function addNewRecipe()
     {
 
-        if (!$this->recipes->addNewRecipe()) {
+        echo $this->recipes->addNewRecipe();
 
-        }
     }
 
     public function viewRecipe($recipeId = '')
@@ -146,6 +145,9 @@ class recipes extends Controller
 
     public function newRecipeupdated()
     {
+        if(isset($_GET['lang']) && $_GET['lang']='si')
+        $this->view('Recipes/new_recipe_updated_si');
+        else
         $this->view('Recipes/new_recipe_updated');
     }
 

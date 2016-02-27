@@ -334,4 +334,30 @@ class HomeModel
 
         return json_encode($result);
     }
+
+
+    public function getAllPromotionsByUser($user_name=""){
+
+        $sql  =  $this->db->query("SELECT promotion.*,users.user_name  FROM users,promotion WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getAllRecipesByUser($user_name=""){
+
+        $sql  =  $this->db->query("SELECT recipes.*,users.user_name  FROM users,recipes WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getCategoriesByUser($cooperate_user_id =""){
+        $sql  =  $this->db->query("SELECT title from cooperate_user_has_product_categories , product_categories
+                                WHERE cooperate_user_has_product_categories.Product_categories_id_product_categories = product_categories.id_product_categories
+                                   AND cooperate_user_has_product_categories.cooperate_user_id = $cooperate_user_id")->fetchAll(PDO::FETCH_ASSOC);
+
+
+        return json_encode($sql);
+    }
+
+
 } 
