@@ -22,13 +22,9 @@ class Home extends Controller
 
         // $this->user->checkLogin();
         $this->view('index', []);
-
-<<<<<<< HEAD
-      $this->search = $_GET['q'];
-     $this->view('search');
-=======
+        $this->search = $_GET['q'];
+        $this->view('search');
     }
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
 
     public function search()
     {
@@ -93,20 +89,6 @@ class Home extends Controller
     }
 
     //profile functions
-<<<<<<< HEAD
-    public function profile($user =''){
-      if ($this->user->checkUserExistAndGetType($user)!=''){
-          if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
-              $this->user_name = $user;
-              $this->view('user_profile/normal_user_profile');
-          } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
-              $this->user_name = $user;
-              $this->view('user_profile/cooperate_user_updated');
-          }
-      }else{
-          $this->view('_template/error');
-      }
-=======
     public function profile($user = '')
     {
         if ($this->user->checkUserExistAndGetType($user) != '') {
@@ -116,11 +98,13 @@ class Home extends Controller
             } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
                 $this->user_name = $user;
                 $this->view('user_profile/cooperate_user_profile');
+            }else if($this->user->checkUserExistAndGetType($user)->user_account_type == 3){
+                $this->user_name = $user;
+                $this->view('user_profile/normal_user_profile');
             }
         } else {
             $this->view('_template/error');
         }
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
     }
 
     //profile function

@@ -195,7 +195,8 @@
                             <!--<input type="postal_code" id="district" name="district"
                                    placeholder=""
                                    class="form-control">-->
-                            <select class="form-control" id="district" name="district">
+                            <select class="form-control" id="district" name="district" required>
+                                <option value="" selected hidden disabled>Select a district..</option>
                                 <option value="Ampara">Ampara</option>
                                 <option value="Anuradhapura">Anuradhapura</option>
                                 <option value="Badulla">Badulla</option>

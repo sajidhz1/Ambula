@@ -98,6 +98,10 @@
         .container {
             width: 99%;
         }
+
+        .btn{
+            border-radius: 0px;
+        }
     </style>
 </head>
 
@@ -209,23 +213,12 @@
             </div>
 
 
-<<<<<<< HEAD
     </div>
     <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
         <a href="/Ambula/login" class="btn btn-default ">Skip >></a>
-        <button class="btn btn-success">Save</button>
-
+        <button class="btn btn-success" style="width: 100px">Save</button>
     </div>
-
-=======
-        </div>
-        <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
-            <a href="" class="btn btn-default ">Skip >></a>
-            <button class="btn btn-success">Save</button>
-
-        </div>
         <input type="hidden" name="user_name" value="<?php echo $_GET['user']; ?>"/>
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
     </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor

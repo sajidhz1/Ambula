@@ -106,21 +106,13 @@
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
-<<<<<<< HEAD
-                            <input type="submit" id="btn-login" class="btn btn-success" value="Login"/>
-                            <a id="btn-fblogin" href="/Ambula/registration/registerWithFacebook" class="btn btn-primary">Login with Facebook</a>
-
-=======
                             <input type="submit" id="btn-login" class="btn btn-success" value="Login" style="border-radius: 0px"/>
                             <a id="btn-fblogin" href="/registration/registerWithFacebook" class="btn btn-primary" style="border-radius: 0px">Login with Facebook</a>
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
                         </div>
                     </div>
                     <div style="margin: 10px;">
                         <a style="color: brown;" href="passwordReset">Forgot password?</a>
                     </div>
-
-
 
 
                     <div class="form-group">
@@ -134,8 +126,6 @@
                         </div>
                     </div>
                 </form>
-
-
 
             </div>
         </div>

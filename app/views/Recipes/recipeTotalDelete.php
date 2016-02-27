@@ -49,16 +49,6 @@
             border-bottom: 1px solid grey;
         }
 
-        .recipe-item:nth-child(3n+2) {
-            border-right: 1px dotted #a1a1a1;
-            border-left: 1px dotted #a1a1a1;
-        }
-
-        .recipe-item {
-            border-bottom: 1px dotted #a1a1a1;
-            height: 240px;
-        }
-
         .form-group {
             padding-right: 25px;
         }
@@ -136,13 +126,15 @@
                     var i = 0;
                     var string = "";
                     while (myVar[i]) {
-                        string += "<div class='w3-card-4' style='width:300px; display: inline-block; margin-right: 70px; margin-left: 70px; margin-bottom: 30px'>";
-                        string += "   <img src='/Ambula/uploads/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
-                        string += "   <div class='w3-container' style='padding-top: 10px; padding-bottom: 10px'>";
-                        string += "       <p class='recipeTitle'>" + myVar[i].title + "</p>";
-                        string += "       <a class='w3-btn' href='/Ambula/recipes/viewRecipe/" + myVar[i].idRecipe + "' style='background-color: #5bc0de' target='_blank'>View More</a>";
-                        string += "       <a class='w3-btn w3-red deleteRecipeButton' id='" + myVar[i].idRecipe + "' style='float: right; width: 110px'>Delete</a>";
-                        string += "   </div>";
+                        string += "<div class='col-lg-3' style='padding: 20px'>";
+                        string += " <div class='w3-card-4' style='width:300px; min-height: 335.2px display: inline-block;'>";
+                        string += "     <img src='/Ambula/uploads/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
+                        string += "     <div class='w3-container' style='padding-top: 10px; padding-bottom: 10px'>";
+                        string += "         <p class='recipeTitle'>" + myVar[i].title + "</p>";
+                        string += "         <a class='w3-btn' href='/Ambula/recipes/viewRecipe/" + myVar[i].idRecipe + "' style='background-color: #5bc0de' target='_blank'>View More</a>";
+                        string += "         <a class='w3-btn w3-red deleteRecipeButton' id='" + myVar[i].idRecipe + "' style='float: right; width: 110px'>Delete</a>";
+                        string += "     </div>";
+                        string += " </div>";
                         string += "</div>";
                         i++;
                     }
@@ -278,14 +270,14 @@
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-green');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('Selected Recipe Was Successfully Deleted From Ambula&trade;');
         </script>";
-} else if(isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
+} else if (isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
     echo "
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-red');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('An Error Occurred While Deleting The Recipe From Ambula&trade;');
         </script>";
 }
 unset($_SESSION['recipeDeleted']);

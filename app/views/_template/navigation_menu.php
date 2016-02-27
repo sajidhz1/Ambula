@@ -64,9 +64,9 @@
                         <a class="dropdown-toggle pull-right " id="modal_user" data-toggle="dropdown"
                            href="#"><?= Session::get('name') ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="http://localhost/Ambula/home/profile/<?= Session::get('username') ?>">View
+                            <li><a href="/Ambula/home/profile/<?= Session::get('username') ?>">View
                                     Profile</a></li>
-                            <li><a href="http://localhost/Ambula/recipes/newrecipe">New Recipe</a></li>
+                            <li><a href="/Ambula/recipes/newrecipe">New Recipe</a></li>
                             <?php if (isset($_SESSION['user_account_type'])) {
                                 if (Session::get('user_account_type') == 2) {
                                     ?>

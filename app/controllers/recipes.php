@@ -21,7 +21,6 @@ class recipes extends Controller
     public function index($name = '')
     {
 
-
     }
 
     public function newRecipe()
@@ -30,7 +29,7 @@ class recipes extends Controller
             if (isset($_GET['lang']) == 'si' && isset($_GET['r']))
                 $this->view('Recipes/newrecipe_si');
             else
-                $this->view('Recipes/newrecipe');
+                $this->view('Recipes/new_recipe_updated');
         } else {
             Header('Location:Ambula/login/');
         }
@@ -266,6 +265,7 @@ class recipes extends Controller
                         Header('Location:/Ambula/recipes/viewRecipeDelete');
                     }else{
                         Session::set('recipeDeleted',false);
+                        Header('Location:/Ambula/recipes/viewRecipeDelete');
                     }
                 }
             }
