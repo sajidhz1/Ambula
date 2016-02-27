@@ -10,6 +10,7 @@ class Recipe
     public $tag;
     public $view;
     public $ratings;
+    public $lang;
 
     public $file_name = 1;
 
@@ -37,28 +38,42 @@ class Recipe
         for ($i = 0; $i < count($_POST['tags']); $i++)
             if (isset($_POST['tags'][$i])) $tags .= $_POST['tags'][$i] . ',';
 
-        $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags )
+        if(!isset($_GET['lang'])) {
+            $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags )
                 VALUES (:title,  :recipe_category_idcategory, :users_user_id, :prep_time ,:cook_time, :tags)";
 
-        $query = $this->db->prepare($sql);
+            $query = $this->db->prepare($sql);
 
-        $query->execute(array(':title' => $_POST['recipetitle'],
-            ':recipe_category_idcategory' => $_POST['category'],
-            ':users_user_id' => Session::get('uid'),
-            ':prep_time' => $_POST['prep_time'],
-            ':cook_time' => $_POST['cook_time'],
-            ':tags' => $_POST['tags']));
+            $query->execute(array(':title' => $_POST['recipetitle'],
+                ':recipe_category_idcategory' => $_POST['category'],
+                ':users_user_id' => Session::get('uid'),
+                ':prep_time' => $_POST['prep_time'],
+                ':cook_time' => $_POST['cook_time'],
+                ':tags' => $_POST['tags']));
+
+        }else{
+
+            $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags ,lang )
+                VALUES (:title,  :recipe_category_idcategory, :users_user_id, :prep_time ,:cook_time, :tags , :lang)";
+
+            $query = $this->db->prepare($sql);
+
+            $query->execute(array(':title' => $_POST['recipetitle'],
+                ':recipe_category_idcategory' => $_POST['category'],
+                ':users_user_id' => Session::get('uid'),
+                ':prep_time' => $_POST['prep_time'],
+                ':cook_time' => $_POST['cook_time'],
+                ':tags' => $_POST['tags'],
+                ':lang'=> 'si'));
+        }
 
         $recipeid = $this->db->lastInsertId();
 
         mkdir("uploads/" . $recipeid);
-<<<<<<< HEAD
+
         $src = "uploads/recipes/temp/".Session::get('username');
         $dst = "uploads/".$recipeid;
-=======
-        $src = "uploads/recipes/temp/" . Session::get('username') . "/" . $_POST['name'];
-        $dst = "uploads/" . $recipeid;
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
+
 
         if(is_dir($src))
         $this->rcopy($src, $dst);
@@ -93,18 +108,34 @@ class Recipe
             $units = $_POST['metrics'][$i];
 
             if ($ingredient != null) {
-                //insert to ingredient if does not exists
-                $sql4 = "INSERT IGNORE INTO ingredients (title) VALUES ( :ingredient )";
-                $sth = $this->db->prepare($sql4);
-                $sth->execute(array(':ingredient' => $ingredient));
+                //insert to ingredient if does not exists check for language
+                if(!isset($_GET['lang'])) {
+                    $sql4 = "INSERT IGNORE INTO ingredients (title) VALUES ( :ingredient )";
+                    $sth = $this->db->prepare($sql4);
+                    $sth->execute(array(':ingredient' => $ingredient));
 
-                //search from ingredients to get the id
-                $ingredientSql = "SELECT idIngredients FROM ingredients WHERE title = :ingredient";
-                $sth = $this->db->prepare($ingredientSql);
-                $sth->execute(array(':ingredient' => $ingredient));
+                    //search from ingredients to get the id
+                    $ingredientSql = "SELECT idIngredients FROM ingredients WHERE title = :ingredient";
+                    $sth = $this->db->prepare($ingredientSql);
+                    $sth->execute(array(':ingredient' => $ingredient));
 
-                //fetch ingredient id
-                $result = $sth->fetch()->idIngredients;
+                    //fetch ingredient id
+                    $result = $sth->fetch()->idIngredients;
+
+                }else{
+
+                    $sql4 = "INSERT IGNORE INTO ingredients (ing_si) VALUES ( :ingredient )";
+                    $sth = $this->db->prepare($sql4);
+                    $sth->execute(array(':ingredient' => $ingredient));
+
+                    //search from ingredients to get the id
+                    $ingredientSql = "SELECT idIngredients FROM ingredients WHERE ing_si = :ingredient";
+                    $sth = $this->db->prepare($ingredientSql);
+                    $sth->execute(array(':ingredient' => $ingredient));
+
+                    //fetch ingredient id
+                    $result = $sth->fetch()->idIngredients;
+                }
 
                 //insert into recipe_has_ingredient
                 $sth = $this->db->prepare($sql2);
@@ -118,12 +149,10 @@ class Recipe
 
         }
 
-
         $sql5 = "INSERT INTO recipe_description (description_en,Recipe_idRecipe,image_url) VALUES (:description_en , :recipe_id, :dir)";
 
 
         foreach ($_POST['steps'] as $key => $tmp_name) {
-
 
             $sth = $this->db->prepare($sql5);
             $sth->execute(array(
@@ -310,7 +339,7 @@ class Recipe
         $this->recipeId = $recipeid;
 
         $ingredients = array();
-        $sql = "SELECT idRecipe,title,tags,users_user_id,prep_time ,cook_time ,views,rating FROM recipes WHERE idRecipe = :idRecipe";
+        $sql = "SELECT idRecipe,title,tags,users_user_id,prep_time ,cook_time ,views,rating,lang FROM recipes WHERE idRecipe = :idRecipe";
 
         $query = $this->db->prepare($sql);
         $query->execute(array(':idRecipe' => $recipeid));
@@ -323,6 +352,7 @@ class Recipe
             $this->tag = $results->tags;
             $this->view = $results->views;
             $this->ratings = $results->rating;
+            $this->lang = $results->lang;
 
             $sql = "SELECT Ingredients_idIngredients FROM recipe_has_ingredients WHERE Recipe_idRecipe = :Recipe_idRecipe";
 
@@ -357,6 +387,7 @@ class Recipe
 
     public function getRecipeIngredients($recipeId = '')
     {
+
         $array = $this->db->query("SELECT ingredients.idIngredients,ingredients.title , ingredients.ing_si ,recipe_has_ingredients.units ,recipe_has_ingredients.qty , recipe_has_ingredients.id_recipe_has_ingredients
                                    FROM ingredients INNER JOIN  recipe_has_ingredients
                                    WHERE recipe_has_ingredients.Recipe_idRecipe =" . $recipeId . "

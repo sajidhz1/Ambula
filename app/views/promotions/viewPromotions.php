@@ -317,16 +317,12 @@
                     $("#from").html(pStartDate);
                     $("#till").html(pEndDate);
 
-<<<<<<< HEAD
                     $('meta[name=og\\:image]').attr('content', pImg);
                     $('meta[name=og\\:title]').attr('content', pName);
 
                     if($('#singlePromoModalImg > img').width() > 600 )
                     $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
-=======
-                    if ($('#singlePromoModalImg > img').width() > 600)
-                        $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
+
                     else
                         $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
                 }
@@ -449,16 +445,10 @@
                     <br>
                     <br>
 
-<<<<<<< HEAD
+
                     <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
                         <i class="fa fa-facebook"></i> Share on Facebook
-=======
-                    <a class="btn btn-primary"
-                       href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12"
-                       onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')"
-                       target="_blank">
-                        <i class="fa fa-facebook-square"></i> Share on Facebook
->>>>>>> 51217199f95b1effbfedc3ca6e26502bc54cf299
+
                     </a>
 
                     <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>

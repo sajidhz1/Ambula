@@ -309,7 +309,7 @@
 <div id="loading" >
     <h4>Uploading Recipe</h4>
     <h6>will take a moment</h6>
-    <img src="/public/img/loading.gif">
+    <img src="/Ambula/public/img/loading.gif">
 </div>
 
 <script type="text/javascript" src="../public/js/registration/validator.js"></script>

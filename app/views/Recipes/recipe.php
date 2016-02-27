@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -75,7 +76,7 @@
             <?php $arr = json_decode($this->getRecipeImages($this->recipes->recipeId), true);
             ?>
 
-            <div class="col-xs-12 col-md-4 col-lg-4 hgt275">
+            <div class="col-sm-12 col-md-4 col-lg-4 hgt275">
                 <h3>Gallery</h3>
 
                 <div>
@@ -94,7 +95,7 @@
                 </div>
 
             </div>
-            <div class="col-xs-12 col-md-5 col-lg-5 recipe-details" >
+            <div class=" col-md-5 col-lg-5 recipe-details" >
                 <h1 class="recipe-title"><span><?php echo $this->recipes->recipename; ?></span></h1>
 
                 <div class="row">
@@ -167,10 +168,16 @@
                             <?php $arrsub = json_decode($this->getRecipeIngredients($this->recipes->recipeId), true);
 
                             foreach ($arrsub as $ingredient) {
+                                if($this->recipes->lang != 'si'){
                                 ?>
                                 <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#" title ="<?php echo $ingredient['ing_si']; ?>" style="font-size: 0.9em;" ><?php echo $ingredient['title']; ?> </a></label><span style="margin-left: 5px;"
-                                                                                                                                                                                               class="badge"><?php echo " ".$ingredient['qty'] . " " . $ingredient['units']; ?></span></li>
-                            <?php } ?>
+                                                                                                                                                                              class="badge"><?php echo " ".$ingredient['qty'] . " " . $ingredient['units']; ?></span></li>
+
+                                   <?php }else { ?>
+                                    <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#" title ="<?php echo $ingredient['ing_si']; ?>" style="font-size: 0.9em;" ><?php echo $ingredient['ing_si']; ?> </a></label><span style="margin-left: 5px;"
+                                                                                                                                                                                                                                                      class="badge"><?php echo " ".$ingredient['units']. " " . $ingredient['qty']; ?></span></li>
+
+                                <?php }} ?>
                         </ul>
 
                 </div>

@@ -271,7 +271,7 @@ $(function () {
                                 };
                                 alert(json);
                                 var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                                //window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
+                                window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
                             }
                         });
 
