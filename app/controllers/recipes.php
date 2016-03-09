@@ -82,9 +82,16 @@ class recipes extends Controller
         if (!$this->recipes->checkRecipeAvailability($recipeId))
             header('location: /');
 
-        $this->recipes->viewRecipe($recipeId);
-        $this->view('Recipes/recipe');
 
+        if($this->recipes->getRecipeType($recipeId) != "si") {
+            $this->recipes->viewRecipe($recipeId);
+
+            $this->view('Recipes/recipe');
+        }else {
+            $this->recipes->viewRecipe($recipeId);
+
+            $this->view('Recipes/recipe_si');
+        }
     }
 
     public function checkRecipeTitle()
@@ -268,6 +275,7 @@ class recipes extends Controller
                         Header('Location:/Ambula/recipes/viewRecipeDelete');
                     }else{
                         Session::set('recipeDeleted',false);
+                        Header('Location:/Ambula/recipes/viewRecipeDelete');
                     }
                 }
             }
@@ -275,6 +283,11 @@ class recipes extends Controller
             Header('Location:/Ambula/login/');
         }
 
+    }
+
+    public function error_page()
+    {
+        $this->view('_template/error');
     }
 
 }

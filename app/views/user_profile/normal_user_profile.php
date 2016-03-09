@@ -204,7 +204,7 @@
                     <?php } ?>
                     <?php
                     if(isset($_SESSION['uid']))
-                        if( $_SESSION['uid'] == $_GET['id']){ ?>
+                        if( $_SESSION['username'] == $result['user_name']){ ?>
                             <form   role="form" method="POST" enctype="multipart/form-data" action="uploadUserPhoto"
                                     id="formphoto">
                             <span class="file-input btn btn-default btn-file glyphicon glyphicon-edit" style="position:absolute;top:0;right: 0;">
@@ -235,7 +235,7 @@
                             ?></span>
                         <?php
                         if(isset($_SESSION['uid']))
-                            if( $_SESSION['uid'] == $_GET['id']){ ?>
+                            if( $_SESSION['username'] == $result['user_name']){ ?>
                                 <button style="color: #343434;margin-left: 5px;" class="btn btn-default glyphicon glyphicon-edit" id="description-edit"></button>
                             <?php } ?>
                         <div class="controls" id="description-edit-box"  style="margin-top: 8px;background: #e1e1e1;padding: 4px;display: none;">

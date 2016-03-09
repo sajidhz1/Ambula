@@ -90,8 +90,12 @@ class Home extends Controller
 
     public function profile($user ='')
     {
+
+
+
+       // echo $this->user->checkUserExistAndGetType($user);
         if ($this->user->checkUserExistAndGetType($user) != '') {
-            if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
+            if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1 || $this->user->checkUserExistAndGetType($user)->user_account_type == 3) {
                 $this->user_name = $user;
                 $this->view('user_profile/normal_user_profile');
             } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {

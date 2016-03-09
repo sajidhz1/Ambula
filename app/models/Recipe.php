@@ -119,9 +119,6 @@ class Recipe
                     $sth = $this->db->prepare($ingredientSql);
                     $sth->execute(array(':ingredient' => $ingredient));
 
-                    //fetch ingredient id
-                    $result = $sth->fetch()->idIngredients;
-
                 }else{
 
                     $sql4 = "INSERT IGNORE INTO ingredients (ing_si) VALUES ( :ingredient )";
@@ -132,10 +129,10 @@ class Recipe
                     $ingredientSql = "SELECT idIngredients FROM ingredients WHERE ing_si = :ingredient";
                     $sth = $this->db->prepare($ingredientSql);
                     $sth->execute(array(':ingredient' => $ingredient));
-
-                    //fetch ingredient id
-                    $result = $sth->fetch()->idIngredients;
                 }
+
+                //fetch ingredient id
+                $result = $sth->fetch()->idIngredients;
 
                 //insert into recipe_has_ingredient
                 $sth = $this->db->prepare($sql2);
@@ -449,7 +446,7 @@ class Recipe
     //get categories array
     public function getCategoriesArray()
     {
-        $array = $this->db->query("SELECT idCategory,title,thumb_url from recipe_category")->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT idCategory,title, title_si ,thumb_url from recipe_category")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
@@ -774,6 +771,14 @@ class Recipe
 
     }
 
+    //get recipe type
+    public function getRecipeType($recipeId =''){
+        $sql = "SELECT lang from recipes WHERE idRecipe = $recipeId";
+        $sth = $this->db->prepare($sql);
+        $result = $sth->execute();
+
+        return $sth->fetch()->lang;
+    }
 
     //testing for dropzone js
     public function testDropZone()
@@ -959,4 +964,5 @@ class Recipe
         }
         return rmdir($dir);
     }
+
 } 
