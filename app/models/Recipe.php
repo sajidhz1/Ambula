@@ -74,7 +74,6 @@ class Recipe
         $src = "uploads/recipes/temp/".Session::get('username');
         $dst = "uploads/".$recipeid;
 
-
         if(is_dir($src))
         $this->rcopy($src, $dst);
 
@@ -662,7 +661,6 @@ class Recipe
 
     public function updateRecipeTags()
     {
-
         if (isset($_POST['recipeId']) && isset($_POST['tags'])) {
             $sql = "UPDATE recipes SET tags = '" . $_POST['tags'] . "' WHERE idRecipe = " . $_POST['recipeId'];
             $sth = $this->db->prepare($sql);
@@ -817,7 +815,6 @@ class Recipe
 
     }
 
-
     public function showImages()
     {
         $urls[] = array();
@@ -848,38 +845,7 @@ class Recipe
         return json_encode($array);
     }
 
-
-
-    // Call function
-// Function to Copy folders and files
-    function rcopy($src, $dst)
-    {
-        if (file_exists($dst))
-            $this->rrmdir($dst);
-        if (is_dir($src)) {
-            mkdir($dst);
-            $files = scandir($src);
-            foreach ($files as $file)
-                if ($file != "." && $file != "..")
-                    $this->rcopy("$src/$file", "$dst/$file");
-
-        } else if (file_exists($src))
-            copy($src, $dst);
-        $this->rrmdir($src);
-    }
-
-// Function to remove folders and files
-    function rrmdir($dir)
-    {
-        if (is_dir($dir)) {
-            $files = scandir($dir);
-            foreach ($files as $file)
-                if ($file != "." && $file != "..") rrmdir("$dir/$file");
-
-            rmdir($dir);
-        } else if (file_exists($dir)) unlink($dir);
-    }
-
+    //method to search for recipes to delete them from db permanently
     public function adminRecipeSearch($searchText="", $searchCate="", $searchParam="")
     {
 
@@ -909,6 +875,7 @@ class Recipe
         return json_encode($result);
     }
 
+    //method to delete the selected recipe from the db
     public function adminRecipeDelete($recipeIdToDelete)
     {
         $sqlRecipeIngredients = "DELETE FROM recipe_has_ingredients WHERE Recipe_idRecipe = '$recipeIdToDelete'";
@@ -951,6 +918,36 @@ class Recipe
             return false;
         }
 
+    }
+
+    // Call function
+// Function to Copy folders and files
+    function rcopy($src, $dst)
+    {
+        if (file_exists($dst))
+            $this->rrmdir($dst);
+        if (is_dir($src)) {
+            mkdir($dst);
+            $files = scandir($src);
+            foreach ($files as $file)
+                if ($file != "." && $file != "..")
+                    $this->rcopy("$src/$file", "$dst/$file");
+
+        } else if (file_exists($src))
+            copy($src, $dst);
+        $this->rrmdir($src);
+    }
+
+// Function to remove folders and files
+    function rrmdir($dir)
+    {
+        if (is_dir($dir)) {
+            $files = scandir($dir);
+            foreach ($files as $file)
+                if ($file != "." && $file != "..") rrmdir("$dir/$file");
+
+            rmdir($dir);
+        } else if (file_exists($dir)) unlink($dir);
     }
 
     /////////////////////Function to delete a directory with its files//////////////////////////////////////

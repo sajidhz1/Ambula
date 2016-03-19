@@ -49,7 +49,7 @@
 
 
                     ?>
-                    <li class="dropdown" style="font-weight: 500;font-size: medium;">
+                    <li class="dropdown" style="font-weight: 500;font-size: medium; cursor: pointer;">
                         <?php if (Session::get('user_provider_type') == 'FACEBOOK') { ?>
                             <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture"
                                  style="margin-top:7px;" height="35">
@@ -64,7 +64,7 @@
                         <a class="dropdown-toggle pull-right " id="modal_user" data-toggle="dropdown"
                            href="#"><?= Session::get('name') ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="http://localhost/Ambula/home/profile/<?= Session::get('username') ?>">View
+                            <li><a href="/Ambula/home/profile/<?= Session::get('username') ?>">View
                                     Profile</a></li>
                             <li><a  data-toggle="modal"
                                    data-target="#recipeChooseModal" >New Recipe</a></li>

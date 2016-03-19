@@ -49,16 +49,6 @@
             border-bottom: 1px solid grey;
         }
 
-        .recipe-item:nth-child(3n+2) {
-            border-right: 1px dotted #a1a1a1;
-            border-left: 1px dotted #a1a1a1;
-        }
-
-        .recipe-item {
-            border-bottom: 1px dotted #a1a1a1;
-            height: 240px;
-        }
-
         .form-group {
             padding-right: 25px;
         }
@@ -279,14 +269,14 @@
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-green');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('Selected Recipe Was Successfully Deleted From Ambula&trade;');
         </script>";
-} else if(isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
+} else if (isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
     echo "
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-red');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('An Error Occurred While Deleting The Recipe From Ambula&trade;');
         </script>";
 }
 unset($_SESSION['recipeDeleted']);

@@ -197,7 +197,6 @@
 
         .myCollapseBar li {
             border-right: 2px solid #fff;
-
         }
 
         .myCollapseBar a {
@@ -295,13 +294,11 @@
                     $("#modal-description").html(pDescription);
                     $("#from").html(pStartDate);
                     $("#till").html(pEndDate);
-
                     $('meta[name=og\\:image]').attr('content', pImg);
                     $('meta[name=og\\:title]').attr('content', pName);
 
                     if($('#singlePromoModalImg > img').width() > 600 )
                     $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
-
                     else
                         $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
                 }
@@ -431,6 +428,7 @@
 
                         <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
                             <i class="fa fa-facebook"></i> Share on Facebook
+
 
                         </a>
 

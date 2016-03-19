@@ -31,7 +31,8 @@ class RegistrationModel
 
 
     // model method for inserting new personal user in to the data base
-    public function validateFields(){
+    public function validateFields()
+    {
 
         $first_name_flag = $last_name_flag = $email_flag = $password_flag = $username_flag = false;
         $nameErr = $emailErr = $last_nameErr = $passwordErr = $usernameErr = "";
@@ -145,7 +146,8 @@ class RegistrationModel
     }
 
 
-    function test_input($data){
+    function test_input($data)
+    {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
@@ -153,7 +155,8 @@ class RegistrationModel
     }
 
     //register with facebook
-    public function registerWithFacebook(){
+    public function registerWithFacebook()
+    {
         // instantiate the facebook object
         FacebookSession::setDefaultApplication(FACEBOOK_APP_ID, FACEBOOK_APP_SECRET);
 
@@ -177,21 +180,19 @@ class RegistrationModel
             // get response
             $graphObject = $response->getGraphObject();
 
-           // $fusername = $graphObject->getProperty('username');    // To Get Facebook email ID
+            // $fusername = $graphObject->getProperty('username');    // To Get Facebook email ID
 
             //Session::init();
 
             if ($this->checkFacebookUIDExistsinDatabase($graphObject)) {
 
                 return true;
-            }else if($this->checkEmailExistingInDataBase($graphObject)){
+            } else if ($this->checkEmailExistingInDataBase($graphObject)) {
 
                 return true;
             } else {
                 $this->registerNewUserWithFacebook($graphObject);
             }
-
-
 
 
         } else {
@@ -202,8 +203,8 @@ class RegistrationModel
 
     }
 
-
-    public function initSession($object , $uid='' , $username =''){
+    public function initSession($object, $uid = '', $username = '')
+    {
 
         $fbfullname = $object->getProperty('first_name'); // To Get Facebook full name
         $femail = $object->getProperty('email');    // To Get Facebook email ID
@@ -229,33 +230,32 @@ class RegistrationModel
         if ($query->rowCount() == 1) {
 
             $query->fetch();
-            $this->initSession($object , $query->user_id , $query->user_name);
+            $this->initSession($object, $query->user_id, $query->user_name);
             return true;
         }
         // default return
         return false;
     }
 
-    public function getIdOfUser($object){
+    public function getIdOfUser($object)
+    {
 
         $email = $object->getProperty('email');
-            echo $email;
+        echo $email;
         $query = $this->db->prepare("SELECT user_email,user_id , user_name FROM users WHERE user_email = :user_email");
         $query->execute(array(':user_email' => $email));
 
-
         if ($query->rowCount() == 1) {
             $query->fetch();
-            $this->initSession($object , $query->user_id , $query->user_name);
+            $this->initSession($object, $query->user_id, $query->user_name);
             return true;
         }
         // default return
         return false;
     }
 
-
-
-    public function checkEmailExistingInDataBase($email=''){
+    public function checkEmailExistingInDataBase($email = '')
+    {
 
         $query = $this->db->prepare("SELECT user_email FROM users WHERE user_email = :user_email");
         $query->execute(array(':user_email' => $email));
@@ -270,7 +270,6 @@ class RegistrationModel
 
     public function registerNewUserWithFacebook($graphObject)
     {
-
         $fbid = $graphObject->getProperty('id');              // To Get Facebook ID
         $fbfullname = $graphObject->getProperty('name'); // To Get Facebook full name
         $femail = $graphObject->getProperty('email');    // To Get Facebook email ID

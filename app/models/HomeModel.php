@@ -175,7 +175,7 @@ class HomeModel
     //user profile
     public function getRecipesByUser($user_name = '')
     {
-        $array = $this->db->query("SELECT idRecipe,title
+        $array = $this->db->query("SELECT idRecipe,title,views,rating
                                     FROM recipes ,users  WHERE users_user_id = user_id AND user_name = '$user_name'")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
