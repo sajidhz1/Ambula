@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +11,9 @@
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/Ambula/public/css/slider.css">
+    <link href="/Ambula/public/css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="/Ambula/public/css/w3.css" type="text/css" rel="stylesheet"/>
+    <link href="/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
     <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
@@ -19,10 +21,10 @@
 
     <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/jquery.leanModal.min.js"></script>
-
     <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
-
-    <link type="text/css" rel="stylesheet" href="/Ambula/public/css/style.css"/>
+    <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/script.js"></script>
+    <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -37,308 +39,586 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!--  ##### fav and touch icons ##### -->
-    <!-- <link rel="shortcut icon" href="img/favicon.ico"> -->
-    <!-- For third-generation iPad with high-resolution Retina display: -->
-    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple144.png"> -->
-    <!-- For iPhone with high-resolution Retina display: -->
-    <!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple114.png"> -->
-    <!-- For first- and second-generation iPad: -->
-    <!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple72.png"> -->
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <!--<link rel="apple-touch-icon-precomposed" href="img/apple57.png"> -->
+    <style>
+        /* Profile sidebar */
 
+        .profile-userpic img {
+            float: none;
+            margin: 0 auto;
+            width: 75%;
+            height: 75%;
+            padding: 4px;
+            border: 1px solid;
+        }
+
+        .profile-usertitle {
+            text-align: center;
+            margin-top: 10px;
+            text-overflow: ellipsis;
+        }
+
+        .profile-usertitle-name {
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            margin: 5px 0px 5px 18%;
+            float: left;
+        }
+
+        .profile-usertitle a {
+            float: right;
+            margin-right: 25%;
+            color: #ffffff !important;
+        }
+
+        .profile-usermenu ul li {
+            border-bottom: 1px solid #f0f4f7;
+        }
+
+        /* Profile Content */
+        .profile-content {
+            padding: 20px;
+            background: #fff;
+            padding-right: 350px;
+            padding-top: 10px;
+        }
+
+        .infoFeildName {
+            min-width: 220px;
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            padding-right: 0px !important;
+        }
+
+        table tr {
+            height: 65px;
+        }
+
+        td {
+            text-align: center;
+            padding: 25px !important;
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+
+        .edit {
+            display: none;
+        }
+
+        tr:hover > td > a {
+            display: inline;
+        }
+
+        /*css related to update modal view*/
+
+        .modal {
+            background: rgba(000, 000, 000, 0.6);
+            min-height: 1000000px;
+        }
+
+        .modal-dialog-center {
+            margin-top: 15%;
+        }
+
+        .modal-header {
+            background: #e78f08;
+            color: white;
+        }
+
+        /*css related to modal update feild contain table*/
+
+        .modalInfoFeildName {
+            color: #5a7391;
+            font-size: 16px;
+            font-weight: 600;
+            padding-right: 0px !important;
+            width: 250px !important;
+        }
+
+        .modalUserInfo {
+            padding-left: 0px !important;
+            text-align: left !important;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .form-control {
+            border-radius: 0px;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+        //variable to store the current recipe content of the user
+        var profileContent = "";
+
+        // attach the function to the window resize event
+        $(window).resize(onResize);
+
+        //there can be only one document ready function for page
+        $(document).ready(function () {
+            onResize();
+            updateUserField();
+            updatePassword();
+        });
+
+        //jquery call to view change password fields containing modal window
+        $(document).on('click', '#paaswordChangeBtn', function (e) {
+            $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
+        });
+
+
+        //jquery call to view user info(call the JS method defined below)
+        $(document).on('click', '#viewInfoBtn', function (e) {
+            displayUserInfo();
+        });
+
+        //jquery call to view the edit modal of the selected info field
+        $(document).on('click', '.edit', function (e) {
+            var clickTrId = $(this).closest('tr').attr('id');
+            editModalDisplay(clickTrId);
+        });
+
+
+        function onResize() {
+            // apply dynamic padding at the top of the body according to the fixed navbar height
+            $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
+        }
+
+        //JS + ajax method to update the user password with new password in the modal window
+        function updatePassword(){
+            $('#changePasswordModalForm').validator().on('submit', function (e) {
+                // Prevent form submission
+                if (e.isDefaultPrevented()) {
+                    // handle the invalid form
+
+                } else {
+                    // Prevent form submission
+                    e.preventDefault();
+                    // Use Ajax to submit form data
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            alert(response);
+                            if (response) {
+                                $('#userPasswordUpdateModal').modal("hide");
+                                displayUserInfo();
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+
+
+        //JS + ajax method to update the Database using the data in the edit modal data feilds
+        function updateUserField() {
+            $('#updateFeildModalForm').validator().on('submit', function (e) {
+                // Prevent form submission
+                if (e.isDefaultPrevented()) {
+                    // handle the invalid form
+
+                } else {
+                    // Prevent form submission
+                    e.preventDefault();
+                    // Use Ajax to submit form data
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            if (response) {
+                                $('#userInfoEditModal').modal("hide");
+                                displayUserInfo();
+                            }
+                        }
+                    });
+                }
+
+            });
+        }
+
+        //JS + ajax method to take the info and displaying it in the edit modal
+        function editModalDisplay(trId) {
+            $.ajax({
+                success: function (response) {
+                    var htmlString;
+                    $('#userInfoEditModal').modal({show: true, keyboard: true});
+                    $('#editModalTitle').html("Update Your " + $('#' + trId + ' td:nth-child(1)').html());
+                    $('#currInfoModal td:nth-child(1)').html("Current " + $('#' + trId + ' td:nth-child(1)').html());
+                    $('#currInfoModal td:nth-child(2)').html($('#' + trId + ' td:nth-child(2)').html());
+                    $('#updateFeildsModal td:nth-child(1)').html("Type In Your New " + $('#' + trId + ' td:nth-child(1)').html());
+                    switch (trId) {
+                        case 'firstNameTr':
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('first_name');
+                            break;
+                        case 'lastNameTr' :
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('last_name');
+                            break;
+                        case 'userNameTr' :
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' pattern='^[A-Za-z0-9_-]{3,16}$' data-native-error='Username should at least contain 3 Characters (letter numbers and underscore)' data-remote='/Ambula/registration/checkUserName' data-error='username already exists ,choose a different one' maxlength='10'' required></div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('users');
+                            $('#userDetailColumn').val('user_name');
+
+                            break;
+                        case 'mobileTelTr':
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('tel_mobile');
+                            break;
+                        case 'homeTelTr':
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('tel_home');
+                            break;
+                        case 'addressTr':
+                            htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('address');
+                            break;
+                        case 'aboutYouTr':
+                            htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                            $('#userTableType').val('user_personal');
+                            $('#userDetailColumn').val('description');
+                            break;
+                        case 'passwordTr':
+                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                            $('#userTableType').val('users');
+                            $('#userDetailColumn').val('user_password_hash');
+                            break;
+
+                    }
+                }
+            });
+        }
+
+        //JS+ajax method to display all the user personal info of a logged in user in a table
+        function displayUserInfo() {
+            //to store recipes of the usesr currently viewing
+
+
+            $.ajax({
+                url: "/Ambula/ProfileController/viewNormalUserInfo",
+                success: function (response) {
+                    var myVar = JSON.parse(response);
+                    var i = 0;
+                    var string = "";
+                    while (myVar[i]) {
+                        string += "<table id='userDetailDisplayTable' class='w3-table w3-bordered w3-striped w3-border w3-card-2'>";
+
+                        string += "<tr id='firstNameTr'>";
+                        string += "<td class='infoFeildName'>First Name</td>";
+                        string += "<td id='currFirstName'>" + myVar[i].first_name + "</td>";
+                        string += "<td class = 'firstName editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='lastNameTr'>";
+                        string += "<td class='infoFeildName'>Last Name</td>";
+                        string += "<td id='currLastName'>" + myVar[i].last_name + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='emailTr'>";
+                        string += "<td class='infoFeildName'>Email</td>";
+                        string += "<td id='currUseEmail'>" + myVar[i].user_email + "</td>";
+                        string += "<td class = 'editTd'></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='userNameTr'>";
+                        string += "<td class='infoFeildName'>Username</td>";
+                        string += "<td id='currUseEmail'>" + myVar[i].user_name + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='mobileTelTr'>";
+                        string += "<td class='infoFeildName'>Mobile Phone</td>";
+                        string += "<td id='currMobileTel'>" + myVar[i].tel_mobile + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='homeTelTr'>";
+                        string += "<td class='infoFeildName'>Home Phone</td>";
+                        string += "<td id='currHomeTel'>" + myVar[i].tel_home + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='addressTr'>";
+                        string += "<td class='infoFeildName'>Address</td>";
+                        string += "<td id='currAddress'>" + myVar[i].address + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='aboutYouTr'>";
+                        string += "<td class='infoFeildName'>About You</td>";
+                        string += "<td id='currDescription'>" + myVar[i].description + "</td>";
+                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "</tr>";
+
+                        string += "<tr id='passwordTr'>";
+                        string += "<td class='infoFeildName'>Change Your Password</td>";
+                        string += "<td><button class='w3-btn w3-medium w3-white w3-border w3-border-yellow' id='paaswordChangeBtn'>Change Your Password</button></td>";
+                        string += "<td></td>";
+                        string += "</tr>";
+
+                        string += "</table>";
+
+                        //to set the new name in the side profile bar after updating
+                        $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
+                        i++;
+                    }
+
+                    if (!!profileContent) {
+                        $('#viewInfoBtn').html('View Info');
+                        $("#profile-content").html(profileContent);
+                        profileContent = "";
+                    } else {
+                        profileContent = $("#profile-content").html();
+                        $("#profile-content").html(string);
+                        $('#viewInfoBtn').html('View Recipes');
+                    }
+
+                }
+            });
+        }
+
+
+    </script>
 
 </head>
 
 <body>
-<!--Header START -->
-<style>
-    /* Profile sidebar */
-    .profile-sidebar {
-        padding: 20px 0 10px 0;
-        background: #fff;
-    }
+<div class="container-fluid">
+    <div class="row">
+        <?php $this->view('_template/navigation_menu', "normalProfileView") ?>
+    </div>
 
-    .profile-userpic img {
-        float: none;
-        margin: 0 auto;
-        width: 50%;
-        height: 50%;
-        -webkit-border-radius: 50% !important;
-        -moz-border-radius: 50% !important;
-        border-radius: 50% !important;
-    }
-
-    .profile-usertitle {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .profile-usertitle-name {
-        color: #5a7391;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 7px;
-    }
-
-    .profile-usertitle-job {
-
-        color: #5b9bd1;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 15px;
-    }
-
-    .profile-userbuttons {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .profile-userbuttons .btn {
-        text-transform: uppercase;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 6px 15px;
-        margin-right: 5px;
-    }
-
-    .profile-userbuttons .btn:last-child {
-        margin-right: 0px;
-    }
-
-    .profile-usermenu {
-        margin-top: 30px;
-    }
-
-    .profile-usermenu ul li {
-        border-bottom: 1px solid #f0f4f7;
-    }
-
-    .profile-usermenu ul li:last-child {
-        border-bottom: none;
-    }
-
-    .profile-usermenu ul li a {
-        color: #93a3b5;
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    .profile-usermenu ul li a i {
-        margin-right: 8px;
-        font-size: 14px;
-    }
-
-    .profile-usermenu ul li a:hover {
-        background-color: #fafcfd;
-        color: #5b9bd1;
-    }
-
-    .profile-usermenu ul li.active {
-        border-bottom: none;
-    }
-
-    .profile-usermenu ul li.active a {
-        color: #5b9bd1;
-        background-color: #f6f9fb;
-        border-left: 2px solid #5b9bd1;
-        margin-left: -2px;
-    }
-
-    /* Profile Content */
-    .profile-content {
-        padding: 20px;
-        background: #fff;
-        min-height: 460px;
-    }
-    .profile-recipe-tile{
-        padding: 5px;
-        border: 1px solid #B2B2B2;
-        /* Rounded Corners */
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        margin-right: 15px;
-        margin-bottom: 15px;
-        text-align: center;
-    }
-    .btn-file {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        background: red;
-        cursor: inherit;
-        display: block;
-    }
-
-</style>
-<?php $this->view('_template/navigation_menu',"newRecipe") ?>
-<div class="container" style="margin-top: 60px;">
-    <div class="row profile">
+    <div class="row profile" id="profileRow">
         <div class="col-md-3">
-            <div class="profile-sidebar">
-                <?php
-                $result =  json_decode($this->getUser(),true);
+            <?php
+            $result = json_decode($this->getUser(), true);
 
-                ?>
-                <!-- SIDEBAR USERPIC -->
-                <div class="profile-userpic">
-                    <?php if($result['user_provider_type'] == 'FACEBOOK')  {?>
-                        <img src="https://graph.facebook.com/<?=$result[0]['user_facebook_uid']?>/picture?type=large" class="img-responsive" alt="">
-                    <?php } else if($result['user_avatar']==1){ ?>
-                        <img src="http://localhost/Ambula/uploads/profile/<?=$result['user_name'] ?>.jpg" class="img-responsive" alt="">
-                    <?php } else {  ?>
-                        <img src="http://localhost/Ambula/public/img/profile_avatar.jpg" class="img-responsive" alt="">
-                    <?php } ?>
-                    <?php
-                    if(isset($_SESSION['uid']))
-                        if( $_SESSION['uid'] == $_GET['id']){ ?>
-                            <form   role="form" method="POST" enctype="multipart/form-data" action="uploadUserPhoto"
-                                    id="formphoto">
-                            <span class="file-input btn btn-default btn-file glyphicon glyphicon-edit" style="position:absolute;top:0;right: 0;">
-                            <input  id="input-2" type="file" name="profile" class="btn btn-success"  data-show-upload="false" multiple>
-                            </span>
-                            </form>
-
-
-                        <?php }  ?>
-
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                        <?php if($result['user_provider_type'] == "FACEBOOK") {
+            ?>
+            <!-- SIDEBAR USERPIC -->
+            <div class="row profile-userpic">
+                <?php if ($result['user_provider_type'] == 'FACEBOOK') { ?>
+                    <img src="https://graph.facebook.com/<?= $result[0]['user_facebook_uid'] ?>/picture?type=large"
+                         class="img-responsive" alt="">
+                <?php } else if ($result['user_avatar'] == 1) { ?>
+                    <img src="http://localhost/Ambula/uploads/profile/<?= $result['user_name'] ?>.jpg"
+                         class="img-responsive" alt="">
+                <?php } else { ?>
+                    <img src="http://localhost/Ambula/public/img/profile_avatar.jpg" class="img-responsive" alt="">
+                <?php } ?>
+            </div>
+            <!-- END SIDEBAR USERPIC -->
+            <!-- SIDEBAR USER TITLE -->
+            <div class="row profile-usertitle">
+                <div class="col-lg-7" style="">
+                    <span class="profile-usertitle-name" id="profile-usertitle-name"
+                          style="font-size: 20px; text-align: left;">
+                        <?php if ($result['user_provider_type'] == "FACEBOOK") {
                             echo $result['user_name'];
-                        }else{
-                            echo $result['first_name'].' '.$result['last_name'];
+                        } else {
+                            echo $result['first_name'] . ' ' . $result['last_name'];
                         }
                         ?>
-                    </div>
-                    <div class="profile-usertitle-job">
-                        <span id="desc-val"><?php if($result['description'] ==  null) echo "Short Description";
-                            else
-                                echo $result['description'];
-                                echo $result['description'];
-                            ?></span>
-                        <?php
-                        if(isset($_SESSION['uid']))
-                            if( $_SESSION['uid'] == $_GET['id']){ ?>
-                                <button style="color: #343434;margin-left: 5px;" class="btn btn-default glyphicon glyphicon-edit" id="description-edit"></button>
-                            <?php } ?>
-                        <div class="controls" id="description-edit-box"  style="margin-top: 8px;background: #e1e1e1;padding: 4px;display: none;">
-                            <textarea class="form-control" id="description" placeholder="description"></textarea>
-                            <button class="btn btn-success glyphicon glyphicon-ok" id="description-edit-save"></button>
-                            <button class="btn btn-danger glyphicon glyphicon-remove" id="description-edit-close"></button>
-                        </div>
-                    </div>
+                    </span>
                 </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-success btn-sm">Follow</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
+                <div class="col-lg-5">
+                    <a class="w3-btn w3-orange" id="viewInfoBtn">View Info</a>
                 </div>
-                <!-- END SIDEBAR BUTTONS -->
-
             </div>
+            <!-- END SIDEBAR USER TITLE -->
         </div>
-        <div class="col-sm-12 col-md-9" >
-            <div class="profile-content">
+        <div class="col-md-9 col-sm-12 ">
+            <div class="profile-content" id="profile-content">
                 <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
                 foreach ($arrrecipe as $recipe) {
                     ?>
-                    <div class="col-sm-6 col-md-3 profile-recipe-tile" style="margin: 5px; ">
-                        <h4 style="color: #8F0000;height: 50px;"><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>" ><?=$recipe['title']; ?></a></h4>
-                        <div style="height: 100px;overflow: hidden;">
-                            <img  src="http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg" >
-                        </div>
 
+                    <div class="col-lg-3" style="width:320px; min-height: 335.2px">
+                        <a href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
+                            <div class="w3-card-4" style="width:300px; min-height: 335.2px">
+                                <img src="http://localhost/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                     alt="Avatar" style="width:300px; height:250px;">
+
+                                <div class="w3-container" style="border-top: 1px solid grey;">
+                                    <h4><b><?= $recipe['title']; ?></b></h4>
+
+                                    <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+
+                                    <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
+
                 <?php } ?>
             </div>
         </div>
     </div>
 </div>
 
+<div class="modal fade" id="userInfoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
+    <div class="container">
+        <div class="row">
+            <div class="modal-dialog modal-dialog-center col-m-12">
+                <div class="modal-content row">
+                    <form id="updateFeildModalForm" action="/Ambula/ProfileController/updateUserField" method="POST"
+                          data-toggle="validator">
+                        <div class="col-lg-12">
+                            <div class="modal-header row">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="editModalTitle" style="color: #ffffff"></h4>
+                            </div>
+                            <div class="modal-body row">
+                                <table class="w3-table w3-striped" id="modalUpdateTable">
+                                    <tr id="currInfoModal">
+                                        <td class="modalInfoFeildName"></td>
+                                        <td class="modalUserInfo"></td>
+                                    </tr>
+                                    <tr id="updateFeildsModal">
+                                        <td class="modalInfoFeildName"></td>
+                                        <td class="modalUserInfo" style="padding-right: 5px !important;"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer row">
+                                <!--the hidden element to determine the table to be updated ( users or user_personal)-->
+                                <input type="hidden" id="userTableType" name="user_table_type" value="">
+                                <input type="hidden" id="userDetailColumn" name="user_detail_column" value="">
 
-<!-- Java Scripts Codes-->
-<script>
-    $(document).ready(function (e) {
-        $('#formphoto').on('submit',(function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
+                                <input id="updateBtn" type="submit" class="w3-btn"
+                                       style="background-color: #337ab7 !important; width: 150px; float: right;"
+                                       value="Save Changes"/>
+                                <button class="w3-btn w3-orange" data-dismiss="modal" aria-label="Close"
+                                        style="color: #ffffff !important; float: right; margin-right: 10px;">
+                                    Cancel Changes
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            $.ajax({
-                type:'POST',
-                url: 'http://localhost/Ambula/home/uploadUserPhoto?username=<?=$result[0]['user_name'] ?>&user_id=<?=$result[0]['user_id'] ?>',
-                data:formData,
-                contentType: false,
-                processData: false,
-                success:function(data){
-                    $('#input-2').hide();
+<div class="modal fade" id="userPasswordUpdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
+    <div class="container">
+        <div class="row">
+            <div class="modal-dialog modal-dialog-center col-m-12">
+                <div class="modal-content row">
+                    <form id="changePasswordModalForm" action="/Ambula/ProfileController/updatePassword" method="POST"
+                          data-toggle="validator">
+                        <div class="col-lg-12">
+                            <div class="modal-header row">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="" style="color: #ffffff">Change Your Password </h4>
+                            </div>
+                            <div class="modal-body row">
+                                <table class="w3-table w3-striped" id="modalUpdateTable">
+                                    <tr id="currPasswordTr">
+                                        <td class="modalInfoFeildName">Current Password</td>
+                                        <td class="modalUserInfo">
+                                            <div class='form-group'>
+                                                <div class='controls'>
+                                                    <input type="password" id="currPassword" name="curr_password" placeholder="" class="form-control"
+                                                           data-native-error="Password Should Contain At Least 6 Characters"
+                                                           data-remote="/Ambula/ProfileController/checkPassword"
+                                                           data-error="Current Password Doesn't Match With What You Entered"required>
+                                                </div>
+                                                <span class='help-block with-errors'></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="newPasswordTr">
+                                        <td class="modalInfoFeildName">New Password</td>
+                                        <td class="modalUserInfo">
+                                            <div class='form-group'>
+                                                <div class='controls'>
+                                                    <input type='password' id='newPassword'
+                                                           name='new_password' data-minlength="6"
+                                                           data-error="Password Should Contain At Least 6 Characters"
+                                                           placeholder="" class="form-control"
+                                                           required>
+                                                </div>
+                                                <span class='help-block with-errors'></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="confirmPasswordTr">
+                                        <td class="modalInfoFeildName">Confirm New Password</td>
+                                        <td class="modalUserInfo">
+                                            <div class='form-group'>
+                                                <div class='controls'>
+                                                    <input type="password" id="confirmPassword"
+                                                           name="confirm_password" data-match="#newPassword"
+                                                           placeholder="" class="form-control"
+                                                           required>
+                                                </div>
+                                                <span class='help-block with-errors'></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer row">
+                                <!--the hidden element to determine the table to be updated ( users or user_personal)-->
+                                <input type="hidden" id="userTableType" name="user_table_type" value="">
+                                <input type="hidden" id="userDetailColumn" name="user_detail_column" value="">
 
-
-                },
-                error: function(data){
-                    console.log("error");
-                    console.log(data);
-                }
-            });
-        }));
-
-        $('#description-edit-save').on('click',(function(e) {
-
-            $.ajax({
-                type:'POST',
-                url: 'http://localhost/Ambula/home/addUserDescription',
-                data:{uid:<?php echo $_GET['id'];?>, val: $('#description').val() },
-                success:function(data){
-                    $('#desc-val').text($('#description').val());
-                    $('#description-edit-box').hide();
-                },
-                error: function(data){
-                    console.log("error");
-                    console.log(data);
-                }
-            });
-        }));
-
-
-        $("#input-2").on("change", function() {
-            $('.img-responsive')[0].src = window.URL.createObjectURL(this.files[0])
-            $("#formphoto").submit();
-        });
-
-        $("#description-edit").on("click", function() {
-            $('#description-edit-box').show();
-        });
-
-        $("#description-edit-close").on("click", function() {
-            $('#description-edit-box').hide();
-        });
-    });
-</script>
-
-
-<script src="../../../public/js/bootstrap.min.js"></script>
-
-
-
-<script src="../../../public/js/script.js"></script>
-
+                                <input id="updateBtn" type="submit" class="w3-btn"
+                                       style="background-color: #337ab7 !important; float: right;"
+                                       value="Save Password"/>
+                                <button class="w3-btn w3-orange" data-dismiss="modal" aria-label="Close"
+                                        style="color: #ffffff !important; float: right; margin-right: 10px;">
+                                    Cancel Change
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>

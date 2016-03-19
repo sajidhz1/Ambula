@@ -197,7 +197,6 @@
 
         .myCollapseBar li {
             border-right: 2px solid #fff;
-
         }
 
         .myCollapseBar a {
@@ -442,19 +441,8 @@
                     <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
                     <br>
                     <br>
-<<<<<<< HEAD
-                    <a class="btn btn-primary"
-                       href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12"
-                       onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')"
-                       target="_blank">
-                        <i class="fa fa-facebook-square"></i> Share on Facebook
-=======
-
-
                     <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
                         <i class="fa fa-facebook"></i> Share on Facebook
-
->>>>>>> upstream/master
                     </a>
 
                     <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>

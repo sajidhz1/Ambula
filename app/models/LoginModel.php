@@ -9,9 +9,10 @@ class LoginModel
     }
 
 
-    public function userLogin(){
+    public function userLogin()
+    {
 
-		$sth = $this->db->prepare("SELECT user_id,
+        $sth = $this->db->prepare("SELECT user_id,
                                           user_name,
                                           user_email,
                                           user_password_hash,
@@ -21,78 +22,77 @@ class LoginModel
                                    FROM   users
                                    WHERE  (user_name = :user_name OR user_email = :user_email)
                                           AND user_provider_type = :provider_type");
-		$sth->execute(array(':user_name' => $_POST['username'] ,':user_email' => $_POST['username'] , ':provider_type' => 'DEFAULT'));
-        $count =  $sth->rowCount();
+        $sth->execute(array(':user_name' => $_POST['username'], ':user_email' => $_POST['username'], ':provider_type' => 'DEFAULT'));
+        $count = $sth->rowCount();
 
-            if ($count == 1) {
+        if ($count == 1) {
 
-                $result = $sth->fetch();
+            $result = $sth->fetch();
 
-                if(password_verify($_POST['password'], $result->user_password_hash)) {
+            if (password_verify($_POST['password'], $result->user_password_hash)) {
 
-                    Session::init();
-                    Session::set('uid', $result->user_id);
-                    Session::set('username', $result->user_name);
-                    Session::set('user_provider_type', $result->user_provider_type);
-                    Session::set('user_logged_in', true);
-                    Session::set('user_avatar', $result->user_avatar);
-                    Session::set('user_account_type', $result->user_account_type);
-                    Session::set('user_email', $result->user_email);
+                Session::init();
+                Session::set('uid', $result->user_id);
+                Session::set('username', $result->user_name);
+                Session::set('user_provider_type', $result->user_provider_type);
+                Session::set('user_logged_in', true);
+                Session::set('user_avatar', $result->user_avatar);
+                Session::set('user_account_type', $result->user_account_type);
+                Session::set('user_email', $result->user_email);
 
-                    if($result->user_account_type == 2){
-                        $st = $this->db->prepare("SELECT company_name ,idcommercial_user
+                if ($result->user_account_type == 2) {
+                    $st = $this->db->prepare("SELECT company_name ,idcommercial_user
                                    FROM   commercial_user
-                                   WHERE  users_user_id = '".$result->user_id."'");
-                        $st->execute();
-                        $user_details = $st->fetch();
-						Session::set('user_avatar',1);
-                        Session::set('name',$user_details->company_name);
-                        Session::set('coporate_user_id',$user_details->idcommercial_user);
-                        Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/commercial_user/".$result->user_name."/".$result->user_name.".jpg");
+                                   WHERE  users_user_id = '" . $result->user_id . "'");
+                    $st->execute();
+                    $user_details = $st->fetch();
+                    Session::set('user_avatar', 1);
+                    Session::set('name', $user_details->company_name);
+                    Session::set('coporate_user_id', $user_details->idcommercial_user);
+                    Session::set('user_avatar_url', "http://localhost/Ambula/uploads/profile/commercial_user/" . $result->user_name . "/" . $result->user_name . ".jpg");
 
-                    }else{
-                        $st = $this->db->prepare("SELECT first_name,
+                } else {
+                    $st = $this->db->prepare("SELECT first_name,
                                           last_name
                                    FROM   user_personal
-                                   WHERE  users_user_id = '".$result->user_id."'");
-                        $st->execute();
-                        $user_details = $st->fetch();
-                        Session::set('name',$user_details->first_name . ' ' . $user_details->last_name);
-                        Session::set('user_avatar_url',"http://localhost/Ambula/uploads/profile/".$result->user_name.".jpg");
-                    }
-
-                    // if user has checked the "remember me" checkbox, then write cookie
-                    if (isset($_POST['remember'])) {
-
-                        // generate 64 char random string
-                        $random_token_string = hash('sha256', mt_rand());
-
-                        // write that token into database
-                        $sql = "UPDATE users SET user_rememberme_token = :user_rememberme_token WHERE user_id = :user_id";
-                        $sth = $this->db->prepare($sql);
-                        $sth->execute(array(':user_rememberme_token' => $random_token_string, ':user_id' => $result->user_id));
-
-                        // generate cookie string that consists of user id, random string and combined hash of both
-                        $cookie_string_first_part = $result->user_id . ':' . $random_token_string;
-                        $cookie_string_hash = hash('sha256', $cookie_string_first_part);
-                        $cookie_string = $cookie_string_first_part . ':' . $cookie_string_hash;
-
-                        // set cookie
-                        setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
-                    }
-
-                    return true;
-
-
+                                   WHERE  users_user_id = '" . $result->user_id . "'");
+                    $st->execute();
+                    $user_details = $st->fetch();
+                    Session::set('name', $user_details->first_name . ' ' . $user_details->last_name);
+                    Session::set('user_avatar_url', "http://localhost/Ambula/uploads/profile/" . $result->user_name . ".jpg");
                 }
-                else{
-                    Session::set("feedback_negative","invalid Username or Password");
-                    return false;
-                   }
-            }else{
-                Session::set("feedback_negative","invalid Username or Password");
+
+                // if user has checked the "remember me" checkbox, then write cookie
+                if (isset($_POST['remember'])) {
+
+                    // generate 64 char random string
+                    $random_token_string = hash('sha256', mt_rand());
+
+                    // write that token into database
+                    $sql = "UPDATE users SET user_rememberme_token = :user_rememberme_token WHERE user_id = :user_id";
+                    $sth = $this->db->prepare($sql);
+                    $sth->execute(array(':user_rememberme_token' => $random_token_string, ':user_id' => $result->user_id));
+
+                    // generate cookie string that consists of user id, random string and combined hash of both
+                    $cookie_string_first_part = $result->user_id . ':' . $random_token_string;
+                    $cookie_string_hash = hash('sha256', $cookie_string_first_part);
+                    $cookie_string = $cookie_string_first_part . ':' . $cookie_string_hash;
+
+                    // set cookie
+                    setcookie('rememberme', $cookie_string, time() + COOKIE_RUNTIME, "/", COOKIE_DOMAIN);
+                }
+
+                return true;
+
+
+            } else {
+                Session::set("feedback_negative", "invalid Username or Password");
                 return false;
             }
+        } else {
+            Session::set("feedback_negative", "invalid Username or Password");
+            return false;
+        }
     }
 
     public function loginWithCookies()
@@ -128,14 +128,14 @@ class LoginModel
                                        AND user_rememberme_token IS NOT NULL
                                        AND user_provider_type = :provider_type");
         $query->execute(array(':user_id' => $user_id, ':user_rememberme_token' => $token, ':provider_type' => 'DEFAULT'));
-        $count =  $query->rowCount();
+        $count = $query->rowCount();
         if ($count == 1) {
             // fetch one row (we only have one result)
             $result = $query->fetch();
             $st = $this->db->prepare("SELECT first_name,
                                           last_name
                                    FROM   user_personal
-                                   WHERE  iduser_personal = '".$result->user_personal_iduser_personal."'");
+                                   WHERE  iduser_personal = '" . $result->user_personal_iduser_personal . "'");
             $st->execute();
             $user_details = $st->fetch();
 
@@ -144,12 +144,12 @@ class LoginModel
             Session::init();
             Session::set('user_logged_in', true);
             Session::set('uid', $result->user_id);
-            Session::set('name',$user_details->first_name . ' ' . $user_details->last_name);
+            Session::set('name', $user_details->first_name . ' ' . $user_details->last_name);
             Session::set('username', $result->user_name);
             Session::set('user_email', $result->user_email);
             Session::set('user_account_type', $result->user_account_type);
             Session::set('user_provider_type', 'DEFAULT');
-           // Session::set('user_avatar_file', $this->getUserAvatarFilePath());
+            // Session::set('user_avatar_file', $this->getUserAvatarFilePath());
             // call the setGravatarImageUrl() method which writes gravatar urls into the session
             //$this->setGravatarImageUrl($result->user_email, AVATAR_SIZE);
 
@@ -180,20 +180,23 @@ class LoginModel
         setcookie('rememberme', false, time() - (3600 * 3650), '/', COOKIE_DOMAIN);
     }
 
-    public function userLogout(){
-        if(Session::destroy()){
+    public function userLogout()
+    {
+        if (Session::destroy()) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
 
-    public function verify(){
+    public function verify()
+    {
 
     }
 
-    public function sendPasswordResetEmail(){
+    public function sendPasswordResetEmail()
+    {
 
         $sth = $this->db->prepare("SELECT user_id ,
                                           user_email ,
@@ -201,22 +204,22 @@ class LoginModel
                                    FROM   users
                                    WHERE   user_email = :user_email
                                           AND user_provider_type = :provider_type");
-        $sth->execute(array(':user_email' => $_POST['useremail'] , ':provider_type' => 'DEFAULT'));
-        $count =  $sth->rowCount();
+        $sth->execute(array(':user_email' => $_POST['useremail'], ':provider_type' => 'DEFAULT'));
+        $count = $sth->rowCount();
 
         if ($count == 1) {
             $result = $sth->fetch();
-            $hash = md5( rand(0,1000) );
+            $hash = md5(rand(0, 1000));
 
-            $sql2 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_id ='.$result->user_id);
+            $sql2 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_id =' . $result->user_id);
             $sql2->execute(array(':user_password_reset_hash' => $hash));
-            $to      = $result->user_email; // Send email to our user
+            $to = $result->user_email; // Send email to our user
             $subject = 'Password Reset | The Ambula'; // Give the email a subject
             $message = '
 
 
         Please click this link to reset your password:
-        http://theambula.lk/login/passwordReset?email='.$to.'&h='.$hash.'
+        http://theambula.lk/login/passwordReset?email=' . $to . '&h=' . $hash . '
 
         '; // Our message above including the link
 
@@ -224,55 +227,56 @@ class LoginModel
             mail($to, $subject, $message, $headers); // Send our email
 
             return 1;
-        }else{
+        } else {
             return 0;
         }
 
     }
 
-    public function changePassword(){
+    public function changePassword()
+    {
 
         $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-        $password_hash =   password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
+        $password_hash = password_hash($_POST['password'], PASSWORD_BCRYPT, array('cost' => $hash_cost_factor));
 
-                    $sql2 = $this->db->prepare('UPDATE users SET user_password_hash = :user_password_hash , user_password_reset_timestamp = :user_password_reset_timestamp WHERE user_email = :user_email AND user_password_reset_hash = :user_password_reset_hash');
-             $result =  $sql2->execute(array(':user_password_reset_hash' => $_GET['h'] ,':user_email' =>$_GET['email'] , ':user_password_hash' => $password_hash , ':user_password_reset_timestamp' =>  time() ));
-
-
-             $sql1 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_email = :user_email');
-             $result2 =  $sql1->execute(array(':user_password_reset_hash' =>'',':user_email' =>$_GET['email'] ));
+        $sql2 = $this->db->prepare('UPDATE users SET user_password_hash = :user_password_hash , user_password_reset_timestamp = :user_password_reset_timestamp WHERE user_email = :user_email AND user_password_reset_hash = :user_password_reset_hash');
+        $result = $sql2->execute(array(':user_password_reset_hash' => $_GET['h'], ':user_email' => $_GET['email'], ':user_password_hash' => $password_hash, ':user_password_reset_timestamp' => time()));
 
 
-             return  $result2;
+        $sql1 = $this->db->prepare('UPDATE users SET user_password_reset_hash = :user_password_reset_hash WHERE user_email = :user_email');
+        $result2 = $sql1->execute(array(':user_password_reset_hash' => '', ':user_email' => $_GET['email']));
+
+
+        return $result2;
 
     }
 
-      public function checkHash()
-      {
+    public function checkHash()
+    {
 
-          $sql0 = $this->db->prepare('SELECT user_password_reset_hash,user_email FROM users WHERE user_email = :user_email');
-          $sql0->execute(array(':user_email' => $_GET['email']));
+        $sql0 = $this->db->prepare('SELECT user_password_reset_hash,user_email FROM users WHERE user_email = :user_email');
+        $sql0->execute(array(':user_email' => $_GET['email']));
 
-          $count =  $sql0->rowCount();
+        $count = $sql0->rowCount();
 
-          if($count != 1){
-              return 2;
+        if ($count != 1) {
+            return 2;
 
-          }else{
+        } else {
 
-              $result = $sql0->fetch();
+            $result = $sql0->fetch();
 
-              if ($result->user_password_reset_hash != null) {
+            if ($result->user_password_reset_hash != null) {
 
-                  return 1;
+                return 1;
 
-              } else {
-                  //password_reset link expired
-                  return 2;
-              }
-          }
+            } else {
+                //password_reset link expired
+                return 2;
+            }
+        }
 
-      }
+    }
 
 
 } 

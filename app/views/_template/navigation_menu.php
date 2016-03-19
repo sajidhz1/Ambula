@@ -49,7 +49,7 @@
 
 
                     ?>
-                    <li class="dropdown" style="font-weight: 500;font-size: medium;">
+                    <li class="dropdown" style="font-weight: 500;font-size: medium; cursor: pointer;">
                         <?php if (Session::get('user_provider_type') == 'FACEBOOK') { ?>
                             <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture"
                                  style="margin-top:7px;" height="35">
