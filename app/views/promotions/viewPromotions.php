@@ -424,30 +424,37 @@
 <div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="false">
     <div class="modal-dialog modal-dialog-center" id="modalBody" style="height:500px;">
-        <div class="modal-content" style="">
+        <div class="modal-content col-lg-12 col-md-12 col-xs-12 col-sm-12" style="">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
             </div>
             <div class="modal-body" style="height: 550px;">
-                <div id="singlePromoModalImg" class="col-lg-8"><img src="" style="max-height: 500px;max-width: 800px;" alt=""/></div>
-                <div class="col-lg-4">
-                    <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
+                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 
-                    <p id="modal-description"></p>
+                    <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12"><img src="" style="max-height: 500px;max-width: 120%;" alt=""/></div>
+                    <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                        <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
 
-                    <span style="font-size: 1.1em;font-weight:800;">Valid From : <span id="from" class="txt-red"></span></span><br><br>
-                    <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
-                    <br>
-                    <br>
-                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
-                        <i class="fa fa-facebook"></i> Share on Facebook
-                    </a>
+                        <p id="modal-description"></p>
 
-                    <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
+                        <span style="font-size: 1.1em;font-weight:800;">Valid From : <span id="from" class="txt-red"></span></span><br><br>
+                        <span style="font-size: 1.1em;font-weight:800;">Valid Till : <span id="till" class="txt-red"></span></span>
+                        <br>
+                        <br>
 
+                        <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                            <i class="fa fa-facebook"></i> Share on Facebook
+                        </a>
+
+                        <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
+
+                    </div>
                 </div>
+
             </div>
 
         </div>

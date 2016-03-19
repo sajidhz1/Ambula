@@ -175,7 +175,6 @@
             $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
         });
 
-
         //jquery call to view user info(call the JS method defined below)
         $(document).on('click', '#viewInfoBtn', function (e) {
             displayUserInfo();
@@ -186,7 +185,6 @@
             var clickTrId = $(this).closest('tr').attr('id');
             editModalDisplay(clickTrId);
         });
-
 
         function onResize() {
             // apply dynamic padding at the top of the body according to the fixed navbar height

@@ -130,12 +130,12 @@
 
             <div class="controls">
                 <select class="form-control" name="category" id="category">
-                    <option value="0">select category</option>
+                    <option value="0">තෝරන්න</option>
                     <?php
                     $arr = json_decode($this->getCategoriesArray(), true);
                     foreach ($arr as $category) {
                         ?>
-                        <option value="<?= $category['idCategory']; ?>"><?= $category['title']; ?></option>
+                        <option value="<?= $category['idCategory']; ?>"> <?=$category['title_si']; ?></option>
                     <?php } ?>
                 </select>
                 <span class="help-block with-errors" id="category-error"></span>
@@ -145,7 +145,7 @@
         <div class="form-group col-lg-9 col-sm-12">
             <label class="control-label" for="tags">Tags</label>
             <div class="controls">
-                <input type="text"  name="tags" id="tags" value="Sri lankan,Dessert"  data-role="tagsinput" />
+                <input type="text"  name="tags" id="tags" value="පහසු"  placeholder="ඉක්මන් , සැර " data-role="tagsinput" />
             </div>
         </div>
 

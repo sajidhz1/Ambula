@@ -136,7 +136,7 @@
             </div>
             <div class="modal-body">
                 <div class="col-lg-offset-4">
-                    <a href="/Ambula/recipes/newrecipeupdated" class="btn btn-lg btn-success">English</a>
+                    <a href="/Ambula/recipes/newrecipeupdated" class="btn btn-lg btn-warning">English</a>
                     <a href="/Ambula/recipes/newrecipeupdated?lang=si" class="btn btn-lg btn-info">සිංහලෙන්</a>
                 </div>
             </div>

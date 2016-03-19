@@ -112,7 +112,6 @@
 
         #image {
             float: right;
-            width: 200px;
             height: 150px;
             border: groove;
         }
@@ -206,7 +205,7 @@
 									Browse&hellip; <input type="file" name="promo_image" id="promo_image"
                                                           onchange="readURL(this);" data-filesize="3000" data-filesize-error="Max 3000B" accept="image/*" required>
 								</span>
-								<img id="image" src="/Ambula/public/img/default_promotion.jpg" alt="default image"/>
+								<img id="image" src="/Ambula/public/img/no_preview_available.jpg" alt="default image"/>
 							</span>
 
                         </div>
@@ -215,17 +214,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="form-group col-lg-8">
+                    <div class="form-group col-lg-12">
                         <!-- Description -->
                         <label class="control-label" for="description"><span class="compulsory">*</span>Promotion
                             Description</label>
 
                         <div class="controls">
 
-                            <textarea id="description" name="description" maxlength="255" class="form-control"
-                                      style="resize: none; height: 100px" placeholder="max 255 characters" required>
+                            <textarea id="editor1"  name="description"  class="ckeditor col-lg-12 col-sm-12" rows="15"
+                                      cols="40" placeholder="max 255 characters" maxlength="255" required></textarea>
 
-                            </textarea>
                             <!--<textarea id="description" name="description" class="form-control" style="height: 120px; resize: none;" required>
                             </textarea>-->
                         </div>
@@ -278,7 +276,7 @@
                     <div class="form-group col-lg-3">
                         <!-- Button -->
                         <div class="controls">
-                            <button id="addPromo" class="btn btn-success form-control">Add Promo</button>
+                            <button id="addPromo" class="btn btn-success form-control" >Add Promo</button>
                         </div>
                     </div>
                 </div>
@@ -287,7 +285,42 @@
 
         </div>
     </div>
+
 </div>
 
+
+<!-- promotion uploading progress displaying modal-->
+<div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+     style=" overflow: scroll; height:auto;margin-top: 10%;" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center" id="modalBody" >
+        <div class="modal-content" style="">
+
+
+            <div class="modal-body" >
+                <div class="progress">
+                    <div id="progress" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" >
+                        <span>0%</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.config.height = 400;
+    config.extraPlugins = 'onchange';
+    CKEDITOR.replace('editor1');
+
+    CKEDITOR.on('change', function (e) {
+        alert('');
+    });
+
+
+</script>
+<script src="https://cdn.rawgit.com/ilopX/jquery-ajax-progress/master/dist/jquery.ajax-progress.min.js"></script>
+<script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
 </body>
 </html>

@@ -28,13 +28,12 @@ class Promotion extends Controller
 
     public function addNewPromotion()
     {
-       if($this->promotion->validateAndInsertNewPromo()){
-           $this->view("promotions/promotionSuccessMessage", "promotions");
-        } else {
-            $this->view('_template/error', "Error");
-        }
+       $this->promotion->validateAndInsertNewPromo();
     }
 
+    public function promotionSuccess(){
+        $this->view('promotions/promotionSuccessMessage');
+    }
 
     public function viewAllPromotions()
     {
@@ -145,6 +144,11 @@ class Promotion extends Controller
         echo $this->promotion->viewSinglePromotion($promoId);
 
 
+    }
+
+    public function error_page()
+    {
+        $this->view('_template/error');
     }
 
 }

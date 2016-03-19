@@ -60,31 +60,10 @@ class PromotionModel
                 }
             }
 
-            //promotional image
-            $sqlForId = "SELECT idPromotion FROM promotion ORDER BY idPromotion DESC LIMIT 1";
-            $queryId = $this->db->prepare($sqlForId);
-            $queryId->execute();
-            $lastPromoId = $queryId->fetchColumn();
-
-            if (!$lastPromoId) {
-                $lastPromoId = 1;
-                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
-                    mkdir("uploads/promotions/" . $lastPromoId);
-                }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
-                $lastPromoId = null;
-            } else {
-                $lastPromoId++;
-                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
-                    mkdir("uploads/promotions/" . $lastPromoId);
-                }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
-                $lastPromoId = null;
-            }
 
             //promotion description validation
             if (empty($_POST["description"])) {
-                $descriptionErr = "Description about the promotion is required";
+                ECHO "Description about the promotion is required";
                 $description_flag = false;
             } else {
                 $description_flag = true;
@@ -109,6 +88,29 @@ class PromotionModel
                 $end_date = date('Y-m-d', strtotime($this->test_input($_POST["end_date"])));
             }
 
+            //promotional image
+            $sqlForId = "SELECT idPromotion FROM promotion ORDER BY idPromotion DESC LIMIT 1";
+            $queryId = $this->db->prepare($sqlForId);
+            $queryId->execute();
+            $lastPromoId = $queryId->fetchColumn();
+
+            if (!$lastPromoId) {
+                $lastPromoId = 1;
+                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
+                    mkdir("uploads/promotions/" . $lastPromoId);
+                }
+                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
+                $lastPromoId = null;
+            } else {
+                $lastPromoId++;
+                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
+                    mkdir("uploads/promotions/" . $lastPromoId);
+                }
+                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
+                $lastPromoId = null;
+            }
+
+
             //priority
 //            if (empty($_POST["priority"])) {
 //                $priorityErr = "priority is required to choose";
@@ -126,8 +128,8 @@ class PromotionModel
 
         //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
 
-        if (!$promo_type_flag || !$promo_name_flag || !$image_url || !$description_flag || !$startdate_flag || !$enddate_flag) {
-            return false;
+        if (!$promo_type_flag || !$promo_name_flag || !$description_flag || !$startdate_flag || !$enddate_flag) {
+            echo $promo_type_flag.'#'.$promo_name_flag.'#'.$description_flag.'#'.$startdate_flag.'#'.$enddate_flag;
         }
         //insert into promotion_adder table
 
@@ -143,7 +145,7 @@ class PromotionModel
             ':end_date' => $end_date,
             ':visibility' => $visibility));
 
-        return true;
+        echo '#1';
 
     }
 

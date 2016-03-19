@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="/Ambula/public/css/w3.css" rel="stylesheet">
+    <!--    <link href="/Ambula/public/css/w3.css" rel="stylesheet">-->
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
@@ -108,6 +108,7 @@
         });
 
         function recipeSearch() {
+
             var sText = document.getElementById('searchRecipeText').value;
             ///////////////////To get the recipe category///////////////
             var sCateOpt = document.getElementById('recipeCategoryDelete');
@@ -126,25 +127,22 @@
                     var i = 0;
                     var string = "";
                     while (myVar[i]) {
-                        string += "<div class='col-lg-3' style='padding: 20px'>";
-                        string += " <div class='w3-card-4' style='width:300px; min-height: 335.2px display: inline-block;'>";
-                        string += "     <img src='/Ambula/uploads/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
-                        string += "     <div class='w3-container' style='padding-top: 10px; padding-bottom: 10px'>";
-                        string += "         <p class='recipeTitle'>" + myVar[i].title + "</p>";
-                        string += "         <a class='w3-btn' href='/Ambula/recipes/viewRecipe/" + myVar[i].idRecipe + "' style='background-color: #5bc0de' target='_blank'>View More</a>";
-                        string += "         <a class='w3-btn w3-red deleteRecipeButton' id='" + myVar[i].idRecipe + "' style='float: right; width: 110px'>Delete</a>";
-                        string += "     </div>";
-                        string += " </div>";
+                        string += "<div  class='col-lg-4' style='display: inline-block;'>";
+                        string += " <div  class='w3-card-4' style='width:300px;;margin-left: 65px; margin-bottom: 30px' >";
+                        string += "   <img src='/Ambula/uploads/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
+                        string += "   <div class='w3-container' style='padding-top: 10px; padding-bottom: 10px'>";
+                        string += "       <p class='recipeTitle'>" + myVar[i].title + "</p>";
+                        string += "       <a class='w3-btn' href='/Ambula/recipes/viewRecipe/" + myVar[i].idRecipe + "' style='background-color: #5bc0de' target='_blank'>View More</a>";
+                        string += "       <a class='w3-btn w3-red deleteRecipeButton' id='" + myVar[i].idRecipe + "' style='float: right; width: 110px'>Delete</a>";
+                        string += "   </div>";
+                        string += "  </div>";
                         string += "</div>";
                         i++;
                     }
-                    //alert(string);
                     $("#search-content").html(string);
                 }
             });
         }
-
-
     </script>
 </head>
 
@@ -172,7 +170,7 @@
                           style="float: left; margin-left: 30px; cursor: pointer">Tap to Search Recipes for Deletion</span>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <form class="navbar-form">
+                    <form class="navbar-form" id="searchform" onsubmit="recipeSearch(); return false;">
                         <div class="form-group">
                             <label for="sel1">Select Recipe Category</label>
                             <select class="form-control" id="recipeCategoryDelete" name="recipeCategoryDelete">

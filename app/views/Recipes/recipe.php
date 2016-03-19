@@ -76,7 +76,7 @@
             <?php $arr = json_decode($this->getRecipeImages($this->recipes->recipeId), true);
             ?>
 
-            <div class="col-sm-12 col-md-4 col-lg-4 hgt275">
+            <div class="col-lg-4 col-md-4 col-sm-12 hgt275">
                 <h3>Gallery</h3>
 
                 <div>
@@ -95,7 +95,7 @@
                 </div>
 
             </div>
-            <div class=" col-md-5 col-lg-5 recipe-details" >
+            <div class="col-lg-5 col-md-5  recipe-details" >
                 <h1 class="recipe-title"><span><?php echo $this->recipes->recipename; ?></span></h1>
 
                 <div class="row">
@@ -127,9 +127,14 @@
 
                 <div class="social-buttons  pull-right" >
 
-                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_SERVER['REQUEST_URI']);?>"  target="_blank">
                         <i class="fa fa-facebook"></i> Share on Facebook
                     </a>
+
+
+                    <a class="btn btn-success" target="_blank" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo urlencode($this->recipes->recipename);?>&amp;p[summary]=<?php echo urlencode('heyskjcb sjkcb kjsbcjk sbc') ?>&amp;p[url]=<?php echo urlencode($_SERVER['REQUEST_URI']); ?>&amp;p[images][0]=<?php echo urlencode('http://theambula.lk/uploads/'.$this->recipes->recipeId.'/facebook.jpg'); ?>">share on facebook</a>
+                    <a class="btn btn-success" target="_blank" href="https://www.facebook.com/dialog/share?app_id={753864634705819}&display=popup&href={<?php echo urlencode($_SERVER['REQUEST_URI']); ?>}&redirect_uri={<?php echo urlencode($_SERVER['REQUEST_URI']); ?>}">share on facebook</a>
+
 
                     <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
 
@@ -187,7 +192,7 @@
             </div>
 
 
-        <div class="col-lg-6" >
+        <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12" >
 
             <div class="panel panel-default">
                 <div class="panel-heading"> <h3 style="text-align: center;">Directions</h3></div>
