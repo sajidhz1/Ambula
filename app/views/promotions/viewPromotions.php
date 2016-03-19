@@ -21,7 +21,7 @@
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/bootstrap-theme.min.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/style.css" rel="stylesheet" media="screen"/>
     <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -225,27 +225,6 @@
             z-index: 100;
         }
 
-        #modalDialog {
-            margin-top: 0px;
-            width: 100%;
-            height: 100%;
-            padding: 0px;
-            z-index: 1040;
-        }
-
-        #modalContent {
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-radius: 0;
-        }
-
-        #singlePromoModalDesc {
-
-        }
-
-
     </style>
 
     <script type="text/javascript">
@@ -435,7 +414,7 @@
             <div class="modal-body" style="height: 550px;">
                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 
-                    <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12"><img src="" style="max-height: 500px;max-width: 120%;" alt=""/></div>
+                    <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12"><img id="promoImage" src="" style="max-height: 500px;" alt=""/></div>
                     <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
                         <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
 

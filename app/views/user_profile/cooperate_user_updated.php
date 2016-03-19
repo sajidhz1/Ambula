@@ -29,7 +29,7 @@
 
     <link href="/Ambula/public/js/promotion/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="/Ambula/public/js/promotion/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/promotion/promotionJavaScriptCustom.js"></script>
+
 
 
     <!--[if lt IE 9]>
@@ -268,17 +268,28 @@
                             <h4 class="modal-title" id="myModalLabel">Update promotion </h4>
                         </div>
                         <div class="modal-body row">
-                            <div class="col-sm-12">
-                                <div class="alert alert-info row">
-                                    You must be signed in as an Ambula&trade; coporate user to add new Promotions to
-                                    Ambula&trade; promotions.
-                                    Sign Up here as a Coporate User
+                            <div class="row">
+                                <div class="form-group col-lg-4">
+                                    <!-- Start date -->
+                                    <label class="control-label" for="start_date">Starting Date</label>
+
+                                    <div class="controls">
+                                        <input id="startdate" name="start_date" class="form-control celenderForPromo"
+                                               pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
+                                               data-error="Please Pick a Valid Date" required>
+                                    </div>
+                                    <span class="help-block with-errors"></span>
                                 </div>
-                                <div class="row">
-                                    <a href="/Ambula/registration/regNewCommercialUser/"
-                                       class="btn btn-primary btn-block" role="button">Join Ambula Promotions</a>
-                                    <a href="/Ambula/login" class="btn btn-block" role="button"
-                                       style="border: 2px solid">Already a Member, Log In</a>
+                                <div class="form-group col-lg-4">
+                                    <!-- End date -->
+                                    <label class="control-label" for="end_date">Ending Date</label>
+
+                                    <div class="controls">
+                                        <input id="enddate" name="end_date" class="form-control celenderForPromo"
+                                               pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
+                                               data-error="Please Pick a Valid Date" required disabled>
+                                    </div>
+                                    <span class="help-block with-errors"></span>
                                 </div>
                             </div>
                         </div>

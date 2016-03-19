@@ -221,14 +221,14 @@
     </div>
 
 
-    <div class="row" style="margin-top: 10px;">
+    <div class="row" id="commentRow" style="margin-top: 10px;">
 
 
          <div class="col-lg-9" id="comment-box">
             <div class="detailBox">
                 <div class="commentBox">
 
-                    <p class="taskDescription">Join the Discussion</p>
+                    <h4 class="taskDescription">Join the Discussion</h4>
                 </div>
                 <div class="actionBox">
                     <ul class="commentList">
@@ -237,11 +237,13 @@
                         ?>
 
                         <li>
+                            <a class="pull-right" href=""><i class="glyphicon glyphicon-remove"></i></a>
                             <div class="commenterImage">
-                                <img src="http://lorempixel.com/50/50/people/6" />
+                                <img src="/Ambula/uploads/profile/<?=$comment['user_name'] ?>.jpg" />
                             </div>
                             <div class="commentText">
-                                <p class=""><?=$comment['text'] ?></p> <span class="date sub-text"><?=$comment['date'] ?></span>
+                                <label><?=$comment['first_name'].' '.$comment['last_name'] ?> </label>
+                                <p class="txt-darkgrey"><?=$comment['text'] ?></p> <span class="date sub-text"><?=$comment['date'] ?></span>
 
                             </div>
                         </li>
@@ -252,7 +254,7 @@
                             <input class="form-control" name="text" id="comment" type="text" placeholder="Your comments" />
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-default">Add</button>
+                            <button class="btn btn-default">Comment</button>
                         </div>
                     </form>
                 </div>
@@ -307,26 +309,33 @@
     
     $(document).on('submit', '#comment-form', function (e) {
         e.preventDefault();
+        if($('#comment').val() != '') {
+            <?php if(isset($_SESSION['uid']))  {?>
+            $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
+                type: 'POST',
+                data: {text: $('#comment').val()},
+                url: '/Ambula/recipes/addComment/<?=$this->recipes->recipeId ?>',
+                success: function (responseText) {
 
-        <?php if(isset($_SESSION['uid']))  {?>
-        $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
-            type: 'POST',
-            data: {text: $('#comment').val()},
-            url: '/Ambula/recipes/addComment/<?=$this->recipes->recipeId ?>',
-            success: function (responseText) {
-              
-                $('.commentList').append(' <li><div class="commenterImage"><img src="http://lorempixel.com/50/50/people/6" /></div>'
-                +'<div class="commentText"><p class="">'+$('#comment').val()+
-               '</p> <span class="date sub-text">'+ new Date($.now()) +'</span></div></li>');
+                    $('.commentList').prepend('<li><a class="pull-right" href=""><i class="glyphicon glyphicon-remove"></i></a><div class="commenterImage"><img src="/Ambula/uploads/profile/<?=$_SESSION['username'] ?>.jpg" /></div>'
+                    + '<div class="commentText"><label><?=$_SESSION['name'] ?></label><p class="txt-darkgrey">' + $('#comment').val() +
+                    '</p> <span class="date sub-text">' + new Date($.now()) + '</span></div></li>');
 
 
-                $('#comment').val('') ;
-            }
-        });
+                    $('#comment').val('');
 
-        <?php } else {  ?>
-        alert('login to add comment');
-        <?php } ?>
+                    $('html, body').animate({
+                        scrollTop: $("#commentRow").offset().top - 170
+                    }, 500);
+                }
+            });
+
+            <?php } else {  ?>
+            alert('login to add comment');
+            <?php } ?>
+        }else{
+
+        }
     });
 
 	$(document).on('change', '#input-2c', function (e) {
