@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta property="og:image"              content="http://theambula.lk/uploads/categories/curries.jpg" />
-	<meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe" />
-	<meta property="og:type"               content="article" />
-	<meta property="og:title"              content="Curries" />
-	
+
+    <meta property="og:image" content="http://theambula.lk/uploads/categories/curries.jpg"/>
+    <meta property="og:url" content="http://theambula.lk/recipes/viewRecipe"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Curries"/>
+
 
     <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
@@ -18,7 +18,7 @@
     <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/typeahead.css" rel="stylesheet" media="screen"/>
 
-	 <!-- fav icon -->
+    <!-- fav icon -->
     <link rel="icon" href="http://localhost/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.9.1.min.js"></script>
@@ -62,7 +62,7 @@
             border-bottom: 1px dotted #a1a1a1;
         }
 
-        #recipe_img{
+        #recipe_img {
             width: 100%;
 
         }
@@ -80,9 +80,10 @@
             text-align: center;
         }
 
-        .subcat:hover .subcat-tile{
+        .subcat:hover .subcat-tile {
             border: 1px solid #666;
         }
+
         .subcat:hover {
             text-decoration: none;
 
@@ -100,7 +101,7 @@
         <?php
         $arr = json_decode($this->getSubCategoryArray(), true);
         foreach ($arr as $subcategory) {
-        ?>
+            ?>
             <option><?php echo $subcategory['title']; ?></option>
         <?php } ?>
     </select>
@@ -110,24 +111,26 @@
 
         <?php
 
-        $arr=json_decode($this->getRecipesByCategory($_GET['id']),true);
+        $arr = json_decode($this->getRecipesByCategory($_GET['id']), true);
 
-        foreach($arr as $subcategory){
+        foreach ($arr as $subcategory) {
 
             ?>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 subcat-tile" >
-                <a class="subcat" href="http://localhost/Ambula/recipes/viewRecipe/<?=$subcategory['idRecipe']; ?>">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 subcat-tile">
+                <a class="subcat" href="http://localhost/Ambula/recipes/viewRecipe/<?= $subcategory['idRecipe']; ?>">
            <span>
-               <h4 style="height: 50px;" ><?php echo $subcategory['title']; ?></h4>
+               <h4 style="height: 50px;"><?php echo $subcategory['title']; ?></h4>
            </span>
+
                     <div style="height: 120px;overflow: hidden;">
-                        <img   src="http://localhost/Ambula/uploads/<?=$subcategory['idRecipe']; ?>/thumb.jpg" id="recipe_img">
+                        <img src="http://localhost/Ambula/uploads/<?= $subcategory['idRecipe']; ?>/thumb.jpg"
+                             id="recipe_img">
                     </div>
 
-                     <?php  $result = $this->getRecipeBy($subcategory['idRecipe']);  ?>
-                     <?php echo ($result  != null ? 
-                     '<span style="padding: 2px;" class="txt-red" >Recipe by <a href="/home/profile?id='.$result->users_user_id.'">'.$result->first_name.'</a><span>' : '' ); ?>
+                    <?php $result = $this->getRecipeBy($subcategory['idRecipe']); ?>
+                    <?php echo($result != null ?
+                        '<span style="padding: 2px;" class="txt-red" >Recipe by <a href="/home/profile?id=' . $result->users_user_id . '">' . $result->first_name . '</a><span>' : ''); ?>
                 </a>
             </div>
 
@@ -135,7 +138,7 @@
 
     </div>
     <div class="col-lg-2 col-md-2 col-sm-0" style="border: 1px solid #888;height:400px;" id="ad-space">
-       
+
     </div>
 
 

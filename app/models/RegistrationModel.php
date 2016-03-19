@@ -304,7 +304,8 @@ class RegistrationModel
         return false;
     }
 
-    public function checkEmail($email = ""){
+    public function checkEmail($email = "")
+    {
         $query = $this->db->prepare("SELECT user_email FROM  users  WHERE  user_email = :email");
         $query->execute(array(':email' => $email));
         $count = $query->rowCount();
@@ -316,7 +317,8 @@ class RegistrationModel
 
     }
 
-    public function checkUserName($userName = ""){
+    public function checkUserName($userName = "")
+    {
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = :user_name");
         $query->execute(array(':user_name' => $userName));
         $count = $query->rowCount();
@@ -328,7 +330,8 @@ class RegistrationModel
     }
 
 
-    public function checkCooperateUserName($userName = ""){
+    public function checkCooperateUserName($userName = "")
+    {
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
         $query->execute();
         $count = $query->rowCount();
@@ -341,7 +344,8 @@ class RegistrationModel
 
 
     //register new commercial user
-    public function register_commercial_user(){
+    public function register_commercial_user()
+    {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -478,7 +482,7 @@ class RegistrationModel
         $result = $this->db->prepare($sql);
         $result->execute(array(':email' => $email, ':user_name' => $username, ':password_hash' => $password_hash, ':user_account_type' => 2, ':user_provider_type' => "DEFAULT", ':hash' => $hash));
 
-        Session::set('username',$username);
+        Session::set('username', $username);
         $user_id = $this->db->lastInsertId();
 
         $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city, district )
@@ -492,7 +496,8 @@ class RegistrationModel
 
     }
 
-    public function update_commercial_user(){
+    public function update_commercial_user()
+    {
 
         //  $website = $facebook = $youtube = $description = $user_name  = '' ;
 

@@ -62,7 +62,7 @@
             height: 200px;
         }
 
-        .social-blue{
+        .social-blue {
             border: 2px solid #3b5998;
             color: #3b5998;
             background: #fff;
@@ -70,7 +70,7 @@
             margin: 10px 0px;
         }
 
-        .social-red{
+        .social-red {
             border: 2px solid #e52d27;
             color: #e52d27;
             background: #fff;
@@ -78,7 +78,7 @@
             margin: 10px 0px;
         }
 
-        .social-grey{
+        .social-grey {
             border: 2px solid #0d0d0d;
             color: #0d0d0d;
             background: #fff;
@@ -86,12 +86,14 @@
             margin: 10px 0px;
         }
 
-        #company_logo{
+        #company_logo {
             /* Rounded Corners */
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
-            display: block;margin: auto;margin-top: 15px;
+            display: block;
+            margin: auto;
+            margin-top: 15px;
         }
 
         .profile-usertitle {
@@ -131,17 +133,22 @@
             margin-right: 0px;
         }
 
-        .product_img_wrapper{
-            height: 50px;overflow: hidden;padding: 0px;
+        .product_img_wrapper {
+            height: 50px;
+            overflow: hidden;
+            padding: 0px;
         }
-        .product_img{
-            position: absolute;bottom:10px;left: 5px;
-            width: 140px;
-                    }
 
-        .box  a:hover {
+        .product_img {
+            position: absolute;
+            bottom: 10px;
+            left: 5px;
+            width: 140px;
+        }
+
+        .box a:hover {
             text-decoration: none;
-             border: 1px solid yellow;
+            border: 1px solid yellow;
         }
 
     </style>
@@ -149,55 +156,66 @@
 
 <body>
 
-<?php $this->view('_template/navigation_menu',"newRecipe"); ?>
+<?php $this->view('_template/navigation_menu', "newRecipe"); ?>
 
-  <div class="container-fluid mrg50T mrg50B" >
-      <?php $details = json_decode($this->getCooperateUserDetails() ,true);
+<div class="container-fluid mrg50T mrg50B">
+    <?php $details = json_decode($this->getCooperateUserDetails(), true);
 
-      ?>
-  <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;border:1px solid brown">
-      <img id="company_logo" src="/Ambula/public/img/no_preview_available.jpg"  height="150" width="150" alt=""/>
-      <div class="profile-usertitle">
-      <div  class="profile-usertitle-name"><?=$details["company_name"]; ?></div>
-      </div>
-      <div class="profile-usertitle-job">
-          canned food/meat , Flour , Ice Cream ,Grain Products
-      </div>
-      <div class="profile-userbuttons">
-          <button type="button" class="btn btn-success btn-sm">Ask <span class="glyphicon glyphicon-hand-right"></button>
-          <button type="button" class="btn btn-danger btn-sm">About <span class="glyphicon glyphicon-home"></button>
-      </div>
-      <a href="<?=$details["web_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-grey" >Website <span class="glyphicon glyphicon-globe"></span></a>
-      <a href="<?=$details["facebook_url"]; ?> "target="_blank" class="btn btn-default btn-lg social-blue" >Facebook <i class="fa fa-facebook"></i></span></a>
-      <a href="<?=$details["youtube_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-red" >Youtube <i class="fa fa-youtube"></i></a>
-  </div>
-  <div class="col-lg-9">
-        <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;"  >
+    ?>
+    <div class="col-lg-3 hgt600" style="text-align: center;margin-top: 25px;border:1px solid brown">
+        <img id="company_logo" src="/Ambula/public/img/no_preview_available.jpg" height="150" width="150" alt=""/>
+
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name"><?= $details["company_name"]; ?></div>
+        </div>
+        <div class="profile-usertitle-job">
+            canned food/meat , Flour , Ice Cream ,Grain Products
+        </div>
+        <div class="profile-userbuttons">
+            <button type="button" class="btn btn-success btn-sm">Ask <span class="glyphicon glyphicon-hand-right">
+            </button>
+            <button type="button" class="btn btn-danger btn-sm">About <span class="glyphicon glyphicon-home"></button>
+        </div>
+        <a href="<?= $details["web_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-grey">Website <span
+                class="glyphicon glyphicon-globe"></span></a>
+        <a href="<?= $details["facebook_url"]; ?> " target="_blank" class="btn btn-default btn-lg social-blue">Facebook
+            <i class="fa fa-facebook"></i></span></a>
+        <a href="<?= $details["youtube_url"]; ?>" target="_blank" class="btn btn-default btn-lg social-red">Youtube <i
+                class="fa fa-youtube"></i></a>
+    </div>
+    <div class="col-lg-9">
+        <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;">
             <h4>Products</h4>
-            <a href="/Ambula/Foodproducts/addnewproduct" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Product <span class="glyphicon glyphicon-plus"></span></a>
-            <?php $array = json_decode($this->viewUserProducts($details["idcommercial_user"]),true);
+            <a href="/Ambula/Foodproducts/addnewproduct" class="btn btn-small btn-success "
+               style="position: absolute;top:5px;right:25px; ">Add Product <span
+                    class="glyphicon glyphicon-plus"></span></a>
+            <?php $array = json_decode($this->viewUserProducts($details["idcommercial_user"]), true);
 
-                foreach($array as $product){
-            ?>
-            <a href="" class="col-lg-2 box" >
-                <div class="inner box">
-                    <h5 style="color: #333333"><?=$product['product_name'] ?></h5>
-                    <div class="product_img_wrapper">
-                    <img src="/Ambula/<?=$product['img_url'] ?>"   class="product_img">
+            foreach ($array as $product) {
+                ?>
+                <a href="" class="col-lg-2 box">
+                    <div class="inner box">
+                        <h5 style="color: #333333"><?= $product['product_name'] ?></h5>
+
+                        <div class="product_img_wrapper">
+                            <img src="/Ambula/<?= $product['img_url'] ?>" class="product_img">
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
 
             <?php } ?>
 
 
-            <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
 
         </div>
-        <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;"  >
+        <div class="col-lg-12" style="background:#e2e1d1;height: 315px;margin-top: 25px;">
             <h4>Recipes</h4>
-            <a href="/Ambula/recipes/newrecipe" class="btn btn-small btn-success " style="position: absolute;top:5px;right:25px; " >Add Recipe <span class="glyphicon glyphicon-plus"></span></a>
-            <div class="col-lg-2 hgt200 box" >
+            <a href="/Ambula/recipes/newrecipe" class="btn btn-small btn-success "
+               style="position: absolute;top:5px;right:25px; ">Add Recipe <span class="glyphicon glyphicon-plus"></span></a>
+
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -205,7 +223,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -213,7 +231,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -221,7 +239,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -229,7 +247,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -237,18 +255,19 @@
                 </div>
             </div>
 
-            <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box">
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
                          style="display:block;margin: auto;">
                 </div>
             </div>
-            <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-  </div>
+    </div>
 
-  </div>
+</div>
 
 </body>
 

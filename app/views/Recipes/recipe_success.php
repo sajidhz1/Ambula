@@ -34,22 +34,30 @@
     <script>
         $(document).on('click', '#btn-collapse', function (e) {
             e.preventDefault();
-            $("html, body").animate({ scrollTop: 400 }, 500);
+            $("html, body").animate({scrollTop: 400}, 500);
         });
 
     </script>
     <style>
-        body{text-align: center;}
-        h5{color: brown;}
-        th,td{
+        body {
+            text-align: center;
+        }
+
+        h5 {
+            color: brown;
+        }
+
+        th, td {
             padding: 8px;
         }
-        table{
+
+        table {
             margin-left: auto;
             margin-right: auto;
             margin-top: 20px;
             margin-bottom: 20px;
         }
+
         table, th, td {
             border: 1px solid #B2B2B2;
             border-collapse: collapse;
@@ -62,54 +70,55 @@
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 <div class="container-fluid pages">
-<h1>Recipe Added Successfully</h1>
+    <h1>Recipe Added Successfully</h1>
 
-<h3>Tell Us More About Your Recipe</h3>
-<h5>help people more easier to find their grocery</h5>
- <form action="/recipes/updateRecipeBrands?recipe=<?=$_GET['id'] ?>" method="post" >
- <table >
-     <tr>
-         <th>Item</th>
-         <th>Product Brand</th>
-     </tr>
+    <h3>Tell Us More About Your Recipe</h3>
+    <h5>help people more easier to find their grocery</h5>
 
-     <?php $arrsub = json_decode($this->getRecipeIngredients($_GET['id']), true);
+    <form action="/recipes/updateRecipeBrands?recipe=<?= $_GET['id'] ?>" method="post">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Product Brand</th>
+            </tr>
 
-     foreach ($arrsub as $ingredient) {
-     ?>
+            <?php $arrsub = json_decode($this->getRecipeIngredients($_GET['id']), true);
 
-    <tr>
-        <td><?=$ingredient['title'] ?></td>
-        <td>
-            <select name="brand[]">
-                <option value="0" >choose</option>
-                <?php $brands =  json_decode($this->getIngredientBrands($ingredient['idIngredients']),true);
-
-                if(count($brands) >0){
-                    foreach($brands as $b){
-                        ?>
-                        <option value="<?=$b['idproduct_brand']; ?>"><?=$b['title']; ?></option>
-                <?php 
-                    }
-                }
-
+            foreach ($arrsub as $ingredient) {
                 ?>
-            </select>
-        </td>
-        <td>
-            <input type="text" name="other[]" placeholder="other"  />
-            <input type="hidden" name="rid[]" value="<?=$ingredient['id_recipe_has_ingredients'] ?>"
-        </td>
-      
-    </tr>
 
-     <?php }?>
- </table>
-    <input class="btn btn-success btn-lg" value="save" type="submit" />
- </form>
+                <tr>
+                    <td><?= $ingredient['title'] ?></td>
+                    <td>
+                        <select name="brand[]">
+                            <option value="0">choose</option>
+                            <?php $brands = json_decode($this->getIngredientBrands($ingredient['idIngredients']), true);
+
+                            if (count($brands) > 0) {
+                                foreach ($brands as $b) {
+                                    ?>
+                                    <option value="<?= $b['idproduct_brand']; ?>"><?= $b['title']; ?></option>
+                                <?php
+                                }
+                            }
+
+                            ?>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" name="other[]" placeholder="other"/>
+                        <input type="hidden" name="rid[]" value="<?= $ingredient['id_recipe_has_ingredients'] ?>"
+                    </td>
+
+                </tr>
+
+            <?php } ?>
+        </table>
+        <input class="btn btn-success btn-lg" value="save" type="submit"/>
+    </form>
     <br>
     <br>
-    <a href="" style="margin-bottom: 25px;" >Continue to Recipe >> </a>
+    <a href="" style="margin-bottom: 25px;">Continue to Recipe >> </a>
 </div>
 </body>
 </html>

@@ -18,7 +18,6 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
-
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -33,7 +32,7 @@
     <![endif]-->
     <style>
 
-        .product-brand{
+        .product-brand {
             float: none;
             margin: 0 auto;
 
@@ -46,7 +45,6 @@
             padding: 5px;
             text-align: center;
 
-
         }
 
         .box .inner {
@@ -58,16 +56,16 @@
 
         }
 
-        .ad{
+        .ad {
             padding: 5px;
-            text-align: center;}
+            text-align: center;
+        }
 
-
-
-        .product_thumb{
+        .product_thumb {
             position: relative;
 
         }
+
         header.carousel {
             height: 50%;
         }
@@ -113,13 +111,15 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
         <div class="item active">
-            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/classicFullWidth/01_classic.jpg');"></div>
+            <div class="fill"
+                 style="background-image:url('http://www.responsivejqueryslider.com/images/classicFullWidth/01_classic.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 1</h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('http://www.responsivejqueryslider.com/images/coolFullWidth/04_cool.jpg');"></div>
+            <div class="fill"
+                 style="background-image:url('http://www.responsivejqueryslider.com/images/coolFullWidth/04_cool.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 2</h2>
             </div>
@@ -141,35 +141,41 @@
     </a>
 </header>
 <div class="container-fluid">
-    <h3 class="pg-title txt-red"><span><?php echo $_GET['cat'];?></span></h3>
+    <h3 class="pg-title txt-red"><span><?php echo $_GET['cat']; ?></span></h3>
+
     <div class="dropdown" style="position:absolute;right: 0;margin-right:80px;top: 320px;">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
             Select Category
             <span class="caret"></span>
         </button>
-    <ul class="dropdown-menu">
-        <?php $arrsub = json_decode($this->loadCategories(), true);
+        <ul class="dropdown-menu">
+            <?php $arrsub = json_decode($this->loadCategories(), true);
 
-        foreach ($arrsub as $category) {
-            ?>
-            <li class=""><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"  style="font-size: 0.9em;" ><?php echo $category['title']; ?> </a></li>
-        <?php } ?>
-    </ul>
-        </div>
+            foreach ($arrsub as $category) {
+                ?>
+                <li class=""><a href="/Ambula/Foodproducts?cat=<?php echo $category['title']; ?>"
+                                style="font-size: 0.9em;"><?php echo $category['title']; ?> </a></li>
+            <?php } ?>
+        </ul>
+    </div>
 
     <div class="row">
-        <div class="col-lg-10 hgt500" >
-            <?php $productCategoryList = json_decode($this->getAllProductsOfSingleCategory($_GET['cat']),true);
-			foreach ($productCategoryList as $catProd){ ?>
-            <div class="col-lg-2 box" data-link="/Ambula/FoodProducts/product?productId=<?= $catProd['idproducts'] ?>">
-                <div class="inner">
-                    <img src="/Ambula/<?= $catProd['img_url']?>" style="width: 100%;height:175px; ">
-                    <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222"><?= $catProd['product_name']?></p>
+        <div class="col-lg-10 hgt500">
+            <?php $productCategoryList = json_decode($this->getAllProductsOfSingleCategory($_GET['cat']), true);
+            foreach ($productCategoryList as $catProd) {
+                ?>
+                <div class="col-lg-2 box"
+                     data-link="/Ambula/FoodProducts/product?productId=<?= $catProd['idproducts'] ?>">
+                    <div class="inner">
+                        <img src="/Ambula/<?= $catProd['img_url'] ?>" style="width: 100%;height:175px; ">
+
+                        <p style="height: 50px;overflow: hidden;text-align: center;padding:2px;color: #222"><?= $catProd['product_name'] ?></p>
+                    </div>
                 </div>
-            </div>
-			<?php }?>
+            <?php } ?>
         </div>
-        <div class="col-lg-2 ad hgt500" >
+        <div class="col-lg-2 ad hgt500">
             <div class="" style="background: #999;height: 300px;"></div>
             <div class="" style="background: #999;height: 300px;margin-top: 10px;"></div>
         </div>

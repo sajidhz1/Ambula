@@ -65,7 +65,7 @@
                        style="margin-left: 12px;"><img
                             src="/<?= $img['image_url']; ?>" height="100" width="100"/></a>
 
-                    <?php
+                <?php
                 } else {
                 }
             } ?>

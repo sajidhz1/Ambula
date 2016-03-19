@@ -6,9 +6,9 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen" />
-    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen" />
-    <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen" />
+    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
@@ -19,20 +19,20 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery.leanModal.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-    <link type="text/css" rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/public/css/style.css"/>
 
     <style>
-        body{
-            background: url(/public/img/tile.jpg)  repeat fixed;
-
-        }
-        .container{
-
+        body {
+            background: url(/public/img/tile.jpg) repeat fixed;
 
         }
 
-        .error-message{
+        .container {
+
+        }
+
+        .error-message {
             color: #ff0000;
             padding: 5px;
             font-size: 1.1em;
@@ -63,36 +63,53 @@
                     <div class="panel-body">
                         <div class="">
                             <div class="text-center">
-                                <img  src="/Ambula/public/img/fav_ico.png" class="login" height="70">
+                                <img src="/Ambula/public/img/fav_ico.png" class="login" height="70">
                             </div>
 
                             <h3 class="text-center">Password reset</h3>
+
                             <p>Enter your new password</p>
+
                             <div class="panel-body">
 
-                                <form class="form" data-toggle="validator"  action="changePassword?h=<?=$_GET['h']?>&email=<?=$_GET['email'] ?>" method="post" ><!--start form--><!--add form action as needed-->
+                                <form class="form" data-toggle="validator"
+                                      action="changePassword?h=<?= $_GET['h'] ?>&email=<?= $_GET['email'] ?>"
+                                      method="post"><!--start form--><!--add form action as needed-->
                                     <fieldset>
                                         <div class="form-group">
-                                            <label  for="passInput">Password</label>
+                                            <label for="passInput">Password</label>
+
                                             <div class="input-group col-md-12">
-                                                <input id="passInput" name="password" placeholder="" class="form-control" oninvalid="setCustomValidity('Password should contain at least 6 characters ')" data-minlength="6"  onchange="try{setCustomValidity('')}catch(e){}"  type="password" required>
+                                                <input id="passInput" name="password" placeholder=""
+                                                       class="form-control"
+                                                       oninvalid="setCustomValidity('Password should contain at least 6 characters ')"
+                                                       data-minlength="6"
+                                                       onchange="try{setCustomValidity('')}catch(e){}" type="password"
+                                                       required>
                                             </div>
                                             <span class="help-block with-errors"></span>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="passInput2">Confirm Password</label>
+
                                             <div class="input-group col-md-12">
-                                                <input id="passInput2" data-match="#passInput" name="confirm_password" placeholder="" class="form-control" oninvalid="setCustomValidity('Password mismatch')"  onchange="try{setCustomValidity('')}catch(e){}"  type="password" required>
+                                                <input id="passInput2" data-match="#passInput" name="confirm_password"
+                                                       placeholder="" class="form-control"
+                                                       oninvalid="setCustomValidity('Password mismatch')"
+                                                       onchange="try{setCustomValidity('')}catch(e){}" type="password"
+                                                       required>
                                             </div>
                                             <span class="help-block with-errors"></span>
                                         </div>
 
                                         <div class="form-group">
-                                            <input class="btn btn-lg btn-primary btn-block"  value="Continue" type="submit">
+                                            <input class="btn btn-lg btn-primary btn-block" value="Continue"
+                                                   type="submit">
                                         </div>
                                     </fieldset>
-                                </form><!--/end form-->
+                                </form>
+                                <!--/end form-->
 
 
                             </div>

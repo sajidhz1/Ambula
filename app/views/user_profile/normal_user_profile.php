@@ -2,418 +2,417 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <meta charset="utf-8">
-    <title>The Ambula</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<title>The Ambula</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="/Ambula/public/css/style.css" type="text/css" rel="stylesheet"/>
-    <link href="/Ambula/public/css/w3.css" type="text/css" rel="stylesheet"/>
-    <link href="/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
+<link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+<link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+<link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+<link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+<link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="/Ambula/public/css/style.css" type="text/css" rel="stylesheet"/>
+<link href="/Ambula/public/css/w3.css" type="text/css" rel="stylesheet"/>
+<link href="/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
-    <!-- fav icon -->
-    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
-
-
-    <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/jquery.leanModal.min.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/script.js"></script>
-    <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="css/font-awesome-ie7.min.css"></script>
-    <![endif]-->
-
-    <!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet'
-          type='text/css'>
-
-    <!-- ##### Le HTML5 shim, for IE6-8 support of HTML5 elements ##### -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <style>
-        /* Profile sidebar */
-
-        .profile-userpic img {
-            float: none;
-            margin: 0 auto;
-            width: 75%;
-            height: 75%;
-            padding: 4px;
-            border: 1px solid;
-        }
-
-        .profile-usertitle {
-            text-align: center;
-            margin-top: 10px;
-            text-overflow: ellipsis;
-        }
-
-        .profile-usertitle-name {
-            color: #5a7391;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 7px;
-            margin: 5px 0px 5px 18%;
-            float: left;
-        }
-
-        .profile-usertitle a {
-            float: right;
-            margin-right: 25%;
-            color: #ffffff !important;
-        }
-
-        .profile-usermenu ul li {
-            border-bottom: 1px solid #f0f4f7;
-        }
-
-        /* Profile Content */
-        .profile-content {
-            padding: 20px;
-            background: #fff;
-            padding-right: 350px;
-            padding-top: 10px;
-        }
-
-        .infoFeildName {
-            min-width: 220px;
-            color: #5a7391;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 7px;
-            padding-right: 0px !important;
-        }
-
-        table tr {
-            height: 65px;
-        }
-
-        td {
-            text-align: center;
-            padding: 25px !important;
-        }
-
-        a:hover {
-            cursor: pointer;
-        }
-
-        .edit {
-            display: none;
-        }
-
-        tr:hover > td > a {
-            display: inline;
-        }
-
-        /*css related to update modal view*/
-
-        .modal {
-            background: rgba(000, 000, 000, 0.6);
-            min-height: 1000000px;
-        }
-
-        .modal-dialog-center {
-            margin-top: 15%;
-        }
-
-        .modal-header {
-            background: #e78f08;
-            color: white;
-        }
-
-        /*css related to modal update feild contain table*/
-
-        .modalInfoFeildName {
-            color: #5a7391;
-            font-size: 16px;
-            font-weight: 600;
-            padding-right: 0px !important;
-            width: 250px !important;
-        }
-
-        .modalUserInfo {
-            padding-left: 0px !important;
-            text-align: left !important;
-        }
-
-        textarea {
-            resize: none;
-        }
-
-        .form-control {
-            border-radius: 0px;
-        }
-
-    </style>
-
-    <script type="text/javascript">
-
-        //variable to store the current recipe content of the user
-        var profileContent = "";
-
-        // attach the function to the window resize event
-        $(window).resize(onResize);
-
-        //there can be only one document ready function for page
-        $(document).ready(function () {
-            onResize();
-            updateUserField();
-            updatePassword();
-        });
-
-        //jquery call to view change password fields containing modal window
-        $(document).on('click', '#paaswordChangeBtn', function (e) {
-            $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
-        });
+<!-- fav icon -->
+<link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-        //jquery call to view user info(call the JS method defined below)
-        $(document).on('click', '#viewInfoBtn', function (e) {
-            displayUserInfo();
-        });
+<script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/jquery.leanModal.min.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/script.js"></script>
+<script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
 
-        //jquery call to view the edit modal of the selected info field
-        $(document).on('click', '.edit', function (e) {
-            var clickTrId = $(this).closest('tr').attr('id');
-            editModalDisplay(clickTrId);
-        });
+<!--[if lt IE 9]>
+<script src="css/font-awesome-ie7.min.css"></script>
+<![endif]-->
+
+<!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet'
+      type='text/css'>
+
+<!-- ##### Le HTML5 shim, for IE6-8 support of HTML5 elements ##### -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<style>
+    /* Profile sidebar */
+
+    .profile-userpic img {
+        float: none;
+        margin: 0 auto;
+        width: 75%;
+        height: 75%;
+        padding: 4px;
+        border: 1px solid;
+    }
+
+    .profile-usertitle {
+        text-align: center;
+        margin-top: 10px;
+        text-overflow: ellipsis;
+    }
+
+    .profile-usertitle-name {
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+        margin: 5px 0px 5px 18%;
+        float: left;
+    }
+
+    .profile-usertitle a {
+        float: right;
+        margin-right: 25%;
+        color: #ffffff !important;
+    }
+
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
+
+    /* Profile Content */
+    .profile-content {
+        padding: 20px;
+        background: #fff;
+        padding-right: 350px;
+        padding-top: 10px;
+    }
+
+    .infoFeildName {
+        min-width: 220px;
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+        padding-right: 0px !important;
+    }
+
+    table tr {
+        height: 65px;
+    }
+
+    td {
+        text-align: center;
+        padding: 25px !important;
+    }
+
+    a:hover {
+        cursor: pointer;
+    }
+
+    .edit {
+        display: none;
+    }
+
+    tr:hover > td > a {
+        display: inline;
+    }
+
+    /*css related to update modal view*/
+
+    .modal {
+        background: rgba(000, 000, 000, 0.6);
+        min-height: 1000000px;
+    }
+
+    .modal-dialog-center {
+        margin-top: 15%;
+    }
+
+    .modal-header {
+        background: #e78f08;
+        color: white;
+    }
+
+    /*css related to modal update feild contain table*/
+
+    .modalInfoFeildName {
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        padding-right: 0px !important;
+        width: 250px !important;
+    }
+
+    .modalUserInfo {
+        padding-left: 0px !important;
+        text-align: left !important;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .form-control {
+        border-radius: 0px;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+//variable to store the current recipe content of the user
+var profileContent = "";
+
+// attach the function to the window resize event
+$(window).resize(onResize);
+
+//there can be only one document ready function for page
+$(document).ready(function () {
+    onResize();
+    updateUserField();
+    updatePassword();
+});
+
+//jquery call to view change password fields containing modal window
+$(document).on('click', '#paaswordChangeBtn', function (e) {
+    $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
+});
 
 
+//jquery call to view user info(call the JS method defined below)
+$(document).on('click', '#viewInfoBtn', function (e) {
+    displayUserInfo();
+});
 
-        function onResize() {
-            // apply dynamic padding at the top of the body according to the fixed navbar height
-            $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
-        }
-
-        //JS + ajax method to update the user password with new password in the modal window
-        function updatePassword(){
-            $('#changePasswordModalForm').validator().on('submit', function (e) {
-                // Prevent form submission
-                if (e.isDefaultPrevented()) {
-                    // handle the invalid form
-
-                } else {
-                    // Prevent form submission
-                    e.preventDefault();
-                    // Use Ajax to submit form data
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            alert(response);
-                            if (response) {
-                                $('#userPasswordUpdateModal').modal("hide");
-                                displayUserInfo();
-                            }
-                        }
-                    });
-                }
-
-            });
-        }
+//jquery call to view the edit modal of the selected info field
+$(document).on('click', '.edit', function (e) {
+    var clickTrId = $(this).closest('tr').attr('id');
+    editModalDisplay(clickTrId);
+});
 
 
-        //JS + ajax method to update the Database using the data in the edit modal data feilds
-        function updateUserField() {
-            $('#updateFeildModalForm').validator().on('submit', function (e) {
-                // Prevent form submission
-                if (e.isDefaultPrevented()) {
-                    // handle the invalid form
+function onResize() {
+    // apply dynamic padding at the top of the body according to the fixed navbar height
+    $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
+}
 
-                } else {
-                    // Prevent form submission
-                    e.preventDefault();
-                    // Use Ajax to submit form data
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            if (response) {
-                                $('#userInfoEditModal').modal("hide");
-                                displayUserInfo();
-                            }
-                        }
-                    });
-                }
+//JS + ajax method to update the user password with new password in the modal window
+function updatePassword() {
+    $('#changePasswordModalForm').validator().on('submit', function (e) {
+        // Prevent form submission
+        if (e.isDefaultPrevented()) {
+            // handle the invalid form
 
-            });
-        }
-
-        //JS + ajax method to take the info and displaying it in the edit modal
-        function editModalDisplay(trId) {
+        } else {
+            // Prevent form submission
+            e.preventDefault();
+            // Use Ajax to submit form data
             $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
                 success: function (response) {
-                    var htmlString;
-                    $('#userInfoEditModal').modal({show: true, keyboard: true});
-                    $('#editModalTitle').html("Update Your " + $('#' + trId + ' td:nth-child(1)').html());
-                    $('#currInfoModal td:nth-child(1)').html("Current " + $('#' + trId + ' td:nth-child(1)').html());
-                    $('#currInfoModal td:nth-child(2)').html($('#' + trId + ' td:nth-child(2)').html());
-                    $('#updateFeildsModal td:nth-child(1)').html("Type In Your New " + $('#' + trId + ' td:nth-child(1)').html());
-                    switch (trId) {
-                        case 'firstNameTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('first_name');
-                            break;
-                        case 'lastNameTr' :
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('last_name');
-                            break;
-                        case 'userNameTr' :
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' pattern='^[A-Za-z0-9_-]{3,16}$' data-native-error='Username should at least contain 3 Characters (letter numbers and underscore)' data-remote='/Ambula/registration/checkUserName' data-error='username already exists ,choose a different one' maxlength='10'' required></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('users');
-                            $('#userDetailColumn').val('user_name');
-
-                            break;
-                        case 'mobileTelTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('tel_mobile');
-                            break;
-                        case 'homeTelTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('tel_home');
-                            break;
-                        case 'addressTr':
-                            htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('address');
-                            break;
-                        case 'aboutYouTr':
-                            htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('user_personal');
-                            $('#userDetailColumn').val('description');
-                            break;
-                        case 'passwordTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#userTableType').val('users');
-                            $('#userDetailColumn').val('user_password_hash');
-                            break;
-
+                    alert(response);
+                    if (response) {
+                        $('#userPasswordUpdateModal').modal("hide");
+                        displayUserInfo();
                     }
                 }
             });
         }
 
-        //JS+ajax method to display all the user personal info of a logged in user in a table
-        function displayUserInfo() {
-            //to store recipes of the usesr currently viewing
+    });
+}
 
 
+//JS + ajax method to update the Database using the data in the edit modal data feilds
+function updateUserField() {
+    $('#updateFeildModalForm').validator().on('submit', function (e) {
+        // Prevent form submission
+        if (e.isDefaultPrevented()) {
+            // handle the invalid form
+
+        } else {
+            // Prevent form submission
+            e.preventDefault();
+            // Use Ajax to submit form data
             $.ajax({
-                url: "/Ambula/ProfileController/viewNormalUserInfo",
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: $(this).serialize(),
                 success: function (response) {
-                    var myVar = JSON.parse(response);
-                    var i = 0;
-                    var string = "";
-                    while (myVar[i]) {
-                        string += "<table id='userDetailDisplayTable' class='w3-table w3-bordered w3-striped w3-border w3-card-2'>";
-
-                        string += "<tr id='firstNameTr'>";
-                        string += "<td class='infoFeildName'>First Name</td>";
-                        string += "<td id='currFirstName'>" + myVar[i].first_name + "</td>";
-                        string += "<td class = 'firstName editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='lastNameTr'>";
-                        string += "<td class='infoFeildName'>Last Name</td>";
-                        string += "<td id='currLastName'>" + myVar[i].last_name + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='emailTr'>";
-                        string += "<td class='infoFeildName'>Email</td>";
-                        string += "<td id='currUseEmail'>" + myVar[i].user_email + "</td>";
-                        string += "<td class = 'editTd'></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='userNameTr'>";
-                        string += "<td class='infoFeildName'>Username</td>";
-                        string += "<td id='currUseEmail'>" + myVar[i].user_name + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='mobileTelTr'>";
-                        string += "<td class='infoFeildName'>Mobile Phone</td>";
-                        string += "<td id='currMobileTel'>" + myVar[i].tel_mobile + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='homeTelTr'>";
-                        string += "<td class='infoFeildName'>Home Phone</td>";
-                        string += "<td id='currHomeTel'>" + myVar[i].tel_home + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='addressTr'>";
-                        string += "<td class='infoFeildName'>Address</td>";
-                        string += "<td id='currAddress'>" + myVar[i].address + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='aboutYouTr'>";
-                        string += "<td class='infoFeildName'>About You</td>";
-                        string += "<td id='currDescription'>" + myVar[i].description + "</td>";
-                        string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
-                        string += "</tr>";
-
-                        string += "<tr id='passwordTr'>";
-                        string += "<td class='infoFeildName'>Change Your Password</td>";
-                        string += "<td><button class='w3-btn w3-medium w3-white w3-border w3-border-yellow' id='paaswordChangeBtn'>Change Your Password</button></td>";
-                        string += "<td></td>";
-                        string += "</tr>";
-
-                        string += "</table>";
-
-                        //to set the new name in the side profile bar after updating
-                        $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
-                        i++;
+                    if (response) {
+                        $('#userInfoEditModal').modal("hide");
+                        displayUserInfo();
                     }
-
-                    if (!!profileContent) {
-                        $('#viewInfoBtn').html('View Info');
-                        $("#profile-content").html(profileContent);
-                        profileContent = "";
-                    } else {
-                        profileContent = $("#profile-content").html();
-                        $("#profile-content").html(string);
-                        $('#viewInfoBtn').html('View Recipes');
-                    }
-
                 }
             });
         }
 
+    });
+}
 
-    </script>
+//JS + ajax method to take the info and displaying it in the edit modal
+function editModalDisplay(trId) {
+    $.ajax({
+        success: function (response) {
+            var htmlString;
+            $('#userInfoEditModal').modal({show: true, keyboard: true});
+            $('#editModalTitle').html("Update Your " + $('#' + trId + ' td:nth-child(1)').html());
+            $('#currInfoModal td:nth-child(1)').html("Current " + $('#' + trId + ' td:nth-child(1)').html());
+            $('#currInfoModal td:nth-child(2)').html($('#' + trId + ' td:nth-child(2)').html());
+            $('#updateFeildsModal td:nth-child(1)').html("Type In Your New " + $('#' + trId + ' td:nth-child(1)').html());
+            switch (trId) {
+                case 'firstNameTr':
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('first_name');
+                    break;
+                case 'lastNameTr' :
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('last_name');
+                    break;
+                case 'userNameTr' :
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' pattern='^[A-Za-z0-9_-]{3,16}$' data-native-error='Username should at least contain 3 Characters (letter numbers and underscore)' data-remote='/Ambula/registration/checkUserName' data-error='username already exists ,choose a different one' maxlength='10'' required></div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('users');
+                    $('#userDetailColumn').val('user_name');
+
+                    break;
+                case 'mobileTelTr':
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('tel_mobile');
+                    break;
+                case 'homeTelTr':
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('tel_home');
+                    break;
+                case 'addressTr':
+                    htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('address');
+                    break;
+                case 'aboutYouTr':
+                    htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
+                    $('#userTableType').val('user_personal');
+                    $('#userDetailColumn').val('description');
+                    break;
+                case 'passwordTr':
+                    htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
+                    $('#updateFeildsModal td:nth-child(2)').html(htmlString);
+                    $('#userTableType').val('users');
+                    $('#userDetailColumn').val('user_password_hash');
+                    break;
+
+            }
+        }
+    });
+}
+
+//JS+ajax method to display all the user personal info of a logged in user in a table
+function displayUserInfo() {
+    //to store recipes of the usesr currently viewing
+
+
+    $.ajax({
+        url: "/Ambula/ProfileController/viewNormalUserInfo",
+        success: function (response) {
+            var myVar = JSON.parse(response);
+            var i = 0;
+            var string = "";
+            while (myVar[i]) {
+                string += "<table id='userDetailDisplayTable' class='w3-table w3-bordered w3-striped w3-border w3-card-2'>";
+
+                string += "<tr id='firstNameTr'>";
+                string += "<td class='infoFeildName'>First Name</td>";
+                string += "<td id='currFirstName'>" + myVar[i].first_name + "</td>";
+                string += "<td class = 'firstName editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='lastNameTr'>";
+                string += "<td class='infoFeildName'>Last Name</td>";
+                string += "<td id='currLastName'>" + myVar[i].last_name + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='emailTr'>";
+                string += "<td class='infoFeildName'>Email</td>";
+                string += "<td id='currUseEmail'>" + myVar[i].user_email + "</td>";
+                string += "<td class = 'editTd'></td>";
+                string += "</tr>";
+
+                string += "<tr id='userNameTr'>";
+                string += "<td class='infoFeildName'>Username</td>";
+                string += "<td id='currUseEmail'>" + myVar[i].user_name + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='mobileTelTr'>";
+                string += "<td class='infoFeildName'>Mobile Phone</td>";
+                string += "<td id='currMobileTel'>" + myVar[i].tel_mobile + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='homeTelTr'>";
+                string += "<td class='infoFeildName'>Home Phone</td>";
+                string += "<td id='currHomeTel'>" + myVar[i].tel_home + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='addressTr'>";
+                string += "<td class='infoFeildName'>Address</td>";
+                string += "<td id='currAddress'>" + myVar[i].address + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='aboutYouTr'>";
+                string += "<td class='infoFeildName'>About You</td>";
+                string += "<td id='currDescription'>" + myVar[i].description + "</td>";
+                string += "<td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                string += "</tr>";
+
+                string += "<tr id='passwordTr'>";
+                string += "<td class='infoFeildName'>Change Your Password</td>";
+                string += "<td><button class='w3-btn w3-medium w3-white w3-border w3-border-yellow' id='paaswordChangeBtn'>Change Your Password</button></td>";
+                string += "<td></td>";
+                string += "</tr>";
+
+                string += "</table>";
+
+                //to set the new name in the side profile bar after updating
+                $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
+                i++;
+            }
+
+            if (!!profileContent) {
+                $('#viewInfoBtn').html('View Info');
+                $("#profile-content").html(profileContent);
+                profileContent = "";
+            } else {
+                profileContent = $("#profile-content").html();
+                $("#profile-content").html(string);
+                $('#viewInfoBtn').html('View Recipes');
+            }
+
+        }
+    });
+}
+
+
+</script>
 
 </head>
 
@@ -560,10 +559,12 @@
                                         <td class="modalUserInfo">
                                             <div class='form-group'>
                                                 <div class='controls'>
-                                                    <input type="password" id="currPassword" name="curr_password" placeholder="" class="form-control"
+                                                    <input type="password" id="currPassword" name="curr_password"
+                                                           placeholder="" class="form-control"
                                                            data-native-error="Password Should Contain At Least 6 Characters"
                                                            data-remote="/Ambula/ProfileController/checkPassword"
-                                                           data-error="Current Password Doesn't Match With What You Entered"required>
+                                                           data-error="Current Password Doesn't Match With What You Entered"
+                                                           required>
                                                 </div>
                                                 <span class='help-block with-errors'></span>
                                             </div>

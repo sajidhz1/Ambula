@@ -129,7 +129,7 @@ class PromotionModel
         //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
 
         if (!$promo_type_flag || !$promo_name_flag || !$description_flag || !$startdate_flag || !$enddate_flag) {
-            echo $promo_type_flag.'#'.$promo_name_flag.'#'.$description_flag.'#'.$startdate_flag.'#'.$enddate_flag;
+            echo $promo_type_flag . '#' . $promo_name_flag . '#' . $description_flag . '#' . $startdate_flag . '#' . $enddate_flag;
         }
         //insert into promotion_adder table
 

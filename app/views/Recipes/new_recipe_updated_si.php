@@ -13,7 +13,9 @@
     <link href="../public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
 
-    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen"/>
+    <link
+        href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
+        rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
     <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
@@ -24,7 +26,8 @@
     <script type="text/javascript" src="../public/js/recipes/bootstrap-tagsinput.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript"
+            src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
 
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
@@ -66,16 +69,16 @@
 
     .modal {
         background: rgba(000, 000, 000, 0.7);
-        min-height:1000000px;
+        min-height: 1000000px;
     }
 
     .modal-dialog-center {
         margin-top: 10%;
     }
 
-    .selected-image{
+    .selected-image {
         padding: 3px;
-        background-color:  red;
+        background-color: red;
     }
 
 
@@ -89,7 +92,7 @@
 <div id="legend">
     <legend class="new-recipe">අළුත් වට්ටෝරුවක්</legend>
 </div>
-<form data-toggle="validator"  role="form" method="POST" enctype="multipart/form-data" action="addNewRecipe?lang=si"
+<form data-toggle="validator" role="form" method="POST" enctype="multipart/form-data" action="addNewRecipe?lang=si"
       id="form1">
 <div class="row">
     <div id="recipePart1" class="col-lg-5 col-sm-12">
@@ -121,7 +124,9 @@
 
         </div>
         <div class="col-lg-offset-3" style="margin-top: 0">
-            <button class="btn btn-default" data-toggle="modal" data-target="#myModal" type="button"><label style="font-size: 1.1em" class="label-dark">තව පින්තුර ඇත්නම්<span  class="glyphicon glyphicon-upload"></span></label></button>
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModal" type="button"><label
+                    style="font-size: 1.1em" class="label-dark">තව පින්තුර ඇත්නම්<span
+                        class="glyphicon glyphicon-upload"></span></label></button>
         </div>
         <div class="form-group col-lg-9 col-sm-12">
             <!-- Password-->
@@ -135,7 +140,7 @@
                     $arr = json_decode($this->getCategoriesArray(), true);
                     foreach ($arr as $category) {
                         ?>
-                        <option value="<?= $category['idCategory']; ?>"> <?=$category['title_si']; ?></option>
+                        <option value="<?= $category['idCategory']; ?>"> <?= $category['title_si']; ?></option>
                     <?php } ?>
                 </select>
                 <span class="help-block with-errors" id="category-error"></span>
@@ -144,8 +149,10 @@
 
         <div class="form-group col-lg-9 col-sm-12">
             <label class="control-label" for="tags">Tags</label>
+
             <div class="controls">
-                <input type="text"  name="tags" id="tags" value="පහසු"  placeholder="ඉක්මන් , සැර " data-role="tagsinput" />
+                <input type="text" name="tags" id="tags" value="පහසු" placeholder="ඉක්මන් , සැර "
+                       data-role="tagsinput"/>
             </div>
         </div>
 
@@ -157,7 +164,7 @@
         <br>
 
         <div class="col-xs-5 col-sm-5" style="color: brown"> නම</div>
-        <div class="col-xs-2 col-sm-2" style="color: brown"> ප්‍රමාණය </div>
+        <div class="col-xs-2 col-sm-2" style="color: brown"> ප්‍රමාණය</div>
         <br>
 
         <div class="entry">
@@ -224,8 +231,9 @@
 
             <div class="input-group">
                 <span><h5>සුදානම් වීමට</h5></span>
+
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' id="prep_time" name="prep_time" class="form-control" onchange="alert('lala')" />
+                    <input type='text' id="prep_time" name="prep_time" class="form-control" onchange="alert('lala')"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -237,7 +245,7 @@
                 <span><h5>පිසීමට</h5></span>
 
                 <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' id="cook_time" name="cook_time" class="form-control" />
+                    <input type='text' id="cook_time" name="cook_time" class="form-control"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
@@ -249,19 +257,20 @@
     </div>
 
 
-
     <script type="text/javascript">
         $(function () {
             var dateNow = new Date();
             $('#datetimepicker1').datetimepicker(
-                {format: 'HH:mm',
-                    defaultDate:moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                {
+                    format: 'HH:mm',
+                    defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
                 }
             );
 
             $('#datetimepicker2').datetimepicker(
-                {format: 'HH:mm',
-                    defaultDate:moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                {
+                    format: 'HH:mm',
+                    defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
                 }
             );
 
@@ -276,9 +285,9 @@
 
                         // Get the result and asign to each cases
                         var data = $.parseJSON(responseText);
-                        $.each(data, function(i, item) {
+                        $.each(data, function (i, item) {
 
-                            $('#myModal2').find('.modal-body').append('<img src="/Ambula/uploads/recipes/temp/<?=Session::get('username')?>/'+item+'" class="select-image" height="120" width="120" style="margin-left:10px;" border="0" />');
+                            $('#myModal2').find('.modal-body').append('<img src="/Ambula/uploads/recipes/temp/<?=Session::get('username')?>/' + item + '" class="select-image" height="120" width="120" style="margin-left:10px;" border="0" />');
 
 
                         });
@@ -329,7 +338,8 @@
         <div class="col-lg-offset-5">
             <!-- Button -->
             <div class="controls">
-                <a id="continuebtn" class="btn btn-lg btn-success continue">ඉදිරියට<span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a id="continuebtn" class="btn btn-lg btn-success continue">ඉදිරියට<span
+                        class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
             <div class="controls" style="margin-top: 2px;margin-left: 5px;">
                 <a id="backbtn" class="btn btn-danger back"><span class="glyphicon glyphicon-chevron-left"></span> ආපසු</a>
@@ -341,7 +351,7 @@
 </fieldset>
 </form>
 </div>
-<div id="loading" >
+<div id="loading">
     <h4>Uploading Recipe</h4>
     <h6>will take a moment</h6>
     <img src="/public/img/loading.gif">
@@ -349,12 +359,14 @@
 
 <!-- modal window to upload extra images -->
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;" data-backdrop="false">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
     <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Drop Images here to upload</h4>
             </div>
             <div class="modal-body">
@@ -368,12 +380,14 @@
     </div>
 </div>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;" data-backdrop="false">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
     <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Choose image for this step</h4>
             </div>
             <div class="modal-body">
@@ -385,9 +399,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 
 <script type="text/javascript" src="../public/js/registration/validator.js"></script>

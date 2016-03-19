@@ -31,7 +31,6 @@
     <script type="text/javascript" src="/Ambula/public/js/promotion/jquery-ui.min.js"></script>
 
 
-
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -68,7 +67,7 @@
             height: 200px;
         }
 
-        .social-blue{
+        .social-blue {
             border: 2px solid #3b5998;
             color: #3b5998;
             background: #fff;
@@ -76,7 +75,7 @@
             margin: 10px 0px;
         }
 
-        .social-red{
+        .social-red {
             border: 2px solid #e52d27;
             color: #e52d27;
             background: #fff;
@@ -84,7 +83,7 @@
             margin: 10px 0px;
         }
 
-        .social-grey{
+        .social-grey {
             border: 2px solid #0d0d0d;
             color: #0d0d0d;
             background: #fff;
@@ -92,12 +91,14 @@
             margin: 10px 0px;
         }
 
-        #company_logo{
+        #company_logo {
             /* Rounded Corners */
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
-            display: block;margin: auto;margin-top: 15px;
+            display: block;
+            margin: auto;
+            margin-top: 15px;
         }
 
         .profile-usertitle {
@@ -137,15 +138,20 @@
             margin-right: 0px;
         }
 
-        .product_img_wrapper{
-            height: 50px;overflow: hidden;padding: 0px;
+        .product_img_wrapper {
+            height: 50px;
+            overflow: hidden;
+            padding: 0px;
         }
-        .product_img{
-            position: absolute;bottom:10px;left: 5px;
+
+        .product_img {
+            position: absolute;
+            bottom: 10px;
+            left: 5px;
             width: 140px;
         }
 
-        .box  a:hover {
+        .box a:hover {
             text-decoration: none;
             border: 1px solid yellow;
         }
@@ -155,89 +161,102 @@
 
 <body>
 
-<?php $this->view('_template/navigation_menu',"newRecipe"); ?>
+<?php $this->view('_template/navigation_menu', "newRecipe"); ?>
 
-<div class="container-fluid mrg50T mrg50B" >
-    <?php $details = json_decode($this->getCooperateUserDetails($this->user_name) ,true);    ?>
-    <div class="col-lg-3 hgt600"  style="text-align: center;margin-top: 25px;">
-        <img id="company_logo" src="/Ambula/uploads/profile/commercial_user/<?=$this->user_name?>/<?=$this->user_name?>.jpg"  height="150"  alt=""/>
+<div class="container-fluid mrg50T mrg50B">
+    <?php $details = json_decode($this->getCooperateUserDetails($this->user_name), true); ?>
+    <div class="col-lg-3 hgt600" style="text-align: center;margin-top: 25px;">
+        <img id="company_logo"
+             src="/Ambula/uploads/profile/commercial_user/<?= $this->user_name ?>/<?= $this->user_name ?>.jpg"
+             height="150" alt=""/>
+
         <div class="profile-usertitle">
-            <div  class="profile-usertitle-name"><?=$details["company_name"]; ?></div>
+            <div class="profile-usertitle-name"><?= $details["company_name"]; ?></div>
         </div>
         <div class="profile-usertitle-job">
-            <?php $categories = json_decode($this->getCategoriesByUser($details["idcommercial_user"]) ,true);
-              $count = 1;
-               foreach ($categories as $category) {
-                if($count != 1)   echo ' , ';
-                echo '<a href="#">'.$category['title'].'</a>' ;
+            <?php $categories = json_decode($this->getCategoriesByUser($details["idcommercial_user"]), true);
+            $count = 1;
+            foreach ($categories as $category) {
+                if ($count != 1) echo ' , ';
+                echo '<a href="#">' . $category['title'] . '</a>';
 
-                   $count++;
-               }
+                $count++;
+            }
 
             ?>
         </div>
         <div class="profile-userbuttons">
-            <button type="button" class="btn btn-success btn-sm">Ask <span class="glyphicon glyphicon-hand-right"></button>
+            <button type="button" class="btn btn-success btn-sm">Ask <span class="glyphicon glyphicon-hand-right">
+            </button>
             <button type="button" class="btn btn-danger btn-sm">About <span class="glyphicon glyphicon-home"></button>
         </div>
 
-        <ul class="list-group mrg20T" >
-            <li class="list-group-item" >
-            <a href="<?=$details["web_url"]; ?>" target="_blank" class="" style="display: block;" >Website <span class="glyphicon glyphicon-globe"></span></a>
-            </li>
-
-            <li class="list-group-item" >
-            <a href="<?=$details["facebook_url"]; ?> "target="_blank" class="" style="display: block;" >Facebook <i class="fa fa-facebook"></i></span></a>
+        <ul class="list-group mrg20T">
+            <li class="list-group-item">
+                <a href="<?= $details["web_url"]; ?>" target="_blank" class="" style="display: block;">Website <span
+                        class="glyphicon glyphicon-globe"></span></a>
             </li>
 
             <li class="list-group-item">
-            <a href="<?=$details["youtube_url"]; ?>" target="_blank" class="" style="display: block;" >Youtube <i class="fa fa-youtube"></i></a>
+                <a href="<?= $details["facebook_url"]; ?> " target="_blank" class="" style="display: block;">Facebook <i
+                        class="fa fa-facebook"></i></span></a>
+            </li>
+
+            <li class="list-group-item">
+                <a href="<?= $details["youtube_url"]; ?>" target="_blank" class="" style="display: block;">Youtube <i
+                        class="fa fa-youtube"></i></a>
             </li>
 
         </ul>
 
     </div>
     <div class="col-lg-9">
-        <div class="col-lg-12 mrg10T"   >
+        <div class="col-lg-12 mrg10T">
 
             <ul class="nav nav-pills">
                 <li role="presentation" class="active"><a data-toggle="tab" href="#promotions">Promotions</a></li>
                 <li role="presentation"><a data-toggle="tab" href="#recipes">Recipes</a></li>
             </ul>
 
-            <div class="tab-content" >
+            <div class="tab-content">
                 <div id="promotions" class="tab-pane fade in active" style="border: 1px solid #b1b1b1;">
-                    <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name),true);
+                    <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
                     foreach ($promotions as $promotion) {
                         ?>
-                        <div    class="col-lg-4" style="">
-                            <div style="background : url('/Ambula/<?=$promotion['image_url'] ?>') no-repeat;background-size :  cover;height: 200px;margin: 50px 5px 0px;overflow: hidden;">
+                        <div class="col-lg-4" style="">
+                            <div
+                                style="background : url('/Ambula/<?= $promotion['image_url'] ?>') no-repeat;background-size :  cover;height: 200px;margin: 50px 5px 0px;overflow: hidden;">
 
                             </div>
                             <div style="margin:0; ">
-                                <a href="" class="btn btn-default col-lg-6 col-md-6 col-sm-6" data-toggle="modal" style="border-radius: 0px;" data-target="#myModal" >Renew</a>
-                                <a href="" class="btn btn-danger col-lg-6 col-md-6 col-sm-6" style="border-radius: 0px;">Delete</a>
+                                <a href="" class="btn btn-default col-lg-6 col-md-6 col-sm-6" data-toggle="modal"
+                                   style="border-radius: 0px;" data-target="#myModal">Renew</a>
+                                <a href="" class="btn btn-danger col-lg-6 col-md-6 col-sm-6"
+                                   style="border-radius: 0px;">Delete</a>
                             </div>
                         </div>
                     <?php
-                      }
+                    }
 
                     ?>
 
                 </div>
                 <div id="recipes" class="tab-pane fade">
 
-                    <?php $recipes = json_decode($this->getRecipesByUser($this->user_name),true);
+                    <?php $recipes = json_decode($this->getRecipesByUser($this->user_name), true);
 
                     foreach ($recipes as $recipe) {
                         ?>
-                        <div    class="col-lg-4" style="">
-                            <div style="background : url('http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg') no-repeat;background-size :  cover;height: 200px;margin: 50px 5px 0px;overflow: hidden;">
+                        <div class="col-lg-4" style="">
+                            <div
+                                style="background : url('http://localhost/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg') no-repeat;background-size :  cover;height: 200px;margin: 50px 5px 0px;overflow: hidden;">
                                 <img src="" width="100%" alt=""/>
                             </div>
                             <div style="margin:0; ">
-                                <a href="" class="btn btn-default col-lg-6 col-md-6 col-sm-6" style="border-radius: 0px;">Update</a>
-                                <a href="" class="btn btn-danger col-lg-6 col-md-6 col-sm-6" style="border-radius: 0px;">Delete</a>
+                                <a href="" class="btn btn-default col-lg-6 col-md-6 col-sm-6"
+                                   style="border-radius: 0px;">Update</a>
+                                <a href="" class="btn btn-danger col-lg-6 col-md-6 col-sm-6"
+                                   style="border-radius: 0px;">Delete</a>
                             </div>
                         </div>
                     <?php
@@ -249,7 +268,7 @@
             </div>
 
 
-         </div>
+        </div>
     </div>
 
 </div>

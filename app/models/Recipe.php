@@ -38,7 +38,7 @@ class Recipe
         for ($i = 0; $i < count($_POST['tags']); $i++)
             if (isset($_POST['tags'][$i])) $tags .= $_POST['tags'][$i] . ',';
 
-        if(!isset($_GET['lang'])) {
+        if (!isset($_GET['lang'])) {
             $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags )
                 VALUES (:title,  :recipe_category_idcategory, :users_user_id, :prep_time ,:cook_time, :tags)";
 
@@ -51,7 +51,7 @@ class Recipe
                 ':cook_time' => $_POST['cook_time'],
                 ':tags' => $_POST['tags']));
 
-        }else{
+        } else {
 
             $sql = "INSERT INTO recipes (title,  category_id, users_user_id, prep_time, cook_time, tags ,lang )
                 VALUES (:title,  :recipe_category_idcategory, :users_user_id, :prep_time ,:cook_time, :tags , :lang)";
@@ -64,18 +64,18 @@ class Recipe
                 ':prep_time' => $_POST['prep_time'],
                 ':cook_time' => $_POST['cook_time'],
                 ':tags' => $_POST['tags'],
-                ':lang'=> 'si'));
+                ':lang' => 'si'));
         }
 
         $recipeid = $this->db->lastInsertId();
 
         mkdir("uploads/" . $recipeid);
 
-        $src = "uploads/recipes/temp/".Session::get('username');
-        $dst = "uploads/".$recipeid;
+        $src = "uploads/recipes/temp/" . Session::get('username');
+        $dst = "uploads/" . $recipeid;
 
-        if(is_dir($src))
-        $this->rcopy($src, $dst);
+        if (is_dir($src))
+            $this->rcopy($src, $dst);
 
         //store recipe img url to db
         $handle = opendir('uploads/' . $recipeid);
@@ -108,7 +108,7 @@ class Recipe
 
             if ($ingredient != null) {
                 //insert to ingredient if does not exists check for language
-                if(!isset($_GET['lang'])) {
+                if (!isset($_GET['lang'])) {
                     $sql4 = "INSERT IGNORE INTO ingredients (title) VALUES ( :ingredient )";
                     $sth = $this->db->prepare($sql4);
                     $sth->execute(array(':ingredient' => $ingredient));
@@ -118,7 +118,7 @@ class Recipe
                     $sth = $this->db->prepare($ingredientSql);
                     $sth->execute(array(':ingredient' => $ingredient));
 
-                }else{
+                } else {
 
                     $sql4 = "INSERT IGNORE INTO ingredients (ing_si) VALUES ( :ingredient )";
                     $sth = $this->db->prepare($sql4);
@@ -544,7 +544,7 @@ class Recipe
 
     public function getUserComments($recipeId = '')
     {
-        $array = $this->db->query("SELECT c.* , up.* ,u.user_name   FROM comments c ,user_personal up , users u WHERE c.Recipes_idRecipe =" . $recipeId." AND c.users_user_id = up.users_user_id AND c.users_user_id = u.user_id ORDER BY c.idcomments DESC")->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT c.* , up.* ,u.user_name   FROM comments c ,user_personal up , users u WHERE c.Recipes_idRecipe =" . $recipeId . " AND c.users_user_id = up.users_user_id AND c.users_user_id = u.user_id ORDER BY c.idcomments DESC")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
@@ -770,7 +770,8 @@ class Recipe
     }
 
     //get recipe type
-    public function getRecipeType($recipeId =''){
+    public function getRecipeType($recipeId = '')
+    {
         $sql = "SELECT lang from recipes WHERE idRecipe = $recipeId";
         $sth = $this->db->prepare($sql);
         $result = $sth->execute();
@@ -846,27 +847,27 @@ class Recipe
     }
 
     //method to search for recipes to delete them from db permanently
-    public function adminRecipeSearch($searchText="", $searchCate="", $searchParam="")
+    public function adminRecipeSearch($searchText = "", $searchCate = "", $searchParam = "")
     {
 
         $sql = "SELECT idRecipe, title FROM recipes WHERE";
 
-        if(!empty($searchParam)){
-            switch($searchParam){
+        if (!empty($searchParam)) {
+            switch ($searchParam) {
                 case "title":
                     $sql .= " title LIKE '%$searchText%'";
                     break;
                 case "id":
-                    $sql .= " idRecipe = '".trim($searchText)."'";
+                    $sql .= " idRecipe = '" . trim($searchText) . "'";
                     break;
                 /*case "username":
                     $sql .= " users";*///to be implemented in future
             }
-        }else{
+        } else {
             $sql = "SELECT idRecipe, title FROM recipes WHERE title LIKE '%$searchText%'";
         }
 
-        if(!empty($searchCate)){
+        if (!empty($searchCate)) {
             $sql .= "AND category_id='$searchCate'";
         }
 
@@ -904,17 +905,17 @@ class Recipe
         $test6 = $query6->execute();
 
         ///////////////////////////////////////////////////////////////////////////////////////////
-        $recipeImgDir = "../Ambula/uploads/".$recipeIdToDelete;
-        if(file_exists($recipeImgDir)){
+        $recipeImgDir = "../Ambula/uploads/" . $recipeIdToDelete;
+        if (file_exists($recipeImgDir)) {
             $test7 = $this->delTree($recipeImgDir);
-        }else{
+        } else {
             $test7 = false;
         }
         ///////////////////////////////////////////////////////////////////////////////////////////
 
-        if($test1 && $test2 && $test3 && $test4 && $test5 && $test6 && $test7 ){
+        if ($test1 && $test2 && $test3 && $test4 && $test5 && $test6 && $test7) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -951,11 +952,12 @@ class Recipe
     }
 
     /////////////////////Function to delete a directory with its files//////////////////////////////////////
-    public function delTree($dir) {
+    public function delTree($dir)
+    {
         if (empty($dir)) {
             return false;
         }
-        $files = array_diff(scandir($dir), array('.','..'));
+        $files = array_diff(scandir($dir), array('.', '..'));
         foreach ($files as $file) {
             (is_dir("$dir/$file")) ? delTree("$dir/$file") : unlink("$dir/$file");
         }

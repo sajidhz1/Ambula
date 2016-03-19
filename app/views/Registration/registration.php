@@ -68,7 +68,7 @@
             border-radius: 0px;
         }
 
-        #commercialUserSignUpBlock{
+        #commercialUserSignUpBlock {
             max-width: 400px;
             height: 300px;
             padding: 5%;
@@ -79,7 +79,7 @@
     <script>
         var onResize = function () {
             // apply dynamic padding at the top of the body according to the fixed navbar height
-            $(".registration-container").css("margin-top", $(".navbar-fixed-top").height()+5);
+            $(".registration-container").css("margin-top", $(".navbar-fixed-top").height() + 5);
         };
 
         // attach the function to the window resize event
@@ -198,17 +198,20 @@
         <div class="col-lg-6" id="commercialUserSignUpBlock" style="margin-top:75px;background: #fff; ">
             <p style="text-align: center;"> Are you a prominent organization related to food in Sri Lanka, Then Join us
                 as a Corporate user and broaden your market Locally and internationally</p>
-            <a href="/Ambula/registration?user_type=commercial_user" style="margin: 0% 20% 0% 20%;" class="btn btn-danger col-lg-offset-4">Signup
+            <a href="/Ambula/registration?user_type=commercial_user" style="margin: 0% 20% 0% 20%;"
+               class="btn btn-danger col-lg-offset-4">Signup
                 as Co-Operate User</a>
         </div>
 
 
         <a href="registerWithFacebook" class="btn btn-primary"> SignUp with facebook</a>
     </div>
-    <div class="col-lg-6" >
+    <div class="col-lg-6">
         <div style="margin-top:75px;background: #fff;padding:10px; ">
-            <p style="text-align: center;color: brown;"> Are you a prominent organization related to food in Sri Lanka, Then Join us as a Corporate user and broaden your market Locally and internationally</p>
-            <a href="/Ambula/registration?user_type=commercial_user" style="" class="btn btn-danger col-lg-offset-4">Signup as Co-Operate User</a>
+            <p style="text-align: center;color: brown;"> Are you a prominent organization related to food in Sri Lanka,
+                Then Join us as a Corporate user and broaden your market Locally and internationally</p>
+            <a href="/Ambula/registration?user_type=commercial_user" style="" class="btn btn-danger col-lg-offset-4">Signup
+                as Co-Operate User</a>
         </div>
 
     </div>

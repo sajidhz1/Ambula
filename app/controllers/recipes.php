@@ -82,11 +82,11 @@ class recipes extends Controller
             header('location: /');
 
 
-        if($this->recipes->getRecipeType($recipeId) != "si") {
+        if ($this->recipes->getRecipeType($recipeId) != "si") {
             $this->recipes->viewRecipe($recipeId);
 
             $this->view('Recipes/recipe');
-        }else {
+        } else {
             $this->recipes->viewRecipe($recipeId);
 
             $this->view('Recipes/recipe_si');
@@ -152,10 +152,10 @@ class recipes extends Controller
 
     public function newRecipeupdated()
     {
-        if(isset($_GET['lang']) && $_GET['lang']='si')
-        $this->view('Recipes/new_recipe_updated_si');
+        if (isset($_GET['lang']) && $_GET['lang'] = 'si')
+            $this->view('Recipes/new_recipe_updated_si');
         else
-        $this->view('Recipes/new_recipe_updated');
+            $this->view('Recipes/new_recipe_updated');
     }
 
     public function getIngredientBrands($ingId = '')
@@ -258,27 +258,27 @@ class recipes extends Controller
     {
         $searchText = $_POST["searchText"];
         $searchCate = $_POST["searchCate"];
-        $searchParam= $_POST["searchParam"];
+        $searchParam = $_POST["searchParam"];
         echo $this->recipes->adminRecipeSearch($searchText, $searchCate, $searchParam);
     }
 
     ///////////////////////////////The method to delete a recipe record from db///////////////////////////////
     public function adminRecipeDelete()
     {
-        if(isset($_SESSION['user_logged_in'])){
-            if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type']== 3){
-                if($_SESSION['user_email']=="sajidhzazahir@gmail.com" || $_SESSION['user_email']== "dulitha.ruvin@gmail.com"){
+        if (isset($_SESSION['user_logged_in'])) {
+            if (isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3) {
+                if ($_SESSION['user_email'] == "sajidhzazahir@gmail.com" || $_SESSION['user_email'] == "dulitha.ruvin@gmail.com") {
                     $id = $_POST['deleteRecipeId'];
-                    if($this->recipes->adminRecipeDelete($id)){
-                        Session::set('recipeDeleted',true);
+                    if ($this->recipes->adminRecipeDelete($id)) {
+                        Session::set('recipeDeleted', true);
                         Header('Location:/Ambula/recipes/viewRecipeDelete');
-                    }else{
-                        Session::set('recipeDeleted',false);
+                    } else {
+                        Session::set('recipeDeleted', false);
                         Header('Location:/Ambula/recipes/viewRecipeDelete');
                     }
                 }
             }
-        }else{
+        } else {
             Header('Location:/Ambula/login/');
         }
 
