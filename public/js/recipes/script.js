@@ -1,3 +1,8 @@
+
+var recipeStep;
+var myDropzone;
+var name = 1;
+
 //file input
 $(document).on('change', '.btn-file :file', function () {
     var input = $(this),
@@ -53,13 +58,13 @@ $(document).on('click', '.continue', function (e) {
         }else{
             $('#category-error').html("");
         }
-        
+
         if($('#recipephoto1').val() ==""){
             flag =0;
             alert("please add one photo");
         }
-        
-  
+
+
         if (flag == 1) {
 
             $(this).hide();
@@ -82,8 +87,8 @@ $(document).on('click', '.continue', function (e) {
     } else {
         alert("Enter at least one Ingredient");
     }
-    
-    
+
+
     window.onbeforeunload = function() {
         return "You are About to leave the page, if you wanna go back to previous menu press back button below";
     }
@@ -138,45 +143,145 @@ $(window).on("navigate", function (event, data) {
 
 
 
+
 //onload
 $(function () {
 
 
+    $('#ingtitle').typeahead
+    ({
+
+        items: 5,
+        source: function (query, process) {
+            $.ajax({
+                url: '/Ambula/recipes/getIngredientSuggestions',
+                type: 'POST',
+                dataType: 'JSON',
+                data: 'query=' + query,
+                success: function (data) {
+                    var myarr = [];
+
+                    $.each(data, function (i, item) {
+                        myarr.push(item.title);
+                    });
+                    process(myarr);
+                }
+            });
+        }
+    });
+
+     myDropzone = new Dropzone("#mydropzone",
+        {
+            url: "/Ambula/recipes/testDropZone?name="+name,
+            maxFileSize: 5,
+            acceptedFiles: ".jpg,.png,.jpeg,.gif",
+            addRemoveLinks: true
+        }
+
+    );
+
+    myDropzone.on("success", function(file, response) {
+
+        $(file.previewTemplate).append('<span class="server_file" style="display: none;">'+response+'</span>');
+    });
+
+    myDropzone.on("addedfile", function(file) {
+        // Hookup the start button
+        this.options.url = "/Ambula/recipes/testDropZone?name="+name++;
+
+        if($('.dz-image').length > 0){
+            //assign a hidden variable to check whethere the files are uploaded
+            $('#dropzone-content').html('1');
+        }
+    });
+
+    myDropzone.on("queuecomplete", function(progress) {
+        //once the images are uploaded value is set to 0 so that we can submit the form
+        $('#dropzone-content').html('0')
+    });
+
+
+    myDropzone.on("removedfile", function(file) {
+        var server_file = $(file.previewTemplate).children('.server_file').text();
+       // alert(server_file);
+        // Do a post request and pass this path and use server-side language to delete the file
+
+        $.ajax({
+            type: 'POST',
+            url: '/Ambula/recipes/deleteRecipeImage',
+            data: {'name' : server_file },
+            dataType: 'html',
+            success: function (json) {
+              alert(json);
+            }
+        });
+    });
+
+    // myDropzone.options.url =  "/Ambula/recipes/testDropZone?name="+$('.dz-image').length;
+
+
+    $('#datetimepicker1').datetimepicker();
+    $('#datetimepicker1').on("dp.change", function (e) {
+        var time = $('#prep_time').val().split(":");
+
+        if(time[0] < 2){
+            $('#time-data').html(time[0]+" Hour and "+time[1]+" Minutes");
+        }else{
+            $('#time-data').html(time[0]+" Hours and "+time[1]+" Minutes");
+        }
+
+    });
+
+  $('#datetimepicker2').datetimepicker();
+    $('#datetimepicker2').on("dp.change", function (e) {
+        var time = $('#cook_time').val().split(":");
+
+        if(time[0] < 2){
+            $('#time-data-2').html(time[0]+" Hour and "+time[1]+" Minutes");
+        }else{
+            $('#time-data-2').html(time[0]+" Hours and "+time[1]+" Minutes");
+        }
+    });
+
 	//form submit
     $('#form1').on('submit', function() {
 
-        if ($('#time').val().length > 0) {
+        if ($('#datetimepicker1').val().length != "00:00") {
 
             if (document.getElementsByName('steps[]')[0].value.length > 0) {
-                if (confirm('Do you want to finish and continue ?')) {
-                    $('#control-buttons').hide();
-                    $('#recipePart2').hide();
-                    $('.directions-control').hide();
-                    $('.submit').hide();
-                    $('#backbtn').hide();
-                    $('#loading').show();
+                if($('#dropzone-content').html != 0 ) {
+                    if (confirm('Do you want to finish and continue ?')) {
+                        $('#control-buttons').hide();
+                        $('#recipePart2').hide();
+                        $('.directions-control').hide();
+                        $('.submit').hide();
+                        $('#backbtn').hide();
+                        $('#loading').show();
 
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: $(this).attr('method'),
-                        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-                        contentType: false,       // The content type used when sending data to the server.
-                        cache: false,             // To unable request pages to be cached
-                        processData: false,        // To send DOMDocument or non processed data file it is set to false
-                        success: function (json) {
-                            window.onbeforeunload = function () {
-                                return null;
-                            };
-                            //alert(json);
-                            var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                            window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
-                        }
-                    });
+                        $.ajax({
+                            url: $(this).attr('action'),
+                            type: $(this).attr('method'),
+                            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                            contentType: false,       // The content type used when sending data to the server.
+                            cache: false,             // To unable request pages to be cached
+                            processData: false,        // To send DOMDocument or non processed data file it is set to false
+                            success: function (json) {
+                                window.onbeforeunload = function () {
+                                    return null;
+                                };
+                                alert(json);
+                                var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
+                                window.location.href = "/recipes/recipeSuccess?id=" + recipeId;
+                            }
+                        });
 
-                    return false;
+                        return false;
 
-                } else {
-                    return false;
+                    } else {
+                        return false;
+                    }
+                }else{
+                    alert('files are uploading');
                 }
             } else {
                 alert("Tell us how to make it ");
@@ -189,20 +294,11 @@ $(function () {
         }
 
     });
-    
 
-    $('#ex1').slider().on('slide', function (ev) {
-        $('#time').val($('#ex1').data('slider').getValue() + ":" + $('#ex2').data('slider').getValue());
-         $('#time-data').html($('#ex1').data('slider').getValue() + " Hours and " + $('#ex2').data('slider').getValue() +" Minutes");
-    });
 
-    $('#ex2').slider().on('slide', function (ev) {
-        $('#time').val($('#ex1').data('slider').getValue() + ":" + $('#ex2').data('slider').getValue());
-         $('#time-data').html($('#ex1').data('slider').getValue() + " Hours and " + $('#ex2').data('slider').getValue() +" Minutes");
-    });
 
     //hide two forms
-    $('#recipePart2').hide();
+     $('#recipePart2').hide();
     $('.directions-control').hide();
     $('.submit').hide();
     $('.back').hide();
@@ -222,6 +318,8 @@ $(function () {
         }
 
     });
+
+
 
 
 
@@ -268,3 +366,32 @@ $(function () {
 
 
 });
+
+
+//click on image selector image
+$(document).on('click', '.select-image', function (e) {
+
+
+    $(this).toggleClass('selected-image').siblings().removeClass('selected-image');
+
+    //sets the selected image to the recipe step image object
+    recipeStep.find('.output').attr('src',$(this).attr('src'));
+    recipeStep.find('input').val($(this).attr('src'));
+
+
+    //hide popup model
+    $('#myModal2').hide();
+});
+
+
+
+//click on image selector image
+$(document).on('click', '.choose-image', function (e) {
+
+
+    //gets the closest image object to the button that opens the modal
+    recipeStep = $(this).closest('div').prev('div');
+
+});
+
+

@@ -155,17 +155,124 @@ class FoodProductsModel {
     }
 
 
-    public function loadCategories()
-    {
-        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
 
+    public function loadCategories(){
+
+        $result = $this->db->query("SELECT * FROM product_categories")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
 
     }
 
-    //grocery main view
+
+
+	//To retrieve a single product form DB
+    public function viewSingleProduct(){
+		$productId = $_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products WHERE idproducts = $productId")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
+	//ro retrieve products infor of the co-oporate user whose single product infor was retrieved
+	public function singleProductsOwnersOtherProducts(){
+		$productId =$_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products AS p1, Products AS p2 WHERE p1.idproducts= $productId AND p1.commercial_user_idcommercial_user=p2.commercial_user_idcommercial_user LIMIT 6")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
+	//to retrieve related recipes of a single product from db
+	public function relatedRecipesOfSingleProduct(){
+
+	}
+
+	//to retrieve similar products to the single product
+	public function similarProductsToSingleProduct()
+	{
+		$productId = $_GET['productId'];
+		$result = $this->db->query("SELECT * FROM products AS p1, (SELECT Product_categories_id_product_categories FROM products WHERE idproducts= $productId) AS p2 WHERE p1.Product_categories_id_product_categories=p2.Product_categories_id_product_categories LIMIT 4")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
     public function getAllCooperateProfiles(){
         $result = $this->db->query("SELECT user_name,company_name FROM commercial_user ,users WHERE user_id = users_user_id ")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
     }
+
+
+
+    //to get the count of products for each product category
+    public function getProductCountofCategories(){
+
+        $result = $this->db->query("SELECT mt.product_count, pc.title, pc.id_product_categories FROM (SELECT Product_categories_id_product_categories as category_id, COUNT(Product_categories_id_product_categories) AS product_count FROM products group by Product_categories_id_product_categories) AS mt RIGHT JOIN product_categories AS pc ON mt.category_id=pc.id_product_categories order by pc.id_product_categories")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
+
+	//to get all the products of a single product category
+	public function getAllProductsOfSingleCategory($catType){
+
+		$result = $this->db->query("SELECT p.idproducts, p.product_name, p.img_url, p.description, p.commercial_user_idcommercial_user FROM products AS p JOIN (SELECT id_product_categories from product_categories WHERE title='$catType') AS pc ON p.Product_categories_id_product_categories=pc.id_product_categories LIMIT 12;")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+	}
+
+	public function checkUserReviewAvailability(){
+
+		$uid = Session::get('uid');
+		$prodId = Session::get('productId');
+		$result = $this->db->query("SELECT idproduct_review, products_idproducts, users_user_id FROM product_review WHERE users_user_id = '$uid' AND products_idproducts = '$prodId';")->fetchAll(PDO::FETCH_ASSOC);
+		return json_encode($result);
+
+	}
+
+	//Adding a product review by user to the db
+    public function addProductReview(){
+
+        $sql = "INSERT INTO product_review (review, rating, products_idproducts, users_user_id)
+                VALUES (:review, :rating, :products_idproducts, :users_user_id)";
+
+        $query = $this->db->prepare($sql);
+
+        $query->execute(array(':review' => $_POST['reviewTxt'],
+            ':rating' => $_POST['ratingStr'],
+            ':products_idproducts' => Session::get('productId'),
+            ':users_user_id' => Session::get('uid')));
+
+		$reviewId = $this->db->lastInsertId();
+		return $reviewId;
+
+	}
+
+    //Retrieving reviews of a product form DB
+    public function viewReviewForSingleProduct(){
+
+        $productId = Session::get('productId');
+        $result = $this->db->query("SELECT pr.idproduct_review, pr.timeAdded, pr.review, pr.rating, pr.users_user_id, usr.user_id, usr.user_name, usr.user_avatar FROM (SELECT idproduct_review, timeAdded, review, rating, users_user_id FROM product_review WHERE products_idproducts= '$productId') AS pr  INNER JOIN users AS usr ON pr.users_user_id=usr.user_id;")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
+
+    //getting the review by user logged in for editting
+    public function viewReviewFromAUserForProduct(){
+
+        $productId = Session::get('productId');
+        $uid = Session::get('uid');
+        $result = $this->db->query("SELECT idproduct_review, timeAdded, review, rating, products_idproducts, users_user_id FROM product_review WHERE users_user_id = '$uid' AND products_idproducts = '$productId' LIMIT 1;")->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
+
+    }
+
+    public function updateUserReview($reviewId){
+
+        $currentDate = new DateTime('now');
+        $sql = "UPDATE product_review SET timeAdded=:timeAdded, review=:review, rating=:rating WHERE idproduct_review = '$reviewId'";
+
+        $query = $this->db->prepare($sql);
+
+        $updatedReviewId = $query->execute(array(':timeAdded'=>$currentDate->getTimestamp(),
+            ':review'=>$_POST['editReviewTxt'],
+            ':rating'=>$_POST['ratingStrEdit']));
+
+        return $updatedReviewId;
+
+    }
+
 } 

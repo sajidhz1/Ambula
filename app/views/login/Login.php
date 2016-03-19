@@ -25,10 +25,6 @@
            background: url(/public/img/tile.jpg)  repeat fixed;
 
         }
-        .container{
-
-
-        }
 
         .error-message{
             color: #ff0000;
@@ -40,22 +36,36 @@
 
 <body>
 
+<!--Header START -->
+<?php $this->view('_template/navigation_menu', "newRecipe") ?>
+
 <div class="container pages">
     <div id="loginbox"  class="mainbox col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0">
      <?php
     $getprevious = Session::get('refferer');
-    if(isset($getprevious)){
+    $getpreviousCommercial = Session::get('reffererCommercial');
+
+     if(isset($getprevious)){
         ?>
-        <h2 style="background:#f0f0f0">Registration Successful</h2>
-        <h4 style="color:brown">login with email and password</h4>
+         <div class="alert alert-success">
+             You Have <strong>Successfully!</strong> Registered With Ambula.
+             Login with your email and password
+         </div>
         <?php
         Session::set('refferer',null);
-    }
+    }else if(isset($getpreviousCommercial)){ ?>
+        <div class="alert alert-success">
+            You Have <strong>Successfully!</strong> Registered With Ambula Promotions As a Co-Operate User.
+            Login with your email and password
+        </div>
+    <?php
+         Session::set('reffererCommercial',null);
+     }
     ?>
         <div class="panel panel-default" >
             <div class="panel-heading">
                 <div class="panel-title">Sign In</div>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px;font-size: 1.0em;padding-bottom:10px;font-weight: 200;"></div>
             </div>
 
             <div style="padding-top:30px" class="panel-body" >
@@ -72,13 +82,13 @@
                 <form id="loginform" action="http://localhost/Ambula/login/login" method="post" class="form-horizontal" role="form">
 
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                        <span class="input-group-addon" style="border-radius: 0px"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email" style="border-radius: 0px">
                     </div>
 
                     <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        <span class="input-group-addon" style="border-radius: 0px"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password" style="border-radius: 0px">
                     </div>
 
 
@@ -92,14 +102,21 @@
                     </div>
 
 
+
                     <div style="margin-top:10px" class="form-group">
                         <!-- Button -->
                         <div class="col-sm-12 controls">
-                            <input type="submit" id="btn-login" class="btn btn-success" value="Login"/>
-                            <a id="btn-fblogin" href="/registration/registerWithFacebook" class="btn btn-primary">Login with Facebook</a>
+
+                            <input type="submit" id="btn-login" class="btn btn-success" value="Login" style="border-radius: 0px"/>
+                            <a id="btn-fblogin" href="/Ambula/registration/registerWithFacebook" class="btn btn-primary" style="border-radius: 0px">Login with Facebook</a>
 
                         </div>
                     </div>
+                    <div style="margin: 10px;">
+                        <a style="color: brown;" href="passwordReset">Forgot password?</a>
+                    </div>
+
+
 
 
                     <div class="form-group">

@@ -6,24 +6,24 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link rel="stylesheet" href="/public/css/blueimp-gallery.min.css">
-    <link href="/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link rel="stylesheet" href="/Ambula/public/css/blueimp-gallery.min.css">
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="/public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/recipes-style.css" rel="stylesheet" media="screen"/>
-    <link href="/public/css/bootstrap-image-gallery.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/recipes-style.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-image-gallery.css" rel="stylesheet" media="screen"/>
 
 
     <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
-    <script type="text/javascript" src="/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
 
-    <script src="/public/js/bootstrap.min.js"></script>
-    <script src="/public/js/recipes/jquery.blueimp-gallery.min.js"></script>
-    <script src="/public/js/bootstrap-image-gallery.min.js"></script>
+    <script src="/Ambula/public/js/bootstrap.min.js"></script>
+    <script src="/Ambula/public/js/recipes/jquery.blueimp-gallery.min.js"></script>
+    <script src="/Ambula/public/js/bootstrap-image-gallery.min.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -40,7 +40,7 @@
     <![endif]-->
 
     <style>
-        p{
+        p {
             font-size: 18px;
             color: #262626;
         }
@@ -50,46 +50,47 @@
 <body>
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 <div class="mrg50T" style="margin-top: 100px;">
-<?php $array = json_decode($this->getRecipe_si(), true); ?>
+    <?php $array = json_decode($this->getRecipe_si(), true); ?>
 
-<div  class="col-lg-4" style="padding-top: 25px;">
+    <div class="col-lg-4" style="padding-top: 25px;">
 
-                <div>
+        <div>
+            <?php
+            $arr = json_decode($this->getRecipeImages($_GET['r']), true);
+            foreach ($arr as $img) {
+                if (file_exists($img['image_url'])) {
+                    ?>
+
+                    <a href="/<?= $img['image_url']; ?>" title="<?php echo $array[0]['title'] ?>" data-gallery=""
+                       style="margin-left: 12px;"><img
+                            src="/<?= $img['image_url']; ?>" height="100" width="100"/></a>
+
                     <?php
-                    $arr = json_decode($this->getRecipeImages($_GET['r']), true);
-                    foreach ($arr as $img) {
-                        if (file_exists($img['image_url'])) {
-                            ?>
+                } else {
+                }
+            } ?>
+        </div>
 
-                            <a href="/<?= $img['image_url']; ?>" title="<?php echo $array[0]['title'] ?>" data-gallery="" style="margin-left: 12px;"><img
-                                src="/<?= $img['image_url']; ?>" height="100" width="100"/></a>
+        <div>
+            <br>
+            <h4>අවශ්‍ය දෑ</h4>
+            <ol style="color: #343434;font-size: 1.1em;"> <?php
+                $exp = array();
+                $exp = explode("<br>", $array[0]['ingredients']);
 
-                        <?php
-                        } else {
-                        }
-                    } ?>
-</div>
-
-    <div>
-        <br>
-        <h4>අවශ්‍ය දෑ</h4>
-         <ol style="color: #343434;font-size: 1.1em;"> <?php
-            $exp = array();
-            $exp = explode("<br>", $array[0]['ingredients']);
-
-            foreach($exp as $i)
-              if($i != null)
-                echo '<li style="margin-top:5px;color : #626262">'.$i.'</li>';
-           ?>
+                foreach ($exp as $i)
+                    if ($i != null)
+                        echo '<li style="margin-top:5px;color : #626262">' . $i . '</li>';
+                ?>
             </ol>
-    </div>
+        </div>
 
-</div>
-<div class="col-lg-7">
-    <h2 class="txt-red"><?=$array[0]['title'] ?></h2>
-    <br><br>
-    <?=$array[0]['description'] ?>
-</div>
+    </div>
+    <div class="col-lg-7">
+        <h2 class="txt-red"><?= $array[0]['title'] ?></h2>
+        <br><br>
+        <?= $array[0]['description'] ?>
+    </div>
 
 
 </div>

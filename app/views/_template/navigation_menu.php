@@ -18,7 +18,7 @@
         <div class="col-sm-3 col-md-3 pull-left">
             <form class="navbar-form navbar-left" method="get" role="search" action="/Ambula/home/search/" id="main-search">
                 <div class="input-group">
-                    <input type="text" name="query" class="form-control typeahead" autocomplete="off"
+                    <input type="text" class="form-control typeahead" autocomplete="off"
                            data-provide="typeahead" placeholder="Search Recipes" name="q">
 
                     <div class="input-group-btn">
@@ -51,13 +51,13 @@
                     ?>
                     <li class="dropdown" style="font-weight: 500;font-size: medium;">
                         <?php if (Session::get('user_provider_type') == 'FACEBOOK') { ?>
-                            <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture" width="35"
+                            <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture"
                                  style="margin-top:7px;" height="35">
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 1) { ?>
-                            <img src="<?= Session::get('user_avatar_url') ?>" width="35" style="margin-top:7px;"
+                            <img src="<?= Session::get('user_avatar_url') ?>"  style="margin-top:7px;"
                                  height="35">
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 0) { ?>
-                            <img src="/Ambula/public/img/profile_avatar.jpg" width="35" style="margin-top:7px;" height="35">
+                            <img src="/Ambula/public/img/profile_avatar.jpg"  style="margin-top:7px;" height="35">
 
                         <?php } ?>
 
@@ -66,7 +66,8 @@
                         <ul class="dropdown-menu">
                             <li><a href="http://localhost/Ambula/home/profile/<?= Session::get('username') ?>">View
                                     Profile</a></li>
-                            <li><a href="http://localhost/Ambula/recipes/newrecipe">New Recipe</a></li>
+                            <li><a  data-toggle="modal"
+                                   data-target="#recipeChooseModal" >New Recipe</a></li>
                             <?php if (isset($_SESSION['user_account_type'])) {
                                 if (Session::get('user_account_type') == 2) {
                                     ?>
@@ -124,3 +125,22 @@
     </script>
     <!-- pop up box code END -->
 </nav>
+
+<div class="modal fade" id="recipeChooseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;margin-top: 50px;" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add your recipe in </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-offset-4">
+                    <a href="/Ambula/recipes/newrecipeupdated" class="btn btn-lg btn-warning">English</a>
+                    <a href="/Ambula/recipes/newrecipeupdated?lang=si" class="btn btn-lg btn-info">සිංහලෙන්</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

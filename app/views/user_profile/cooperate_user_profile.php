@@ -205,7 +205,7 @@
                 </div>
             </div>
 
-   <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -213,7 +213,7 @@
                 </div>
             </div>
 
-   <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -221,7 +221,7 @@
                 </div>
             </div>
 
-   <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -229,7 +229,7 @@
                 </div>
             </div>
 
-   <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
@@ -237,14 +237,14 @@
                 </div>
             </div>
 
-   <div class="col-lg-2 hgt200 box" >
+            <div class="col-lg-2 hgt200 box" >
                 <div class="inner box">
                     <h5 style="color: #333333">Kist Mango & Melon jam</h5>
                     <img src="http://localhost/Ambula/public/img/no_preview_available.jpg"
                          style="display:block;margin: auto;">
                 </div>
             </div>
-    <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a href="" style="position:absolute;bottom: 0;right: 25px;font-size: 1.1em;color: brown;">View all <span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
   </div>
 

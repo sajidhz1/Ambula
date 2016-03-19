@@ -13,7 +13,7 @@
     <link href="http://localhost/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
 	 <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.9.1.min.js"></script>
@@ -80,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="form-group col-lg-6">
-                    <!-- Username -->
+                    <!-- First Name -->
                     <label class="control-label" for="first_name">First Name</label>
 
                     <div class="controls">
@@ -163,9 +163,11 @@
 
         <a href="registerWithFacebook" class="btn btn-primary"> SignUp with facebook</a>
     </div>
-    <div class="col-lg-6" style="margin-top:75px;background: #fff; ">
-        <p style="text-align: center;"> Are you a prominent organization related to food in Sri Lanka, Then Join us as a Corporate user and broaden your market Locally and internationally</p>
-        <a href="/Ambula/registration?user_type=commercial_user" style="" class="btn btn-danger col-lg-offset-4">Signup as Co-Operate User</a>
+    <div class="col-lg-6" >
+        <div style="margin-top:75px;background: #fff;padding:10px; ">
+            <p style="text-align: center;color: brown;"> Are you a prominent organization related to food in Sri Lanka, Then Join us as a Corporate user and broaden your market Locally and internationally</p>
+            <a href="/Ambula/registration?user_type=commercial_user" style="" class="btn btn-danger col-lg-offset-4">Signup as Co-Operate User</a>
+        </div>
     </div>
 </div>
 </body>

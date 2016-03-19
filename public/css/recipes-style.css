@@ -48,7 +48,8 @@ h1 {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    background: #EBEBE0;
+    border :2px solid #EBEBE0;
+    margin-bottom: 10px;
 }
 
 .ingredients li {
@@ -95,6 +96,7 @@ input::-webkit-inner-spin-button {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     background: #fcd51f;
+    text-align: center;
 
 }
 
@@ -169,11 +171,16 @@ input::-webkit-inner-spin-button {
 #links img {
 }
 
-#procedure-container div {
+#procedure-container {
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    background: #EBEBE0;
+    background: #f1f1f1;
+    margin-top: 10px;
+}
+
+.social-buttons{
+ margin:5px;
 }
 
 #recipe-user {
@@ -290,8 +297,7 @@ input[readonly] {
 .commentList {
     padding:0;
     list-style:none;
-    max-height:200px;
-    overflow:auto;
+
 }
 .commentList li {
     margin:0;
@@ -429,9 +435,6 @@ input[readonly] {
     .input-group div {
         margin: 1px !important;
         padding: 0 !important;
-    }
-    .recipe-details{
-      height :320px !important;
     }
 
     .ad-space {

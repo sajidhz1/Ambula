@@ -22,12 +22,14 @@ class Registration extends Controller
 
     public function index($name = '')
     {
-        if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_GET['user']) && $this->registration->checkCooperateUserName($_GET['user']))
+        if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_SESSION['username']) && $this->registration->checkCooperateUserName($_SESSION['username'])){
+
             $this->view('Registration/commercial_user_continue');
-        else  if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user")
+        } else if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user"){
             $this->view('Registration/commercial_user_registration');
-        else
+        } else{
             $this->view('Registration/registration');
+        }
     }
 
     public function regNewCommercialUser()
@@ -38,9 +40,9 @@ class Registration extends Controller
     public function registerNewUser()
     {
         if ($this->registration->validateFields() == 1) {
-            Header('Location:http:/login');
+            Header('Location:http:/Ambula/login');
         } else {
-            Header('Location:http:/registration');
+            Header('Location:http:/Ambula/registration');
         }
     }
 
@@ -69,17 +71,24 @@ class Registration extends Controller
 
     public function register_commercial_user(){
         if($this->registration->register_commercial_user()){
-            Header('Location:http:/Ambula/registration/?user_type=commercial_user&user='.$_POST["username"]);
+            Header('Location:http:/Ambula/registration/?user_type=commercial_user');
         }else{
+
             Header('Location:http:/Ambula/registration/?user_type=commercial_user');
         }
     }
 
-    public function update_commercial_user(){
-        $this->registration->update_commercial_user();
+    public function update_commercial_user()
+    {
+        if ($this->registration->update_commercial_user()) {
+            Header('Location:http:/Ambula/login');
+        } else {
+            $this->view("_template/error");
+        }
     }
 
-    public function loadCategories(){
+    public function loadCategories()
+    {
         return $this->registration->loadCategories();
     }
 
