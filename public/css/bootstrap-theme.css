@@ -482,6 +482,9 @@
     	width :45% !important;
     }
     .pages{padding-top:120px !important; }
+    #promoImage{
+        width: 400px !important;
+    }
 }
 
 
@@ -508,6 +511,9 @@ width : 98% !important;
 	.active > div { display:none; }
 	.active > div:first-child { display:block; }
 	.active > div:first-child + div { display:block; }
+    #promoImage{
+        max-width: 600px;
+    }
 }
 @media (min-width: 992px ) and (max-width:1200px ){
 	.carousel-inner .active.left { left: -17%; }
@@ -534,6 +540,10 @@ width : 98% !important;
 
     .subcat-tile {
         width: 23%;
+    }
+
+    #promoImage{
+        max-width: 800px;
     }
 }
 

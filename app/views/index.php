@@ -99,10 +99,10 @@
                             <img src="public/img/slider/buns.jpg" style="width: 100%;">
                         </div>
                         <li class="num0 img">
-                            <img src="public/img/slider/buns.jpg" alt="Buns" title="Buns"/>
+                            <img src="public/img/slider/sr1.jpg" alt="Buns" title="Buns"/>
                         </li>
                         <li class="num1 img">
-                            <img src="public/img/slider/croissant.jpg" alt="Croissant" title="Croissant"/>
+                            <img src="public/img/slider/cc.jpg" alt="Croissant" title="Croissant"/>
                         </li>
                         <li class="num2 img">
                             <img src="public/img/slider/lemonpie.jpg" alt="Lemon pie" title="Lemon pie"/>

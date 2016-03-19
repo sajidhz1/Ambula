@@ -268,6 +268,7 @@
                     $("#myModal2").on("shown.bs.modal", function () {
 
                         var html;
+                        $('#myModal2').find('.modal-body').html('<p>Please wait till the images for this step gets uploaded</p>');
                         $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
                             type: 'POST',
                             url: '/Ambula/recipes/showImages',

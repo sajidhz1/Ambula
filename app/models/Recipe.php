@@ -545,7 +545,7 @@ class Recipe
 
     public function getUserComments($recipeId = '')
     {
-        $array = $this->db->query("SELECT * FROM comments WHERE Recipes_idRecipe =" . $recipeId)->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT c.* , up.* ,u.user_name   FROM comments c ,user_personal up , users u WHERE c.Recipes_idRecipe =" . $recipeId." AND c.users_user_id = up.users_user_id AND c.users_user_id = u.user_id ORDER BY c.idcomments DESC")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 
