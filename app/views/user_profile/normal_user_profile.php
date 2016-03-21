@@ -24,7 +24,9 @@
     <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/script.js"></script>
-    <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/modernizr.js"></script>
+
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -42,11 +44,17 @@
     <style>
         /* Profile sidebar */
 
+        .profile-userpic {
+            width: 75%;
+            height: 75%;
+            margin: 0 13% 0 13%;
+        }
+
         .profile-userpic img {
             float: none;
             margin: 0 auto;
-            width: 75%;
-            height: 75%;
+            width: 100%;
+            height: 100%;
             padding: 4px;
             border: 1px solid;
         }
@@ -153,12 +161,127 @@
             border-radius: 0px;
         }
 
+        /*============================================================*/
+        /*CSS effect for the profile pic update button showing overlay*/
+        /*============================================================*/
+
+        .effects {
+            /*
+                        padding-left: 15px;
+            */
+        }
+
+        .effects .img {
+            position: relative;
+            float: left;
+            margin-bottom: 5px;
+            overflow: hidden;
+        }
+
+        /*      un used styles for overlay by DRD
+                .effects .img:nth-child(n) {
+                    margin-right: 5px;
+                }
+
+                .effects .img:first-child {
+                    margin-left: -15px;
+                }
+
+                .effects .img:last-child {
+                    margin-right: 0;
+                }*/
+
+        .effects .img img {
+            display: block;
+            /*          margin: 0;
+                        padding: 0;*/
+            max-width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            display: block;
+            position: absolute;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+
+        a.close-overlay {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            line-height: 45px;
+            text-align: center;
+            background-color: #000;
+            cursor: pointer;
+        }
+
+        a.close-overlay.hidden {
+            display: none;
+        }
+
+        a.expand {
+            display: block;
+            position: absolute;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            border: solid 5px #fff;
+            text-align: center;
+            color: #fff;
+            line-height: 50px;
+            font-weight: 700;
+            font-size: 30px;
+            border-radius: 30px;
+        }
+
+        /* ============================================================ */
+        /*    EFFECT 1 - SLIDE IN BOTTOM                                */
+        /* ============================================================ */
+        #effect-1 .overlay {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 0;
+        }
+
+        #effect-1 .overlay a.expand {
+            left: 0;
+            right: 0;
+            bottom: 50%;
+            margin: 0 auto -30px auto;
+        }
+
+        #effect-1 .img.hover .overlay {
+            height: 100%;
+        }
+
+        /*CSS to pop up the file browser window*/
+        #uploadLink {
+            text-decoration: none;
+        }
+
+        #uploadInput {
+            display: none
+        }
+
     </style>
 
     <script type="text/javascript">
 
         //variable to store the current recipe content of the user
         var profileContent = "";
+        var userUpdated = false;
 
         // attach the function to the window resize event
         $(window).resize(onResize);
@@ -168,6 +291,14 @@
             onResize();
             updateUserField();
             updatePassword();
+            displayOverlayButton();
+            updateProfilePic();
+        });
+
+        //jquery call to pop up the image browse window when camera is clicked
+        $(document).on('click', '#uploadLink', function (e) {
+            e.preventDefault();
+            $("#uploadInput:hidden").trigger('click');
         });
 
         //jquery call to view change password fields containing modal window
@@ -191,8 +322,37 @@
             $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
         }
 
+        //JS function with ajax call to update the profile pic of the user
+        function updateProfilePic() {
+            $('#uploadInput').on('change', function (e) {
+                var fileform = new FormData();
+                fileform.append('upload_input', this.files[0]);
+                $('#profilePicture').attr('src', '/Ambula/public/img/loading_image.gif');
+
+                $.ajax({
+                    url: '/Ambula/profile/updateProfilePicture',
+                    type: 'POST',
+                    processData: false,
+                    contentType: false,
+                    data: fileform,
+                    beforeSend: function (status) {
+                        console.log(status);
+                    },
+                    success: function (data) {
+                        console.log('success', data);
+                        //alert('succ'); //to slow the upload and test loading gif
+                        //To reload the uploaded image without reloading the whole page
+                        $('#profilePicture').attr('src', '/Ambula/uploads/profile/personal_user/<?php echo $_SESSION['uid'].'/'.$_SESSION['uid'];?>.card.jpg?' + new Date().getTime());
+                    },
+                    error: function (exception) {
+                        console.log('errord', exception);
+                    }
+                });
+            });
+        }
+
         //JS + ajax method to update the user password with new password in the modal window
-        function updatePassword(){
+        function updatePassword() {
             $('#changePasswordModalForm').validator().on('submit', function (e) {
                 // Prevent form submission
                 if (e.isDefaultPrevented()) {
@@ -207,7 +367,6 @@
                         type: 'POST',
                         data: $(this).serialize(),
                         success: function (response) {
-                            alert(response);
                             if (response) {
                                 $('#userPasswordUpdateModal').modal("hide");
                                 displayUserInfo();
@@ -218,7 +377,6 @@
 
             });
         }
-
 
         //JS + ajax method to update the Database using the data in the edit modal data feilds
         function updateUserField() {
@@ -238,6 +396,7 @@
                         success: function (response) {
                             if (response) {
                                 $('#userInfoEditModal').modal("hide");
+                                userUpdated = true;
                                 displayUserInfo();
                             }
                         }
@@ -323,10 +482,8 @@
         //JS+ajax method to display all the user personal info of a logged in user in a table
         function displayUserInfo() {
             //to store recipes of the usesr currently viewing
-
-
             $.ajax({
-                url: "/Ambula/ProfileController/viewNormalUserInfo",
+                url: "/Ambula/profile/viewNormalUserInfo",
                 success: function (response) {
                     var myVar = JSON.parse(response);
                     var i = 0;
@@ -394,19 +551,56 @@
                         $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
                         i++;
                     }
-
-                    if (!!profileContent) {
-                        $('#viewInfoBtn').html('View Info');
-                        $("#profile-content").html(profileContent);
-                        profileContent = "";
-                    } else {
-                        profileContent = $("#profile-content").html();
+                    if(userUpdated){
                         $("#profile-content").html(string);
                         $('#viewInfoBtn').html('View Recipes');
+                        userUpdated = false;
+                    }else{
+                        if (!!profileContent) {//tre when recipes are present int the #profile-content
+                            $('#viewInfoBtn').html('View Info');
+                            $("#profile-content").html(profileContent);
+                            profileContent = "";
+                        } else {
+                            profileContent = $("#profile-content").html();
+                            $("#profile-content").html(string);
+                            $('#viewInfoBtn').html('View Recipes');
+                        }
                     }
+
 
                 }
             });
+        }
+
+        //JS function display the profile pic update button overlay on the pro pic
+        function displayOverlayButton() {
+            if (Modernizr.touch) {
+                // show the close overlay button
+                $(".close-overlay").removeClass("hidden");
+                // handle the adding of hover class when clicked
+                $(".img").click(function (e) {
+                    if (!$(this).hasClass("hover")) {
+                        $(this).addClass("hover");
+                    }
+                });
+                // handle the closing of the overlay
+                $(".close-overlay").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if ($(this).closest(".img").hasClass("hover")) {
+                        $(this).closest(".img").removeClass("hover");
+                    }
+                });
+            } else {
+                // handle the mouseenter functionality
+                $(".img").mouseenter(function () {
+                    $(this).addClass("hover");
+                })
+                    // handle the mouseleave functionality
+                    .mouseleave(function () {
+                        $(this).removeClass("hover");
+                    });
+            }
         }
 
 
@@ -427,16 +621,29 @@
 
             ?>
             <!-- SIDEBAR USERPIC -->
-            <div class="row profile-userpic">
-                <?php if ($result['user_provider_type'] == 'FACEBOOK') { ?>
-                    <img src="https://graph.facebook.com/<?= $result[0]['user_facebook_uid'] ?>/picture?type=large"
-                         class="img-responsive" alt="">
-                <?php } else if ($result['user_avatar'] == 1) { ?>
-                    <img src="http://localhost/Ambula/uploads/profile/<?= $result['user_name'] ?>.jpg"
-                         class="img-responsive" alt="">
-                <?php } else { ?>
-                    <img src="http://localhost/Ambula/public/img/profile_avatar.jpg" class="img-responsive" alt="">
-                <?php } ?>
+            <div id="effect-1" class="row effects clearfix">
+                <div class="profile-userpic img">
+                    <?php if ($result['user_provider_type'] == 'FACEBOOK') { ?>
+                        <img id="profilePicture"
+                             src="https://graph.facebook.com/<?= $result[0]['user_facebook_uid'] ?>/picture?type=large"
+                             class="img-responsive" alt="">
+                    <?php } else if ($result['user_avatar'] == 1) { ?>
+                        <img id="profilePicture"
+                             src="/Ambula/uploads/profile/personal_user/<?= $result['user_id'] ?>/<?= $result['user_id'] ?>.card.jpg"
+                             class="img-responsive" alt="<?= $result['user_name'] ?>">
+                    <?php } else { ?>
+                        <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
+                             alt="">
+                    <?php } ?>
+                    <div class="overlay">
+                        <a id="uploadLink" class="expand">
+                            <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                        </a>
+
+                        <input type="file" id="uploadInput" name="upload_input"/>
+                        <a class="close-overlay hidden">x</a>
+                    </div>
+                </div>
             </div>
             <!-- END SIDEBAR USERPIC -->
             <!-- SIDEBAR USER TITLE -->
@@ -487,6 +694,11 @@
     </div>
 </div>
 
+<!alert message displaying div(success or failiure)
+<div class='' id='toastMessage' style='display:none;'>
+    Selected Field was Successfully Updated
+</div>
+
 <div class="modal fade" id="userInfoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="false"
      style=" overflow: scroll; height:auto;" data-backdrop="false">
@@ -494,7 +706,7 @@
         <div class="row">
             <div class="modal-dialog modal-dialog-center col-m-12">
                 <div class="modal-content row">
-                    <form id="updateFeildModalForm" action="/Ambula/ProfileController/updateUserField" method="POST"
+                    <form id="updateFeildModalForm" action="/Ambula/profile/updateUserField" method="POST"
                           data-toggle="validator">
                         <div class="col-lg-12">
                             <div class="modal-header row">
@@ -542,7 +754,7 @@
         <div class="row">
             <div class="modal-dialog modal-dialog-center col-m-12">
                 <div class="modal-content row">
-                    <form id="changePasswordModalForm" action="/Ambula/ProfileController/updatePassword" method="POST"
+                    <form id="changePasswordModalForm" action="/Ambula/profile/updatePassword" method="POST"
                           data-toggle="validator">
                         <div class="col-lg-12">
                             <div class="modal-header row">
@@ -557,10 +769,12 @@
                                         <td class="modalUserInfo">
                                             <div class='form-group'>
                                                 <div class='controls'>
-                                                    <input type="password" id="currPassword" name="curr_password" placeholder="" class="form-control"
+                                                    <input type="password" id="currPassword" name="curr_password"
+                                                           placeholder="" class="form-control"
                                                            data-native-error="Password Should Contain At Least 6 Characters"
-                                                           data-remote="/Ambula/ProfileController/checkPassword"
-                                                           data-error="Current Password Doesn't Match With What You Entered"required>
+                                                           data-remote="/Ambula/profile/checkPassword"
+                                                           data-error="Current Password Doesn't Match With What You Entered"
+                                                           required>
                                                 </div>
                                                 <span class='help-block with-errors'></span>
                                             </div>

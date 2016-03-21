@@ -88,7 +88,8 @@ class Home extends Controller
 
     //profile functions
 
-    public function profile($user ='')
+    //This method is not necessary now , the profile view is now being called via 'profile' controller
+/*    public function profile($user ='')
     {
         if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"]==true && isset($_SESSION["username"]) && $_SESSION["username"] == $user){
             if ($this->user->checkUserExistAndGetType($user) != '') {
@@ -109,7 +110,7 @@ class Home extends Controller
             Header('Location:/Ambula/login/');
         }
 
-    }
+    }*/
 
     //profile function
     public function getUser()

@@ -59,7 +59,7 @@ class LoginModel
                     $st->execute();
                     $user_details = $st->fetch();
                     Session::set('name', $user_details->first_name . ' ' . $user_details->last_name);
-                    Session::set('user_avatar_url', "http://localhost/Ambula/uploads/profile/" . $result->user_name . ".jpg");
+                    Session::set('user_avatar_url', "http://localhost/Ambula/uploads/profile/personal_user/" . $result->user_id . "/" . $result->user_id . ".thumb.jpg");
                 }
 
                 // if user has checked the "remember me" checkbox, then write cookie

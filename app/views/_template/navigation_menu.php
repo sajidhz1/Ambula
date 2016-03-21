@@ -64,7 +64,7 @@
                         <a class="dropdown-toggle pull-right " id="modal_user" data-toggle="dropdown"
                            href="#"><?= Session::get('name') ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/Ambula/home/profile/<?= Session::get('username') ?>">View
+                            <li><a href="/Ambula/profile/index/<?= Session::get('username') ?>">View
                                     Profile</a></li>
                             <li><a  data-toggle="modal"
                                    data-target="#recipeChooseModal" >New Recipe</a></li>
