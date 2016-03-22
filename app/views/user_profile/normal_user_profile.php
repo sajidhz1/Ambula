@@ -275,6 +275,28 @@
             display: none
         }
 
+        /*CSS for toast message saying user updae was success or not*/
+        #toastMessage {
+            width: 400px;;
+            height: 70px;
+            position: absolute;
+            margin-left: 37%;
+            margin-right: 37%;
+            top: 30%;
+            /*margin-left:-15%;*/
+            bottom: 10px;
+            background-color: #00ffff;
+            color: #F0F0F0;
+            font-family: Calibri;
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 2px;
+            -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+            -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+            box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+        }
+
     </style>
 
     <script type="text/javascript">
@@ -320,6 +342,19 @@
         function onResize() {
             // apply dynamic padding at the top of the body according to the fixed navbar height
             $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
+        }
+
+        //JS function to display the update success or failed message
+        function alertMessageDisplay(updateStatus){
+            $('#toastMessage').fadeIn(400).delay(2000).fadeOut(400);
+            if(updateStatus){
+                $('#toastMessage').attr('class', 'w3-container w3-green');
+                $('#toastMessage').html('Update Was Successfully Done');
+            }else{
+                $('#toastMessage').attr('class', 'w3-container w3-red');
+                $('#toastMessage').html('An Error Occurred While Updating The Field.! ');
+            }
+
         }
 
         //JS function with ajax call to update the profile pic of the user
@@ -370,7 +405,15 @@
                             if (response) {
                                 $('#userPasswordUpdateModal').modal("hide");
                                 displayUserInfo();
+                                alertMessageDisplay(true);
+                                $('#toastMessage').html('Password Was Successfully Updated.');
+
                             }
+                        },
+                        error: function (exception) {
+
+                            alertMessageDisplay(false);
+                            $('#toastMessage').html('An Error Occurred While Updating The Password.!');
                         }
                     });
                 }
@@ -398,6 +441,10 @@
                                 $('#userInfoEditModal').modal("hide");
                                 userUpdated = true;
                                 displayUserInfo();
+                                alertMessageDisplay(userUpdated);
+
+                            }else{
+                                alertMessageDisplay(userUpdated);
                             }
                         }
                     });
@@ -603,7 +650,6 @@
             }
         }
 
-
     </script>
 
 </head>
@@ -694,8 +740,8 @@
     </div>
 </div>
 
-<!alert message displaying div(success or failiure)
-<div class='' id='toastMessage' style='display:none;'>
+<!--alert message displaying div(success or failiure) -->
+<div class='' id="toastMessage" style="display: none;">
     Selected Field was Successfully Updated
 </div>
 
