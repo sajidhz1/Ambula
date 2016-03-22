@@ -23,7 +23,6 @@ class Registration extends Controller
     public function index($name = '')
     {
         if(isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user" && isset($_SESSION['username']) && $this->registration->checkCooperateUserName($_SESSION['username'])){
-
             $this->view('Registration/commercial_user_continue');
         } else if (isset($_GET['user_type']) && $_GET['user_type'] == "commercial_user"){
             $this->view('Registration/commercial_user_registration');
@@ -32,6 +31,7 @@ class Registration extends Controller
         }
     }
 
+    //not being used now, used to test the ui of comm: user//
     public function regNewCommercialUser()
     {
         $this->view('Registration/commercial_user_registration');
@@ -67,13 +67,10 @@ class Registration extends Controller
         $this->registration->checkUserName($_GET['username']);
     }
 
-
-
     public function register_commercial_user(){
         if($this->registration->register_commercial_user()){
             Header('Location:http:/Ambula/registration/?user_type=commercial_user');
         }else{
-
             Header('Location:http:/Ambula/registration/?user_type=commercial_user');
         }
     }

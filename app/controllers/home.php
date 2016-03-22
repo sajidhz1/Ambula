@@ -88,24 +88,29 @@ class Home extends Controller
 
     //profile functions
 
-    public function profile($user ='')
+    //This method is not necessary now , the profile view is now being called via 'profile' controller
+/*    public function profile($user ='')
     {
-
-
-
-       // echo $this->user->checkUserExistAndGetType($user);
-        if ($this->user->checkUserExistAndGetType($user) != '') {
-            if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1 || $this->user->checkUserExistAndGetType($user)->user_account_type == 3) {
-                $this->user_name = $user;
-                $this->view('user_profile/normal_user_profile');
-            } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
-                $this->user_name = $user;
-                $this->view('user_profile/cooperate_user_updated');
+        if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"]==true && isset($_SESSION["username"]) && $_SESSION["username"] == $user){
+            if ($this->user->checkUserExistAndGetType($user) != '') {
+                if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
+                    $this->user_name = $user;
+                    $this->view('user_profile/normal_user_profile');
+                }else if($this->user->checkUserExistAndGetType($user)->user_account_type == 3){
+                    $this->user_name = $user;
+                    $this->view('user_profile/normal_user_profile');
+                } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
+                    $this->user_name = $user;
+                    $this->view('user_profile/cooperate_user_updated');
+                }
+            } else {
+                $this->view('_template/error');
             }
-        } else {
-            $this->view('_template/error');
+        }else{
+            Header('Location:/Ambula/login/');
         }
-    }
+
+    }*/
 
     //profile function
     public function getUser()

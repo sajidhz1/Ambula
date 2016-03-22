@@ -12,7 +12,7 @@
     <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/registration.css" rel="stylesheet" media="screen"/>
 
-	 <!-- fav icon -->
+    <!-- fav icon -->
     <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
@@ -63,7 +63,29 @@
             padding: 2px 8px;
             margin-top: 2px;
         }
+
+        .form-control, .btn {
+            border-radius: 0px;
+        }
+
+        #commercialUserSignUpBlock{
+            max-width: 400px;
+            height: 300px;
+            padding: 5%;
+            margin: 5%;
+        }
     </style>
+
+    <script>
+        var onResize = function () {
+            // apply dynamic padding at the top of the body according to the fixed navbar height
+            $(".registration-container").css("margin-top", $(".navbar-fixed-top").height()+5);
+        };
+
+        // attach the function to the window resize event
+        $(window).resize(onResize);
+        $(window).onReady(onResize());
+    </script>
 </head>
 
 <body id="registration">
@@ -72,95 +94,116 @@
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
 <div class="container">
-    <div class="col-lg-6 registration-container">
-        <form data-toggle="validator" role="form" action='http://localhost/Ambula/registration/registerNewUser' method="POST">
+    <div class="row">
 
-            <div id="legend">
-                <legend class="">Register</legend>
-            </div>
-            <div class="row">
-                <div class="form-group col-lg-6">
-                    <!-- First Name -->
-                    <label class="control-label" for="first_name">First Name</label>
+        <div class="col-lg-6 registration-container">
+            <form data-toggle="validator" role="form" action='http://localhost/Ambula/registration/registerNewUser'
+                  method="POST">
 
-                    <div class="controls">
-                        <input type="text" id="firstname" maxlength="20" name="first_name" placeholder=""
-                               class="form-control" required>
-                    </div>
-                    <span class="help-block with-errors"></span>
+                <div id="legend">
+                    <legend class="">Register</legend>
                 </div>
-                <div class="form-group col-lg-6">
-                    <!-- Username -->
-                    <label class="control-label" for="last_name">Last Name</label>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <!-- First Name -->
+                        <label class="control-label" for="first_name">First Name</label>
 
-                    <div class="controls">
-                        <input type="text" id="lastname" maxlength="20" name="last_name" placeholder=""
-                               class="form-control" required>
+                        <div class="controls">
+                            <input type="text" id="firstname" maxlength="20" name="first_name" placeholder=""
+                                   class="form-control" required>
+                        </div>
                         <span class="help-block with-errors"></span>
                     </div>
-                </div>
-            </div>
+                    <div class="form-group col-lg-6">
+                        <!-- Username -->
+                        <label class="control-label" for="last_name">Last Name</label>
 
-            <div class="row">
-                <div class="form-group col-lg-8">
-                    <!-- E-mail -->
-                    <label class="control-label" for="email">E-mail</label>
-
-                    <div class="controls">
-                                               <input type="email" data-native-error="invalid email format" id="email" name="email" data-remote="/Ambula/registration/checkEmail" placeholder="" class="form-control" data-error="The email address you have entered already has an account" required>
-
-
-                        <p class="help-block with-errors">Please provide your E-mail</p>
+                        <div class="controls">
+                            <input type="text" id="lastname" maxlength="20" name="last_name" placeholder=""
+                                   class="form-control" required>
+                            <span class="help-block with-errors"></span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="form-group col-lg-6">
-                    <!-- E-mail -->
-                    <label class="control-label" for="email">Username</label>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <!-- E-mail -->
+                        <label class="control-label" for="email">E-mail</label>
 
-                    <div class="controls">
-                        <input type="text" id="username" name="username" placeholder="" class="form-control"
-                                pattern="^[A-Za-z0-9_-]{3,16}$" data-native-error="username should at least contain 3 Characters (letter numbers and underscore)" data-remote="/Ambula/registration/checkUserName" data-error="username already exists ,choose a different one"  maxlength="10"   required>
+                        <div class="controls">
+                            <input type="email" data-native-error="invalid email format" id="email" name="email"
+                                   data-remote="/Ambula/registration/checkEmail" placeholder="" class="form-control"
+                                   data-error="The email address you have entered already has an account" required>
 
-                        <p class="help-block with-errors"></p>
+                            <p class="help-block with-errors">Please provide your E-mail</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-lg-6">
-                    <!-- Password-->
-                    <label class="control-label" for="password">Password</label>
 
-                    <div class="controls">
-                        <input type="password" id="password" data-minlength="6" data-error="Password should contain at least 6 characters" name="password" placeholder="" class="form-control"
-                               required>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <!-- E-mail -->
+                        <label class="control-label" for="email">Username</label>
 
-                        <p class="help-block with-errors"></p>
+                        <div class="controls">
+                            <input type="text" id="username" name="username" placeholder="" class="form-control"
+                                   pattern="^[A-Za-z0-9_-]{3,16}$"
+                                   data-native-error="username should at least contain 3 Characters (letter numbers and underscore)"
+                                   data-remote="/Ambula/registration/checkUserName"
+                                   data-error="username already exists ,choose a different one" maxlength="10" required>
+
+                            <p class="help-block with-errors"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group col-lg-6">
-                    <!-- Password -->
-                    <label class="control-label" for="password_confirm">Password (Confirm)</label>
 
-                    <div class="controls">
-                        <input type="password" id="password_confirm" data-match="#password" name="password_confirm"
-                               placeholder=""
-                               class="form-control" required>
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <!-- Password-->
+                        <label class="control-label" for="password">Password</label>
 
-                        <p class="help-block with-errors">Please confirm password</p>
+                        <div class="controls">
+                            <input type="password" id="password" data-minlength="6"
+                                   data-error="Password should contain at least 6 characters" name="password"
+                                   placeholder="" class="form-control" required>
+
+                            <p class="help-block with-errors"></p>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <!-- Password -->
+                        <label class="control-label" for="password_confirm">Password (Confirm)</label>
+
+                        <div class="controls">
+                            <input type="password" id="password_confirm" data-match="#password" name="password_confirm"
+                                   placeholder=""
+                                   class="form-control" required>
+
+                            <p class="help-block with-errors">Please confirm password</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <!-- Button -->
-                <div class="controls">
-                    <button class="btn btn-success">Register</button>
-                </div>
-            </div>
-        </form>
 
+                <div class="form-group">
+                    <!-- Register Button -->
+                    <div class="controls">
+                        <button class="btn btn-success" style="min-width: 163px">Register</button>
+                    </div>
+                </div>
+            </form>
+
+            <a href="registerWithFacebook" class="btn btn-primary"> SignUp with facebook</a>
+        </div>
+        <div class="col-lg-6" id="commercialUserSignUpBlock" style="margin-top:75px;background: #fff; ">
+            <p style="text-align: center;"> Are you a prominent organization related to food in Sri Lanka, Then Join us
+                as a Corporate user and broaden your market Locally and internationally</p>
+            <a href="/Ambula/registration?user_type=commercial_user" style="margin: 0% 20% 0% 20%;" class="btn btn-danger col-lg-offset-4">Signup
+                as Co-Operate User</a>
+        </div>
+
+<<<<<<< HEAD
+=======
         <a href="registerWithFacebook" class="btn btn-primary"> SignUp with facebook</a>
     </div>
     <div class="col-lg-6" >
@@ -168,6 +211,7 @@
             <p style="text-align: center;color: brown;"> Are you a prominent organization related to food in Sri Lanka, Then Join us as a Corporate user and broaden your market Locally and internationally</p>
             <a href="/Ambula/registration?user_type=commercial_user" style="" class="btn btn-danger col-lg-offset-4">Signup as Co-Operate User</a>
         </div>
+>>>>>>> upstream/master
     </div>
 </div>
 </body>

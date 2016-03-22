@@ -98,6 +98,10 @@
         .container {
             width: 99%;
         }
+
+        .btn{
+            border-radius: 0px;
+        }
     </style>
 </head>
 
@@ -212,11 +216,8 @@
     </div>
     <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
         <a href="/Ambula/login" class="btn btn-default ">Skip >></a>
-        <button class="btn btn-success">Save</button>
-
+        <button class="btn btn-success" style="width: 100px">Save</button>
     </div>
-
-
     </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor

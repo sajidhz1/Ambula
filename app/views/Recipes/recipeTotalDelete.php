@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--    <link href="/Ambula/public/css/w3.css" rel="stylesheet">-->
+    <!--    <link href="/Ambula/public/css/w3.css" rel="stylesheet">-->
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
@@ -47,16 +47,6 @@
             text-overflow: ellipsis;
             padding-bottom: 5px;
             border-bottom: 1px solid grey;
-        }
-
-        .recipe-item:nth-child(3n+2) {
-            border-right: 1px dotted #a1a1a1;
-            border-left: 1px dotted #a1a1a1;
-        }
-
-        .recipe-item {
-            border-bottom: 1px dotted #a1a1a1;
-            height: 240px;
         }
 
         .form-group {
@@ -149,7 +139,6 @@
                         string += "</div>";
                         i++;
                     }
-                    //alert(string);
                     $("#search-content").html(string);
                 }
             });
@@ -279,14 +268,14 @@
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-green');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('Selected Recipe Was Successfully Deleted From Ambula&trade;');
         </script>";
-} else if(isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
+} else if (isset($_SESSION['recipeDeleted']) && $_SESSION['recipeDeleted'] == false) {
     echo "
         <script type='text/javascript'>
             $('#toastMessage').fadeIn(400).delay(3000).fadeOut(400);
             $('#toastMessage').attr('class', 'w3-container w3-red');
-            $('#toastMessage').html('Selected Recipe was Successfully deleted from Ambula&trade;');
+            $('#toastMessage').html('An Error Occurred While Deleting The Recipe From Ambula&trade;');
         </script>";
 }
 unset($_SESSION['recipeDeleted']);
