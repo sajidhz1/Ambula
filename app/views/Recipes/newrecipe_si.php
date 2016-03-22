@@ -13,9 +13,8 @@
     <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/range-slider.css" rel="stylesheet" media="screen"/>
 
-	  <!-- fav icon -->
+    <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
-
 
 
     <script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
@@ -46,55 +45,57 @@
     <h4 class="txt-red">අළුත් වට්ටෝරුවක්</h4>
 
     <form action="/recipes/addRecipeSi" method="post">
-    <div class="col-lg-7 hgt500" style="padding-top:15px;background: #e8e8e8;">
-        <div class="form-group col-lg-9 col-sm-12">
-            <!-- Username -->
-            <label class="control-label" for="recipetitle">වට්ටෝරුවේ නම </label>
+        <div class="col-lg-7 hgt500" style="padding-top:15px;background: #e8e8e8;">
+            <div class="form-group col-lg-9 col-sm-12">
+                <!-- Username -->
+                <label class="control-label" for="recipetitle">වට්ටෝරුවේ නම </label>
 
-            <div class="controls">
-                <input type="text" id="recipetitle" name="title" placeholder="" class="form-control"
-                       required>
+                <div class="controls">
+                    <input type="text" id="recipetitle" name="title" placeholder="" class="form-control"
+                           required>
 
-                <span class="help-block with-errors" id="recipe-error"></span>
-            </div>
-            <input type="hidden" name="idrecipe"  value="<?=$_GET['r'] ?>" >
-        </div>
-        <div class="col-lg-12">
-        <h4 style="margin-bottom: 15px;"> ක්‍රමය</h4>
-
-        <div class="input-group" style="width: 100%">
-            <div class="col-lg-12 col-xs-12 col-sm-12">
-                <textarea  id="editor1" name="description"  class="ckeditor col-lg-12 col-sm-12" rows="15" cols="40"></textarea>
-            </div>
-            <br>
-        </div>
-        </div>
-
-    </div>
-    <div class="col-lg-5 hgt500" style="background-color: #f4f4f4; border: 1px solid #B2B2B2;overflow-y: scroll;">
-        <div class="ingredients-control" >
-        <h4>අවශ්ය දෑ</h4>
-        <div class="entry">
-            <div class="input-group" style="width: 100%">
-                <div class="col-lg-10 col-xs-11 col-sm-10">
-                    <input class="form-control" name="ingname[]"  type="text"
-                           placeholder="උදා: තේකොළ මේස හැදි 2ක් "/>
+                    <span class="help-block with-errors" id="recipe-error"></span>
                 </div>
-                <div class="col-lg-1 col-xs-1 col-sm-2">
+                <input type="hidden" name="idrecipe" value="<?= $_GET['r'] ?>">
+            </div>
+            <div class="col-lg-12">
+                <h4 style="margin-bottom: 15px;"> ක්‍රමය</h4>
 
-                    <button class="btn btn-success btn-add" type="button">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-
+                <div class="input-group" style="width: 100%">
+                    <div class="col-lg-12 col-xs-12 col-sm-12">
+                        <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
+                                  cols="40"></textarea>
+                    </div>
+                    <br>
                 </div>
-                <br>
+            </div>
+
+        </div>
+        <div class="col-lg-5 hgt500" style="background-color: #f4f4f4; border: 1px solid #B2B2B2;overflow-y: scroll;">
+            <div class="ingredients-control">
+                <h4>අවශ්ය දෑ</h4>
+
+                <div class="entry">
+                    <div class="input-group" style="width: 100%">
+                        <div class="col-lg-10 col-xs-11 col-sm-10">
+                            <input class="form-control" name="ingname[]" type="text"
+                                   placeholder="උදා: තේකොළ මේස හැදි 2ක් "/>
+                        </div>
+                        <div class="col-lg-1 col-xs-1 col-sm-2">
+
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+
+                        </div>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
 
         <div class="col-lg-offset-5">
-            <button class="btn btn-success btn-lg" style="margin-top: 5px;">යොමු කරන්න </button>
+            <button class="btn btn-success btn-lg" style="margin-top: 5px;">යොමු කරන්න</button>
         </div>
 
     </form>
@@ -105,8 +106,7 @@
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.config.height = 500;
-    CKEDITOR.replace( 'editor1');
-
+    CKEDITOR.replace('editor1');
 
 
 </script>

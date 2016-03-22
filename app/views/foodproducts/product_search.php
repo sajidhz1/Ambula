@@ -18,7 +18,6 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
-
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -33,7 +32,7 @@
     <![endif]-->
     <style>
 
-        .product-brand{
+        .product-brand {
             float: none;
             margin: 0 auto;
 
@@ -46,7 +45,6 @@
             padding: 5px;
             text-align: center;
 
-
         }
 
         .box .inner {
@@ -57,10 +55,11 @@
 
         }
 
-        .product_thumb{
+        .product_thumb {
             position: relative;
 
         }
+
         header.carousel {
             height: 50%;
         }
@@ -77,7 +76,6 @@
             background-position: center;
             background-size: cover;
         }
-
 
 
     </style>

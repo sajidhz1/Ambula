@@ -183,9 +183,11 @@
                         <div class="col-lg-6">
                             <form class="form-horizontal" role="form">
                                 <div class="input-group">
-                                    <input type="text" class="form-control input-lg" placeholder="Search for Products...">
+                                    <input type="text" class="form-control input-lg"
+                                           placeholder="Search for Products...">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search input-lg"></i></button>
+                                        <button class="btn btn-default" type="button"><i
+                                                class="glyphicon glyphicon-search input-lg"></i></button>
                                     </span>
                                 </div>
                             </form>
@@ -228,7 +230,8 @@
         <h2 class="pg-title txt-red"><span>Partners</span></h2>
         <?php $partners = json_decode($this->getAllCooperateProfiles(), true);
 
-        foreach ($partners as $partner) { ?>
+        foreach ($partners as $partner) {
+            ?>
             <a href="/Ambula/home/profile/<?= $partner['user_name'] ?>">
                 <div class="col-lg-2" style="margin-bottom: 20px;">
                     <img

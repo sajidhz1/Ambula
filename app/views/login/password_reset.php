@@ -6,9 +6,9 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen" />
-    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen" />
-    <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen" />
+    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="http://localhost/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
@@ -19,20 +19,20 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery.leanModal.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-    <link type="text/css" rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="/public/css/style.css"/>
 
     <style>
-        body{
-            background: url(/public/img/tile.jpg)  repeat fixed;
-
-        }
-        .container{
-
+        body {
+            background: url(/public/img/tile.jpg) repeat fixed;
 
         }
 
-        .error-message{
+        .container {
+
+        }
+
+        .error-message {
             color: #ff0000;
             padding: 5px;
             font-size: 1.1em;
@@ -63,35 +63,44 @@
                     <div class="panel-body">
                         <div class="text-center">
                             <img src="/Ambula/public/img/fav_ico.png" class="login" height="70">
+
                             <h3 class="text-center">Forgot Password?</h3>
+
                             <p>If you have forgotten your password - reset it here.</p>
+
                             <div class="panel-body">
 
-                                <form class="form" data-toggle="validator"  action="sendPasswordResetEmail" method="post" onsubmit=""><!--start form--><!--add form action as needed-->
+                                <form class="form" data-toggle="validator" action="sendPasswordResetEmail" method="post"
+                                      onsubmit=""><!--start form--><!--add form action as needed-->
                                     <fieldset>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                                                <span class="input-group-addon"><i
+                                                        class="glyphicon glyphicon-envelope color-blue"></i></span>
                                                 <!--EMAIL ADDRESS-->
-                                                <input id="emailInput" name="useremail" placeholder="email address" class="form-control" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="" type="email">
+                                                <input id="emailInput" name="useremail" placeholder="email address"
+                                                       class="form-control"
+                                                       oninvalid="setCustomValidity('Please enter a valid email address!')"
+                                                       onchange="try{setCustomValidity('')}catch(e){}" required=""
+                                                       type="email">
 
-                                        </div>
+                                            </div>
                                             <span class="help-block with-errors"></span>
                                         </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input class="btn btn-lg btn-primary btn-block"  value="Continue" type="submit">
-                                        </div>
-                                    </fieldset>
-                                </form><!--/end form-->
-
                             </div>
+                            <div class="form-group">
+                                <input class="btn btn-lg btn-primary btn-block" value="Continue" type="submit">
+                            </div>
+                            </fieldset>
+                            </form><!--/end form-->
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

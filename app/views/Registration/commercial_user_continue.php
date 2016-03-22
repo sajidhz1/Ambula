@@ -99,7 +99,7 @@
             width: 99%;
         }
 
-        .btn{
+        .btn {
             border-radius: 0px;
         }
     </style>
@@ -171,8 +171,8 @@
 
                     <div class="input-group" style="width: 100%">
                         <div class="col-lg-12 col-xs-12 col-sm-12">
-                        <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
-                                  cols="40"></textarea>
+                            <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
+                                      cols="40"></textarea>
 
                         </div>
                         <br>
@@ -213,11 +213,11 @@
             </div>
 
 
-    </div>
-    <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
-        <a href="/Ambula/login" class="btn btn-default ">Skip >></a>
-        <button class="btn btn-success" style="width: 100px">Save</button>
-    </div>
+        </div>
+        <div class="text-center" style="margin-top: 5px;margin-bottom: 20px;">
+            <a href="/Ambula/login" class="btn btn-default ">Skip >></a>
+            <button class="btn btn-success" style="width: 100px">Save</button>
+        </div>
     </form>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor

@@ -28,10 +28,11 @@ class Promotion extends Controller
 
     public function addNewPromotion()
     {
-       $this->promotion->validateAndInsertNewPromo();
+        $this->promotion->validateAndInsertNewPromo();
     }
 
-    public function promotionSuccess(){
+    public function promotionSuccess()
+    {
         $this->view('promotions/promotionSuccessMessage');
     }
 
@@ -63,7 +64,8 @@ class Promotion extends Controller
 
     //==================================================Now implemented=======================================//
 
-    public function viewPromotionsTest(){
+    public function viewPromotionsTest()
+    {
 
         $promotion_type = $_POST["promotoionType"];
 
@@ -110,7 +112,8 @@ class Promotion extends Controller
     }
 
     //to display information about a single promotion on a modal when a promotion tile is clicked
-    public function viewSinglePromotion(){
+    public function viewSinglePromotion()
+    {
 
         $promoId = $_POST["promotoionId"];
 

@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title><?=$this->recipes->recipename; ?></title>
-    <meta property="og:image"              content="http://theambula.lk/uploads/<?=$this->recipes->recipeId; ?>/facebook.jpg" />
-    <meta property="og:url"                content="http://theambula.lk/recipes/viewRecipe/<?=$this->recipes->recipeId; ?>" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="<?php echo $this->recipes->recipename; ?>" />
+    <title><?= $this->recipes->recipename; ?></title>
+    <meta property="og:image" content="http://theambula.lk/uploads/<?= $this->recipes->recipeId; ?>/facebook.jpg"/>
+    <meta property="og:url" content="http://theambula.lk/recipes/viewRecipe/<?= $this->recipes->recipeId; ?>"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="<?php echo $this->recipes->recipename; ?>"/>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@
     <script>
         $(document).on('click', '#btn-collapse', function (e) {
             e.preventDefault();
-            $("html, body").animate({ scrollTop: 400 }, 500);
+            $("html, body").animate({scrollTop: 400}, 500);
         });
 
     </script>
@@ -58,10 +58,11 @@
 
 <body>
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=753864634705819";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
@@ -70,7 +71,7 @@
 
 <div class="container-fluid pages">
 
-<div class="row" >
+<div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
 
         <?php $arr = json_decode($this->getRecipeImages($this->recipes->recipeId), true);
@@ -85,8 +86,10 @@
                     if (file_exists($img['image_url'])) {
                         ?>
 
-                        <a href="http://localhost/Ambula/<?= $img['image_url']; ?>" title="<?php echo $this->recipes->recipename; ?>" data-gallery=""
-                            ><img src="http://localhost/Ambula/<?= $img['image_url']; ?>" style="margin: 5px;" height="100" width="100"/></a>
+                        <a href="http://localhost/Ambula/<?= $img['image_url']; ?>"
+                           title="<?php echo $this->recipes->recipename; ?>" data-gallery=""
+                            ><img src="http://localhost/Ambula/<?= $img['image_url']; ?>" style="margin: 5px;"
+                                  height="100" width="100"/></a>
 
                     <?php
                     } else {
@@ -95,16 +98,16 @@
             </div>
 
         </div>
-        <div class=" col-md-5 col-lg-5 recipe-details" >
+        <div class=" col-md-5 col-lg-5 recipe-details">
             <h1 class="recipe-title"><span><?php echo $this->recipes->recipename; ?></span></h1>
 
             <div class="row">
                 <span class="recipe-tags">Tags : <?= $this->recipes->tag; ?></span>
             </div>
             <div class="row">
-                <div class="recipe-time col-lg-5" ><h3 class="time">පිසුම් කාලය</h3><br>
+                <div class="recipe-time col-lg-5"><h3 class="time">පිසුම් කාලය</h3><br>
 
-                    <h4 class="time"><?php $time = explode(":", $this->recipes->time); ?><?php if(intval($time[0]) !=0 ) echo  'පැය '.$time[0]."<br>"; ?>  <?php if(intval($time[1]) !=0 ) echo 'විනාඩි '.$time[1]."" ?></h4>
+                    <h4 class="time"><?php $time = explode(":", $this->recipes->time); ?><?php if (intval($time[0]) != 0) echo 'පැය ' . $time[0] . "<br>"; ?>  <?php if (intval($time[1]) != 0) echo 'විනාඩි ' . $time[1] . "" ?></h4>
 
                 </div>
 
@@ -114,83 +117,101 @@
                          <img src="/public/img/cold.png" width="30" height="30">
                          <img src="/public/img/oven.png" width="30" height="30">
                      </div> -->
-                <input id="input-2c" class="rating" min="0" max="5" step="0.1" value="<?=$this->recipes->ratings; ?>" data-size="xs"
+                <input id="input-2c" class="rating" min="0" max="5" step="0.1" value="<?= $this->recipes->ratings; ?>"
+                       data-size="xs"
                        data-show-caption="false" data-glyphicon="false" value="0" data-rating-class="rating-fa">
 
             </div>
             <div class="row  mrg50B">
 
-                <?php if($this->checkRecipe_si($this->recipes->recipeId) == 1){ ?>
-                    <a href="/Ambula/recipes/viewRecipe_si?r=<?=$this->recipes->recipeId; ?>"  style="font-weight: bolder;margin: 5px;" class="btn btn-danger" >රෙසිපිය සිංහලෙන්</a>
+                <?php if ($this->checkRecipe_si($this->recipes->recipeId) == 1) { ?>
+                    <a href="/Ambula/recipes/viewRecipe_si?r=<?= $this->recipes->recipeId; ?>"
+                       style="font-weight: bolder;margin: 5px;" class="btn btn-danger">රෙසිපිය සිංහලෙන්</a>
                 <?php } ?>
 
 
-                <div class="social-buttons  pull-right" >
+                <div class="social-buttons  pull-right">
 
-                    <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                    <a class="btn btn-primary"
+                       href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12"
+                       onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')"
+                       target="_blank">
                         <i class="fa fa-facebook"></i> Share on Facebook
                     </a>
 
-                    <a class="btn btn-info" href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
+                    <a class="btn btn-info"
+                       href="https://twitter.com/intent/tweet?url=http%3A%2F%2Ftheambula.lk%2Frecipes%2FviewRecipe%2F31%3Fid%3D3&text=TEXT&via=theambula"
+                       target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
 
                 </div>
             </div>
-            <div class="row" >
+            <div class="row">
 
                 <?php $result = $this->getRecipeAddedBy($this->recipes->recipeId);
-                if(Session::get('uid') == $result->users_user_id){
+                if (Session::get('uid') == $result->users_user_id) {
                     ?>
 
-                    <a href="/recipes/updateRecipe?id=<?=$this->recipes->recipeId; ?>" class="btn btn-default" >Update Recipe</a>
-                <?php } else{ ?>
-                    <span style="color:brown;float: left; position: absolute;bottom:8px;left:8px;"><?=$this->recipes->view; ?><i>views</i> <i class="glyphicon glyphicon-eye-open"></i></span>
+                    <a href="/recipes/updateRecipe?id=<?= $this->recipes->recipeId; ?>" class="btn btn-default">Update
+                        Recipe</a>
+                <?php } else { ?>
+                    <span
+                        style="color:brown;float: left; position: absolute;bottom:8px;left:8px;"><?= $this->recipes->view; ?>
+                        <i>views</i> <i class="glyphicon glyphicon-eye-open"></i></span>
 
                     <p id="recipe-user"><i>Recipe by</i>
-                        <a  href="/home/profile?id=<?=$result->users_user_id; ?>"><?php echo $result->first_name; ?></a></p>
+                        <a href="/home/profile?id=<?= $result->users_user_id; ?>"><?php echo $result->first_name; ?></a>
+                    </p>
                 <?php } ?>
 
             </div>
 
         </div>
 
-        <div class="col-lg-2 col-md-2 ad-space"><img style="height: 275px;width: 200px;" src="<?php echo URL; ?>/public/img/marina.jpg"></div>
+        <div class="col-lg-2 col-md-2 ad-space"><img style="height: 275px;width: 200px;"
+                                                     src="<?php echo URL; ?>/public/img/marina.jpg"></div>
 
     </div>
 
     <div class="row">
 
 
-        <div class="col-lg-3 col-md-3" >
+        <div class="col-lg-3 col-md-3">
             <div class="panel panel-default">
-                <div class="panel-heading"> <h3 style="text-align: center;">අවශ්‍ය දෑ</h3></div>
+                <div class="panel-heading"><h3 style="text-align: center;">අවශ්‍ය දෑ</h3></div>
 
                 <ul class="list-group">
                     <?php $arrsub = json_decode($this->getRecipeIngredients($this->recipes->recipeId), true);
 
                     foreach ($arrsub as $ingredient) {
-                        if($this->recipes->lang != 'si'){
+                        if ($this->recipes->lang != 'si') {
                             ?>
-                            <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#" title ="<?php echo $ingredient['ing_si']; ?>" style="font-size: 0.9em;" ><?php echo $ingredient['title']; ?> </a></label><span style="margin-left: 5px;"
-                                                                                                                                                                                                                                             class="badge"><?php echo " ".$ingredient['qty'] . " " . $ingredient['units']; ?></span></li>
+                            <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#"
+                                                                                                     title="<?php echo $ingredient['ing_si']; ?>"
+                                                                                                     style="font-size: 0.9em;"><?php echo $ingredient['title']; ?> </a></label><span
+                                style="margin-left: 5px;"
+                                class="badge"><?php echo " " . $ingredient['qty'] . " " . $ingredient['units']; ?></span></li>
 
-                                   <?php }else { ?>
-                            <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#" title ="<?php echo $ingredient['ing_si']; ?>" style="font-size: 0.9em;" ><?php echo $ingredient['ing_si']; ?> </a></label><span style="margin-left: 5px;"
-                                                                                                                                                                                                                                              class="badge"><?php echo " ".$ingredient['units']. " " . $ingredient['qty']; ?></span></li>
+                                   <?php } else { ?>
+                            <li class="list-group-item" style="background-color: #eee8aa"0><label><a href="#"
+                                                                                                     title="<?php echo $ingredient['ing_si']; ?>"
+                                                                                                     style="font-size: 0.9em;"><?php echo $ingredient['ing_si']; ?> </a></label><span
+                                style="margin-left: 5px;"
+                                class="badge"><?php echo " " . $ingredient['units'] . " " . $ingredient['qty']; ?></span></li>
 
-                                <?php }} ?>
+                                <?php }
+                    } ?>
                 </ul>
 
             </div>
 
 
-
         </div>
 
 
-        <div class="col-lg-6" >
+        <div class="col-lg-6">
 
             <div class="panel panel-default">
-                <div class="panel-heading"> <h3 style="text-align: center;">ක්‍රමය</h3></div>
+                <div class="panel-heading"><h3 style="text-align: center;">ක්‍රමය</h3></div>
                 <div class="panel-body">
                     <?php $arrdesc = json_decode($this->getRecipeDescription($this->recipes->recipeId), true);
                     $i = 0;
@@ -198,16 +219,17 @@
                         ++$i;
                         ?>
                         <div class="col-lg-12 col-md-12 recipe-procedure"><h5 style="color:brown;">Step <?= $i ?>.</h5>
+
                             <p style="color: #333"><?= $description['description_en'] ?></p>
-                            <?php if(file_exists($description['image_url'])) { ?>
-                                <a href="/<?= $description['image_url']; ?>" data-gallery="" style="position: relative;right: 5px;margin:10px;color: #902333">view image</a>
+                            <?php if (file_exists($description['image_url'])) { ?>
+                                <a href="/<?= $description['image_url']; ?>" data-gallery=""
+                                   style="position: relative;right: 5px;margin:10px;color: #902333">view image</a>
                             <?php } ?>
                         </div>
 
                     <?php } ?>
                 </div>
             </div>
-
 
 
         </div>
@@ -233,18 +255,20 @@
 
                             <li>
                                 <div class="commenterImage">
-                                    <img src="http://lorempixel.com/50/50/people/6" />
+                                    <img src="http://lorempixel.com/50/50/people/6"/>
                                 </div>
                                 <div class="commentText">
-                                    <p class=""><?=$comment['text'] ?></p> <span class="date sub-text"><?=$comment['date'] ?></span>
+                                    <p class=""><?= $comment['text'] ?></p> <span
+                                        class="date sub-text"><?= $comment['date'] ?></span>
 
                                 </div>
                             </li>
-                        <?php  } ?>
+                        <?php } ?>
                     </ul>
-                    <form class="form-inline" role="form" method="post" id="comment-form" >
+                    <form class="form-inline" role="form" method="post" id="comment-form">
                         <div class="form-group">
-                            <input class="form-control" name="text" id="comment" type="text" placeholder="Your comments" />
+                            <input class="form-control" name="text" id="comment" type="text"
+                                   placeholder="Your comments"/>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-default">Add</button>
@@ -296,7 +320,7 @@
 <script>
     $(document).on('click', '#btn-collapse', function (e) {
         e.preventDefault();
-        $("html, body").animate({ scrollTop: 400 }, 500);
+        $("html, body").animate({scrollTop: 400}, 500);
     });
 
 
@@ -311,11 +335,11 @@
             success: function (responseText) {
 
                 $('.commentList').append(' <li><div class="commenterImage"><img src="http://lorempixel.com/50/50/people/6" /></div>'
-                +'<div class="commentText"><p class="">'+$('#comment').val()+
-                '</p> <span class="date sub-text">'+ new Date($.now()) +'</span></div></li>');
+                + '<div class="commentText"><p class="">' + $('#comment').val() +
+                '</p> <span class="date sub-text">' + new Date($.now()) + '</span></div></li>');
 
 
-                $('#comment').val('') ;
+                $('#comment').val('');
             }
         });
 

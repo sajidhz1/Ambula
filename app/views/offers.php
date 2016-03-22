@@ -49,7 +49,7 @@
 
 <body>
 <!--Header START -->
-<?php $this->view('_template/navigation_menu',"promotions") ?>
+<?php $this->view('_template/navigation_menu', "promotions") ?>
 
 <div class="container pages">
     <h2>No Promotions Added Yet</h2>

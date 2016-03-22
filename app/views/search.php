@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Search Results for <?=$_GET['q'] ?></title>
+    <title>Search Results for <?= $_GET['q'] ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
@@ -33,20 +33,26 @@
     <![endif]-->
 
     <style>
-        .search-result-heading{
-            padding:0px 0px 0px 10px; line-height:40px; border-bottom:2px solid #000; border-color:rgba(0,0,0,0.3);
+        .search-result-heading {
+            padding: 0px 0px 0px 10px;
+            line-height: 40px;
+            border-bottom: 2px solid #000;
+            border-color: rgba(0, 0, 0, 0.3);
             text-align: left;
-            color:#dc4238;
+            color: #dc4238;
         }
-        h5{
+
+        h5 {
             text-decoration: underline;
             color: #333;
         }
-        .recipe-item:nth-child(3n+2){
+
+        .recipe-item:nth-child(3n+2) {
             border-right: 1px dotted #a1a1a1;
             border-left: 1px dotted #a1a1a1;
         }
-        .recipe-item{
+
+        .recipe-item {
             border-bottom: 1px dotted #a1a1a1;
             height: 240px;
         }
@@ -77,30 +83,34 @@
         <br>
         <h4>Categories</h4>
         <ul style="list-style-type: none;">
-        <?php
-        $arr=json_decode($this->viewCategories(),true);
-        foreach($arr as $category)
-        {
-        ?>
-            <li><a href="" style=""> <?=$category['title'] ?></a> <span style="color: brown;font-weight: 500;">></span></li>
-        <?php } ?>
+            <?php
+            $arr = json_decode($this->viewCategories(), true);
+            foreach ($arr as $category) {
+                ?>
+                <li><a href="" style=""> <?= $category['title'] ?></a> <span
+                        style="color: brown;font-weight: 500;">></span></li>
+            <?php } ?>
 
         </ul>
     </div>
     <div class="col-lg-8" style="height: 400px;">
-        <h3 class="search-result-heading">Showing results for "<?=$_GET['q'] ?>"</h3>
+        <h3 class="search-result-heading">Showing results for "<?= $_GET['q'] ?>"</h3>
+
         <div class="col-lg-12" style="background: #999999;height: 75px;"></div>
         <div id="search-content">
 
-        <?php $recipe_array = json_decode($this->searchResults(),true);
-           foreach($recipe_array as $recipe){
-        ?>
-               <a class="col-lg-4 recipe-item" href="/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe'] ?>" style="display: block;">
-                   <div style="height: 150px;overflow: hidden;"><img  class="center-block" src="/Ambula/uploads/<?=$recipe['idRecipe'] ?>/thumb.jpg" style="width: 150px;margin-top: 10px;"> </div>
-                   <h4 style="text-align: center;"><?=$recipe['title'] ?></h4>
-               </a>
-        <?php } ?>
-            </div>
+            <?php $recipe_array = json_decode($this->searchResults(), true);
+            foreach ($recipe_array as $recipe) {
+                ?>
+                <a class="col-lg-4 recipe-item" href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe'] ?>"
+                   style="display: block;">
+                    <div style="height: 150px;overflow: hidden;"><img class="center-block"
+                                                                      src="/Ambula/uploads/<?= $recipe['idRecipe'] ?>/thumb.jpg"
+                                                                      style="width: 150px;margin-top: 10px;"></div>
+                    <h4 style="text-align: center;"><?= $recipe['title'] ?></h4>
+                </a>
+            <?php } ?>
+        </div>
     </div>
     <div class="col-lg-2" style="height: 400px;background: #888888;">
 
