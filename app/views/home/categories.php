@@ -33,7 +33,8 @@
     <h1 class="pg-title txt-yellow"><span>Categories</span></h1>
 
     <div class="container  col-lg-12" id="category-grid">
-        <div class="row thumbnail-grid flex">
+        <div class="row ">
+            <div class="thumbnail-grid flex">
             <?php
             $arr = json_decode($this->viewCategories(), true);
             foreach ($arr as $category) {
@@ -48,7 +49,7 @@
             <?php
             }
             ?>
-
+            </div>
         </div>
     </div>
 </div>
