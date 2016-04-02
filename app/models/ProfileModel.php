@@ -34,7 +34,7 @@ class ProfileModel
     public function updateUserField()
     {
         if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == true) {
-            if (isset($_SESSION['username']) && ($_SESSION['user_account_type'] == 1 || $_SESSION['user_account_type'] == 3)) {
+            if (isset($_SESSION['username']) && ($_SESSION['user_account_type'] == 1 || $_SESSION['user_account_type'] == 3 || $_SESSION['user_account_type'] == 2)) {
                 $table = $_POST['user_table_type'];
                 $column = $_POST['user_detail_column'];
                 if ($table == 'users') {
@@ -42,6 +42,10 @@ class ProfileModel
                     $result = $this->db->prepare($sql);
                     return $result->execute(array(':user_value' => $_POST['user_value'], ':logged_in_user' => $_SESSION['uid']));
                 } else if ($table == 'user_personal') {
+                    $sql = "UPDATE " . $table . " SET " . $column . "= :user_value WHERE users_user_id = :logged_in_user";
+                    $result = $this->db->prepare($sql);
+                    return $result->execute(array(':user_value' => $_POST['user_value'], ':logged_in_user' => $_SESSION['uid']));
+                } else if ($table == 'commercial_user') {
                     $sql = "UPDATE " . $table . " SET " . $column . "= :user_value WHERE users_user_id = :logged_in_user";
                     $result = $this->db->prepare($sql);
                     return $result->execute(array(':user_value' => $_POST['user_value'], ':logged_in_user' => $_SESSION['uid']));
@@ -57,7 +61,6 @@ class ProfileModel
     }
 
     //This method is used to check whether the typed in password matches the current user password in the db
-
     public function updatePassword()
     {
         if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == true && isset($_SESSION['username'])) {
@@ -107,9 +110,18 @@ class ProfileModel
         if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == true && isset($_SESSION['username'])) {
 
             $loggedInUserId = $_SESSION['uid'];
+            $loggedInUserType = $_SESSION['user_account_type'];
             $name = "upload_input"; //name attribute value of the input field
 
-            $target_dir = "uploads/profile/personal_user/" . $loggedInUserId . "/";
+            if ($loggedInUserType == 2) {
+                $target_dir = "uploads/profile/commercial_user/" . $loggedInUserId . "/";
+            } else {
+                $target_dir = "uploads/profile/personal_user/" . $loggedInUserId . "/";
+            }
+
+            //To create the directory if its not created already
+            $uploadOk = mkdir($target_dir);
+
             $target_file = $target_dir . basename($_FILES[$name]["name"]);
             $uploadOk = 1;
 
@@ -150,8 +162,8 @@ class ProfileModel
             } else {
                 if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir . $loggedInUserId . '.' . $imageFileType)) {
 
-                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId .'.card.jpg', 500);
-                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId .'.thumb.jpg', 200);
+                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.card.jpg', 500);
+                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.thumb.jpg', 200);
 
                     return true;
                 } else {
@@ -201,4 +213,69 @@ class ProfileModel
         imagejpeg($virtual_image, $dest);
     }
 
+
+    ////=============Cooperate user Profile===============///
+
+    public function  getCooperateUserDetails($user_name = '')
+    {
+        $array = $this->db->query("SELECT commercial_user.*, users.user_name,users.user_email FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
+        return json_encode($array);
+    }
+
+    public function getAllPromotionsByUser($user_name = "")
+    {
+
+        $sql = $this->db->query("SELECT promotion.*,users.user_name  FROM users,promotion WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getAllRecipesByUser($user_name = "")
+    {
+
+        $sql = $this->db->query("SELECT recipes.*,users.user_name  FROM users,recipes WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getCategoriesByUser()
+    {
+        $cooperate_user_id = $_SESSION['coporate_user_id'];
+        $sql = $this->db->query("SELECT title from cooperate_user_has_product_categories , product_categories
+                                WHERE cooperate_user_has_product_categories.Product_categories_id_product_categories = product_categories.id_product_categories
+                                   AND cooperate_user_has_product_categories.cooperate_user_id = $cooperate_user_id")->fetchAll(PDO::FETCH_ASSOC);
+
+
+        return json_encode($sql);
+    }
+
+
+    /*=====================================================================*/
+
+    public function refreshUserField()
+    {
+        if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == true) {
+            if (isset($_SESSION['username']) && ($_SESSION['user_account_type'] == 1 || $_SESSION['user_account_type'] == 3 || $_SESSION['user_account_type'] == 2)) {
+                $table = $_POST['userTable'];
+                $column = $_POST['userColumn'];
+                if ($table == 'users') {
+                    $sql = "SELECT " . $column . " FROM " . $table . "WHERE user_id = :logged_in_user";
+                    $query = $this->db->prepare($sql);
+                    $query->execute(array(':logged_in_user' => $_SESSION['uid']));
+                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                    return json_encode($result);
+                } else {
+                    $sql = "SELECT " . $column . " FROM " . $table . " WHERE users_user_id = :logged_in_user";
+                    $query = $this->db->prepare($sql);
+                    $query->execute(array(':logged_in_user' => $_SESSION['uid']));
+                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+                    return json_encode($result);
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

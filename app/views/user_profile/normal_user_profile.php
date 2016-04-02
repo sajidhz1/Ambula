@@ -41,7 +41,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <style>
+    <style type="text/css">
         /* Profile sidebar */
 
         .profile-userpic {
@@ -69,7 +69,6 @@
             color: #5a7391;
             font-size: 16px;
             font-weight: 600;
-            margin-bottom: 7px;
             margin: 5px 0px 5px 18%;
             float: left;
         }
@@ -86,10 +85,10 @@
 
         /* Profile Content */
         .profile-content {
-            padding: 20px;
-            background: #fff;
-            padding-right: 350px;
-            padding-top: 10px;
+            /*            padding: 20px;
+                        background: #fff;
+                        padding-right: 350px;
+                        padding-top: 10px;*/
         }
 
         .infoFeildName {
@@ -138,7 +137,7 @@
             color: white;
         }
 
-        /*css related to modal update feild contain table*/
+        /*css related to modal update field contain table*/
 
         .modalInfoFeildName {
             color: #5a7391;
@@ -165,31 +164,12 @@
         /*CSS effect for the profile pic update button showing overlay*/
         /*============================================================*/
 
-        .effects {
-            /*
-                        padding-left: 15px;
-            */
-        }
-
         .effects .img {
             position: relative;
             float: left;
             margin-bottom: 5px;
             overflow: hidden;
         }
-
-        /*      un used styles for overlay by DRD
-                .effects .img:nth-child(n) {
-                    margin-right: 5px;
-                }
-
-                .effects .img:first-child {
-                    margin-left: -15px;
-                }
-
-                .effects .img:last-child {
-                    margin-right: 0;
-                }*/
 
         .effects .img img {
             display: block;
@@ -275,7 +255,7 @@
             display: none
         }
 
-        /*CSS for toast message saying user updae was success or not*/
+        /*CSS for toast message saying user update was success or not*/
         #toastMessage {
             width: 400px;;
             height: 70px;
@@ -345,12 +325,12 @@
         }
 
         //JS function to display the update success or failed message
-        function alertMessageDisplay(updateStatus){
+        function alertMessageDisplay(updateStatus) {
             $('#toastMessage').fadeIn(400).delay(2000).fadeOut(400);
-            if(updateStatus){
+            if (updateStatus) {
                 $('#toastMessage').attr('class', 'w3-container w3-green');
                 $('#toastMessage').html('Update Was Successfully Done');
-            }else{
+            } else {
                 $('#toastMessage').attr('class', 'w3-container w3-red');
                 $('#toastMessage').html('An Error Occurred While Updating The Field.! ');
             }
@@ -442,9 +422,8 @@
                                 userUpdated = true;
                                 displayUserInfo();
                                 alertMessageDisplay(userUpdated);
-
-                            }else{
-                                alertMessageDisplay(userUpdated);
+                            } else {
+                                alertMessageDisplay(false);
                             }
                         }
                     });
@@ -541,7 +520,7 @@
                         string += "<tr id='firstNameTr'>";
                         string += "<td class='infoFeildName'>First Name</td>";
                         string += "<td id='currFirstName'>" + myVar[i].first_name + "</td>";
-                        string += "<td class = 'firstName editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
+                        string += "<td class = 'editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>";
                         string += "</tr>";
 
                         string += "<tr id='lastNameTr'>";
@@ -598,11 +577,11 @@
                         $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
                         i++;
                     }
-                    if(userUpdated){
+                    if (userUpdated) {
                         $("#profile-content").html(string);
                         $('#viewInfoBtn').html('View Recipes');
                         userUpdated = false;
-                    }else{
+                    } else {
                         if (!!profileContent) {//tre when recipes are present int the #profile-content
                             $('#viewInfoBtn').html('View Info');
                             $("#profile-content").html(profileContent);
@@ -614,7 +593,6 @@
                         }
                     }
 
-
                 }
             });
         }
@@ -622,6 +600,7 @@
         //JS function display the profile pic update button overlay on the pro pic
         function displayOverlayButton() {
             if (Modernizr.touch) {
+
                 // show the close overlay button
                 $(".close-overlay").removeClass("hidden");
                 // handle the adding of hover class when clicked
@@ -685,7 +664,6 @@
                         <a id="uploadLink" class="expand">
                             <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
                         </a>
-
                         <input type="file" id="uploadInput" name="upload_input"/>
                         <a class="close-overlay hidden">x</a>
                     </div>
@@ -711,26 +689,27 @@
             </div>
             <!-- END SIDEBAR USER TITLE -->
         </div>
-        <div class="col-md-9 col-sm-12 ">
-            <div class="profile-content" id="profile-content">
+        <div class="w3-col l9 m9">
+
+            <div class="row profile-content" id="profile-content">
                 <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
                 foreach ($arrrecipe as $recipe) {
                     ?>
 
-                    <div class="col-lg-3" style="width:320px; min-height: 335.2px">
+                    <div class="w3-card-4 w3-col l3 m4 s12" style="margin:15px 15px;">
                         <a href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
-                            <div class="w3-card-4" style="width:300px; min-height: 335.2px">
-                                <img src="http://localhost/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
-                                     alt="Avatar" style="width:300px; height:250px;">
 
-                                <div class="w3-container" style="border-top: 1px solid grey;">
-                                    <h4><b><?= $recipe['title']; ?></b></h4>
+                            <img src="/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                 alt="Avatar" class="w3-col l12 m12 s12"/>
 
-                                    <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+                            <div class="w3-container w3-col m12 l12 s12">
+                                <h4><b><?= $recipe['title']; ?></b></h4>
 
-                                    <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
-                                </div>
+                                <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+
+                                <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
                             </div>
+
                         </a>
                     </div>
 

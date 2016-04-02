@@ -445,7 +445,7 @@ class Recipe
     //get categories array
     public function getCategoriesArray()
     {
-        $array = $this->db->query("SELECT idCategory,title, title_si ,thumb_url from recipe_category")->fetchAll(PDO::FETCH_ASSOC);
+        $array = $this->db->query("SELECT idCategory,title,thumb_url from recipe_category")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($array);
     }
 

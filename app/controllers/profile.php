@@ -21,7 +21,9 @@ class profile extends Controller
 
     }
 
-    public function index($user ='')
+    ////=============Normal user Profile===============///
+
+    public function index($user = '')
     {
         //echo $_GET['user'];
         if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"] == true && isset($_SESSION["username"]) && $_SESSION["username"] == $user) {
@@ -61,6 +63,20 @@ class profile extends Controller
         echo $this->profile->viewNormalUserInfo();
     }
 
+    ////=============Common user function ================///
+
+    //update the profile picture
+    public function updateProfilePicture()
+    {
+        echo $this->profile->updateProfilePicture();
+    }
+
+    //update password method for every user through their respective profiles
+    public function updatePassword()
+    {
+        echo $this->profile->updatePassword();
+    }
+
     //This method is used to check whether the typed in password matches the current user password in the db
     public function  checkPassword()
     {
@@ -73,17 +89,37 @@ class profile extends Controller
         echo $this->profile->updateUserField();
     }
 
-    //update password method for every user through their respective profiles
-    public function updatePassword()
+    //Function to refresh the single user field which was jus updated
+    public function refreshUserField()
     {
-        echo $this->profile->updatePassword();
+        echo $this->profile->refreshUserField();
     }
 
-    //update the profile picture
-    public function updateProfilePicture()
+    ///====================================================///
+
+
+    ////=============Cooperate user Profile===============///
+
+    public function getCooperateUserDetails()
     {
-        echo $this->profile->updateProfilePicture();
+        return $this->profile->getCooperateUserDetails($this->user_name);
     }
 
+    //To view all the promotions by a single commercial user
+    public function getAllPromotionsByUser($user_name = "")
+    {
+        return $this->profile->getAllPromotionsByUser($user_name);
+    }
 
+    //To view all the recipes by a single commercial user
+    public function getAllRecipesByUser($user_name = "")
+    {
+        return $this->profile->getAllRecipesByUser($user_name);
+    }
+
+    //To view which categories of food does a commercial user deals in
+    public function getCategoriesByUser()
+    {
+        return $this->profile->getCategoriesByUser();
+    }
 }
