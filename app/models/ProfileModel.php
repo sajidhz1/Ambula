@@ -150,8 +150,8 @@ class ProfileModel
             } else {
                 if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir . $loggedInUserId . '.' . $imageFileType)) {
 
-                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId .'.card.jpg', 500);
-                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId .'.thumb.jpg', 200);
+                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.card.jpg', 500);
+                    $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.thumb.jpg', 200);
 
                     return true;
                 } else {
@@ -201,4 +201,38 @@ class ProfileModel
         imagejpeg($virtual_image, $dest);
     }
 
+
+    ////=============Cooperate user Profile===============///
+
+    public function  getCooperateUserDetails($user_name = '')
+    {
+        $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
+        return json_encode($array);
+    }
+
+    public function getAllPromotionsByUser($user_name = "")
+    {
+
+        $sql = $this->db->query("SELECT promotion.*,users.user_name  FROM users,promotion WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getAllRecipesByUser($user_name = "")
+    {
+
+        $sql = $this->db->query("SELECT recipes.*,users.user_name  FROM users,recipes WHERE users_user_id = users.user_id AND user_name ='$user_name'")->fetchAll(PDO::FETCH_ASSOC);
+
+        return json_encode($sql);
+    }
+
+    public function getCategoriesByUser($cooperate_user_id = "")
+    {
+        $sql = $this->db->query("SELECT title from cooperate_user_has_product_categories , product_categories
+                                WHERE cooperate_user_has_product_categories.Product_categories_id_product_categories = product_categories.id_product_categories
+                                   AND cooperate_user_has_product_categories.cooperate_user_id = $cooperate_user_id")->fetchAll(PDO::FETCH_ASSOC);
+
+
+        return json_encode($sql);
+    }
 }

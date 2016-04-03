@@ -99,14 +99,14 @@ class PromotionModel
                 if (!is_dir("uploads/promotions/" . $lastPromoId)) {
                     mkdir("uploads/promotions/" . $lastPromoId);
                 }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
+                $image_url = $this->imageUpload("promo_image", $lastPromoId);
                 $lastPromoId = null;
             } else {
                 $lastPromoId++;
                 if (!is_dir("uploads/promotions/" . $lastPromoId)) {
                     mkdir("uploads/promotions/" . $lastPromoId);
                 }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId, 1);
+                $image_url = $this->imageUpload("promo_image", $lastPromoId);
                 $lastPromoId = null;
             }
 
@@ -206,7 +206,7 @@ class PromotionModel
         return $data;
     }
 
-    public function imageUpload($name, $path, $type)
+    public function imageUpload($name,$path)
     {
 
         $target_dir = "uploads/promotions/" . $path . "/";
@@ -248,11 +248,27 @@ class PromotionModel
             return false;
             // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-                return $target_file;
-            } else {
-                return false;
+            $info = getimagesize($_FILES[$name]["tmp_name"]);
+            if ($info['mime'] == 'image/jpeg') {
+                $image = imagecreatefromjpeg($_FILES[$name]["tmp_name"]);
             }
+            elseif ($info['mime'] == 'image/gif') {
+                $image = imagecreatefromgif($_FILES[$name]["tmp_name"]);
+            }
+            elseif ($info['mime'] == 'image/png') {
+                $image = imagecreatefrompng($_FILES[$name]["tmp_name"]);
+            }
+
+            imagejpeg($image, $target_dir.$path.'.jpg', 80);
+
+//            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+//
+//
+//
+//                return $target_file;
+//            } else {
+//                return false;
+//            }
         }
     }
 

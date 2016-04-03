@@ -10,26 +10,28 @@
     <link href="../public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="../public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/range-slider.css" rel="stylesheet" media="screen"/>
 
     <link
         href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
         rel="stylesheet" media="screen"/>
 
-
     <!-- fav icon -->
-    <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
     <script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../public/js/registration/validator.js"></script>
-    <script src="../public/js/typeahead.js"></script>
+    <script type="text/javascript" src="../public/js/recipes/bootstrap-tagsinput.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script type="text/javascript"
             src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <script src="../public/js/typeahead.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -65,336 +67,390 @@
         margin-top: 2px;
     }
 
-    #overlay {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background: #000;
-        opacity: 0.8;
-        filter: alpha(opacity=80);
+    .modal {
+        background: rgba(000, 000, 000, 0.7);
+        min-height: 1000000px;
     }
 
-    #loading {
-        z-index: 150;
-        width: 70px;
-        height: 70px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -28px 0 0 -25px;
+    .modal-dialog-center {
+        margin-top: 10%;
+    }
 
+    .selected-image {
+        padding: 3px;
+        background-color: red;
+    }
+
+    .form-control, .btn {
+        border-radius: 0px;
     }
 
 
 </style>
+
+<script type="text/javascript">
+    var onResize = function () {
+        // apply dynamic padding at the top of the body according to the fixed navbar height
+        $("#newRecipeContainer").css("margin-top", $(".navbar-fixed-top").height());
+    };
+
+    // attach the function to the window resize event
+    $(window).resize(onResize);
+    $(document).ready(onResize);
+</script>
 <!--Header START -->
 <?php $this->view('_template/navigation_menu', "newRecipe") ?>
 
 <div class="container-fluid">
 
-<fieldset style="padding-top: 45px;">
+<fieldset style="padding-top: 20px;" id="newRecipeContainer">
 <div id="legend">
-    <legend class="new-recipe">Update Recipe <a href="/recipes/newrecipe?lang=si&r=<?= $_GET['id'] ?>"
-                                                class="btn btn-info">සිංහලෙන්</a></legend>
-
+    <legend class="new-recipe">Edit Recipe</legend>
 </div>
-
+<form data-toggle="validator" role="form" method="POST" enctype="multipart/form-data" action="addNewRecipe"
+      id="form1">
 <div class="row">
-    <div id="recipePart1" class="col-lg-5 col-sm-12">
-
-        <?php $result = $this->getRecipe($_GET['id']); ?>
-        <input type="hidden" value="<?= $_GET['id'] ?>" id="recipeID"/>
-
-        <div class="form-group col-lg-8 col-sm-12">
+    <div id="recipePart1"  class="col-lg-5 col-sm-12">
+        <?php     $recipe = $this->getRecipe($_GET['id']);   ?>
+        <div class="form-group col-lg-9 col-sm-12">
             <!-- Username -->
             <label class="control-label" for="recipetitle">Recipe Title</label>
 
             <div class="controls">
-
-                <input type="text" id="recipetitle" name="recipetitle" value="<?= $result[0]['title'] ?>"
-                       class="form-control"
+                <input type="text" value="<?=$recipe[0]['title']; ?>" id="recipetitle" name="recipetitle" placeholder="" class="form-control"
                        required>
+
                 <span class="help-block with-errors" id="recipe-error"></span>
             </div>
-            <a class="btn btn-success" id="updateTitle">save</a>
+        </div>
+<!--        <div class="form-group col-lg-9 col-sm-12">-->
+<!--            <!-- E-mail -->
+<!--            <label class="control-label" for="email">Recipe Photo</label>-->
+<!---->
+<!--            <div class="input-group">-->
+<!--                    <span class="input-group-btn">-->
+<!--                        <span class="btn btn-primary btn-file">-->
+<!--                            Browse&hellip; <input name="recipephoto1" type="file" multiple>-->
+<!--                        </span>-->
+<!--                    </span>-->
+<!--                <input type="text" id="recipephoto1" class="form-control" readonly required>-->
+<!--            </div>-->
+<!--            <span class="help-block with-errors">this will be used as the thumbnail for the recipe</span>-->
+<!---->
+<!--        </div>-->
+        <div class=" col-lg-11 col-sm-12" style="margin: 15px 0px;" >
+            <div class="dropzone" style="height: 250px; overflow-y: auto;" id="mydropzone"></div>
         </div>
 
-        <div class="form-group col-lg-9 col-sm-12">
-            <!-- Password-->
-            <br>
-            <label class="control-label" for="category">Choose Category</label>
+<!--        <div class="form-group col-lg-9 col-sm-12">-->
+<!--            <!-- Password-->
+<!--            <br>-->
+<!--            <label class="control-label" for="category">Choose Category</label>-->
+<!---->
+<!--            <div class="controls">-->
+<!--                <select class="form-control" name="category" id="category">-->
+<!--                    <option value="0">select category</option>-->
+<!--                    --><?php
+//                    $arr = json_decode($this->getCategoriesArray(), true);
+//                    foreach ($arr as $category) {
+//                        ?>
+<!--                        <option value="--><?//= $category['idCategory']; ?><!--">--><?//= $category['title']; ?><!--</option>-->
+<!--                    --><?php //} ?>
+<!--                </select>-->
+<!--                <span class="help-block with-errors" id="category-error"></span>-->
+<!--            </div>-->
+<!--        </div>-->
 
-            <div class="controls">
-                <select class="form-control" name="category" id="category">
-                    <option value="0">select category</option>
-                    <?php
-                    $arr = json_decode($this->getCategoriesArray(), true);
-                    foreach ($arr as $category) {
-                        ?>
-                        <option value="<?= $category['idCategory']; ?>"><?= $category['title']; ?></option>
-                    <?php } ?>
-                </select>
-                <span class="help-block with-errors" id="category-error"></span>
-            </div>
-            <a class="btn btn-success" id="updateCategory">save</a>
-        </div>
-
         <div class="form-group col-lg-9 col-sm-12">
-            <!-- Password -->
-            <br>
-            <label class="control-label" for="subcategory">Choose Sub Category</label>
+            <label class="control-label" for="tags">Tags</label>
 
             <div class="controls">
 
-                <select class="form-control" name="subcategory" id="subcategory">
-                    <option value="0">select sub category</option>
-
-                </select>
+                <input type="text" name="tags" id="tags" value="<?=$recipe[0]['tags'] ?>" data-role="tagsinput"/>
             </div>
         </div>
 
     </div>
-    <div class="col-lg-7 col-sm-12" id="fields">
-        <div class="ingredients-control" style="height: 450px;overflow-y:scroll; ">
-            <label class="control-label" for="field1"><h3>Ingredients</h3></label>
-            <br>
-            <span id="ing_error" style="color: red;"></span>
-            <br>
+    <div class="ingredients-control col-lg-7 col-sm-12" id="fields">
+        <label class="control-label" for="field1"><h3>Ingredients</h3></label>
+        <br>
+        <span id="ing_error" style="color: red;"></span>
+        <br>
 
-            <div class="col-xs-5 col-sm-5" style="color: brown"> Ingredient Name</div>
-            <div class="col-xs-2 col-sm-2" style="color: brown"> Qty</div>
-            <br>
+        <div class="col-xs-5 col-sm-5" style="color: brown"> Name</div>
+        <div class="col-xs-2 col-sm-2" style="color: brown"> Qty</div>
+        <br>
+        <?php $ingredients =  json_decode($this->getRecipeIngredients($recipe[0]['idRecipe']) ,true);
 
+           foreach($ingredients as $ingredient){
+        ?>
+        <div class="entry">
+            <div class="input-group">
+                <div class="col-xs-5 col-sm-5">
+                    <input class="form-control" id="recipetitle" value="<?=$ingredient['title'] ?>" name="ingname[]" type="text"
+                           placeholder="Example : sugar , salt"/>
+                </div>
+                <div class="col-xs-2 col-sm-2">
+                    <input class="form-control" name="amount[]" value="<?=$ingredient['qty'] ?>" placeholder="0" type="text"/>
+                </div>
+                <div class="dropdown col-xs-3 col-sm-3">
+                    <select class="form-control" name="metrics[]">
+                        <option value=""  >select</option>
+                        <option value="kg" <?php if($ingredient['units'] === 'kg'){ echo 'selected="selected"'; } ?> >kg</option>
+                        <option value="g" <?php if($ingredient['units'] === 'g'){ echo 'selected="selected"'; } ?> >g</option>
+                        <option value="oz" <?php if($ingredient['units'] === 'oz'){ echo 'selected="selected"'; } ?> >oz</option>
+                        <option value="tbspn" <?php if($ingredient['units'] === 'tbspn'){ echo 'selected="selected"'; } ?> >tbspn</option>
+                        <option value="tspn" <?php if($ingredient['units'] === 'tspn'){ echo 'selected="selected"'; } ?> >tspn</option>
+                        <option value="cup" <?php if($ingredient['units'] === 'cup'){ echo 'selected="selected"'; } ?> >Cup</option>
+                        <option value="ml" <?php if($ingredient['units'] === 'ml'){ echo 'selected="selected"'; } ?> >ml</option>
+                        <option value="l" <?php if($ingredient['units'] === 'l'){ echo 'selected="selected"'; } ?> >l</option>
+                        <option value="packet" <?php if($ingredient['units'] === 'packet'){ echo 'selected="selected"'; } ?> >packet</option>
+                        <option value="drops" <?php if($ingredient['units'] === 'drops'){ echo 'selected="selected"'; } ?> >drops</option>
+                        <option value="pieces" <?php if($ingredient['units'] === 'pieces'){ echo 'selected="selected"'; } ?> >pieces</option>
+                        <option value="pinch">pinch</option>
+                        <option value="tin">tin</option>
 
-            <?php $arrsub = json_decode($this->getRecipeIngredients($_GET['id']), true);
+                    </select>
+                </div>
+                <div class="col-xs-1 col-sm-2">
 
-            foreach ($arrsub as $ingredient) {
-                ?>
-
-                <div class="entry">
-
-                    <div class="input-group">
-                        <div class="col-xs-5 col-sm-5">
-                            <input class="form-control" name="ingname[]" type="hidden"
-                                   value="<?php echo $ingredient['id_recipe_has_ingredients'] ?>"/>
-                            <input class="form-control" name="ingname[]" type="text"
-                                   value="<?php echo $ingredient['title']; ?>"
-                                   placeholder="Example : sugar , salt"/>
-                        </div>
-                        <div class="col-xs-2 col-sm-2">
-                            <input class="form-control" name="amount[]" value="<?php echo $ingredient['qty'] ?>"
-                                   placeholder="0" type="text"/>
-                        </div>
-                        <div class="dropdown col-xs-3 col-sm-3">
-                            <select class="form-control" name="metrics">
-                                <option
-                                    value="<?php echo $ingredient['units'] ?>"><?php echo $ingredient['units'] ?></option>
-                                <option value="kg">kg</option>
-                                <option value="g">g</option>
-                                <option value="oz">oz</option>
-                                <option value="spn">spn</option>
-                                <option value="tspn">tspn</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-1 col-sm-2">
-
-                            <button class="btn btn-danger btn-remove" type="button">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-
-                        </div>
-
-                        <br>
-                    </div>
+                    <button class="btn btn-success btn-add" type="button">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
 
                 </div>
-            <?php } ?>
-
-            <div class="entry">
-                <div class="input-group">
-                    <div class="col-xs-5 col-sm-5">
-                        <input class="form-control" name="ingname1[]" type="text"
-                               placeholder="Example : sugar , salt"/>
-                    </div>
-                    <div class="col-xs-2 col-sm-2">
-                        <input class="form-control" name="amount1[]" placeholder="0" type="number"/>
-                    </div>
-                    <div class="dropdown col-xs-3 col-sm-3">
-                        <select class="form-control" name="metrics1[]">
-                            <option value="kg">kg</option>
-                            <option value="g">g</option>
-                            <option value="oz">oz</option>
-                            <option value="spn">spn</option>
-                            <option value="tspn">tspn</option>
-                            <option value="cup">Cup</option>
-                            <option value="ml">ml</option>
-                            <option value="l">l</option>
-                            <option value="packet">packet</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-1 col-sm-2">
-
-                        <button class="btn btn-success btn-add" type="button">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-
-                    </div>
-                    <br>
-                </div>
+                <br>
             </div>
         </div>
-        <a style="margin: 10px" id="updateIngredients" class="btn btn-success"> Save Ingredients </a>
+    <?php } ?>
     </div>
-
 </div>
 <div class="row">
-    <div class="col-lg-3 col-sm-12" id="recipePart2" style="margin-top: 20px;">
+    <div class="col-lg-3 col-sm-12" id="recipePart2" style="">
+        <table class="table table-bordered table-hover" id="tab_logic">
+            <thead>
+            <tr>
+                <th class="text-center">
+                    title
+                </th>
+                <th class="text-center">
+                    Amount
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
 
         <div id="fields">
-
+            <label class="control-label" for="field1"><h2>Estimated time</h2></label>
 
             <div class="input-group">
                 <span><h5>Preparation time</h5></span>
 
                 <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' id="prep_time" value="<?= $result[0]['prep_time'] ?>" name="prep_time"
-                           class="form-control" onchange="alert('lala')"/>
+                    <input type='text' id="prep_time" name="prep_time" class="form-control"
+                           onchange="alert('lala')"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
                 </div>
-                <h5><span
-                        id="time"><?php $time = explode(":", $result[0]['prep_time']); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours "; ?><?php if (intval($time[1]) != 0) echo $time[1] . "  minutes"; ?></span>
-                </h5>
+                <h5><span id="time-data">0 Hours and 0 Minutes</span></h5>
 
             </div>
-
             <div class="input-group">
                 <span><h5>Cooking time</h5></span>
 
                 <div class='input-group date' id='datetimepicker2'>
-                    <input type='text' id="cook_time" value="<?= $result[0]['cook_time'] ?>" name="cook_time"
-                           class="form-control" onchange="alert('lala')"/>
+                    <input type='text' id="cook_time" name="cook_time" class="form-control"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
                     </span>
                 </div>
-                <h5><span
-                        id="time"><?php $time = explode(":", $result[0]['cook_time']); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours "; ?><?php if (intval($time[1]) != 0) echo $time[1] . "  minutes"; ?></span>
-                </h5>
-
+                <h5><span id="time-data-2">0 Hours and 0 Minutes</span></h5>
             </div>
 
-
-            <div>
-                <span><h2>Tags</h2></span>
-                <span>separate tags by a "," </span>
-                <textarea name="tags" id="tags" rows="3"
-                          style="border: 1px solid #e1e1e1; width :100%;padding: 5px;margin-top: 5px;"><?= $result[0]['tags'] ?></textarea>
-                <a style="margin: 10px" id="updateTags" class="btn btn-success"> Save Tags </a>
-            </div>
         </div>
-
-
     </div>
-    <div class="directions-control col-lg-9 col-sm-12"
-         style="margin-top: 20px;border: none;border : 1px solid #e1e1e1;height: 600px; overflow-y: scroll;"
-         id="fields">
+
+
+    <script type="text/javascript">
+        $(function () {
+            var dateNow = new Date();
+            $('#datetimepicker1').datetimepicker(
+                {
+                    format: 'HH:mm',
+                    defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                }
+            );
+
+            $('#datetimepicker2').datetimepicker(
+                {
+                    format: 'HH:mm',
+                    defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                }
+            );
+
+            $("#myModal2").on("shown.bs.modal", function () {
+
+                var html;
+                $('#myModal2').find('.modal-body').html('<p>Please wait till the images for this step gets uploaded</p>');
+                $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
+                    type: 'POST',
+                    url: '/Ambula/recipes/showImages',
+                    success: function (responseText) {
+                        $('#myModal2').find('.modal-body').html('');
+
+
+                        // Get the result and asign to each cases
+                        var data = $.parseJSON(responseText);
+                        $.each(data, function (i, item) {
+
+                            $('#myModal2').find('.modal-body').append('<img src="/Ambula/uploads/recipes/temp/<?=Session::get('username')?>/' + item + '" class="select-image" height="120" width="120" style="margin-left:10px;" border="0" />');
+
+
+
+                            <script type="text/javascript">
+                            $(function () {
+                                var dateNow = new Date();
+                                $('#datetimepicker1').datetimepicker(
+                                    {
+                                        format: 'HH:mm',
+                                        defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                                    }
+                                );
+
+                                $('#datetimepicker2').datetimepicker(
+                                    {
+                                        format: 'HH:mm',
+                                        defaultDate: moment(dateNow).hours(0).minutes(0).seconds(0).milliseconds(0)
+                                    }
+                                );
+
+                                $("#myModal2").on("shown.bs.modal", function () {
+                                    var html;
+                                    $('#myModal2').find('.modal-body').html('<p>Please wait till the images for this step gets uploaded</p>');
+                                    $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
+                                        type: 'POST',
+                                        url: '/Ambula/recipes/showImages',
+                                        success: function (responseText) {
+                                            $('#myModal2').find('.modal-body').html('');
+
+                                            // Get the result and asign to each cases
+                                            var data = $.parseJSON(responseText);
+                                            $.each(data, function (i, item) {
+
+                                                $('#myModal2').find('.modal-body').append('<img src="/Ambula/uploads/recipes/temp/<?=Session::get('username')?>/' + item + '" class="select-image" height="120" width="120" style="margin-left:10px;" border="0" />');
+
+
+                                            });
+
+                                        }
+                                    });
+
+                                });
+
+                            }
+                        });
+                    });
+            });
+    </script>
+
+
+    <div class="directions-control col-lg-9 col-sm-12" style="" id="fields">
         <label class="control-label" for="field1"><h3>Directions</h3></label>
 
+        <?php $recipeDescription = json_decode($this->getRecipeDescription($recipe[0]['idRecipe']),true);
 
-        <?php $arrdesc = json_decode($this->getRecipeDescription($_GET['id']), true);
-        $i = 0;
-        foreach ($arrdesc as $description) {
-            ++$i;
-            ?>
-            <div class="entry2">
+        foreach($recipeDescription as $description){
+        ?>
+        <div class="entry2">
 
-                <input type="hidden" value="<?= $description['idDescription'] ?>"/>
-
-                <div class="col-lg-8 col-sm-5">
-                    <span>Step <?= $i ?>.</span>
-                    <textarea class="form-control" name="steps[]" rows="2"
-                              id="comment"><?= $description['description_en'] ?></textarea>
-                </div>
-                <div class="col-lg-2 col-sm-2">
-                    <br>
-                    <?php if (file_exists('/' . $description['image_url'])) ?>
-                    <img src="/<?= $description['image_url']; ?>" width="75" height="75">
-                </div>
-                <div class="col-lg-2 col-sm-1">
-                    <br><br>
-                    <button class="btn btn-danger btn-remove1" type="button">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-
-                            <span class="file-input btn btn-primary btn-file glyphicon glyphicon-camera">
-                              <input name="stepsimg[]" type="file" class="btn btn-default" multiple>
-                            </span>
-
-
-                </div>
+            <div class="col-lg-8 col-sm-5">
+                Step<span class="num">1</span>.
+                <textarea class="form-control" name="steps[]" rows="3" id="comment"><?=$description['description_en'] ?></textarea>
             </div>
+            <div class="col-lg-2 col-sm-2">
+                <br>
+                <img src="/Ambula/public/img/no_preview_available.jpg" class="output" width="75"
+                     height="75">
+                <input name="des_img[]" class="des_img" type="hidden"/>
+            </div>
+            <div class="col-lg-2 col-sm-1">
+                <br><br>
+
+                <button class="choose-image btn btn-primary" data-toggle="modal" data-target="#myModal2"
+                        type="button">
+                    <span class=" glyphicon glyphicon-camera"></span>
+                </button>
+
+
+                <button class="btn btn-success btn-add" type="button">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+
+            </div>
+        </div>
         <?php } ?>
-        <form method="POST" enctype="multipart/form-data"
-              id="form1">
-            <div class="new-directions">
-                <div class="entry2">
-
-                    <div class="col-lg-8 col-sm-5">
-                        <span>Step <?= $i ?>.</span>
-                        <textarea class="form-control" name="steps[]" rows="2" id="comment"></textarea>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <br>
-
-                        <img src="/public/img/no_preview_available.jpg" class="output" width="75" height="75">
-                    </div>
-                    <div class="col-lg-2 col-sm-1">
-                        <br><br>
-                        <button class="btn btn-success btn-add" type="button">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-
-                            <span class="file-input btn btn-primary btn-file glyphicon glyphicon-camera">
-                              <input name="stepsimg[]"
-                                     onchange="$('.output')[$('.output').length-1].src = window.URL.createObjectURL(this.files[0]);"
-                                     type="file" class="btn btn-default" multiple>
-                            </span>
-
-
-                    </div>
-                </div>
-            </div>
-            <button style="margin: 10px;margin-right: 500px;" id="updateDescription" class="btn btn-success">
-                Save
-                Directions
-            </button>
-        </form>
     </div>
-
 </div>
-
-
 <div class="row">
-    <div class="form-group col-lg-8 col-sm-12">
-        <div class="col-lg-offset-7">
+    <div class="controls col-lg-12 col-sm-12">
+        <button style="margin-top: 10px;font-size: 1.5em" class="btn btn-success submit col-lg-offset-5">
+            Finish
+        </button>
+        <div class="col-lg-offset-5">
             <!-- Button -->
-            <br>
-
             <div class="controls">
-                <a id="continuebtn"><h5>Finish Continue to the recipe >></h5></a>
+                <a id="continuebtn" class="btn btn-lg btn-success continue">Continue <span
+                        class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+            <div class="controls" style="margin-top: 2px;margin-left: 5px;">
+                <a id="backbtn" class="btn btn-danger back"><span
+                        class="glyphicon glyphicon-chevron-left"></span> Back</a>
             </div>
 
         </div>
     </div>
 </div>
+</form>
+</fieldset>
+
+</div>
+<div id="loading">
+    <h4>Uploading Recipe</h4>
+    <h6>will take a moment</h6>
+    <img src="/public/img/loading.gif">
+</div>
+
+<!-- modal window to upload extra images -->
+
+
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+     style=" overflow: scroll; height:auto;" data-backdrop="false">
+    <div class="modal-dialog modal-dialog-center">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Choose image for this step</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<script type="text/javascript" src="../public/js/recipes/updateScript.js"></script>
+<script type="text/javascript" src="../public/js/registration/validator.js"></script>
+<script type="text/javascript" src="../public/js/recipes/script.js"></script>
 
 
 </body>

@@ -21,7 +21,7 @@ class profile extends Controller
 
     }
 
-    public function index($user ='')
+    public function index($user = '')
     {
         //echo $_GET['user'];
         if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"] == true && isset($_SESSION["username"]) && $_SESSION["username"] == $user) {
@@ -86,4 +86,27 @@ class profile extends Controller
     }
 
 
+    ////=============Cooperate user Profile===============///
+
+    public function getCooperateUserDetails()
+    {
+        return $this->profile->getCooperateUserDetails($this->user_name);
+    }
+
+    //To view all the promotions by a single commercial user
+    public function getAllPromotionsByUser($user_name = "")
+    {
+        return $this->profile->getAllPromotionsByUser($user_name);
+    }
+
+    //To view all the recipes by a single commercial user
+    public function getAllRecipesByUser($user_name = "")
+    {
+        return $this->profile->getAllRecipesByUser($user_name);
+    }
+
+    public function getCategoriesByUser($cooperate_user_id = "")
+    {
+        return $this->profile->getCategoriesByUser($cooperate_user_id);
+    }
 }

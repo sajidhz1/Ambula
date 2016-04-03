@@ -97,12 +97,11 @@ input::-webkit-inner-spin-button {
     -moz-border-radius: 5px;
     background: #fcd51f;
     text-align: center;
+    margin: 5px 1px;
 
 }
 
-.recipe-time {
-    margin: 5px;
-}
+
 
 .time {
     text-align: center;
@@ -138,6 +137,7 @@ input::-webkit-inner-spin-button {
 .recipe-tags {
     margin-left: 10px;
     font-size: 1em;
+
 }
 
 #btn-collapse {

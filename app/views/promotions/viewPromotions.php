@@ -169,10 +169,6 @@
         padding-left: 4%;
     }
 
-    .modal {
-        background: rgba(000, 000, 000, 0.7);
-        min-height: 1000000px;
-    }
 
     .modal-dialog-center {
         margin-top: 15%;
@@ -186,6 +182,7 @@
     .btn {
         border-radius: 0px;
     }
+
 
     .card div {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -223,6 +220,11 @@
         margin: 0px;
         max-height: 100%;
         z-index: 100;
+    }
+
+
+    @media (max-width: @screen-xs-min) {
+        .modal-xs { width: @modal-sm; }
     }
 
 </style>
@@ -297,10 +299,10 @@
                 $('meta[name=og\\:image]').attr('content', pImg);
                 $('meta[name=og\\:title]').attr('content', pName);
 
-                if ($('#singlePromoModalImg > img').width() > 600)
-                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
-                else
-                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
+//                if ($('#singlePromoModalImg > img').width() > 600)
+//                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 450);
+//                else
+//                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
             }
         });
     });
@@ -400,24 +402,23 @@
 </div>
 
 <!-- single promotion displaying modal-->
-<div class="modal fade" id="promoViewModal" tabindex="-1" style="margin-top: -150px;overflow: scroll;" role="dialog"
+<div class="modal fade" id="promoViewModal" tabindex="-1" style="z-index: 1050" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-center" id="modalBody" style="height:500px;">
-        <div class="modal-content col-lg-12 col-md-12 col-xs-12 col-sm-12" style="">
+    <div class="modal-dialog" id="modalBody" >
+        <div class="modal-content col-lg-12 col-md-12 col-xs-12 col-sm-12" style="overflow-y: auto;">
 
-            <div class="modal-header">
-                <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                </div>
+            <div class="modal-header row">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+
             </div>
-            <div class="modal-body" style="height: 550px;">
+
+            <div class="modal-body" style="overflow-y: auto;">
                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 
-                    <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12"><img id="promoImage"
-                                                                                                     src=""
-                                                                                                     style="max-height: 500px;"
-                                                                                                     alt=""/></div>
+                    <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
+                        <img id="promoImage"  src=""  style="width: 100%"   alt="" class="img-responsive"/>
+                    </div>
                     <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
                         <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
 
@@ -444,14 +445,14 @@
 
             </div>
 
-        </div>
+
     </div>
-</div>
+</div></div>
 
 
 <!-- div tag for containing promotions -->
 
-<div class="row" style="width: 100%;">
+<div class="row" >
     <div id="promotionContainer" class="col-lg-12" style="margin: 0px; ">
 
     </div>

@@ -99,27 +99,32 @@
 
         </div>
         <div class="col-lg-5 col-md-5  recipe-details">
-            <h1 class="recipe-title"><span><?php echo $this->recipes->recipename; ?></span></h1>
+            <h1 class="recipe-title "><span><?php echo $this->recipes->recipename; ?></span></h1>
 
             <div class="row">
-                <span class="recipe-tags">Tags : <?= $this->recipes->tag; ?></span>
+                <span class="recipe-tags txt-darkgrey">Tags : <?= $this->recipes->tag; ?></span>
             </div>
             <div class="row">
-                <div class="recipe-time col-lg-5"><h3 class="time">Ready in</h3><br>
-
-                    <h4 class="time"><?php $time = explode(":", $this->recipes->time); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours<br>"; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes" ?></h4>
-
+                <div class="col-lg-6">
+                    <div class="recipe-time">
+                        <h3 class="time">Prepare in</h3><br>
+                        <h4 class="time">2 hours and <?php $time = explode(":", $this->recipes->time); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours<br>"; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes" ?></h4>
+                    </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="recipe-time">
+                        <h3 class="time">Ready in</h3><br>
+                        <h4 class="time"><?php $time = explode(":", $this->recipes->time); ?><?php if (intval($time[0]) != 0) echo $time[0] . " Hours<br>"; ?>  <?php if (intval($time[1]) != 0) echo $time[1] . "  minutes" ?></h4>
 
+
+                    </div>
+                </div>
                 <!--     <div class="recipe-icons">
                          <img src="/public/img/oven.png" class="mrg5R" width="30" height="30">
                          <img src="/public/img/vege.png" width="30" height="30">
                          <img src="/public/img/cold.png" width="30" height="30">
                          <img src="/public/img/oven.png" width="30" height="30">
                      </div> -->
-                <input id="input-2c" class="rating" min="0" max="5" step="0.1" value="<?= $this->recipes->ratings; ?>"
-                       data-size="xs"
-                       data-show-caption="false" data-glyphicon="false" value="0" data-rating-class="rating-fa">
 
             </div>
             <div class="row  mrg50B">

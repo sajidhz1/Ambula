@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-
 <meta charset="utf-8">
 <title>The Ambula</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +24,9 @@
 <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
 <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/Ambula/public/js/script.js"></script>
-<script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/modernizr.js"></script>
+
 
 <!--[if lt IE 9]>
 <script src="css/font-awesome-ie7.min.css"></script>
@@ -41,118 +42,255 @@
 <![endif]-->
 
 <style>
-    /* Profile sidebar */
+/* Profile sidebar */
 
-    .profile-userpic img {
-        float: none;
-        margin: 0 auto;
-        width: 75%;
-        height: 75%;
-        padding: 4px;
-        border: 1px solid;
-    }
+.profile-userpic {
+    width: 75%;
+    height: 75%;
+    margin: 0 13% 0 13%;
+}
 
-    .profile-usertitle {
-        text-align: center;
-        margin-top: 10px;
-        text-overflow: ellipsis;
-    }
+.profile-userpic img {
+    float: none;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    border: 1px solid;
+}
 
-    .profile-usertitle-name {
-        color: #5a7391;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 7px;
-        margin: 5px 0px 5px 18%;
-        float: left;
-    }
+.profile-usertitle {
+    text-align: center;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+}
 
-    .profile-usertitle a {
-        float: right;
-        margin-right: 25%;
-        color: #ffffff !important;
-    }
+.profile-usertitle-name {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    margin: 5px 0px 5px 18%;
+    float: left;
+}
 
-    .profile-usermenu ul li {
-        border-bottom: 1px solid #f0f4f7;
-    }
+.profile-usertitle a {
+    float: right;
+    margin-right: 25%;
+    color: #ffffff !important;
+}
 
-    /* Profile Content */
-    .profile-content {
-        padding: 20px;
-        background: #fff;
-        padding-right: 350px;
-        padding-top: 10px;
-    }
+.profile-usermenu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
 
-    .infoFeildName {
-        min-width: 220px;
-        color: #5a7391;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 7px;
-        padding-right: 0px !important;
-    }
+/* Profile Content */
 
-    table tr {
-        height: 65px;
-    }
 
-    td {
-        text-align: center;
-        padding: 25px !important;
-    }
+.infoFeildName {
+    min-width: 220px;
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    padding-right: 0px !important;
+}
 
-    a:hover {
-        cursor: pointer;
-    }
+table tr {
+    height: 65px;
+}
 
-    .edit {
-        display: none;
-    }
+td {
+    text-align: center;
+    padding: 25px !important;
+}
 
-    tr:hover > td > a {
-        display: inline;
-    }
+a:hover {
+    cursor: pointer;
+}
 
-    /*css related to update modal view*/
+.edit {
+    display: none;
+}
 
-    .modal {
-        background: rgba(000, 000, 000, 0.6);
-        min-height: 1000000px;
-    }
+tr:hover > td > a {
+    display: inline;
+}
 
-    .modal-dialog-center {
-        margin-top: 15%;
-    }
+/*css related to update modal view*/
 
-    .modal-header {
-        background: #e78f08;
-        color: white;
-    }
+.modal {
+    background: rgba(000, 000, 000, 0.6);
+    min-height: 1000000px;
+}
 
-    /*css related to modal update feild contain table*/
+.modal-dialog-center {
+    margin-top: 15%;
+}
 
-    .modalInfoFeildName {
-        color: #5a7391;
-        font-size: 16px;
-        font-weight: 600;
-        padding-right: 0px !important;
-        width: 250px !important;
-    }
+.modal-header {
+    background: #e78f08;
+    color: white;
+}
 
-    .modalUserInfo {
-        padding-left: 0px !important;
-        text-align: left !important;
-    }
+/*css related to modal update feild contain table*/
 
-    textarea {
-        resize: none;
-    }
+.modalInfoFeildName {
+    color: #5a7391;
+    font-size: 16px;
+    font-weight: 600;
+    padding-right: 0px !important;
+    width: 250px !important;
+}
 
-    .form-control {
-        border-radius: 0px;
-    }
+.modalUserInfo {
+    padding-left: 0px !important;
+    text-align: left !important;
+}
+
+textarea {
+    resize: none;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+/*============================================================*/
+/*CSS effect for the profile pic update button showing overlay*/
+/*============================================================*/
+
+.effects {
+    /*
+                padding-left: 15px;
+    */
+}
+
+.effects .img {
+    position: relative;
+    float: left;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+/*      un used styles for overlay by DRD
+        .effects .img:nth-child(n) {
+            margin-right: 5px;
+        }
+
+        .effects .img:first-child {
+            margin-left: -15px;
+        }
+
+        .effects .img:last-child {
+            margin-right: 0;
+        }*/
+
+.effects .img img {
+    display: block;
+    /*          margin: 0;
+                padding: 0;*/
+    max-width: 100%;
+    height: auto;
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+a.close-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 45px;
+    text-align: center;
+    background-color: #000;
+    cursor: pointer;
+}
+
+a.close-overlay.hidden {
+    display: none;
+}
+
+a.expand {
+    display: block;
+    position: absolute;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    border: solid 5px #fff;
+    text-align: center;
+    color: #fff;
+    line-height: 50px;
+    font-weight: 700;
+    font-size: 30px;
+    border-radius: 30px;
+}
+
+/* ============================================================ */
+/*    EFFECT 1 - SLIDE IN BOTTOM                                */
+/* ============================================================ */
+#effect-1 .overlay {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+}
+
+#effect-1 .overlay a.expand {
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    margin: 0 auto -30px auto;
+}
+
+#effect-1 .img.hover .overlay {
+    height: 100%;
+}
+
+/*CSS to pop up the file browser window*/
+#uploadLink {
+    text-decoration: none;
+}
+
+#uploadInput {
+    display: none
+}
+
+/*CSS for toast message saying user updae was success or not*/
+#toastMessage {
+    width: 400px;;
+    height: 70px;
+    position: absolute;
+    margin-left: 37%;
+    margin-right: 37%;
+    top: 30%;
+    /*margin-left:-15%;*/
+    bottom: 10px;
+    background-color: #00ffff;
+    color: #F0F0F0;
+    font-family: Calibri;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
 
 </style>
 
@@ -160,7 +298,7 @@
 
 //variable to store the current recipe content of the user
 var profileContent = "";
-
+var userUpdated = false;
 
 // attach the function to the window resize event
 $(window).resize(onResize);
@@ -170,40 +308,20 @@ $(document).ready(function () {
     onResize();
     updateUserField();
     updatePassword();
+    displayOverlayButton();
+    updateProfilePic();
 });
 
+//jquery call to pop up the image browse window when camera is clicked
+$(document).on('click', '#uploadLink', function (e) {
+    e.preventDefault();
+    $("#uploadInput:hidden").trigger('click');
+});
 
 //jquery call to view change password fields containing modal window
 $(document).on('click', '#paaswordChangeBtn', function (e) {
     $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
 });
-
-<<<<<<< HEAD
-        //JS + ajax method to update the Database using the data in the edit modal data feilds
-        function updateUserField() {
-            $('#updateFeildModalForm').validator().on('submit', function (e) {
-                // Prevent form submission
-                if (e.isDefaultPrevented()) {
-                    // handle the invalid form
-
-                } else {
-                    // Prevent form submission
-                    e.preventDefault();
-                    // Use Ajax to submit form data
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            if (response) {
-                                $('#userInfoEditModal').modal("hide");
-                                userUpdated = true;
-                                displayUserInfo();
-                            }
-                        }
-                    });
-                }
-=======
 
 //jquery call to view user info(call the JS method defined below)
 $(document).on('click', '#viewInfoBtn', function (e) {
@@ -216,11 +334,51 @@ $(document).on('click', '.edit', function (e) {
     editModalDisplay(clickTrId);
 });
 
-
-
 function onResize() {
     // apply dynamic padding at the top of the body according to the fixed navbar height
     $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 5);
+}
+
+//JS function to display the update success or failed message
+function alertMessageDisplay(updateStatus){
+    $('#toastMessage').fadeIn(400).delay(2000).fadeOut(400);
+    if(updateStatus){
+        $('#toastMessage').attr('class', 'w3-container w3-green');
+        $('#toastMessage').html('Update Was Successfully Done');
+    }else{
+        $('#toastMessage').attr('class', 'w3-container w3-red');
+        $('#toastMessage').html('An Error Occurred While Updating The Field.! ');
+    }
+
+}
+
+//JS function with ajax call to update the profile pic of the user
+function updateProfilePic() {
+    $('#uploadInput').on('change', function (e) {
+        var fileform = new FormData();
+        fileform.append('upload_input', this.files[0]);
+        $('#profilePicture').attr('src', '/Ambula/public/img/loading_image.gif');
+
+        $.ajax({
+            url: '/Ambula/profile/updateProfilePicture',
+            type: 'POST',
+            processData: false,
+            contentType: false,
+            data: fileform,
+            beforeSend: function (status) {
+                console.log(status);
+            },
+            success: function (data) {
+                console.log('success', data);
+                //alert('succ'); //to slow the upload and test loading gif
+                //To reload the uploaded image without reloading the whole page
+                $('#profilePicture').attr('src', '/Ambula/uploads/profile/personal_user/<?php echo $_SESSION['uid'].'/'.$_SESSION['uid'];?>.card.jpg?' + new Date().getTime());
+            },
+            error: function (exception) {
+                console.log('errord', exception);
+            }
+        });
+    });
 }
 
 //JS + ajax method to update the user password with new password in the modal window
@@ -239,19 +397,24 @@ function updatePassword() {
                 type: 'POST',
                 data: $(this).serialize(),
                 success: function (response) {
-                    alert(response);
                     if (response) {
                         $('#userPasswordUpdateModal').modal("hide");
                         displayUserInfo();
+                        alertMessageDisplay(true);
+                        $('#toastMessage').html('Password Was Successfully Updated.');
+
                     }
+                },
+                error: function (exception) {
+
+                    alertMessageDisplay(false);
+                    $('#toastMessage').html('An Error Occurred While Updating The Password.!');
                 }
             });
         }
 
-
     });
 }
-
 
 //JS + ajax method to update the Database using the data in the edit modal data feilds
 function updateUserField() {
@@ -268,17 +431,19 @@ function updateUserField() {
                 url: $(this).attr('action'),
                 type: 'POST',
                 data: $(this).serialize(),
-
                 success: function (response) {
                     if (response) {
                         $('#userInfoEditModal').modal("hide");
+                        userUpdated = true;
                         displayUserInfo();
-                    }
+                        alertMessageDisplay(userUpdated);
 
+                    }else{
+                        alertMessageDisplay(userUpdated);
+                    }
                 }
             });
         }
-
 
     });
 }
@@ -359,10 +524,8 @@ function editModalDisplay(trId) {
 //JS+ajax method to display all the user personal info of a logged in user in a table
 function displayUserInfo() {
     //to store recipes of the usesr currently viewing
-
-
     $.ajax({
-        url: "/Ambula/ProfileController/viewNormalUserInfo",
+        url: "/Ambula/profile/viewNormalUserInfo",
         success: function (response) {
             var myVar = JSON.parse(response);
             var i = 0;
@@ -430,22 +593,57 @@ function displayUserInfo() {
                 $("#profile-usertitle-name").html(myVar[i].first_name + " " + myVar[i].last_name);
                 i++;
             }
-
-            if (!!profileContent) {
-                $('#viewInfoBtn').html('View Info');
-                $("#profile-content").html(profileContent);
-                profileContent = "";
-            } else {
-                profileContent = $("#profile-content").html();
+            if(userUpdated){
                 $("#profile-content").html(string);
                 $('#viewInfoBtn').html('View Recipes');
+                userUpdated = false;
+            }else{
+                if (!!profileContent) {//tre when recipes are present int the #profile-content
+                    $('#viewInfoBtn').html('View Info');
+                    $("#profile-content").html(profileContent);
+                    profileContent = "";
+                } else {
+                    profileContent = $("#profile-content").html();
+                    $("#profile-content").html(string);
+                    $('#viewInfoBtn').html('View Recipes');
+                }
             }
+
 
         }
     });
 }
 
-
+//JS function display the profile pic update button overlay on the pro pic
+function displayOverlayButton() {
+    if (Modernizr.touch) {
+        // show the close overlay button
+        $(".close-overlay").removeClass("hidden");
+        // handle the adding of hover class when clicked
+        $(".img").click(function (e) {
+            if (!$(this).hasClass("hover")) {
+                $(this).addClass("hover");
+            }
+        });
+        // handle the closing of the overlay
+        $(".close-overlay").click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if ($(this).closest(".img").hasClass("hover")) {
+                $(this).closest(".img").removeClass("hover");
+            }
+        });
+    } else {
+        // handle the mouseenter functionality
+        $(".img").mouseenter(function () {
+            $(this).addClass("hover");
+        })
+            // handle the mouseleave functionality
+            .mouseleave(function () {
+                $(this).removeClass("hover");
+            });
+    }
+}
 
 </script>
 
@@ -508,26 +706,27 @@ function displayUserInfo() {
             </div>
             <!-- END SIDEBAR USER TITLE -->
         </div>
-        <div class="col-md-9 col-sm-12 ">
+        <div class="w3-col l9 m9">
+
             <div class="profile-content" id="profile-content">
                 <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
                 foreach ($arrrecipe as $recipe) {
                     ?>
 
-                    <div class="col-lg-3" style="width:320px; min-height: 335.2px">
+                    <div class="w3-card-4 w3-col l3 m4 s12" style="margin:15px 15px;">
                         <a href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
-                            <div class="w3-card-4" style="width:300px; min-height: 335.2px">
-                                <img src="http://localhost/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
-                                     alt="Avatar" style="width:300px; height:250px;">
 
-                                <div class="w3-container" style="border-top: 1px solid grey;">
-                                    <h4><b><?= $recipe['title']; ?></b></h4>
+                            <img src="http://localhost/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                 alt="Avatar" class="w3-col l12 m12 s12"/>
 
-                                    <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+                            <div class="w3-container w3-col m12 l12 s12">
+                                <h4><b><?= $recipe['title']; ?></b></h4>
 
-                                    <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
-                                </div>
+                                <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+
+                                <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
                             </div>
+
                         </a>
                     </div>
 
@@ -537,8 +736,8 @@ function displayUserInfo() {
     </div>
 </div>
 
-<!alert message displaying div(success or failiure)
-<div class='' id='toastMessage' style='display:none;'>
+<!--alert message displaying div(success or failiure) -->
+<div class='' id="toastMessage" style="display: none;">
     Selected Field was Successfully Updated
 </div>
 
@@ -615,11 +814,7 @@ function displayUserInfo() {
                                                     <input type="password" id="currPassword" name="curr_password"
                                                            placeholder="" class="form-control"
                                                            data-native-error="Password Should Contain At Least 6 Characters"
-<<<<<<< HEAD
                                                            data-remote="/Ambula/profile/checkPassword"
-=======
-                                                           data-remote="/Ambula/ProfileController/checkPassword"
->>>>>>> dulitharuvin-master
                                                            data-error="Current Password Doesn't Match With What You Entered"
                                                            required>
                                                 </div>

@@ -89,17 +89,12 @@ class Home extends Controller
 
     //profile functions
 
-<<<<<<< HEAD
+
     //This method is not necessary now , the profile view is now being called via 'profile' controller
 /*    public function profile($user ='')
     {
         if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"]==true && isset($_SESSION["username"]) && $_SESSION["username"] == $user){
-=======
-    public function profile($user = '')
-    {
 
-        if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"] == true && isset($_SESSION["username"]) && $_SESSION["username"] == $user) {
->>>>>>> dulitharuvin-master
             if ($this->user->checkUserExistAndGetType($user) != '') {
                 if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
                     $this->user_name = $user;

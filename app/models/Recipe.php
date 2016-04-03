@@ -490,12 +490,15 @@ class Recipe
     }
 
 
-    public function getRecipe($id = '')
+    public function getRecipe($recipeId = '')
     {
 
-        $array = $this->db->query("SELECT * FROM recipes WHERE idRecipe =" . $id)->fetchAll(PDO::FETCH_ASSOC);
-        return $array;
+        $sql = "SELECT * FROM recipes WHERE recipes.idRecipe = :recipe_id ";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':recipe_id' => $recipeId));
+        $results  = $query->fetchAll(PDO::FETCH_ASSOC);
 
+        return $results;
     }
 
     public function getIngredientBrands($ingId = '')
@@ -963,5 +966,7 @@ class Recipe
         }
         return rmdir($dir);
     }
+
+    //new functions to edti recipe
 
 } 

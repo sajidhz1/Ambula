@@ -485,6 +485,10 @@
     #promoImage{
         width: 400px !important;
     }
+
+    #modalBody{
+        height:30%;width: 100%;
+    }
 }
 
 
@@ -526,6 +530,9 @@ width : 98% !important;
         left: -17%;
     }
 
+    #modalBody{
+        height:30%;width: 90%;
+    }
     .carousel-inner .next {
         left: 17%;
     }

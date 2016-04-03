@@ -134,7 +134,7 @@ class recipes extends Controller
         $this->recipes->addRating(Session::get('uid'), intval($_POST['val']), $rid);
     }
 
-    public function updateRecipe()
+    public function editRecipe()
     {
         $this->view('Recipes/updateRecipe');
     }

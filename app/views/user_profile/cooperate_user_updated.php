@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
@@ -219,7 +219,7 @@
             </ul>
 
             <div class="tab-content">
-                <div id="promotions" class="tab-pane fade in active" style="border: 1px solid #b1b1b1;">
+                <div id="promotions" class="tab-pane fade in active" >
                     <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
                     foreach ($promotions as $promotion) {
                         ?>
@@ -241,13 +241,13 @@
                     ?>
 
                 </div>
-                <div id="recipes" class="tab-pane fade">
+                <div id="recipes" class="container tab-pane fade">
 
                     <?php $recipes = json_decode($this->getRecipesByUser($this->user_name), true);
 
                     foreach ($recipes as $recipe) {
                         ?>
-                        <div class="col-lg-4" style="">
+                        <div class="col-lg-4 col-sm-12 col-xs-12" style="">
                             <div
                                 style="background : url('http://localhost/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg') no-repeat;background-size :  cover;height: 200px;margin: 50px 5px 0px;overflow: hidden;">
                                 <img src="" width="100%" alt=""/>

@@ -305,7 +305,7 @@ class HomeModel
     public function searchResults()
     {
         $q = $_GET['q'];
-        $sql = "SELECT idRecipe, recipes.title ";
+        $sql = "SELECT * ";
 
         if (isset($_GET['type'])) {
 

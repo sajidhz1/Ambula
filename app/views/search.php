@@ -11,7 +11,7 @@
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/typeahead.css" rel="stylesheet" media="screen"/>
-
+    <link href="/Ambula/public/css/w3.css" type="text/css" rel="stylesheet"/>
 
     <script type="text/javascript" src="/Ambula/public/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
@@ -99,17 +99,33 @@
         <div class="col-lg-12" style="background: #999999;height: 75px;"></div>
         <div id="search-content">
 
+
+            <div class="w3-col l12 m12">
             <?php $recipe_array = json_decode($this->searchResults(), true);
             foreach ($recipe_array as $recipe) {
                 ?>
-                <a class="col-lg-4 recipe-item" href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe'] ?>"
-                   style="display: block;">
-                    <div style="height: 150px;overflow: hidden;"><img class="center-block"
-                                                                      src="/Ambula/uploads/<?= $recipe['idRecipe'] ?>/thumb.jpg"
-                                                                      style="width: 150px;margin-top: 10px;"></div>
-                    <h4 style="text-align: center;"><?= $recipe['title'] ?></h4>
-                </a>
+
+                            <div class="w3-card-4 w3-col l3 m4 s12" style="margin:10px 10px;">
+                                <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
+
+                                    <img src="http://localhost/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                         alt="Avatar" height="150" class="w3-col l12 m12 s12"/>
+
+                                    <div class="w3-container w3-col m12 l12 s12" style="height: 175px;">
+                                        <h4><b><?= $recipe['title']; ?></b></h4>
+
+                                        <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+
+                                        <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
+                                    </div>
+
+                                </a>
+                            </div>
+
             <?php } ?>
+
+            </div>
+
         </div>
     </div>
     <div class="col-lg-2" style="height: 400px;background: #888888;">
