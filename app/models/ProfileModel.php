@@ -218,9 +218,7 @@ class ProfileModel
 
     public function  getCooperateUserDetails($user_name = '')
     {
-
-        $array = $this->db->query("SELECT commercial_user.*  FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
-
+        $array = $this->db->query("SELECT commercial_user.*, users.user_name,users.user_email FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
         return json_encode($array);
     }
 
@@ -240,9 +238,9 @@ class ProfileModel
         return json_encode($sql);
     }
 
-    public function getCategoriesByUser($cooperate_user_id = "")
+    public function getCategoriesByUser()
     {
-
+        $cooperate_user_id = $_SESSION['coporate_user_id'];
         $sql = $this->db->query("SELECT title from cooperate_user_has_product_categories , product_categories
                                 WHERE cooperate_user_has_product_categories.Product_categories_id_product_categories = product_categories.id_product_categories
                                    AND cooperate_user_has_product_categories.cooperate_user_id = $cooperate_user_id")->fetchAll(PDO::FETCH_ASSOC);
@@ -251,6 +249,8 @@ class ProfileModel
         return json_encode($sql);
     }
 
+
+    /*=====================================================================*/
 
     public function refreshUserField()
     {
@@ -278,5 +278,4 @@ class ProfileModel
             return false;
         }
     }
-
 }

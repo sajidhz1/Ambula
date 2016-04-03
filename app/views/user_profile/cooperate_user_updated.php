@@ -76,11 +76,12 @@
 
         .profile-usertitle-name {
             color: #5a7391;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: 600;
             float: left;
             margin-top: 5%;
             cursor: default;
+            text-transform: uppercase;
         }
 
         #viewInfoBtn {
@@ -713,10 +714,10 @@
                 </div>
             </div>
             <div class="row profile-weblinks">
-                <div class="col-lg-12">
+                <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
                     <a id="webLink" class="w3-btn w3-border w3-border-orange w3-hover-white" href="http://<?= $commUser['web_url'] ?>" target="_blank"><i class="fa fa-globe fa-lg"></i>Official Web Site</a>
-                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white " href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i class="fa fa-facebook-official fa-lg"></i>Official Facebook Page</a>
-                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white" href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Official Youtube Chanel</a>
+                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white " href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i class="fa fa-facebook-official fa-lg"></i>Facebook Page</a>
+                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white" href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Youtube Chanel</a>
                 </div>
             </div>
 
@@ -726,7 +727,7 @@
             <div id="comm-user-content" class="col-lg-12">
 
 
-                <ul class="nav nav-pills nav-justified">
+                <ul class="nav nav-pills">
                     <li role="presentation" class="active"><a data-toggle="tab" href="#promotions">Promotions</a></li>
 
                     <li role="presentation"><a data-toggle="tab" href="#recipes">Recipes</a></li>
@@ -743,17 +744,13 @@
 
 
                                 <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
-                                     class="w3-col l12 m12 s12" style="height: 240px; margin-bottom: 7px">
+                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
 
                                 <div class="w3-container">
-                                    <h4><?= $promotion['promotion_name'] ?></h4>
-                                    <span
-                                        class="glyphicon glyphicon-calendar"><?= $promotion['start_date'] ?><?php echo " To"; ?></span>
-                                    <span class="glyphicon glyphicon-calendar"><?= $promotion['end_date'] ?></span>
-
-
+                                    <h4 class="w3-col l12 m12 s12" ><span style="overflow:hidden;text-overflow: ellipsis;"><?= $promotion['promotion_name'] ?></span></h4>
+                                    <span  class="glyphicon glyphicon-calendar"><?=$promotion['start_date']." To ". $promotion['end_date']; ?></span>
                                     <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px; border-top: 1px #959999 solid">
+                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
                                         <a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
                                            style="float: left; width: 45%; background-color: #337ab7">Renew</a>
                                         <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>

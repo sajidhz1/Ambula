@@ -21,11 +21,8 @@ class profile extends Controller
 
     }
 
-<<<<<<< HEAD
-=======
     ////=============Normal user Profile===============///
 
->>>>>>> 0f9aba54ae72e5eea4fa19168cc5392f0afda1b2
     public function index($user = '')
     {
         //echo $_GET['user'];
@@ -114,37 +111,20 @@ class profile extends Controller
         return $this->profile->getAllPromotionsByUser($user_name);
     }
 
-<<<<<<< HEAD
-    ////=============Cooperate user Profile===============///
-
-    public function getCooperateUserDetails()
-    {
-        return $this->profile->getCooperateUserDetails($this->user_name);
-    }
-
-    //To view all the promotions by a single commercial user
-    public function getAllPromotionsByUser($user_name = "")
-    {
-        return $this->profile->getAllPromotionsByUser($user_name);
-    }
-
-=======
->>>>>>> 0f9aba54ae72e5eea4fa19168cc5392f0afda1b2
     //To view all the recipes by a single commercial user
     public function getAllRecipesByUser($user_name = "")
     {
         return $this->profile->getAllRecipesByUser($user_name);
     }
 
-<<<<<<< HEAD
-    public function getCategoriesByUser($cooperate_user_id = "")
-    {
-        return $this->profile->getCategoriesByUser($cooperate_user_id);
-=======
     //To view which categories of food does a commercial user deals in
     public function getCategoriesByUser()
     {
         return $this->profile->getCategoriesByUser();
->>>>>>> 0f9aba54ae72e5eea4fa19168cc5392f0afda1b2
+    }
+
+    public function error_page()
+    {
+        $this->view('_template/error');
     }
 }
