@@ -746,9 +746,9 @@
                                 <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
                                      class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
 
-                                <div class="w3-container">
-                                    <h4 class="w3-col l12 m12 s12" ><span style="overflow:hidden;text-overflow: ellipsis;"><?= $promotion['promotion_name'] ?></span></h4>
-                                    <span  class="glyphicon glyphicon-calendar"><?=$promotion['start_date']." To ". $promotion['end_date']; ?></span>
+                                <div class="w3-container txt-center" >
+                                    <span style="overflow:hidden;text-overflow: ellipsis;text-transform: capitalize;"><h4 class="txt-semibold"><?= $promotion['promotion_name'] ?></h4></span>
+                                    <span    class="txt-red txt-bold"><?=date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span class="txt-red txt-bold" ><?=date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
                                     <div class="w3-container w3-center"
                                          style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
                                         <a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
