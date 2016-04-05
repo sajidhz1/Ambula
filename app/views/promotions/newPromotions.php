@@ -203,7 +203,8 @@
 							<span class="input-group-btn">
 								<span class="btn btn-primary btn-file">
 									Browse&hellip; <input type="file" name="promo_image" id="promo_image"
-                                                          onchange="readURL(this);" data-filesize="3000" data-filesize-error="Max 3000B" accept="image/*" required>
+                                                          onchange="readURL(this);" data-filesize="3000"
+                                                          data-filesize-error="Max 3000B" accept="image/*" required>
 								</span>
 								<img id="image" src="/Ambula/public/img/no_preview_available.jpg" alt="default image"/>
 							</span>
@@ -221,7 +222,7 @@
 
                         <div class="controls">
 
-                            <textarea id="editor1"  name="description"  class="ckeditor col-lg-12 col-sm-12" rows="15"
+                            <textarea id="editor1" name="description" class="ckeditor col-lg-12 col-sm-12" rows="15"
                                       cols="40" placeholder="max 255 characters" maxlength="255" required></textarea>
 
                             <!--<textarea id="description" name="description" class="form-control" style="height: 120px; resize: none;" required>
@@ -256,27 +257,27 @@
                     </div>
                 </div>
 
-<!--                <div class="row">-->
-<!--                    <div class="form-group col-lg-6">-->
-<!--                        <!-- Promotion priority -->
-<!--                        <label class="control-label" for="priority">Promotion Priority</label>-->
-<!---->
-<!--                        <div class="controls">-->
-<!--                            <select class="form-control" id="priority" name="priority" required>-->
-<!--                                <option value="normal">Normal</option>-->
-<!--                                <option value="medium">Medium(+500 Rs)</option>-->
-<!--                                <option value="high">High(+1000 Rs)</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                        <span class="help-block with-errors"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="row">-->
+                <!--                    <div class="form-group col-lg-6">-->
+                <!--                        <!-- Promotion priority -->
+                <!--                        <label class="control-label" for="priority">Promotion Priority</label>-->
+                <!---->
+                <!--                        <div class="controls">-->
+                <!--                            <select class="form-control" id="priority" name="priority" required>-->
+                <!--                                <option value="normal">Normal</option>-->
+                <!--                                <option value="medium">Medium(+500 Rs)</option>-->
+                <!--                                <option value="high">High(+1000 Rs)</option>-->
+                <!--                            </select>-->
+                <!--                        </div>-->
+                <!--                        <span class="help-block with-errors"></span>-->
+                <!--                    </div>-->
+                <!--                </div>-->
 
                 <div class="row">
                     <div class="form-group col-lg-3">
                         <!-- Button -->
                         <div class="controls">
-                            <button id="addPromo" class="btn btn-success form-control" >Add Promo</button>
+                            <button id="addPromo" class="btn btn-success form-control">Add Promo</button>
                         </div>
                     </div>
                 </div>
@@ -290,15 +291,17 @@
 
 
 <!-- promotion uploading progress displaying modal-->
-<div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
+<div class="modal fade" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false"
      style=" overflow: scroll; height:auto;margin-top: 10%;" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-center" id="modalBody" >
+    <div class="modal-dialog modal-dialog-center" id="modalBody">
         <div class="modal-content" style="">
 
 
-            <div class="modal-body" >
+            <div class="modal-body">
                 <div class="progress">
-                    <div id="progress" class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" >
+                    <div id="progress" class="progress-bar progress-bar-warning progress-bar-striped active"
+                         role="progressbar">
                         <span>0%</span>
                     </div>
                 </div>

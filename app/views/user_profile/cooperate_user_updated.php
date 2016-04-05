@@ -9,6 +9,7 @@
     <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="=/Ambula/public/css/font-awesome.min.css" rel="stylesheet"/>
@@ -33,6 +34,7 @@
     <script type="text/javascript" src="/Ambula/public/js/profile/comm-user-profile.js"></script>
 
 
+
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -46,11 +48,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-
-    <style type="text/css">
-
-
-    </style>
 
     <script type="text/javascript">
 
@@ -93,6 +90,7 @@
     </div>
 
 
+
     <div id="profileRow" class="row">
         <?php $commUser = json_decode($this->getCooperateUserDetails($this->user_name), true); ?>
         <div class="col-lg-3 col-md-3" style="text-align: center;">
@@ -128,57 +126,60 @@
                 <?php $commUserCategories = json_decode($this->getCategoriesByUser($this->user_name), true); ?>
                 <div class="col-lg-12">
                     <?php foreach ($commUserCategories as $category) {?>
-                    <span><?= $category['title']?>,</span>
+                    <span><?= $category['title']?></span>
                     <?php }?>
                 </div>
             </div>
             <div class="row profile-weblinks">
-                <div class="col-lg-12">
+                <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
                     <a id="webLink" class="w3-btn w3-border w3-border-orange w3-hover-white" href="http://<?= $commUser['web_url'] ?>" target="_blank"><i class="fa fa-globe fa-lg"></i>Official Web Site</a>
-                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white " href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i class="fa fa-facebook-official fa-lg"></i>Official Facebook Page</a>
-                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white" href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Official Youtube Chanel</a>
+                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white " href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i class="fa fa-facebook-official fa-lg"></i>Facebook Page</a>
+                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white" href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Youtube Chanel</a>
                 </div>
             </div>
+
 
         </div>
         <div class="col-lg-9 col-md-9"><!--this div contains the two toggling divs-->
             <div id="comm-user-content" class="col-lg-12">
 
-                <ul class="nav nav-pills nav-justified">
+
+                <ul class="nav nav-pills">
                     <li role="presentation" class="active"><a data-toggle="tab" href="#promotions">Promotions</a></li>
 
                     <li role="presentation"><a data-toggle="tab" href="#recipes">Recipes</a></li>
 
                 </ul>
 
+
                 <div class="tab-content">
                     <div id="promotions" class="tab-pane fade in active" style="border: 1px solid #b1b1b1;">
                         <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
                         foreach ($promotions as $promotion) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;">
+                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;height:350px;" >
+
 
                                 <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
-                                     class="w3-col l12 m12 s12" style="height: 240px; margin-bottom: 7px">
+                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
 
-                                <div class="w3-container">
-                                    <h4><?= $promotion['promotion_name'] ?></h4>
-                                    <span
-                                        class="glyphicon glyphicon-calendar"><?= $promotion['start_date'] ?><?php echo " To"; ?></span>
-                                    <span class="glyphicon glyphicon-calendar"><?= $promotion['end_date'] ?></span>
-
+                                <div class="w3-container txt-center"  >
+                                    <span style="overflow:hidden;text-overflow: ellipsis;text-transform: capitalize;"><h4 class="txt-semibold"><?= $promotion['promotion_name'] ?></h4></span>
+                                    <span    class="txt-red txt-bold"><?=date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span class="txt-red txt-bold" ><?=date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
                                     <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px; border-top: 1px #959999 solid">
+                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
                                         <a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
                                            style="float: left; width: 45%; background-color: #337ab7">Renew</a>
                                         <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>
                                     </div>
+
 
                                 </div>
 
                             </div>
                             <?php
                         }
+
 
                         ?>
 
@@ -190,26 +191,27 @@
 
                         foreach ($recipes as $recipe) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;">
+                            <div class="w3-card-4 w3-col l3 m3 s12 " style="margin: 15px;">
 
-                                <img src="/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>" alt="recipe image"
-                                     class="w3-col l12 m12 s12" style="height: 240px; margin-bottom: 5px">
+                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>" alt="recipe image"
+                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 5px">
 
                                 <div class="w3-container">
-                                    <h4 style="margin-bottom: 4px"><?= $recipe['title'] ?></h4>
-                                    <h5 style="margin: 2px 0px 2px 0px">Views : <?= $recipe['views'] ?> <span
+                                    <h4 class="txt-center" style="margin-bottom: 4px"><?= $recipe['title'] ?></h4>
+                                    <h5  class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views : <?= $recipe['views'] ?> <span
                                             class="glyphicon glyphicon-eye-open"></span></h5>
-                                    <h5 style="margin: 0px">Ratings : <?= $recipe['views'] ?> <span
+                                    <h5  class="txt-red txt-bold" style="margin: 0px">Ratings : <?= $recipe['views'] ?> <span
                                             class="glyphicon glyphicon-star">s</span></h5>
 
                                     <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px; border-top: 1px #959999 solid">
+                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
                                         <a href="" class="w3-btn"
                                            style="float: left; width: 45%; background-color: #337ab7">Update</a>
                                         <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>
                                     </div>
 
                                 </div>
+
 
                             </div>
                             <?php
@@ -300,6 +302,8 @@
                 </table>
             </div>
         </div>
+
+
 
     </div>
 

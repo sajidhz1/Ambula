@@ -6,10 +6,10 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen" />
-    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen" />
-    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/custom.css" />
-    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/color1.css" />
+    <link href="http://localhost/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="http://localhost/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/custom.css"/>
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/color1.css"/>
 
 
     <!-- fav icon -->
@@ -19,8 +19,8 @@
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery.leanModal.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/style.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="http://localhost/Ambula/public/css/style.css"/>
     <link type="text/css" rel="stylesheet" href="/public/css/style.css"/>
 
     <!--[if lt IE 9]>
@@ -47,43 +47,51 @@
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <!--<link rel="apple-touch-icon-precomposed" href="img/apple57.png"> -->
 
-<style>
-      h4{
-          color: #333;
-      }
-  </style>
+    <style>
+        h4 {
+            color: #333;
+        }
+    </style>
 
 </head>
 
 <body>
 <!--Header START -->
-    <?php $this->view('_template/navigation_menu',"contact") ?>
+<?php $this->view('_template/navigation_menu', "contact") ?>
 
 <!-- Header END -->
 <div class="container pages">
     <h1>Don't hesitate to contact us</h1>
+
     <div class="col-lg-8">
-        <form class="form-horizontal" role="form" style="width:650px;margin-left:auto;margin-right:auto;margin-top:50px;" class"col-lg-offset-2" method="post" action="index.php">
+        <form class="form-horizontal" role="form"
+              style="width:650px;margin-left:auto;margin-right:auto;margin-top:50px;" class
+        "col-lg-offset-2" method="post" action="index.php">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Name</label>
+
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name" value="">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
+
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" value="">
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com"
+                       value="">
             </div>
         </div>
         <div class="form-group">
             <label for="message" class="col-sm-2 control-label">Message</label>
+
             <div class="col-sm-10">
                 <textarea class="form-control" rows="4" name="message"></textarea>
             </div>
         </div>
         <div class="form-group">
             <label for="human" class="col-sm-2 control-label">2 + 3 = ?</label>
+
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="human" name="human" placeholder="Your Answer">
             </div>
@@ -113,11 +121,11 @@
 </div>
 <footer class="footer">
 
-<div class="container" style="text-align:center;">
-    <p class="text-muted">
-       &copy; 2015 The Ambula
-    </p>
-</div>
+    <div class="container" style="text-align:center;">
+        <p class="text-muted">
+            &copy; 2015 The Ambula
+        </p>
+    </div>
 
 </footer>
 </body>

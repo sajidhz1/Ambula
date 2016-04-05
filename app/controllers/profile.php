@@ -122,4 +122,9 @@ class profile extends Controller
     {
         return $this->profile->getCategoriesByUser();
     }
+
+    public function error_page()
+    {
+        $this->view('_template/error');
+    }
 }

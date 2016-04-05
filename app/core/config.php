@@ -9,7 +9,11 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-define('URL','http://theambula.lk');
+define('URL','http://localhost/Ambula');
+define('UPLOADS_RECIPE','http://localhost/Ambula/uploads/recipes');
+define('UPLOADS_NORMAL_USER','http://localhost/Ambula/uploads/users/normal_user');
+define('UPLOADS_COOPERATE_USER','http://localhost/Ambula/uploads/users/cooperate_user');
+
 define('FACEBOOK_APP_ID','753864634705819');
 define('FACEBOOK_APP_SECRET' ,'0e84f23c99604b0b214486b871185c69');
 

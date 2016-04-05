@@ -10,13 +10,15 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Logo Here -->
-            <a class="navbar-brand" href="/Ambula/"><img src="http://localhost/Ambula/public/img/ambula-logo.png"  alt="The Ambula"/></a>
+            <a class="navbar-brand" href="/Ambula/"><img src="http://localhost/Ambula/public/img/ambula-logo.png"
+                                                         alt="The Ambula"/></a>
 
         </div>
 
         <!-- search box -->
         <div class="col-sm-3 col-md-3 pull-left">
-            <form class="navbar-form navbar-left" method="get" role="search" action="/Ambula/home/search/" id="main-search">
+            <form class="navbar-form navbar-left" method="get" role="search" action="/Ambula/home/search/"
+                  id="main-search">
                 <div class="input-group">
                     <input type="text" class="form-control typeahead" autocomplete="off"
                            data-provide="typeahead" placeholder="Search Recipes" name="q">
@@ -37,10 +39,13 @@
                 else
                     $d = "" ?>
 
-                <li><a <?php if($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
-                <li><a <?php if($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Recipes</a></li>
-                <li><a <?php if($d and $data == "contact") echo "class='current'" ?> href="/Ambula/Foodproducts">Groceries</a></li>
-                <li><a <?php if($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a></li>
+                <li><a <?php if ($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
+                <li><a <?php if ($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Recipes</a>
+                </li>
+                <li><a <?php if ($d and $data == "contact") echo "class='current'" ?> href="/Ambula/Foodproducts">Groceries</a>
+                </li>
+                <li><a <?php if ($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a>
+                </li>
 
 
             </ul>
@@ -54,10 +59,10 @@
                             <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture"
                                  style="margin-top:7px;" height="35">
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 1) { ?>
-                            <img src="<?= Session::get('user_avatar_url') ?>"  style="margin-top:7px;"
+                            <img src="<?= Session::get('user_avatar_url') ?>" style="margin-top:7px;"
                                  height="35">
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 0) { ?>
-                            <img src="/Ambula/public/img/profile_avatar.jpg"  style="margin-top:7px;" height="35">
+                            <img src="/Ambula/public/img/profile_avatar.jpg" style="margin-top:7px;" height="35">
 
                         <?php } ?>
 
@@ -66,8 +71,8 @@
                         <ul class="dropdown-menu">
                             <li><a href="/Ambula/profile/index/<?= Session::get('username') ?>">View
                                     Profile</a></li>
-                            <li><a  data-toggle="modal"
-                                   data-target="#recipeChooseModal" >New Recipe</a></li>
+                            <li><a data-toggle="modal"
+                                   data-target="#recipeChooseModal">New Recipe</a></li>
                             <?php if (isset($_SESSION['user_account_type'])) {
                                 if (Session::get('user_account_type') == 2) {
                                     ?>
@@ -126,12 +131,14 @@
     <!-- pop up box code END -->
 </nav>
 
-<div class="modal fade" id="recipeChooseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style=" overflow: scroll; height:auto;margin-top: 50px;" data-backdrop="false">
+<div class="modal fade" id="recipeChooseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false" style=" overflow: scroll; height:auto;margin-top: 50px;" data-backdrop="false">
     <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Add your recipe in </h4>
             </div>
             <div class="modal-body">

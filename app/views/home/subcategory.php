@@ -31,24 +31,30 @@
     <![endif]-->
 
     <style>
-        .search-result-heading{
-            padding:0px 0px 0px 10px; line-height:40px; border-bottom:2px solid #000; border-color:rgba(0,0,0,0.3);
+        .search-result-heading {
+            padding: 0px 0px 0px 10px;
+            line-height: 40px;
+            border-bottom: 2px solid #000;
+            border-color: rgba(0, 0, 0, 0.3);
             text-align: left;
-            color:#dc4238;
+            color: #dc4238;
         }
-        h5{
+
+        h5 {
             text-decoration: underline;
             color: #333;
         }
-        .recipe-item:nth-child(3n+2){
+
+        .recipe-item:nth-child(3n+2) {
             border-right: 1px dotted #a1a1a1;
             border-left: 1px dotted #a1a1a1;
         }
-        .recipe-item{
+
+        .recipe-item {
             border-bottom: 1px dotted #a1a1a1;
         }
 
-        .subcat-tile{
+        .subcat-tile {
             padding: 5px;
             border: 1px solid #B2B2B2;
             /* Rounded Corners */
@@ -79,7 +85,8 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Logo Here -->
-            <a class="navbar-brand" href="/Ambula/home"><img src="../../../public/img/ambula-logo.png" alt="The Ambula"/></a>
+            <a class="navbar-brand" href="/Ambula/home"><img src="../../../public/img/ambula-logo.png"
+                                                             alt="The Ambula"/></a>
         </div>
 
         <!-- Top Navigation Here -->
@@ -112,23 +119,24 @@
 <div class="container-fluid" style="margin-top: 75px;">
 
     <h2 class="txt-orange mrg20B">Breakfast</h2>
+
     <div class="col-lg-10 col-sm-12">
 
         <?php
 
-        $arr=json_decode($this->getRecipesByCategory($_GET['id']),true);
-        foreach($arr as $subcategory){
+        $arr = json_decode($this->getRecipesByCategory($_GET['id']), true);
+        foreach ($arr as $subcategory) {
 
             ?>
 
-            <div class="col-lg-3 col-sm-6 subcat-tile" >
-                <a href="/Ambula/recipes/viewRecipe/<?=$subcategory['idRecipe']; ?>">
+            <div class="col-lg-3 col-sm-6 subcat-tile">
+                <a href="/Ambula/recipes/viewRecipe/<?= $subcategory['idRecipe']; ?>">
            <span>
                <h4><?php echo $subcategory['title']; ?></h4>
            </span>
                     <img src="../../../public/img/s1.jpg" height="120">
                     <br>
-                    <span class="txt-red" >(20) Recipes</span>
+                    <span class="txt-red">(20) Recipes</span>
                 </a>
             </div>
 

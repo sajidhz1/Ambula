@@ -5,8 +5,10 @@
     <meta charset="utf-8">
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Recipes,Sri Lankan,Savoury,Sinhala,Maalu Paan,Pol Sambola,Kiri hodhi,Desserts,Thambili,Ceylon,Food ,Sri lanka cooking ,Srilankan Culinary">
-    <meta name="description" content="The Ambula is a Sri Lankan Culinary Platform that aims to serve as center and a hub for all Sri Lankan Culinary enthusiasts in Sri Lanka and all around the globe to share and gain knowledge related to that and also a platform for various producers to reach their desired audience">
+    <meta name="keywords"
+          content="Recipes,Sri Lankan,Savoury,Sinhala,Maalu Paan,Pol Sambola,Kiri hodhi,Desserts,Thambili,Ceylon,Food ,Sri lanka cooking ,Srilankan Culinary">
+    <meta name="description"
+          content="The Ambula is a Sri Lankan Culinary Platform that aims to serve as center and a hub for all Sri Lankan Culinary enthusiasts in Sri Lanka and all around the globe to share and gain knowledge related to that and also a platform for various producers to reach their desired audience">
 
 
     <link href="public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
@@ -52,7 +54,7 @@
 
 <body>
 <!--Header START -->
-    <?php $this->view('_template/navigation_menu',"home") ?>
+<?php $this->view('_template/navigation_menu', "home") ?>
 
 <!-- Header END -->
 
@@ -150,7 +152,8 @@
                     <div class="cs_bullets">
                         <label class="num0" for="cs_slide1_0">
                             <span class="cs_point"></span>
-                                            <span class="cs_thumb"><img src="public/img/slider/tooltips/buns.jpg" alt="Buns"
+                                            <span class="cs_thumb"><img src="public/img/slider/tooltips/buns.jpg"
+                                                                        alt="Buns"
                                                                         title="Buns"/></span>
                         </label>
                         <label class="num1" for="cs_slide1_1">
@@ -180,11 +183,11 @@
         <h3>Add Your Recipe</h3>
 
         <p>your legacy ,your recipe , share it spread it </p>
-        <?php if(isset($_SESSION["user_logged_in"])){ ?>
-            <a href="/recipes/newRecipe" style="color: #fff;" id="btn-signup"  class="btn btn-primary">Add Recipe</a>
-        <?php }else{ ?>
-            <a href="/registration" style="color: #fff;" id="btn-signup"  class="btn btn-primary">SIGN UP</a>
-        <?php }?>
+        <?php if (isset($_SESSION["user_logged_in"])) { ?>
+            <a href="/recipes/newRecipe" style="color: #fff;" id="btn-signup" class="btn btn-primary">Add Recipe</a>
+        <?php } else { ?>
+            <a href="/registration" style="color: #fff;" id="btn-signup" class="btn btn-primary">SIGN UP</a>
+        <?php } ?>
     </div>
 
 </div>
@@ -196,21 +199,22 @@
         <ul class="rig columns-6">
 
             <?php
-            $arr=json_decode($this->viewCategories(5),true);
-            foreach($arr as $category)
-            {
+            $arr = json_decode($this->viewCategories(5), true);
+            foreach ($arr as $category) {
                 ?>
                 <li>
-                    <img height="150" src="uploads/<?php echo $category['thumb_url']; ?>" />
-                    <h4><a href="home/category/<?=$category['title']; ?>/?id=<?=$category['idCategory']; ?>" style="color: #222"><?php echo $category['title']; ?></a></h4>
-                    <p>
-                    <?php $arrsub =json_decode($this->getSubCategoriesByID($category['idCategory'],5),true);
+                    <img height="150" src="uploads/<?php echo $category['thumb_url']; ?>"/>
+                    <h4><a href="home/category/<?= $category['title']; ?>/?id=<?= $category['idCategory']; ?>"
+                           style="color: #222"><?php echo $category['title']; ?></a></h4>
 
-                    foreach($arrsub as $subcategory)
-                    {
-                    ?>
-                    <a href="home/category/<?=$category['title']; ?>/?id=<?=$category['idCategory']; ?>" style="color: #ff0000"><?php echo $subcategory['title']; ?></a>
-                    <?php } ?>
+                    <p>
+                        <?php $arrsub = json_decode($this->getSubCategoriesByID($category['idCategory'], 5), true);
+
+                        foreach ($arrsub as $subcategory) {
+                            ?>
+                            <a href="home/category/<?= $category['title']; ?>/?id=<?= $category['idCategory']; ?>"
+                               style="color: #ff0000"><?php echo $subcategory['title']; ?></a>
+                        <?php } ?>
                     </p>
                 </li>
             <?php
@@ -233,30 +237,30 @@
 <div class="row">
     <div class="col-md-12 " id="col-recent">
         <h3>Recently Added Recipes</h3>
-        <?php  $ar=json_decode($this->viewRecent(),true);
+        <?php  $ar = json_decode($this->viewRecent(), true);
 
-            $i = 1;
+        $i = 1;
         ?>
         <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="5000"
              id="myCarousel">
             <div class="carousel-inner">
                 <?php
-                foreach($ar as $recipe)
-                {
-                 ?>
-                    <div class="item <?php if($i==1) echo "active" ?>">
-                        <div class="col-md-2 col-sm-6 col-xs-12" ><a href="http://localhost/Ambula/recipes/viewRecipe/<?=$recipe['idRecipe']; ?>">
+                foreach ($ar as $recipe) {
+                    ?>
+                    <div class="item <?php if ($i == 1) echo "active" ?>">
+                        <div class="col-md-2 col-sm-6 col-xs-12"><a
+                                href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
                                 <div style="height: 100px;overflow: hidden;">
-                                <img
-                                    src="http://localhost/Ambula/uploads/<?=$recipe['idRecipe']; ?>/thumb.jpg"
-                                    class="img-responsive" style=""></div>
+                                    <img
+                                        src="<?= UPLOADS_RECIPE ?>/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                        class="img-responsive" style=""></div>
                                 <span style="text-align: center;"><h5><?php echo $recipe['title']; ?> </h5></span>
 
 
                             </a>
                         </div>
                     </div>
-                <?php
+                    <?php
                     $i++;
                 }
                 ?>
@@ -284,33 +288,36 @@
             <img src="public/img/fav_ico.png" height="150" style="margin-left:25px;margin-top:35px;">
         </div>
         <div class="col-lg-4">
-            <h3 >Categories</h3>
+            <h3>Categories</h3>
             <ul id="footer-category">
-            <?php
+                <?php
 
-            $arr=json_decode($this->viewCategories(),true);
-            foreach($arr as $category)
-            {
-              ?>
-                <li><a href=""><?=$category['title']; ?></a></li>
+                $arr = json_decode($this->viewCategories(), true);
+                foreach ($arr as $category) {
+                    ?>
+                    <li><a href=""><?= $category['title']; ?></a></li>
 
 
                 <?php
-            }?>
+                }?>
             </ul>
 
 
         </div>
         <div class="col-lg-4">
             <h3>Contact:</h3>
+
             <p>Have a question or feedback? Contact us!</p>
-            <p><a href="" title="Contact me!" ><i class="fa fa-envelope"></i> Contact</a></p>
+
+            <p><a href="" title="Contact me!"><i class="fa fa-envelope"></i> Contact</a></p>
+
             <h3>Follow Us On:</h3>
-                        <a href="https://www.facebook.com/the.ambula" id="gh" target="_blank" title="Facebook"><span class="fa-stack fa-lg">
+            <a href="https://www.facebook.com/the.ambula" id="gh" target="_blank" title="Facebook"><span
+                    class="fa-stack fa-lg">
               <i class="fa fa-square-o fa-stack-2x"></i>
               <i class="fa fa-user fa-stack-1x"></i>
             </span>Facebook</a>
-                        <a href=""  " target="_blank" title="Instagram"><span class="fa-stack fa-lg">
+            <a href="" " target="_blank" title="Instagram"><span class="fa-stack fa-lg">
               <i class="fa fa-square-o fa-stack-2x"></i>
               <i class="fa fa-instagram fa-stack-1x"></i>
             </span>Instagram</a>
@@ -319,12 +326,12 @@
 
         <hr>
 
-        <p style="text-align:center;">Copyright © The Ambula | <a href="">Privacy Policy</a> | <a href="">Terms of Use</a></p>
+        <p style="text-align:center;">Copyright © The Ambula | <a href="">Privacy Policy</a> | <a href="">Terms of
+                Use</a></p>
 
 
     </div>
 </div>
-
 
 
 <script type="text/javascript">
@@ -350,12 +357,12 @@
             }
         });
 
-         $('.carousel-control.left').click(function() {
+        $('.carousel-control.left').click(function () {
             $('#myCarousel').carousel('prev');
             return false;
         });
 
-        $('.carousel-control.right').click(function() {
+        $('.carousel-control.right').click(function () {
             $('#myCarousel').carousel('next');
             return false;
         });
@@ -375,16 +382,23 @@
     var duration = 700, easing = 'easeInOutExpo';</script>
 <script src="public/js/script.js"></script>
 
-	<!-- Google Analytics -->
-	<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-65028180-1', 'auto');
-	ga('send', 'pageview');
-	
+<!-- Google Analytics -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-65028180-1', 'auto');
+    ga('send', 'pageview');
+
 </script>
 <!-- End Google Analytics -->
 

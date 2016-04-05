@@ -17,7 +17,7 @@
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
     <script src="/Ambula/public/js/typeahead.js"></script>
 
-<!-- fav icon -->
+    <!-- fav icon -->
     <link rel="icon" href="/public/img/fav_ico.png" type="image/gif" sizes="16x16">
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -33,24 +33,30 @@
     <![endif]-->
 
     <style>
-        .search-result-heading{
-            padding:0px 0px 0px 10px; line-height:40px; border-bottom:2px solid #000; border-color:rgba(0,0,0,0.3);
+        .search-result-heading {
+            padding: 0px 0px 0px 10px;
+            line-height: 40px;
+            border-bottom: 2px solid #000;
+            border-color: rgba(0, 0, 0, 0.3);
             text-align: left;
-            color:#dc4238;
+            color: #dc4238;
         }
-        h5{
+
+        h5 {
             text-decoration: underline;
             color: #333;
         }
-        .recipe-item:nth-child(3n+2){
+
+        .recipe-item:nth-child(3n+2) {
             border-right: 1px dotted #a1a1a1;
             border-left: 1px dotted #a1a1a1;
         }
-        .recipe-item{
+
+        .recipe-item {
             border-bottom: 1px dotted #a1a1a1;
         }
 
-        </style>
+    </style>
 </head>
 
 <body style="">
@@ -60,10 +66,10 @@
 
 <script type="text/javascript">
 
-    $(document).on("click", ".pagination li a", function() {
+    $(document).on("click", ".pagination li a", function () {
         //e.preventDefault();
         var filter = '';
-        if($('#q156,#q157').is(':checked'))  {
+        if ($('#q156,#q157').is(':checked')) {
             filter = $(this).html();
         }
 
@@ -71,8 +77,10 @@
             url: '/Ambula/home/searchRecipes/<?php echo $this->search; ?>',
             type: 'POST',
             dataType: '',
-            data: {page: $(this).html() },
-            beforeSend: function() { $('#search-content').html('<img src="/public/img/loading.gif" />'); },
+            data: {page: $(this).html()},
+            beforeSend: function () {
+                $('#search-content').html('<img src="/public/img/loading.gif" />');
+            },
             success: function (data) {
                 $('#search-content').empty();
                 $('#search-content').append(data);
@@ -81,21 +89,21 @@
     });
 
     //change subcategory
-    $(document).on('change', '#category', function(e) {
+    $(document).on('change', '#category', function (e) {
 
         alert($(this).val());
         $.ajax({ // Send the username val to another checker.php using Ajax in POST menthod
-            type : 'POST',
+            type: 'POST',
             dataType: "json",
-            url  : '/Ambula/home/getSubCategoriesByID/'+$(this).val(),
-            data : {},
-            success: function(responseText){
+            url: '/Ambula/home/getSubCategoriesByID/' + $(this).val(),
+            data: {},
+            success: function (responseText) {
                 // Get the result and asign to each cases
                 var subcateories = $('#subcategory');
                 subcateories.empty();
 
                 var json = responseText;
-                for(var i = 0; i < json.length; i++) {
+                for (var i = 0; i < json.length; i++) {
                     var obj = json[i];
 
                     subcateories.append($("<option></option>")
@@ -109,8 +117,7 @@
     $(function () {
 
 
-
-        $("#filters").on( "change", "#q156,#q157", function (e) {
+        $("#filters").on("change", "#q156,#q157", function (e) {
             $('#search-content').empty();
             e.preventDefault();
             $.ajax({
@@ -118,7 +125,9 @@
                 type: 'POST',
                 dataType: '',
                 data: {filter: $(this).val()},
-                beforeSend: function() { $('#search-content').html('<img style="margin:25% 25%;" src="/Ambula/public/img/loading.gif" />'); },
+                beforeSend: function () {
+                    $('#search-content').html('<img style="margin:25% 25%;" src="/Ambula/public/img/loading.gif" />');
+                },
                 success: function (data) {
                     $('#search-content').empty();
                     $('#search-content').append(data);
@@ -134,65 +143,73 @@
     <div class="search row">
         <div class="col-lg-6 col-md-offset-3">
             <div class="input-group">
-                <input type="text" class="form-control" id="search" data-provide="typeahead" autocomplete="off" placeholder="Search for...">
+                <input type="text" class="form-control" id="search" data-provide="typeahead" autocomplete="off"
+                       placeholder="Search for...">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button">Search</button>
                   </span>
-            </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
+            </div>
+            <!-- /input-group -->
+        </div>
+        <!-- /.col-lg-6 -->
     </div>
     <div class="row" style="margin-top: 20px;">
-        <div class="col-lg-2" style="background:#f4f4f4;" >
+        <div class="col-lg-2" style="background:#f4f4f4;">
             <h3>Filter Results</h3>
+
             <div class="col-lg-12">
                 <span><h5>Choose Category</h5></span>
                 <select class="form-control" id="category">
                     <?php
-                    $arr=json_decode($this->viewCategories(),true);
-                    foreach($arr as $category)
-                    {
+                    $arr = json_decode($this->viewCategories(), true);
+                    foreach ($arr as $category) {
                         ?>
-                        <option value="<?=$category['idCategory']; ?>"><?=$category['title']; ?></option>
+                        <option value="<?= $category['idCategory']; ?>"><?= $category['title']; ?></option>
                     <?php } ?>
                 </select>
                 <br>
                 <span><h5>Choose SubCategory</h5></span>
                 <select class="form-control" name="subcategory" id="subcategory">
-                    <option value="0" >select sub category</option>
+                    <option value="0">select sub category</option>
                 </select>
                 <br>
                 <span><h5>filter by</h5></span>
+
                 <div id="filters">
                     <label>
-                        <input type="radio" id="q156" name="quality[25]" value="1" /> Vegetarian
+                        <input type="radio" id="q156" name="quality[25]" value="1"/> Vegetarian
                     </label>
                     <label>
-                        <input type="radio" id="q157" name="quality[25]" value="2" /> Non-Vegetarian
+                        <input type="radio" id="q157" name="quality[25]" value="2"/> Non-Vegetarian
                     </label>
                     <label>
-                        <input type="radio" id="q157" name="quality[25]" value="" /> All
+                        <input type="radio" id="q157" name="quality[25]" value=""/> All
                     </label>
-                 </div>
                 </div>
-        </div>
-        <div class="col-lg-8" >
-            <?php if(isset($_GET['query'])) { ?>
-            <h3 class="search-result-heading">Showing results for "<?=$_GET['query'] ?>"</h3>
-
-
-            <div id="search-content" >
-                <?php $this->searchRecipes($this->search,$filter ='',1); ?>
-
             </div>
+        </div>
+        <div class="col-lg-8">
+            <?php if (isset($_GET['query'])) { ?>
+                <h3 class="search-result-heading">Showing results for "<?= $_GET['query'] ?>"</h3>
+
+
+                <div id="search-content">
+                    <?php $this->searchRecipes($this->search, $filter = '', 1); ?>
+
+                </div>
             <?php } ?>
-    </div>
+        </div>
         <div class="col-lg-2" style="height: 400px;border: 1px solid #222;">
             <h4>Ad space</h4>
         </div>
-</div>
- <footer class="footer" style="position:relative;bottom:0;background:#0C0C0C;width:100%;margin: 0;" >
+    </div>
+    <footer class="footer" style="position:relative;bottom:0;background:#0C0C0C;width:100%;margin: 0;">
         <div class="container" style="text-align:center;">
-            <p class="text-muted"  ><p>&copy; 2015 The Ambula<p></p>
+            <p class="text-muted">
+
+            <p>&copy; 2015 The Ambula
+
+            <p></p>
         </div>
     </footer>
 </body>

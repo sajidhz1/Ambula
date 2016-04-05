@@ -24,6 +24,7 @@ class Home extends Controller
         $this->view('index', []);
 
     }
+
     public function search()
     {
         $this->search = $_GET['q'];
@@ -88,15 +89,17 @@ class Home extends Controller
 
     //profile functions
 
+
     //This method is not necessary now , the profile view is now being called via 'profile' controller
 /*    public function profile($user ='')
     {
         if(isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"]==true && isset($_SESSION["username"]) && $_SESSION["username"] == $user){
+
             if ($this->user->checkUserExistAndGetType($user) != '') {
                 if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
                     $this->user_name = $user;
                     $this->view('user_profile/normal_user_profile');
-                }else if($this->user->checkUserExistAndGetType($user)->user_account_type == 3){
+                } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 3) {
                     $this->user_name = $user;
                     $this->view('user_profile/normal_user_profile');
                 } else if ($this->user->checkUserExistAndGetType($user)->user_account_type == 2) {
@@ -106,7 +109,7 @@ class Home extends Controller
             } else {
                 $this->view('_template/error');
             }
-        }else{
+        } else {
             Header('Location:/Ambula/login/');
         }
 
@@ -185,16 +188,19 @@ class Home extends Controller
 
 
     //user_profile
-    public function getAllPromotionsByUser($user_name =""){
-       return  $this->user->getAllPromotionsByUser($user_name);
+    public function getAllPromotionsByUser($user_name = "")
+    {
+        return $this->user->getAllPromotionsByUser($user_name);
     }
 
-    public function getAllRecipesByUser($user_name = ""){
-        return  $this->user->getAllRecipesByUser($user_name);
+    public function getAllRecipesByUser($user_name = "")
+    {
+        return $this->user->getAllRecipesByUser($user_name);
     }
 
-    public function getCategoriesByUser($cooperate_user_id = ""){
-        return  $this->user->getCategoriesByUser($cooperate_user_id);
+    public function getCategoriesByUser($cooperate_user_id = "")
+    {
+        return $this->user->getCategoriesByUser($cooperate_user_id);
     }
 }
 
