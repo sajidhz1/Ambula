@@ -227,8 +227,8 @@
       <column name="last_name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="address" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="tel_home" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="tel_mobile" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="tel_home" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tel_mobile" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
       <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="iduser_personal,users_user_id"/>
       <index name="fk_user_personal_users_idx" unique="false" columns="users_user_id"/>

@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fav icon -->
+    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
     <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
 
@@ -15,9 +17,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/Ambula/public/css/w3.css" rel="stylesheet">
 
-
-    <!-- fav icon -->
-    <link rel="icon" href="/Ambula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
+    <!--normal user css file import-->
+    <link href="/Ambula/public/css/profile/comm-user-profile.css" rel="stylesheet" media="screen"/>
 
 
     <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
@@ -28,6 +29,11 @@
     <script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/modernizr.js"></script>
     <script type="text/javascript" src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
+
+    <!--normal user js file import-->
+    <script type="text/javascript" src="/Ambula/public/js/profile/comm-user-profile.js"></script>
+
+
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
@@ -43,354 +49,7 @@
     <![endif]-->
 
 
-    <style type="text/css">
-
-
-        .w3-fbtheme {color:#fff !important; background-color:#3b5998 !important}
-
-        #webLink{
-            background-color: #ff9800;
-        }
-
-        #webLink:hover{color:#ff9800 !important}
-
-        #fbLink:hover{color:#3b5998 !important}
-
-        #youtubeLink:hover{color:#f44336 !important}
-
-        .profile-userpic {
-            padding: 4px;
-            border: 1px solid;
-        }
-
-        .profile-userpic img {
-            float: none;
-            margin: 0 auto;
-            width: 100%;
-
-        }
-
-        .profile-usertitle {
-            margin-top: 5px;
-        }
-
-        .profile-usertitle-name {
-            color: #5a7391;
-            font-size: 20px;
-            font-weight: 600;
-            float: left;
-            margin-top: 5%;
-            cursor: default;
-            text-transform: uppercase;
-        }
-
-        #viewInfoBtn {
-            float: right;
-        }
-
-        .profile-usertitle-job {
-            color: #5b9bd1;
-            font-size: 18px;
-            font-weight: 500;
-            margin: 15px 0px 15px 0px;
-        }
-
-        .profile-weblinks > div > a{
-            padding-top: 8px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .profile-weblinks i{
-            float: left;
-        }
-
-        #comm-user-info {
-            display: none;
-        }
-
-        #comm-user-info{
-            margin-bottom: 15px;
-        }
-
-        .infoFeildName {
-            min-width: 220px;
-            color: #5a7391;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 7px;
-            padding-right: 0px !important;
-            text-align: left;
-        }
-
-        #comm-user-content > table {
-            border: 0.5px solid;
-        }
-
-        table tr {
-            height: 65px;
-        }
-
-        td {
-            text-align: left;
-            padding: 25px !important;
-        }
-
-        a:hover {
-            cursor: pointer;
-        }
-
-        .editTd {
-            width: 100px;
-        }
-
-        .edit {
-            display: none;
-        }
-
-        tr:hover > td > a {
-            display: inline;
-        }
-
-        textarea{
-            resize: none;
-        }
-
-        .modalInfoFeildName{
-            padding: 10px 0px 5px 0px !important;
-        }
-
-        .modalUserInfo{
-            padding: 10px 0px 5px 0px !important;
-        }
-
-        #modalUpdateTable tr{
-            height: 25px;
-        }
-
-        /*css related to update modal view*/
-
-        .modal {
-            background: rgba(000, 000, 000, 0.6);
-            min-height: 1000000px;
-        }
-
-        .modal-dialog-center {
-            margin-top: 15%;
-        }
-
-        .modal-header {
-            background: #e78f08;
-            color: white;
-        }
-
-        /*============================================================*/
-        /*CSS effect for the profile pic update button showing overlay*/
-        /*============================================================*/
-        .effects {
-            padding: 0 5%;
-        }
-
-        .effects .img {
-            position: relative;
-            float: left;
-            margin-bottom: 5px;
-            overflow: hidden;
-        }
-
-        .effects .img img {
-            display: block;
-            /*          margin: 0;
-                        padding: 0;*/
-            max-width: 100%;
-            height: auto;
-        }
-
-        .overlay {
-            display: block;
-            position: absolute;
-            z-index: 20;
-            background: rgba(0, 0, 0, 0.6);
-            overflow: hidden;
-            transition: all 0.5s;
-        }
-
-        a.close-overlay {
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 100;
-            width: 45px;
-            height: 45px;
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 45px;
-            text-align: center;
-            background-color: #000;
-            cursor: pointer;
-        }
-
-        a.close-overlay.hidden {
-            display: none;
-        }
-
-        a.expand {
-            display: block;
-            position: absolute;
-            z-index: 100;
-            width: 60px;
-            height: 60px;
-            border: solid 5px #fff;
-            text-align: center;
-            color: #fff;
-            line-height: 50px;
-            font-weight: 700;
-            font-size: 30px;
-            border-radius: 30px;
-        }
-
-        /* ============================================================ */
-        /*    EFFECT 1 - SLIDE IN BOTTOM                                */
-        /* ============================================================ */
-        #effect-1 .overlay {
-            bottom: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 0;
-        }
-
-
-        #effect-1 .overlay a.expand {
-            left: 0;
-            right: 0;
-            bottom: 50%;
-            margin: 0 auto -30px auto;
-        }
-
-        #effect-1 .img.hover .overlay {
-            height: 100%;
-        }
-
-        /*CSS to pop up the file browser window*/
-        #uploadLink {
-
-            text-decoration: none;
-        }
-
-        #uploadInput {
-            display: none
-        }
-
-        /*CSS for toast message saying user update was success or not*/
-        #toastMessage {
-            width: 400px;;
-            height: 70px;
-            position: absolute;
-            margin-left: 37%;
-            margin-right: 37%;
-            top: 30%;
-            /*margin-left:-15%;*/
-            bottom: 10px;
-            background-color: #00ffff;
-            color: #F0F0F0;
-            font-family: Calibri;
-            font-size: 20px;
-            padding: 10px;
-            text-align: center;
-            border-radius: 2px;
-            -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-            -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-            box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-        }
-
-    </style>
-
     <script type="text/javascript">
-
-        //variable to store the current recipe content of the user
-        var infoDisplay = false;
-        var userUpdated = false;
-        var globalTrId = "";
-
-        // attach the function to the window resize event
-        $(window).resize(onResize);
-
-        //there can be only one document ready function for page
-        $(document).ready(function () {
-            onResize();
-            updateUserField();
-            updatePassword();
-            displayOverlayButton();
-            updateProfilePic();
-        });
-
-        //jquery call to pop up the image browse window when camera is clicked
-        $(document).on('click', '#uploadLink', function (e) {
-            e.preventDefault();
-            $("#uploadInput:hidden").trigger('click');
-        });
-
-        //jquery call to view change password fields containing modal window
-        $(document).on('click', '#paaswordChangeBtn', function (e) {
-            $('#userPasswordUpdateModal').modal({show: true, keyboard: true});
-        });
-
-        //jquery call to view user info(call the JS method defined below)
-        $(document).on('click', '#viewInfoBtn', function (e) {
-            displayUserInfo();
-        });
-
-        //jquery call to view the edit modal of the selected info field
-        $(document).on('click', '.edit', function (e) {
-            var clickTrId = $(this).closest('tr').attr('id');
-            editModalDisplay(clickTrId);
-            globalTrId = clickTrId;
-        });
-
-        function onResize() {
-            // apply dynamic padding at the top of the body according to the fixed navbar height
-            $("#profileRow").css("margin-top", $(".navbar-fixed-top").height() + 15);
-        }
-
-        //JS function to display the update success or failed message
-        function alertMessageDisplay(updateStatus) {
-            $('#toastMessage').fadeIn(400).delay(2000).fadeOut(400);
-            if (updateStatus) {
-                $('#toastMessage').attr('class', 'w3-container w3-green');
-                $('#toastMessage').html('Update Was Successfully Done');
-            } else {
-                $('#toastMessage').attr('class', 'w3-container w3-red');
-                $('#toastMessage').html('An Error Occurred While Updating The Field.! ');
-            }
-
-        }
-
-        //JS function with ajax call to update the just updated field in the table
-        function reloadUserField(table, column){
-            $.ajax({
-                url: "/Ambula/profile/refreshUserField",
-                type: "POST",
-                data: {userTable : table, userColumn : column},
-                success: function (response) {
-                    var myVar = JSON.parse(response);
-                    $('#' + globalTrId + ' td:nth-child(2)').html(myVar[0][column]); //to updated the <td> containing the current user data field
-                    switch (column){
-                        case 'company_name': $('#profile-usertitle-name').html(myVar[0][column]);
-                            break;
-                        case 'web_url' : $('#webLink').attr('href',"http://"+myVar[0][column]);
-                            break;
-                        case 'facebook_url':$('#fbLink').attr('href',"http://"+myVar[0][column]);
-                            break;
-                        case 'youtube_url':$('#youtubeLink').attr('href',"http://"+myVar[0][column]);
-                            break;
-                    }
-                }
-            });
-        }
-
 
         //JS function with ajax call to update the profile pic of the user
         function updateProfilePic() {
@@ -421,248 +80,6 @@
             });
         }
 
-        //JS + ajax method to update the user password with new password in the modal window
-        function updatePassword() {
-            $('#changePasswordModalForm').validator().on('submit', function (e) {
-                // Prevent form submission
-                if (e.isDefaultPrevented()) {
-                    // handle the invalid form
-
-                } else {
-                    // Prevent form submission
-                    e.preventDefault();
-                    // Use Ajax to submit form data
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            if (response) {
-                                $('#userPasswordUpdateModal').modal("hide");
-                                alertMessageDisplay(true);
-                                $('#toastMessage').html('Password Was Successfully Updated.');
-                                $("input[type='password']").val('');
-                            }
-                        },
-                        error: function (exception) {
-                            alertMessageDisplay(false);
-                            $('#toastMessage').html('An Error Occurred While Updating The Password.!');
-                        }
-                    });
-                }
-
-            });
-        }
-
-        //JS + ajax method to update the Database using the data in the edit modal data feilds
-        function updateUserField() {
-            $('#updateFeildModalForm').validator().on('submit', function (e) {
-                // Prevent form submission
-                if (e.isDefaultPrevented()) {
-                    // handle the invalid form
-
-                } else {
-                    // Prevent form submission
-                    e.preventDefault();
-                    // Use Ajax to submit form data
-
-                    //check if the description is updated
-                    if(globalTrId == 'natureOfCompanyTr'){
-                        for (instance in CKEDITOR.instances) {
-                            CKEDITOR.instances[instance].updateElement();
-                        }
-                    }
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function (response) {
-                            if (response) {
-                                $('#userInfoEditModal').modal("hide");
-                                reloadUserField($('#userTableType').val(),$('#userDetailColumn').val());
-                                alertMessageDisplay(true);
-                            } else {
-                                alertMessageDisplay(false);
-                            }
-                        }
-                    });
-                }
-
-            });
-        }
-
-        //JS + ajax method to take the info and displaying it in the edit modal
-        function editModalDisplay(trId) {
-            $.ajax({
-                success: function (response) {
-                    var htmlString;
-                    $('#userInfoEditModal').modal({show: true, keyboard: true});
-                    $('#editModalTitle').html("Update Your " + $('#' + trId + ' td:nth-child(1)').html());
-                    $('#currInfoModal td:nth-child(1)').html("Current " + $('#' + trId + ' td:nth-child(1)').html());
-                    $('#currInfoModal td:nth-child(2)').html($('#' + trId + ' td:nth-child(2)').html());
-                    $('#updateFeildsModal td:nth-child(1)').html("Type In Your New " + $('#' + trId + ' td:nth-child(1)').html());
-                    switch (trId) {
-                        case 'companyNameTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('company_name');
-                            break;
-                        case 'natureOfCompanyTr' :
-                            htmlString = "<div class='form-group'><div class='controls'><textarea id='newUserValue' name='user_value' class='ckeditor col-lg-12 col-sm-12' required></textarea></div><span class='help-block with-errors'></span></div>";
-                            $('#updateModalBodyContainer').html(htmlString); //replace the whole table
-                            CKEDITOR.replace('user_value'); //this is essential to display the ckeditor
-                            $('#newUserValue').html($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('description');
-
-                            break;
-                        case 'userNameTr' :
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' pattern='^[A-Za-z0-9_-]{3,16}$' data-native-error='Username should at least contain 3 Characters (letter numbers and underscore)' data-remote='/Ambula/registration/checkUserName' data-error='username already exists ,choose a different one' maxlength='10'' required></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('users');
-                            $('#userDetailColumn').val('user_name');
-
-                            break;
-                        case 'hotlineTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='xxxx xxx xxx' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('telephone_1');
-                            break;
-                        case 'telephone2Tr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' pattern='\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})' data-minlength='10' data-error='Invalid Telephone Number' placeholder='xxxx xxx xxx' class='form-control' required> </div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('telephone_2');
-                            break;
-                        case 'streetAddressTr':
-                            htmlString = "<div class='form-group'><div class='controls'><textarea type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required rows='5'></textarea></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('address_1');
-                            break;
-                        case 'cityTr':
-                            htmlString = "<div class='form-group'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='' class='form-control' required></div><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('city');
-                            break;
-                        case 'districtTr':
-                            htmlString = "<div class='form-group'><div class='controls'>";
-                            htmlString += "<select class='form-control' id='newUserValue' name='user_value' required>";
-                            htmlString += "<option value='' selected hidden disabled>Select a new district..</option>";
-                            htmlString += "<option value='Ampara'>Ampara</option>";
-                            htmlString += "<option value='Anuradhapura'>Anuradhapura</option>";
-                            htmlString += "<option value='Badulla'>Badulla</option>";
-                            htmlString += "<option value='Batticaloa'>Batticaloa</option>";
-                            htmlString += "<option value='Colombo'>Colombo</option>";
-                            htmlString += "<option value='Galle'>Galle</option>";
-                            htmlString += "<option value='Gampaha'>Gampaha</option>";
-                            htmlString += "<option value='Hambantota'>Hambantota</option>";
-                            htmlString += "<option value='Jaffna'>Jaffna</option>";
-                            htmlString += "<option value='Kalutara'>Kalutara</option>";
-                            htmlString += "<option value='Kandy'>Kandy</option>";
-                            htmlString += "<option value='Kegalle'>Kegalle</option>";
-                            htmlString += "<option value='Kilinochchi'>Kilinochchi</option>";
-                            htmlString += "<option value='Kurunegala'>Kurunegala</option>";
-                            htmlString += "<option value='Mannar'>Mannar</option>";
-                            htmlString += "<option value='Matale'>Matale</option>";
-                            htmlString += "<option value='Matara'>Matara</option>";
-                            htmlString += "<option value='Monaragala'>Monaragala</option>";
-                            htmlString += "<option value='Mullaitivu'>Mullaitivu</option>";
-                            htmlString += "<option value='Nuwara Eliya'>Nuwara Eliya</option>";
-                            htmlString += "<option value='Polonnaruwa'>Polonnaruwa</option>";
-                            htmlString += "<option value='Puttalam'>Puttalam</option>";
-                            htmlString += "<option value='Ratnapur'>Ratnapura</option>";
-                            htmlString += "<option value='Trincomalee'>Trincomalee</option>";
-                            htmlString += "<option value='Vavuniya'>Vavuniya</option>";
-                            htmlString += "</select>";
-                            htmlString += "<span class='help-block with-errors'></span>";
-                            htmlString += "</div></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('district');
-                            break;
-                        case 'webSiteTr':
-                            htmlString = "<div class='form-group has-feedback has-feedback-left'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='www.youWebSite.com' class='form-control' required></div><i class='form-control-feedback fa fa-globe fa-lg' style='padding-top: 8px'></i><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('web_url');
-                            break;
-                        case 'facebookTr':
-                            htmlString = "<div class='form-group has-feedback has-feedback-left'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='www.youFacebookPage.com' class='form-control' required></div><i class='form-control-feedback fa fa-facebook-official fa-lg' style='padding-top: 8px'></i><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('facebook_url');
-                            break;
-                        case 'youtubeTr':
-                            htmlString = "<div class='form-group has-feedback has-feedback-left'><div class='controls'><input type='text' id='newUserValue' name='user_value' placeholder='www.yourYoutubeChanel.com' class='form-control' required></div><i class='form-control-feedback fa fa-youtube fa-lg' style='padding-top: 8px'></i><span class='help-block with-errors'></span></div>";
-                            $('#updateFeildsModal td:nth-child(2)').html(htmlString);
-                            $('#newUserValue').val($('#' + trId + ' td:nth-child(2)').html());
-                            $('#userTableType').val('commercial_user');
-                            $('#userDetailColumn').val('youtube_url');
-                            break;
-
-                    }
-                    $('#userInfoEditModal').data('bs.modal').handleUpdate()
-                }
-            });
-        }
-
-        //JS+ajax method to display all the user personal info of a logged in user in a table
-        function displayUserInfo() {
-            $("#comm-user-content").fadeToggle(500 , 'linear');
-            $('#comm-user-info').fadeToggle(500, 'linear');
-            if (infoDisplay) {
-                $('#viewInfoBtn').html('View Info');
-                infoDisplay = false;
-            } else {
-                $('#viewInfoBtn').html('View Content');
-                infoDisplay = true;
-            }
-        }
-
-        //JS function display the profile pic update button overlay on the pro pic
-        function displayOverlayButton() {
-            if (Modernizr.touch) {
-
-                // show the close overlay button
-                $(".close-overlay").removeClass("hidden");
-                // handle the adding of hover class when clicked
-                $(".img").click(function (e) {
-                    if (!$(this).hasClass("hover")) {
-                        $(this).addClass("hover");
-                    }
-                });
-                // handle the closing of the overlay
-                $(".close-overlay").click(function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    if ($(this).closest(".img").hasClass("hover")) {
-                        $(this).closest(".img").removeClass("hover");
-                    }
-                });
-            } else {
-                // handle the mouseenter functionality
-                $(".img").mouseenter(function () {
-                    $(this).addClass("hover");
-                })
-                    // handle the mouseleave functionality
-                    .mouseleave(function () {
-                        $(this).removeClass("hover");
-                    });
-            }
-        }
-
     </script>
 </head>
 
@@ -676,7 +93,7 @@
 
     <div id="profileRow" class="row">
         <?php $commUser = json_decode($this->getCooperateUserDetails($this->user_name), true); ?>
-        <div class="col-lg-3" style="text-align: center;">
+        <div class="col-lg-3 col-md-3" style="text-align: center;">
             <div id="effect-1" class="row effects clearfix">
                 <div class="profile-userpic img">
 
@@ -709,7 +126,7 @@
                 <?php $commUserCategories = json_decode($this->getCategoriesByUser($this->user_name), true); ?>
                 <div class="col-lg-12">
                     <?php foreach ($commUserCategories as $category) {?>
-                    <span><?= $category['title']?>,</span>
+                    <span><?= $category['title']?></span>
                     <?php }?>
                 </div>
             </div>
@@ -723,7 +140,7 @@
 
 
         </div>
-        <div class="col-lg-9"><!--this div contains the two toggling divs-->
+        <div class="col-lg-9 col-md-9"><!--this div contains the two toggling divs-->
             <div id="comm-user-content" class="col-lg-12">
 
 
@@ -740,13 +157,13 @@
                         <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
                         foreach ($promotions as $promotion) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;">
+                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;height:350px;" >
 
 
                                 <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
                                      class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
 
-                                <div class="w3-container txt-center" >
+                                <div class="w3-container txt-center"  >
                                     <span style="overflow:hidden;text-overflow: ellipsis;text-transform: capitalize;"><h4 class="txt-semibold"><?= $promotion['promotion_name'] ?></h4></span>
                                     <span    class="txt-red txt-bold"><?=date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span class="txt-red txt-bold" ><?=date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
                                     <div class="w3-container w3-center"
@@ -774,20 +191,20 @@
 
                         foreach ($recipes as $recipe) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;">
+                            <div class="w3-card-4 w3-col l3 m3 s12 " style="margin: 15px;">
 
-                                <img src="/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>" alt="recipe image"
-                                     class="w3-col l12 m12 s12" style="height: 240px; margin-bottom: 5px">
+                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>" alt="recipe image"
+                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 5px">
 
                                 <div class="w3-container">
-                                    <h4 style="margin-bottom: 4px"><?= $recipe['title'] ?></h4>
-                                    <h5 style="margin: 2px 0px 2px 0px">Views : <?= $recipe['views'] ?> <span
+                                    <h4 class="txt-center" style="margin-bottom: 4px"><?= $recipe['title'] ?></h4>
+                                    <h5  class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views : <?= $recipe['views'] ?> <span
                                             class="glyphicon glyphicon-eye-open"></span></h5>
-                                    <h5 style="margin: 0px">Ratings : <?= $recipe['views'] ?> <span
+                                    <h5  class="txt-red txt-bold" style="margin: 0px">Ratings : <?= $recipe['views'] ?> <span
                                             class="glyphicon glyphicon-star">s</span></h5>
 
                                     <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px; border-top: 1px #959999 solid">
+                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
                                         <a href="" class="w3-btn"
                                            style="float: left; width: 45%; background-color: #337ab7">Update</a>
                                         <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>
