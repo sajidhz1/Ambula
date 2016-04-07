@@ -238,15 +238,14 @@ class ProfileModel
         return json_encode($sql);
     }
 
-    public function getCategoriesByUser()
+    public function getCategoriesByUser($user_name = "")
     {
-        $cooperate_user_id = $_SESSION['coporate_user_id'];
-        $sql = $this->db->query("SELECT title from cooperate_user_has_product_categories , product_categories
-                                WHERE cooperate_user_has_product_categories.Product_categories_id_product_categories = product_categories.id_product_categories
-                                   AND cooperate_user_has_product_categories.cooperate_user_id = $cooperate_user_id")->fetchAll(PDO::FETCH_ASSOC);
 
-
-        return json_encode($sql);
+        $sql = "SELECT cat.id_product_categories, cat.title FROM product_categories AS cat JOIN (SELECT cupc.Product_categories_id_product_categories FROM cooperate_user_has_product_categories AS cupc, (SELECT com.idcommercial_user FROM commercial_user AS com, (SELECT user_id FROM users WHERE user_name = :user_name) AS user WHERE com.users_user_id = user.user_id) AS comuser WHERE cupc.cooperate_user_id = comuser.idcommercial_user) AS ids WHERE cat.id_product_categories=ids.Product_categories_id_product_categories";
+        $query = $this->db->prepare($sql);
+        $query->execute(array(':user_name'=>$user_name));
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return json_encode($result);
     }
 
 

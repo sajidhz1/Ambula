@@ -111,19 +111,25 @@
                 </div>
             </div>
             <div class="row profile-usertitle">
-                <div class="col-lg-12 col-md-7">
-                    <div class="col-lg-7" style="">
+                <div class="col-lg-12 col-md-12">
                     <span class="profile-usertitle-name" id="profile-usertitle-name">
-                        <?= $commUser['company_name'] ?>
+                        <h3>
+                            <?= $commUser['company_name'] ?>
+                        </h3>
                     </span>
-                    </div>
-                    <div class="col-lg-5">
-                        <a class="w3-btn w3-orange" id="viewInfoBtn">View Info</a>
-                    </div>
                 </div>
             </div>
+
+            <?php if($this->user_name === $_SESSION['username']){?>
+            <div class="row profile-infoview">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <a class="w3-btn-block w3-orange" id="viewInfoBtn">View Info</a>
+                </div>
+            </div>
+            <?php } ?>
+
             <div class="row profile-usertitle-job">
-                <?php $commUserCategories = json_decode($this->getCategoriesByUser($this->user_name), true); ?>
+                <?php $commUserCategories = json_decode($this->getCategoriesByUser($this->user_name ), true);?>
                 <div class="col-lg-12">
                     <?php foreach ($commUserCategories as $category) {?>
                     <span><?= $category['title']?></span>
@@ -366,7 +372,7 @@
 <!-- modal to display current user info and to take the new user infor-->
 <div class="modal fade" id="userInfoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="false"
-     style=" overflow: scroll; height:auto;" data-backdrop="false">
+     style="overflow: scroll; height:auto;" data-backdrop="false">
     <div class="container">
         <div class="row">
             <div class="modal-dialog modal-dialog-center col-m-12">

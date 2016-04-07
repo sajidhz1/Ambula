@@ -26,7 +26,7 @@ class profile extends Controller
     public function index($user = '')
     {
         //echo $_GET['user'];
-        if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"] == true && isset($_SESSION["username"]) && $_SESSION["username"] == $user) {
+        if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_logged_in"] == true && isset($_SESSION["username"])) {
             if ($this->user->checkUserExistAndGetType($user) != '') {
                 if ($this->user->checkUserExistAndGetType($user)->user_account_type == 1) {
                     $this->user_name = $user;
@@ -118,9 +118,9 @@ class profile extends Controller
     }
 
     //To view which categories of food does a commercial user deals in
-    public function getCategoriesByUser()
+    public function getCategoriesByUser($user_name = "")
     {
-        return $this->profile->getCategoriesByUser();
+        return $this->profile->getCategoriesByUser($user_name);
     }
 
     public function error_page()

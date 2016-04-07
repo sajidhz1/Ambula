@@ -95,45 +95,54 @@
 
             <!-- SIDEBAR USERPIC -->
             <div id="effect-1" class="row effects clearfix">
-                <div class="profile-userpic img">
-                    <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
-                        <img id="profilePicture"
-                             src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
-                             class="img-responsive" alt="">
-                    <?php } else if ($normUser['user_avatar'] == 1) { ?>
-                        <img id="profilePicture"
-                             src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
-                             class="img-responsive" alt="<?= $normUser['user_name'] ?>">
-                    <?php } else { ?>
-                        <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
-                             alt="">
-                    <?php } ?>
-                    <div class="overlay">
-                        <a id="uploadLink" class="expand">
-                            <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
-                        </a>
-                        <input type="file" id="uploadInput" name="upload_input"/>
-                        <a class="close-overlay hidden">x</a>
+                <div class="profile-userpic col-lg-12 col-md-12 col-sm-12">
+                    <div class="img">
+                        <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
+                            <img id="profilePicture"
+                                 src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
+                                 class="img-responsive" alt="">
+                        <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                            <img id="profilePicture"
+                                 src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
+                                 class="img-responsive" alt="<?= $normUser['user_name'] ?>">
+                        <?php } else { ?>
+                            <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
+                                 alt="">
+                        <?php } ?>
+                        <div class="overlay">
+                            <a id="uploadLink" class="expand">
+                                <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                            </a>
+                            <input type="file" id="uploadInput" name="upload_input"/>
+                            <a class="close-overlay hidden">x</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- END SIDEBAR USERPIC -->
             <!-- SIDEBAR USER TITLE -->
             <div class="row profile-usertitle">
-                <div class="col-lg-7 col-md-7 col-sm-7" style="">
-                    <span class="profile-usertitle-name" id="profile-usertitle-name"
-                          style="font-size: 20px; text-align: left;">
+                <div class="col-lg-12 col-md-6 col-sm-12" style="">
+                    <span class="profile-usertitle-name" id="profile-usertitle-name">
+                        <h3>
                         <?php if($normUser['user_provider_type'] == "FACEBOOK"){?>
                         <span><?=$normUser['user_name']?></span>
                         <?php }else{?>
                         <span id="first-name"><?= $normUser['first_name']?></span> <span id="last-name"><?= $normUser['last_name']?></span>
                         <?php }?>
+                        </h3>
                     </span>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-5">
-                    <a class="w3-btn w3-orange" id="viewInfoBtn">View Info</a>
+            </div>
+
+            <?php if($this->user_name === $_SESSION['username']){?>
+            <div class="row profile-infoview">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <a class="w3-btn-block w3-orange" id="viewInfoBtn">View Info</a>
                 </div>
             </div>
+            <?php } ?>
+
             <!-- END SIDEBAR USER TITLE -->
         </div>
         <div class="col-lg-9 col-md-9">
@@ -147,7 +156,7 @@
                         <div class="w3-card-4 w3-col l3 m4 s12" style="margin:15px 15px;">
                             <a href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
 
-                                <img src="/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
                                      alt="Avatar" class="w3-col l12 m12 s12"/>
 
                                 <div class="w3-container w3-col m12 l12 s12">
