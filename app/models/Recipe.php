@@ -804,16 +804,19 @@ class Recipe
 
 
             $tempFile = $_FILES['file']['tmp_name'];          //3
-
+            $name_array = $_FILES['file']['name'];
             $targetPath = $storeFolder . $ds;  //4
 
-            $targetFile = $targetPath . basename($_FILES['file']['name']);  //5
-            $imageFileType = pathinfo($targetFile, PATHINFO_EXTENSION);
-            move_uploaded_file($tempFile, $storeFolder . '/' . $_GET['name'] . "." . $imageFileType); //6
+            move_uploaded_file($tempFile, $storeFolder . "/" . $_GET['name']. "-" . $name_array); //6
+            for($i = 0; $i < count($tempFile); $i++) {
 
-            $this->make_thumb($storeFolder . '/' . $_GET['name'] . '.' . $imageFileType, $storeFolder . '/' . $_GET['name'] . '_thumb.' . $imageFileType, 200);
+              //  $targetFile = $targetPath . basename($_FILES['file']['name']);  //5
+                //$imageFileType = pathinfo($targetFile, PATHINFO_EXTENSION);
 
-            echo $_GET['name'] . "." . $imageFileType;
+            }
+           // $this->make_thumb($storeFolder . '/' . $_GET['name'] . '.' . $imageFileType, $storeFolder . '/' . $_GET['name'] . '_thumb.' . $imageFileType, 200);
+
+           // echo $_GET['name'] . "." . $imageFileType;
         }
 
 
@@ -967,6 +970,21 @@ class Recipe
         return rmdir($dir);
     }
 
-    //new functions to edti recipe
+    //new functions to edit recipe
+    public function loadImagesFromRecipesFolder($recipeId ='')
+    {
 
+       $result  = array();
+        $handle = opendir('uploads/recipes/'.$recipeId);
+
+        while($file = readdir($handle)){ //get an array which has the names of all the files and loop through it
+            $obj['name'] = $file; //get the filename in array
+            $obj['size'] = filesize('uploads/recipes/'.$recipeId.'/'); //get the flesize in array
+            $result[] = $obj; // copy it to another array
+        }
+       // header('Content-Type: application/json');
+        echo json_encode($result);
+
+
+    }
 } 

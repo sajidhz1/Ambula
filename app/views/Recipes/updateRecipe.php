@@ -6,12 +6,12 @@
     <title>The Ambula</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../public/css/bootstrap.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/custom.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
-    <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/recipes-style.css" rel="stylesheet" media="screen"/>
 
     <link
         href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
@@ -21,9 +21,9 @@
     <link rel="icon" href="../public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="../public/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../public/js/recipes/bootstrap-tagsinput.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/recipes/bootstrap-tagsinput.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script type="text/javascript"
@@ -31,7 +31,7 @@
 
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-    <script src="../public/js/typeahead.js"></script>
+    <script src="/Ambula/public/js/typeahead.js"></script>
 
 
     <!--[if lt IE 9]>
@@ -141,7 +141,10 @@
         <div class=" col-lg-11 col-sm-12" style="margin: 15px 0px;" >
             <div class="dropzone" style="height: 250px; overflow-y: auto;" id="mydropzone"></div>
         </div>
+        <?php $result =  json_decode($this->loadImagesFromRecipesFolder($recipe[0]['idRecipe']),true);
 
+             $result;
+         ?>
 <!--        <div class="form-group col-lg-9 col-sm-12">-->
 <!--            <!-- Password-->
 <!--            <br>-->
@@ -449,8 +452,8 @@
 </div>
 
 
-<script type="text/javascript" src="../public/js/registration/validator.js"></script>
-<script type="text/javascript" src="../public/js/recipes/script.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/recipes/script.js"></script>
 
 
 </body>

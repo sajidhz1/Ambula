@@ -284,6 +284,10 @@ class recipes extends Controller
 
     }
 
+    public function  loadImagesFromRecipesFolder($recipeId =''){
+        $this->recipes->loadImagesFromRecipesFolder($recipeId);
+    }
+
     public function error_page()
     {
         $this->view('_template/error');
