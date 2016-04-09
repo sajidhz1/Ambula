@@ -16,14 +16,15 @@
     <link href="public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="public/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="public/css/slider.css">
+    <link href="public/css/slider.css" rel="stylesheet">
+    <link href="public/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="/Ambula/public/css/w3.css" type="text/css" rel="stylesheet"/>
 
     <!-- fav icon -->
     <link rel="icon" href="public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
 
-    <script type="text/javascript" src="public/js/jquery-1.11.0.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="public/css/style.css"/>
+    <script src="public/js/jquery-1.11.0.min.js" type="text/javascript" ></script>
 
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>

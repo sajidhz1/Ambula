@@ -12,6 +12,9 @@
     <link href="../public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
     <link href="../public/css/recipes-style.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/w3.css" rel="stylesheet">
+    <link href="/Ambula/public/css/style.css" type="text/css" rel="stylesheet" />
+
 
     <link
         href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"

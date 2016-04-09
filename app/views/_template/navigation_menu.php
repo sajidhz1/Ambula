@@ -135,7 +135,6 @@
      aria-hidden="false" style=" overflow: scroll; height:auto;margin-top: 50px;" data-backdrop="false">
     <div class="modal-dialog modal-dialog-center">
         <div class="modal-content">
-
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
@@ -143,11 +142,16 @@
             </div>
             <div class="modal-body">
                 <div class="col-lg-offset-4">
-                    <a href="/Ambula/recipes/newrecipeupdated" class="btn btn-lg btn-warning">English</a>
-                    <a href="/Ambula/recipes/newrecipeupdated?lang=si" class="btn btn-lg btn-info">සිංහලෙන්</a>
+                    <a href="/Ambula/recipes/addNewRecipeView" class="w3-btn w3-orange w3-xlarge" style="color: #ffffff !important;">English</a>
+                    <a href="/Ambula/recipes/addNewRecipeView?lang=si" class="w3-btn w3-blue w3-xlarge" style="background-color: #337ab7 !important;">සිංහලෙන්</a>
                 </div>
             </div>
-
+            <div class="modal-footer">
+                <button class="w3-btn w3-large w3-orange" data-dismiss="modal" aria-label="Close"
+                        style="color: #ffffff !important; float: right;">
+                    Cancel
+                </button>
+            </div>
         </div>
     </div>
 </div>

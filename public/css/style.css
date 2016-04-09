@@ -263,8 +263,22 @@ background :#F3F3EC;
 	flex: 1 0 auto
 }
 
+/*Standard CSS for all the modal windows*/
+.modal {
+	background: rgba(000, 000, 000, 0.6);
+	min-height: 1000000px;
+}
 
+.modal-header{
+	background: #e78f08;
+	color: white !important;
+}
 
+.modal-header h4{
+	color: white !important;
+}
 
-
-
+#recipeChooseModal .modal-footer{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}

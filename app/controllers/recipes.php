@@ -23,23 +23,86 @@ class recipes extends Controller
 
     }
 
-    public function newRecipe()
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////Methods used to add a recipe from a logged in user///////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //////addNewRecipe() method is used to select which interface should be given to add a recipe(Sinhala/English)/////////
+    public function addNewRecipeView()
     {
         if (isset($_SESSION["uid"]) || isset($_SESSION["fbid"])) {
-            if (isset($_GET['lang']) == 'si' && isset($_GET['r']))
-                $this->view('Recipes/newrecipe_si');
-            else
+            if (isset($_GET['lang']) && $_GET['lang'] = 'si'){
+                $this->view('Recipes/new_recipe_updated_si');
+            } else{
                 $this->view('Recipes/new_recipe_updated');
+            }
         } else {
             Header('Location:Ambula/login/');
         }
+    }
+
+    /////////////////This method is used to save the recipe when submitting it to db/////////////////////////
+    public function addNewRecipe()
+    {
+        echo $this->recipes->addNewRecipe();
+    }
+
+    public function checkRecipeTitle()
+    {
+        $this->recipes->checkRecipeTitle();
+    }
+
+    ///////////////////////////////Method to add ratings for a recipe/////////////////////////////////////////
+    public function addRating($rid)
+    {
+        $this->recipes->addRating(Session::get('uid'), intval($_POST['val']), $rid);
+    }
+
+    /////////////////////////method to display after recipe is added successfully/////////////////////////////
+    public function recipeSuccess()
+    {
+        if (isset($_GET['id']))
+            $this->view('Recipes/recipe_success');
+    }
+
+    ////////////////////////Method to add comments for a recipe///////////////////////////////////////////
+    public function addComment($rid)
+    {
+        $this->recipes->addComment(Session::get('uid'), $_POST['text'], $rid);
     }
 
     //add sinhala translation
     public function addRecipeSi()
     {
         $this->recipes->addRecipeSi();
-        //Header('Location:/Ambula/recipes/viewRecipe/'.$_POST['idrecipe']);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////The methods used to display recipes retrieved from db////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function viewRecipe($recipeId = '')
+    {
+
+        if (!$this->recipes->checkRecipeAvailability($recipeId))
+            header('location: /');
+
+
+        if ($this->recipes->getRecipeType($recipeId) != "si") {
+            $this->recipes->viewRecipe($recipeId);
+
+            $this->view('Recipes/recipe');
+        } else {
+            $this->recipes->viewRecipe($recipeId);
+
+            $this->view('Recipes/recipe_si');
+        }
     }
 
     //view sinhala view
@@ -66,36 +129,6 @@ class recipes extends Controller
     public function getName($name = '')
     {
         $this->recipes->getNames($name);
-    }
-
-    public function addNewRecipe()
-    {
-
-        echo $this->recipes->addNewRecipe();
-
-    }
-
-    public function viewRecipe($recipeId = '')
-    {
-
-        if (!$this->recipes->checkRecipeAvailability($recipeId))
-            header('location: /');
-
-
-        if ($this->recipes->getRecipeType($recipeId) != "si") {
-            $this->recipes->viewRecipe($recipeId);
-
-            $this->view('Recipes/recipe');
-        } else {
-            $this->recipes->viewRecipe($recipeId);
-
-            $this->view('Recipes/recipe_si');
-        }
-    }
-
-    public function checkRecipeTitle()
-    {
-        $this->recipes->checkRecipeTitle();
     }
 
     public function getCategoriesArray()
@@ -128,39 +161,34 @@ class recipes extends Controller
         return $this->recipes->getRecipeAddedBy($recipeId);
     }
 
-    //adding new rating
-    public function addRating($rid)
-    {
-        $this->recipes->addRating(Session::get('uid'), intval($_POST['val']), $rid);
-    }
-
-    public function editRecipe()
-    {
-        $this->view('Recipes/updateRecipe');
-    }
 
     public function getRecipe($recipeId = '')
     {
         return $this->recipes->getRecipe($recipeId);
     }
 
-    public function recipeSuccess()
-    {
-        if (isset($_GET['id']))
-            $this->view('Recipes/recipe_success');
-    }
-
-    public function newRecipeupdated()
-    {
-        if (isset($_GET['lang']) && $_GET['lang'] = 'si')
-            $this->view('Recipes/new_recipe_updated_si');
-        else
-            $this->view('Recipes/new_recipe_updated');
-    }
-
     public function getIngredientBrands($ingId = '')
     {
         return $this->recipes->getIngredientBrands($ingId);
+    }
+
+    public function getUserComments($rid)
+    {
+        return $this->recipes->getUserComments($rid);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////Methods used to update a recipe of respective user///////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function editRecipe()
+    {
+        $this->view('Recipes/updateRecipe');
     }
 
     public function updateRecipeBrands()
@@ -170,16 +198,6 @@ class recipes extends Controller
 
             Header('Location:/recipes/viewRecipe/' . $_GET['recipe']);
         }
-    }
-
-    public function getUserComments($rid)
-    {
-        return $this->recipes->getUserComments($rid);
-    }
-
-    public function addComment($rid)
-    {
-        $this->recipes->addComment(Session::get('uid'), $_POST['text'], $rid);
     }
 
     public function updateRecipeTitle()
@@ -222,8 +240,6 @@ class recipes extends Controller
         $this->recipes->deleteRecipeDescription();
     }
 
-    //updated view
-
     public function testDropZone()
     {
         return $this->recipes->testDropZone();
@@ -245,8 +261,14 @@ class recipes extends Controller
         $this->recipes->getIngredientSuggestions();
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////The Admin Only method for permanently deleting a recipe from the database/////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function viewRecipeDelete()
     {

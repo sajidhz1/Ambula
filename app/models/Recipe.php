@@ -919,8 +919,7 @@ class Recipe
     }
 
 
-
-    //////////////////////Function to update the recipes//////////////////////////////////////////////////////
+    //////////////////////////////////////Function to update the recipes///////////////////////////////////////
     public function updateRecipeTitle()
     {
 
@@ -932,7 +931,6 @@ class Recipe
 
         }
     }
-
 
     public function updateRecipeTime()
     {
