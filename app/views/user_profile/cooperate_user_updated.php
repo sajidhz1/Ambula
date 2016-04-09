@@ -34,7 +34,6 @@
     <script type="text/javascript" src="/Ambula/public/js/profile/comm-user-profile.js"></script>
 
 
-
     <!--[if lt IE 9]>
     <script src="css/font-awesome-ie7.min.css"></script>
     <![endif]-->
@@ -90,7 +89,6 @@
     </div>
 
 
-
     <div id="profileRow" class="row">
         <?php $commUser = json_decode($this->getCooperateUserDetails($this->user_name), true); ?>
         <div class="col-lg-3 col-md-3" style="text-align: center;">
@@ -111,37 +109,49 @@
                 </div>
             </div>
             <div class="row profile-usertitle">
-                <div class="col-lg-12 col-md-7">
-                    <div class="col-lg-7" style="">
+                <div class="col-lg-12 col-md-12">
                     <span class="profile-usertitle-name" id="profile-usertitle-name">
-                        <?= $commUser['company_name'] ?>
+                        <h3>
+                            <?= $commUser['company_name'] ?>
+                        </h3>
                     </span>
-                    </div>
-                    <div class="col-lg-5">
-                        <a class="w3-btn w3-orange" id="viewInfoBtn">View Info</a>
-                    </div>
                 </div>
             </div>
+
+            <?php if ($this->user_name === $_SESSION['username']) { ?>
+                <div class="row profile-infoview">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <a class="w3-btn-block w3-orange" id="viewInfoBtn">View Info</a>
+                    </div>
+                </div>
+            <?php } ?>
+
             <div class="row profile-usertitle-job">
                 <?php $commUserCategories = json_decode($this->getCategoriesByUser($this->user_name), true); ?>
                 <div class="col-lg-12">
-                    <?php foreach ($commUserCategories as $category) {?>
-                    <span><?= $category['title']?></span>
-                    <?php }?>
+                    <?php foreach ($commUserCategories as $category) { ?>
+                        <span><?= $category['title'] ?></span>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row profile-weblinks">
                 <div class="col-lg-10 col-md-10 col-md-offset-1 col-lg-offset-1">
-                    <a id="webLink" class="w3-btn w3-border w3-border-orange w3-hover-white" href="http://<?= $commUser['web_url'] ?>" target="_blank"><i class="fa fa-globe fa-lg"></i>Official Web Site</a>
-                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white " href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i class="fa fa-facebook-official fa-lg"></i>Facebook Page</a>
-                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white" href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Youtube Chanel</a>
+                    <a id="webLink" class="w3-btn w3-border w3-border-orange w3-hover-white"
+                       href="http://<?= $commUser['web_url'] ?>" target="_blank"><i class="fa fa-globe fa-lg"></i>Official
+                        Web Site</a>
+                    <a id="fbLink" class="w3-btn w3-fbtheme w3-border w3-border-blue w3-hover-white "
+                       href="http://<?= $commUser['facebook_url'] ?>" target="_blank"><i
+                            class="fa fa-facebook-official fa-lg"></i>Facebook Page</a>
+                    <a id="youtubeLink" class="w3-btn w3-hover-text-red w3-red w3-border w3-border-red w3-hover-white"
+                       href="http://<?= $commUser['youtube_url'] ?>" target="_blank"><i class="fa fa-youtube fa-lg"></i>Youtube
+                        Chanel</a>
                 </div>
             </div>
 
 
         </div>
         <div class="col-lg-9 col-md-9"><!--this div contains the two toggling divs-->
-            <div id="comm-user-content" class="col-lg-12">
+            <div id="comm-user-content" class="row">
 
 
                 <ul class="nav nav-pills">
@@ -153,29 +163,37 @@
 
 
                 <div class="tab-content">
-                    <div id="promotions" class="tab-pane fade in active" style="border: 1px solid #b1b1b1;">
+                    <div id="promotions" class="tab-pane fade in active">
                         <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
                         foreach ($promotions as $promotion) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12" style="margin: 15px;height:350px;" >
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+
+                                <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px;">
 
 
-                                <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
-                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
+                                    <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
+                                         class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
 
-                                <div class="w3-container txt-center"  >
-                                    <span style="overflow:hidden;text-overflow: ellipsis;text-transform: capitalize;"><h4 class="txt-semibold"><?= $promotion['promotion_name'] ?></h4></span>
-                                    <span    class="txt-red txt-bold"><?=date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span class="txt-red txt-bold" ><?=date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
-                                    <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
-                                        <a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
+                                    <div class="w3-container txt-center w3-col m12 l12 s12" style="padding:5px">
+                                        <div class="txt-semibold"
+                                             style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
+                                            <h3>
+                                                <?= $promotion['promotion_name'] ?>
+                                            </h3>
+                                        </div>
+                                        <span
+                                            class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span
+                                            class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
+
+                                        <!--<a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
                                            style="float: left; width: 45%; background-color: #337ab7">Renew</a>
-                                        <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>
+                                        <a href="" class="w3-btn w3-orange"
+                                           style="float: right; width: 45%">Delete</a>-->
+
                                     </div>
 
-
                                 </div>
-
                             </div>
                             <?php
                         }
@@ -191,29 +209,40 @@
 
                         foreach ($recipes as $recipe) {
                             ?>
-                            <div class="w3-card-4 w3-col l3 m3 s12 " style="margin: 15px;">
+                            <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
 
-                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>" alt="recipe image"
-                                     class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 5px">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
 
-                                <div class="w3-container">
-                                    <h4 class="txt-center" style="margin-bottom: 4px"><?= $recipe['title'] ?></h4>
-                                    <h5  class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views : <?= $recipe['views'] ?> <span
-                                            class="glyphicon glyphicon-eye-open"></span></h5>
-                                    <h5  class="txt-red txt-bold" style="margin: 0px">Ratings : <?= $recipe['views'] ?> <span
-                                            class="glyphicon glyphicon-star">s</span></h5>
+                                    <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12"
+                                         style="padding: 0px;">
 
-                                    <div class="w3-container w3-center"
-                                         style="margin:5px 0px 5px 0px; padding: 2px 0px 0px 0px;">
-                                        <a href="" class="w3-btn"
-                                           style="float: left; width: 45%; background-color: #337ab7">Update</a>
-                                        <a href="" class="w3-btn w3-orange" style="float: right; width: 45%">Delete</a>
+                                        <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>"
+                                             alt="recipe image"
+                                             class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px">
+
+                                        <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
+                                            <div class="txt-semibold"
+                                                 style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
+                                                <h4 class="txt-center"><?= $recipe['title'] ?></h4>
+                                            </div>
+                                            <h5 class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views
+                                                : <?= $recipe['views'] ?> <span
+                                                    class="glyphicon glyphicon-eye-open"></span></h5>
+                                            <h5 class="txt-red txt-bold" style="margin: 0px">Ratings
+                                                : <?= $recipe['views'] ?>
+                                                <span
+                                                    class="glyphicon glyphicon-star">s</span></h5>
+
+                                            <!--<a href="" class="w3-btn"
+                                                   style="float: left; width: 45%; background-color: #337ab7">Update</a>
+                                                <a href="" class="w3-btn w3-orange"
+                                                   style="float: right; width: 45%">Delete</a>-->
+
+                                        </div>
+
                                     </div>
-
                                 </div>
-
-
-                            </div>
+                            </a>
                             <?php
                         }
 
@@ -304,7 +333,6 @@
         </div>
 
 
-
     </div>
 
 </div>
@@ -366,7 +394,7 @@
 <!-- modal to display current user info and to take the new user infor-->
 <div class="modal fade" id="userInfoEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="false"
-     style=" overflow: scroll; height:auto;" data-backdrop="false">
+     style="overflow: scroll; height:auto;" data-backdrop="false">
     <div class="container">
         <div class="row">
             <div class="modal-dialog modal-dialog-center col-m-12">

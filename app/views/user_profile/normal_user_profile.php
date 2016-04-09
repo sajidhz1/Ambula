@@ -89,80 +89,120 @@
         <?php $this->view('_template/navigation_menu', "normalProfileView") ?>
     </div>
 
-    <div id="profileRow" class="row profile" >
+    <div id="profileRow" class="row profile">
         <?php $normUser = json_decode($this->getUser(), true); ?>
         <div class="col-lg-3 col-md-3">
 
             <!-- SIDEBAR USERPIC -->
             <div id="effect-1" class="row effects clearfix">
-                <div class="profile-userpic img">
-                    <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
-                        <img id="profilePicture"
-                             src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
-                             class="img-responsive" alt="">
-                    <?php } else if ($normUser['user_avatar'] == 1) { ?>
-                        <img id="profilePicture"
-                             src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
-                             class="img-responsive" alt="<?= $normUser['user_name'] ?>">
-                    <?php } else { ?>
-                        <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
-                             alt="">
-                    <?php } ?>
-                    <div class="overlay">
-                        <a id="uploadLink" class="expand">
-                            <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
-                        </a>
-                        <input type="file" id="uploadInput" name="upload_input"/>
-                        <a class="close-overlay hidden">x</a>
+                <div class="profile-userpic col-lg-12 col-md-12 col-sm-12">
+                    <?php if ($this->user_name === $_SESSION['username']) { ?>
+                    <div class="img">
+                        <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
+                            <img id="profilePicture"
+                                 src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
+                                 class="img-responsive" alt="">
+                        <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                            <img id="profilePicture"
+                                 src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
+                                 class="img-responsive" alt="<?= $normUser['user_name'] ?>">
+                        <?php } else { ?>
+                            <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
+                                 alt="">
+                        <?php } ?>
+                        <div class="overlay">
+                            <a id="uploadLink" class="expand">
+                                <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                            </a>
+                            <input type="file" id="uploadInput" name="upload_input"/>
+                            <a class="close-overlay hidden">x</a>
+                        </div>
                     </div>
+                    <?php } else {?>
+                    <div>
+                        <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
+                            <img id="profilePicture"
+                                 src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
+                                 class="img-responsive" alt="">
+                        <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                            <img id="profilePicture"
+                                 src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
+                                 class="img-responsive" alt="<?= $normUser['user_name'] ?>">
+                        <?php } else { ?>
+                            <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
+                                 alt="">
+                        <?php } ?>
+                        <div class="overlay">
+                            <a id="uploadLink" class="expand">
+                                <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                            </a>
+                            <input type="file" id="uploadInput" name="upload_input"/>
+                            <a class="close-overlay hidden">x</a>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <!-- END SIDEBAR USERPIC -->
             <!-- SIDEBAR USER TITLE -->
             <div class="row profile-usertitle">
-                <div class="col-lg-7 col-md-7 col-sm-7" style="">
-                    <span class="profile-usertitle-name" id="profile-usertitle-name"
-                          style="font-size: 20px; text-align: left;">
-                        <?php if($normUser['user_provider_type'] == "FACEBOOK"){?>
-                        <span><?=$normUser['user_name']?></span>
-                        <?php }else{?>
-                        <span id="first-name"><?= $normUser['first_name']?></span> <span id="last-name"><?= $normUser['last_name']?></span>
-                        <?php }?>
+                <div class="col-lg-12 col-md-6 col-sm-12" style="">
+                    <span class="profile-usertitle-name" id="profile-usertitle-name">
+                        <h3>
+                            <?php if ($normUser['user_provider_type'] == "FACEBOOK") { ?>
+                                <span><?= $normUser['user_name'] ?></span>
+                            <?php } else { ?>
+                                <span id="first-name"><?= $normUser['first_name'] ?></span> <span
+                                    id="last-name"><?= $normUser['last_name'] ?></span>
+                            <?php } ?>
+                        </h3>
                     </span>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-5">
-                    <a class="w3-btn w3-orange" id="viewInfoBtn">View Info</a>
-                </div>
             </div>
+
+            <?php if ($this->user_name === $_SESSION['username']) { ?>
+                <div class="row profile-infoview">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <a class="w3-btn-block w3-orange" id="viewInfoBtn">View Info</a>
+                    </div>
+                </div>
+            <?php } ?>
+
             <!-- END SIDEBAR USER TITLE -->
         </div>
         <div class="col-lg-9 col-md-9">
 
-            <div id="norm-user-content" class="col-lg-12">
-                <div class="row profile-content" id="profile-content">
-                    <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
-                    foreach ($arrrecipe as $recipe) {
-                        ?>
+            <div id="norm-user-content" class="row">
+                <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
+                foreach ($arrrecipe as $recipe) {
+                    ?>
+                    <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+                            <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px">
+                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                     alt="<?= $recipe['title']; ?>" class="w3-col l12 m12 s12"
+                                     style="height: 200px;"/>
 
-                        <div class="w3-card-4 w3-col l3 m4 s12" style="margin:15px 15px;">
-                            <a href="http://localhost/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>">
+                                <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
+                                    <div class="txt-semibold"
+                                         style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
+                                        <h4><b><?= $recipe['title']; ?></b></h4>
+                                    </div>
 
-                                <img src="/Ambula/uploads/<?= $recipe['idRecipe']; ?>/thumb.jpg"
-                                     alt="Avatar" class="w3-col l12 m12 s12"/>
 
-                                <div class="w3-container w3-col m12 l12 s12">
-                                    <h4><b><?= $recipe['title']; ?></b></h4>
+                                    <p>views: <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
 
-                                    <p>Views : <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+                                    <p>rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
 
-                                    <p>Rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
+
+                                    <!--<a href="" class="w3-btn w3-blue" data-toggle="modal" data-target="#myModal"
+                                           style="float: right; width: 45%; background-color: #337ab7 !important;">Update</a>-->
+                                    <!--<a href="" class="w3-btn w3-orange" style="float: left; width: 45%">Delete</a>-->
                                 </div>
-
-                            </a>
+                            </div>
                         </div>
-
-                    <?php } ?>
-                </div>
+                    </a>
+                <?php } ?>
             </div>
 
 
@@ -173,55 +213,60 @@
                     <tablebody>
                         <tr id='firstNameTr'>
                             <td class='infoFeildName'>First Name</td>
-                            <td id='currFirstName'><?= $normUser['first_name']?></td>
-                            <td class = 'editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currFirstName'><?= $normUser['first_name'] ?></td>
+                            <td class='editTd'><a class='testClass edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a>
+                            </td>
                         </tr>
 
                         <tr id='lastNameTr'>
                             <td class='infoFeildName'>Last Name</td>
-                            <td id='currLastName'><?= $normUser['last_name']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currLastName'><?= $normUser['last_name'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='emailTr'>
                             <td class='infoFeildName'>Email</td>
-                            <td id='currUseEmail'><?= $normUser['user_email']?></td>
-                            <td class = 'editTd'></td>
+                            <td id='currUseEmail'><?= $normUser['user_email'] ?></td>
+                            <td class='editTd'></td>
                         </tr>
 
                         <tr id='userNameTr'>
                             <td class='infoFeildName'>Username</td>
-                            <td id='currUseEmail'><?= $normUser['user_name']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currUseEmail'><?= $normUser['user_name'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='mobileTelTr'>
                             <td class='infoFeildName'>Mobile Phone</td>
-                            <td id='currMobileTel'><?= $normUser['tel_mobile']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currMobileTel'><?= $normUser['tel_mobile'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='homeTelTr'>
                             <td class='infoFeildName'>Home Phone</td>
-                            <td id='currHomeTel'><?= $normUser['tel_home']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currHomeTel'><?= $normUser['tel_home'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='addressTr'>
                             <td class='infoFeildName'>Address</td>
-                            <td id='currAddress'><?= $normUser['address']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currAddress'><?= $normUser['address'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='aboutYouTr'>
                             <td class='infoFeildName'>About You</td>
-                            <td id='currDescription'><?= $normUser['description']?></td>
-                            <td class = 'editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
+                            <td id='currDescription'><?= $normUser['description'] ?></td>
+                            <td class='editTd'><a class='edit'><i class='glyphicon glyphicon-pencil'></i> Edit</a></td>
                         </tr>
 
                         <tr id='passwordTr'>
                             <td class='infoFeildName'>Change Your Password</td>
-                            <td><button class='w3-btn w3-medium w3-white w3-border w3-border-yellow' id='paaswordChangeBtn'>Change Your Password</button></td>
+                            <td>
+                                <button class='w3-btn w3-medium w3-white w3-border w3-border-yellow'
+                                        id='paaswordChangeBtn'>Change Your Password
+                                </button>
+                            </td>
                             <td></td>
                         </tr>
                     </tablebody>

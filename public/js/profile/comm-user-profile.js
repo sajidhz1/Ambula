@@ -155,7 +155,7 @@ function updateUserField() {
 //JS + ajax method to take the info and displaying it in the edit modal
 function editModalDisplay(trId) {
     //To restore the table back to modal, if it was replaced by ckeditor
-    if((globalTrId == 'aboutYouTr') && originalTableHtml){
+    if((globalTrId == 'natureOfCompanyTr') && originalTableHtml){
         $('#updateModalBodyContainer').html(originalTableHtml);
     }
     $.ajax({
@@ -177,7 +177,8 @@ function editModalDisplay(trId) {
                 case 'natureOfCompanyTr' :
                     htmlString = "<div class='form-group'><div class='controls'><textarea id='newUserValue' name='user_value' class='ckeditor col-lg-12 col-sm-12' required></textarea></div><span class='help-block with-errors'></span></div>";
                     originalTableHtml = $('#updateModalBodyContainer').html(); //to store the table before replacing it with ckeditor
-                    $('#updateModalBodyContainer').html(htmlString);//replace the whole table                            CKEDITOR.replace('user_value'); //this is essential to display the ckeditor
+                    $('#updateModalBodyContainer').html(htmlString);//replace the whole table
+                    CKEDITOR.replace('user_value'); //this is essential to display the ckeditor//                        CKEDITOR.replace('user_value'); //this is essential to display the ckeditor
                     $('#newUserValue').html($('#' + trId + ' td:nth-child(2)').html());
                     $('#userTableType').val('commercial_user');
                     $('#userDetailColumn').val('description');

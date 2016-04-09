@@ -1,9 +1,13 @@
 /* Profile sidebar */
 
 .profile-userpic {
+    /*
     width: 75%;
+    */
     height: 75%;
+    /*
     margin: 0 13% 0 13%;
+    */
 }
 
 .profile-userpic img {
@@ -17,21 +21,17 @@
 
 .profile-usertitle {
     text-align: center;
-    margin-top: 10px;
+    margin: 5px 0px 10px 0px;
     text-overflow: ellipsis;
 }
 
-.profile-usertitle-name {
+.profile-usertitle-name h3 {
     color: #5a7391;
-    font-size: 25px;
+    cursor: default;
     font-weight: 600;
-    margin: 5px 0px 5px 18%;
-    float: left;
 }
 
-.profile-usertitle a {
-    float: right;
-    margin-right: 25%;
+.profile-infoview a {
     color: #ffffff !important;
 }
 
@@ -41,12 +41,6 @@
 
 
 #norm-user-info{
-    /*
-                display: none;
-    */
-}
-
-#norm-user-content{
     display: none;
 }
 
@@ -234,4 +228,16 @@ a.expand {
     -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+
+#norm-user-content a{
+    color: #000000;
+    text-decoration: none !important;
+}
+
+#norm-user-content a:hover
+{
+    color: #000000;
+    text-decoration:none;
+    cursor:pointer;
 }

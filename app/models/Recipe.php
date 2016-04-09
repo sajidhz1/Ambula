@@ -636,55 +636,6 @@ class Recipe
         echo $result . $result1 . $count . $rating;
     }
 
-    /* recipe update functions*/
-    public function updateRecipeTitle()
-    {
-
-        if (isset($_POST['recipeId']) && isset($_POST['title'])) {
-            $sql = "UPDATE recipes SET title = '" . $_POST['title'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
-
-    public function updateRecipeTime()
-    {
-
-        if (isset($_POST['recipeId']) && isset($_POST['time'])) {
-            $sql = "UPDATE recipes SET est_time = '" . $_POST['time'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
-    public function updateRecipeTags()
-    {
-        if (isset($_POST['recipeId']) && isset($_POST['tags'])) {
-            $sql = "UPDATE recipes SET tags = '" . $_POST['tags'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
-    public function updateRecipeCategory()
-    {
-
-        if (isset($_POST['recipeId']) && isset($_POST['category'])) {
-            $sql = "UPDATE recipes SET category_id = " . $_POST['category'] . " WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
     public function deleteRecipeIngredient()
     {
 
@@ -970,12 +921,13 @@ class Recipe
         return rmdir($dir);
     }
 
-    //new functions to edit recipe
+   //new functions to edit recipe
     public function loadImagesFromRecipesFolder($recipeId ='')
     {
 
        $result  = array();
         $handle = opendir('uploads/recipes/'.$recipeId);
+
 
         while($file = readdir($handle)){ //get an array which has the names of all the files and loop through it
             $obj['name'] = $file; //get the filename in array

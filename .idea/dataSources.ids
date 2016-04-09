@@ -208,14 +208,15 @@
       <column name="created_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <column name="updated_at" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="tags" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
-      <column name="filters" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="est_time" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="prep_time" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="cook_time" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="subcategory_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="users_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="views" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="rating" sqlType="DECIMAL" precision="10" scale="1" nullable="false" jdbcType="3" def="MC4w"/>
       <column name="verified" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MA=="/>
+      <column name="lang" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12" def="J2VuJw=="/>
       <primary-key name="PRIMARY" columns="idRecipe,category_id,users_user_id"/>
       <exported-key name="fk_recipe_si_Recipes1" table="recipe_si" schema="" catalog="ambula" columns="Recipes_idRecipe"/>
       <index name="fk_Recipe_Recipe_Category1_idx" unique="false" columns="category_id"/>
