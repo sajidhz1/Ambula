@@ -490,7 +490,7 @@ class Recipe
     }
 
 
-    public function getRecipe($recipeId = '')
+    public function getRecipeToEdit($recipeId = '')
     {
 
         $sql = "SELECT * FROM recipes WHERE recipes.idRecipe = :recipe_id ";
@@ -859,7 +859,7 @@ class Recipe
         $test6 = $query6->execute();
 
         ///////////////////////////////////////////////////////////////////////////////////////////
-        $recipeImgDir = "../Ambula/uploads/" . $recipeIdToDelete;
+        $recipeImgDir = "../Ambula/uploads/recipes/" . $recipeIdToDelete;
         if (file_exists($recipeImgDir)) {
             $test7 = $this->delTree($recipeImgDir);
         } else {

@@ -130,14 +130,22 @@
       <column name="promotion_type" sqlType="VARCHAR" precision="25" scale="0" nullable="true" jdbcType="12"/>
       <column name="promotion_name" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12"/>
       <column name="image_url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
       <column name="start_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="end_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
       <column name="priority" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
       <column name="date_time_added" sqlType="TIMESTAMP" precision="19" scale="0" nullable="true" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA="/>
       <column name="visibility" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
       <primary-key name="PRIMARY" columns="idPromotion,users_user_id"/>
-      <foreign-key name="promotion_ibfk_1" columns="users_user_id" ref-table="users" ref-schema="" ref-catalog="ambula" ref-columns="user_id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="promotion_adder" schema="" catalog="ambula" type="TABLE">
+      <column name="idPromotion_Adder" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="150" scale="0" nullable="true" jdbcType="12"/>
+      <column name="company" sqlType="VARCHAR" precision="150" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="phone_number" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="idPromotion_Adder"/>
     </table>
     <table name="ratings" schema="" catalog="ambula" type="TABLE">
       <column name="Recipes_idRecipe" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -254,7 +262,6 @@
       <primary-key name="PRIMARY" columns="user_id"/>
       <exported-key name="fk_commercial_user_users1" table="commercial_user" schema="" catalog="ambula" columns="users_user_id"/>
       <exported-key name="fk_product_review_users1" table="product_review" schema="" catalog="ambula" columns="users_user_id"/>
-      <exported-key name="promotion_ibfk_1" table="promotion" schema="" catalog="ambula" columns="users_user_id"/>
       <index name="user_email" unique="true" columns="user_email"/>
       <index name="user_name" unique="true" columns="user_name"/>
       <index name="user_facebook_uid" unique="false" columns="user_facebook_uid"/>

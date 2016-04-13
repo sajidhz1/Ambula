@@ -165,6 +165,11 @@ class ProfileModel
                     $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.card.jpg', 500);
                     $this->make_thumb($target_dir . $loggedInUserId . '.' . $imageFileType, $target_dir . $loggedInUserId . '.thumb.jpg', 200);
 
+                    //Data base update query for updating the column of user avatar availability//
+                    $sql = "UPDATE users SET user_avatar = :user_avatar WHERE user_id = :logged_in_user";
+                    $result = $this->db->prepare($sql);
+                    $result->execute(array(':user_avatar' => 1, ':logged_in_user' => $_SESSION['uid']));
+
                     return true;
                 } else {
                     return false;
@@ -218,7 +223,7 @@ class ProfileModel
 
     public function  getCooperateUserDetails($user_name = '')
     {
-        $array = $this->db->query("SELECT commercial_user.*, users.user_name,users.user_email FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
+        $array = $this->db->query("SELECT commercial_user.*, users.user_name,users.user_email, users.user_avatar, users.user_id FROM users, commercial_user WHERE users.user_id = commercial_user.users_user_id AND users.user_name = '$user_name'")->fetch();
         return json_encode($array);
     }
 

@@ -93,19 +93,47 @@
         <?php $commUser = json_decode($this->getCooperateUserDetails($this->user_name), true); ?>
         <div class="col-lg-3 col-md-3" style="text-align: center;">
             <div id="effect-1" class="row effects clearfix">
-                <div class="profile-userpic img">
+                <div class="profile-userpic col-lg-12 col-md-12 col-sm-12">
 
-                    <img id="profilePicture"
-                         src="/Ambula/uploads/profile/commercial_user/<?= $commUser['users_user_id'] ?>/<?= $commUser['users_user_id'] ?>.card.jpg"
-                         class="img-responsive" alt="<?= $this->user_name ?>">
-
-                    <div class="overlay">
-                        <a id="uploadLink" class="expand">
-                            <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
-                        </a>
-                        <input type="file" id="uploadInput" name="upload_input"/>
-                        <a class="close-overlay hidden">x</a>
-                    </div>
+                    <?php if ($this->user_name === $_SESSION['username']) { ?>
+                        <div class="img">
+                            <?php if ($commUser['user_avatar'] == 1) { ?>
+                                <img id="profilePicture"
+                                     src="/Ambula/uploads/profile/commercial_user/<?= $commUser['user_id'] ?>/<?= $commUser['user_id'] ?>.card.jpg"
+                                     class="img-responsive" alt="<?= $commUser['user_name'] ?>">
+                            <?php } else { ?>
+                                <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg"
+                                     class="img-responsive"
+                                     alt="">
+                            <?php } ?>
+                            <div class="overlay">
+                                <a id="uploadLink" class="expand">
+                                    <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                                </a>
+                                <input type="file" id="uploadInput" name="upload_input"/>
+                                <a class="close-overlay hidden">x</a>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div>
+                            <?php if ($commUser['user_avatar'] == 1) { ?>
+                                <img id="profilePicture"
+                                     src="/Ambula/uploads/profile/commercial/<?= $commUser['user_id'] ?>/<?= $commUser['user_id'] ?>.card.jpg"
+                                     class="img-responsive" alt="<?= $commUser['user_name'] ?>">
+                            <?php } else { ?>
+                                <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg"
+                                     class="img-responsive"
+                                     alt="">
+                            <?php } ?>
+                            <div class="overlay">
+                                <a id="uploadLink" class="expand">
+                                    <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                                </a>
+                                <input type="file" id="uploadInput" name="upload_input"/>
+                                <a class="close-overlay hidden">x</a>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="row profile-usertitle">

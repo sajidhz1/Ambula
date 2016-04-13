@@ -58,12 +58,17 @@
                         <?php if (Session::get('user_provider_type') == 'FACEBOOK') { ?>
                             <img src="https://graph.facebook.com/<?= Session::get('fbid') ?>/picture"
                                  style="margin-top:7px;" height="35">
-                        <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 1) { ?>
-                            <img src="<?= Session::get('user_avatar_url') ?>" style="margin-top:7px;"
-                                 height="35">
+                        <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 1) {
+                                    if (isset($_SESSION['user_account_type'])) {
+                                        if (Session::get('user_account_type') == 2) { ?>
+                                            <img src="/Ambula/uploads/profile/commercial_user/<?= Session::get('uid') ?>/<?= Session::get('uid') ?>.thumb.jpg" style="margin-top:7px;" height="35">
+                                        <?php } else {
+                                            ?>
+                                            <img src="/Ambula/uploads/profile/personal_user/<?= Session::get('uid') ?>/<?= Session::get('uid') ?>.thumb.jpg"  style="margin-top:7px;" height="35">
+                                        <?php }
+                                    }?>
                         <?php } else if (Session::get('user_provider_type') == 'DEFAULT' && Session::get('user_avatar') == 0) { ?>
                             <img src="/Ambula/public/img/profile_avatar.jpg" style="margin-top:7px;" height="35">
-
                         <?php } ?>
 
                         <a class="dropdown-toggle pull-right " id="modal_user" data-toggle="dropdown"
