@@ -97,49 +97,51 @@
             <div id="effect-1" class="row effects clearfix">
                 <div class="profile-userpic col-lg-12 col-md-12 col-sm-12">
                     <?php if ($this->user_name === $_SESSION['username']) { ?>
-                    <div class="img">
-                        <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
-                            <img id="profilePicture"
-                                 src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
-                                 class="img-responsive" alt="">
-                        <?php } else if ($normUser['user_avatar'] == 1 || file_exists("/uploads/profile/personal_user/".$normUser['user_id']."/".$normUser['user_id']."card.jpg")) { ?>
-                            <img id="profilePicture"
-                                 src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
-                                 class="img-responsive" alt="<?= $normUser['user_name'] ?>">
-                        <?php } else { ?>
-                            <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
-                                 alt="">
-                        <?php } ?>
-                        <div class="overlay">
-                            <a id="uploadLink" class="expand">
-                                <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
-                            </a>
-                            <input type="file" id="uploadInput" name="upload_input"/>
-                            <a class="close-overlay hidden">x</a>
+                        <div class="img">
+                            <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
+                                <img id="profilePicture"
+                                     src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
+                                     class="img-responsive" alt="">
+                            <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                                <img id="profilePicture"
+                                     src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
+                                     class="img-responsive" alt="<?= $normUser['user_name'] ?>">
+                            <?php } else { ?>
+                                <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg"
+                                     class="img-responsive"
+                                     alt="">
+                            <?php } ?>
+                            <div class="overlay">
+                                <a id="uploadLink" class="expand">
+                                    <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                                </a>
+                                <input type="file" id="uploadInput" name="upload_input"/>
+                                <a class="close-overlay hidden">x</a>
+                            </div>
                         </div>
-                    </div>
-                    <?php } else {?>
-                    <div>
-                        <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
-                            <img id="profilePicture"
-                                 src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
-                                 class="img-responsive" alt="">
-                        <?php } else if ($normUser['user_avatar'] == 1) { ?>
-                            <img id="profilePicture"
-                                 src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
-                                 class="img-responsive" alt="<?= $normUser['user_name'] ?>">
-                        <?php } else { ?>
-                            <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg" class="img-responsive"
-                                 alt="">
-                        <?php } ?>
-                        <div class="overlay">
-                            <a id="uploadLink" class="expand">
-                                <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
-                            </a>
-                            <input type="file" id="uploadInput" name="upload_input"/>
-                            <a class="close-overlay hidden">x</a>
+                    <?php } else { ?>
+                        <div>
+                            <?php if ($normUser['user_provider_type'] == 'FACEBOOK') { ?>
+                                <img id="profilePicture"
+                                     src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
+                                     class="img-responsive" alt="">
+                            <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                                <img id="profilePicture"
+                                     src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
+                                     class="img-responsive" alt="<?= $normUser['user_name'] ?>">
+                            <?php } else { ?>
+                                <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg"
+                                     class="img-responsive"
+                                     alt="">
+                            <?php } ?>
+                            <div class="overlay">
+                                <a id="uploadLink" class="expand">
+                                    <i class="glyphicon glyphicon-camera" aria-hidden="true"></i>
+                                </a>
+                                <input type="file" id="uploadInput" name="upload_input"/>
+                                <a class="close-overlay hidden">x</a>
+                            </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -195,8 +197,7 @@
                                     <p class="txt-red">Ratings <i class="glyphicon glyphicon-star"> <?= $recipe['rating'] ?> </i></p>
 
 
-                                    <!--<a href="" class="w3-btn w3-blue" data-toggle="modal" data-target="#myModal"
-                                           style="float: right; width: 45%; background-color: #337ab7 !important;">Update</a>-->
+                                    <a href="/Ambula/recipes/editRecipe/<?= $recipe['idRecipe'] ?>" class="w3-btn w3-blue" target="_blank" style="float: right; width: 45%; background-color: #337ab7 !important;">Update</a>
                                     <!--<a href="" class="w3-btn w3-orange" style="float: left; width: 45%">Delete</a>-->
                                 </div>
                             </div>

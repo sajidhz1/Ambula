@@ -9,6 +9,8 @@
 class recipes extends Controller
 {
 
+
+    public $editRecipeId="";
     protected $recipes;
 
     public function __construct()
@@ -125,7 +127,6 @@ class recipes extends Controller
         return $this->recipes->checkRecipe_si($r);
     }
 
-
     public function getName($name = '')
     {
         $this->recipes->getNames($name);
@@ -161,12 +162,6 @@ class recipes extends Controller
         return $this->recipes->getRecipeAddedBy($recipeId);
     }
 
-
-    public function getRecipe($recipeId = '')
-    {
-        return $this->recipes->getRecipe($recipeId);
-    }
-
     public function getIngredientBrands($ingId = '')
     {
         return $this->recipes->getIngredientBrands($ingId);
@@ -186,9 +181,15 @@ class recipes extends Controller
     ////////////////////////////////Methods used to update a recipe of respective user///////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function editRecipe()
+    public function editRecipe($recipeId = "")
     {
+        $this->editRecipeId = $recipeId;
         $this->view('Recipes/updateRecipe');
+    }
+
+    public function getRecipeToEdit($recipeId = "")
+    {
+        return $this->recipes->getRecipeToEdit($recipeId);
     }
 
     public function updateRecipeBrands()

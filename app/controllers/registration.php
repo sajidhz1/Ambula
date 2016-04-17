@@ -79,9 +79,9 @@ class Registration extends Controller
     public function update_commercial_user()
     {
         if ($this->registration->update_commercial_user()) {
-            Header('Location:http:/Ambula/login');
+            echo true;
         } else {
-            $this->view("_template/error");
+            echo false;
         }
     }
 

@@ -22,7 +22,7 @@
 
     <style>
         body {
-            background: url(/public/img/tile.jpg) repeat fixed;
+            background: url(/Ambula/public/img/tile.jpg) repeat fixed;
 
         }
 
@@ -45,7 +45,7 @@
         $getprevious = Session::get('refferer');
         $getpreviousCommercial = Session::get('reffererCommercial');
 
-        if (isset($getprevious)) {
+        if (isset($_SESSION['refferer'])) {
             ?>
             <div class="alert alert-success">
                 You Have <strong>Successfully!</strong> Registered With Ambula.
@@ -53,7 +53,7 @@
             </div>
             <?php
             Session::set('refferer', null);
-        } else if (isset($getpreviousCommercial)) {
+        } else if (isset($_SESSION['reffererCommercial'])) {
             ?>
             <div class="alert alert-success">
                 You Have <strong>Successfully!</strong> Registered With Ambula Promotions As a Co-Operate User.
@@ -61,6 +61,7 @@
             </div>
             <?php
             Session::set('reffererCommercial', null);
+            Session::destroy();
         }
         ?>
         <div class="panel panel-default">

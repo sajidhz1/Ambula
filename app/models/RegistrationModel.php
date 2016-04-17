@@ -329,7 +329,6 @@ class RegistrationModel
         }
     }
 
-
     public function checkCooperateUserName($userName = "")
     {
         $query = $this->db->prepare("SELECT  user_name FROM users WHERE  user_name = '$userName'");
@@ -341,7 +340,6 @@ class RegistrationModel
             false;
         }
     }
-
 
     //register new commercial user
     public function register_commercial_user()
@@ -484,6 +482,7 @@ class RegistrationModel
 
         Session::set('username', $username);
         $user_id = $this->db->lastInsertId();
+        Session::set('uid', $user_id); //Setting the 'uid' session variable of the chimerical user just registered
 
         $sql_1 = "INSERT INTO commercial_user (users_user_id ,company_name, address_1, telephone_1 , telephone_2 , city, district )
                 VALUES ( :user_id, :company_name , :address ,:telephone1 , :telephone2 ,:city , :district)";
@@ -496,33 +495,21 @@ class RegistrationModel
 
     }
 
+    //continue registering commercial user
     public function update_commercial_user()
     {
 
         //  $website = $facebook = $youtube = $description = $user_name  = '' ;
-
+        $user_id = $_SESSION['uid'];
+        $user_name = $_SESSION["username"];
         $website = $_POST["web_site_url"];
         $facebook = $_POST["facebook_url"];
         $youtube = $_POST["youtube_url"];
-        $user_name = $_SESSION["username"];
-        $description = $_POST["description"];
 
+        $description = $_POST["description"];
         $count = count($_POST['cat_checkbox']);
 
-
-        $path = "uploads/profile/commercial_user/" . $user_name;
-        if (!is_dir($path)) {
-            mkdir($path);
-        }
-
-        if ($this->imageUpload("company_logo", $user_name)) {
-
-            $sql_0 = "SELECT user_id FROM users WHERE user_name = '" . $user_name . "'";
-
-            $sth = $this->db->prepare($sql_0);
-            $sth->execute();
-            $user_id = $sth->fetch()->user_id;
-
+        if ($this->imageUpload("company_logo", $user_id)) {
 
             $sql_4 = "SELECT idcommercial_user FROM commercial_user WHERE users_user_id = " . $user_id;
 
@@ -536,71 +523,131 @@ class RegistrationModel
                 $sth->execute();
             }
 
-            $sql = "UPDATE users SET user_avatar = '1" . $user_name . "' WHERE user_id =  '" . $user_id . "' ";
+            $sql = "UPDATE users SET user_avatar = 1 WHERE user_id =  " . $user_id ;
             $result = $this->db->prepare($sql)->execute();
 
 
             $sql_1 = "UPDATE commercial_user SET web_url ='" . $website . "' ,facebook_url = '" . $facebook . "' , youtube_url = '" . $youtube . "' , description = '" . $description . "' WHERE users_user_id = '" . $user_id . "'";
             $result2 = $this->db->prepare($sql_1)->execute();
 
-            Session::set('reffererCommercial', 'registrationCommercial');
 
-            return true;
-
+            if($cooperate_user_id && $result && $result2){
+                Session::set('reffererCommercial', 'registrationCommercial');
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
 
     }
 
-    public function imageUpload($name = '', $path = '')
+    //Image upload method for commercial user profile picture
+    public function imageUpload($fileInputName = '', $userId = '')
     {
-
-        $target_dir = "uploads/profile/commercial_user/" . $path . "/";
-        $target_file = $target_dir . basename($_FILES[$name]["name"]);
+        $target_dir = "uploads/profile/commercial_user/" . $userId . "/";
         $uploadOk = 1;
-        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-        if (isset($_POST["submit"])) {
-            $check = getimagesize($_FILES[$name]["tmp_name"]);
-            if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
+
+        //To create the directory if its not created already
+        if(mkdir($target_dir)){
+            $uploadOk = 1;
+        }else{
+            $uploadOk = 0;
         }
-// Check if file already exists
+
+        $target_file = $target_dir . basename($_FILES[$fileInputName]["name"]);
+
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($_FILES[$fileInputName]["tmp_name"]);
+        if ($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+            $uploadOk = 1;
+        } else {
+            echo "File is not an image file.";
+            $uploadOk = 0;
+        }
+
+        // Check if file already exists
         if (file_exists($target_file)) {
             echo "Sorry, file already exists.";
             $uploadOk = 0;
         }
-// Check file size
-        if ($_FILES[$name]["size"] > 2000000) {
+
+        // Check file size
+        if ($_FILES[$fileInputName]["size"] > 3000000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 0;
         }
-// Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
+
+        // Allow certain file formats
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             $uploadOk = 0;
         }
-// Check if $uploadOk is set to 0 by an error
+
+        // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
             return false;
-// if everything is ok, try to upload file
+            // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir . $path . '.' . $imageFileType)) {
+            if (move_uploaded_file($_FILES[$fileInputName]["tmp_name"], $target_dir . $userId . '.' . $imageFileType)) {
+
+                $this->make_thumb($target_dir . $userId . '.' . $imageFileType, $target_dir . $userId . '.card.jpg', 500);
+                $this->make_thumb($target_dir . $userId . '.' . $imageFileType, $target_dir . $userId . '.thumb.jpg', 200);
+
+                //Data base update query for updating the column of user avatar availability//
+                $sql = "UPDATE users SET user_avatar = :user_avatar WHERE user_id = :logged_in_user";
+                $result = $this->db->prepare($sql);
+                $result->execute(array(':user_avatar' => 1, ':logged_in_user' => $_SESSION['uid']));
 
                 return true;
-
             } else {
                 return false;
             }
         }
+
+
     }
 
+    //create thumbnail
+    function make_thumb($src, $dest, $desired_width)
+    {
+
+        /* read the source image */
+        $what = getimagesize($src);
+
+        switch (strtolower($what['mime'])) {
+            case 'image/png':
+                $img = imagecreatefrompng($src);
+                break;
+            case 'image/jpeg':
+                $img = imagecreatefromjpeg($src);
+                break;
+            case 'image/gif':
+                $img = imagecreatefromgif($src);
+                break;
+            default:
+                die();
+        }
+
+        $width = imagesx($img);
+        $height = imagesy($img);
+
+        /* find the "desired height" of this thumbnail, relative to the desired width  */
+        $desired_height = floor($height * ($desired_width / $width));
+
+        /* create a new, "virtual" image */
+        $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+
+        /* copy source image at a resized size */
+        imagecopyresampled($virtual_image, $img, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+
+        /* create the physical thumbnail image to its destination */
+        imagejpeg($virtual_image, $dest);
+    }
 
     public function loadCategories()
     {

@@ -129,7 +129,7 @@
                     while (myVar[i]) {
                         string += "<div  class='col-lg-4' style='display: inline-block;'>";
                         string += " <div  class='w3-card-4' style='width:300px;;margin-left: 65px; margin-bottom: 30px' >";
-                        string += "   <img src='/Ambula/uploads/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
+                        string += "   <img src='/Ambula/uploads/recipes/" + myVar[i].idRecipe + "/thumb.jpg' alt='Car' style='width:300px; height:250px'>";
                         string += "   <div class='w3-container' style='padding-top: 10px; padding-bottom: 10px'>";
                         string += "       <p class='recipeTitle'>" + myVar[i].title + "</p>";
                         string += "       <a class='w3-btn' href='/Ambula/recipes/viewRecipe/" + myVar[i].idRecipe + "' style='background-color: #5bc0de' target='_blank'>View More</a>";
