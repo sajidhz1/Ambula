@@ -33,6 +33,7 @@
 
 .profile-infoview a {
     color: #ffffff !important;
+    margin-bottom: 15px;
 }
 
 .profile-usermenu ul li {
@@ -240,4 +241,19 @@ a.expand {
     color: #000000;
     text-decoration:none;
     cursor:pointer;
+}
+
+/*CSS for notice for users on their profiles*/
+.notice{
+    float: none;
+}
+
+.notice div {
+    background: #B6B6B5;
+    color: #FFFFFF !important;
+    padding-bottom: 10px;
+}
+
+.notice-btn{
+    color: #FFFFFF !important;
 }
