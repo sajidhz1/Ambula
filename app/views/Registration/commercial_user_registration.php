@@ -271,7 +271,7 @@
                            pattern="^[A-Za-z0-9_-]{3,16}$"
                            data-native-error="username should at least contain 3 Characters (letter numbers and underscore)"
                            data-remote="/Ambula/registration/checkUserName"
-                           data-error="username already exists ,choose a different one" maxlength="10" required>
+                           data-error="username already exists ,choose a different one"  required>
 
                     <p class="help-block with-errors"></p>
                 </div>

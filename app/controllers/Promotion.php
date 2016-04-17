@@ -93,14 +93,14 @@ class Promotion extends Controller
                                 </div>
                             </div>";*/
 
-            $text = $text . "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 singlePromo'  id='$promotionId' >
+                           $text = $text . "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 singlePromo'  id='$promotionId' >
 
                                     <div class='hovereffect'>
 
                                         <img class='img-responsive' src='/Ambula/$imageUrl' alt=''>
                                         <div class='overlay'>
                                            <h2>$promotionName</h2>
-                                           <a class='info' href='#'>$companyName</a>
+                                           <a class='info' href='/Ambula/profile/index/sajidhz'>$companyName</a>
                                         </div>
                                     </div>
                                 </div>

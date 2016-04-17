@@ -121,11 +121,12 @@
                 <img src="http://localhost/Ambula/public/img/no_preview_available.jpg" height="175" width="175"
                      id="profile_img" alt=""/>
 
-                <div class="text-center">
+                <div class="controls text-center">
                 <span class="btn btn-default btn-file">
                      Browse <input type="file"
                                    onchange="$('#profile_img').attr('src' ,window.URL.createObjectURL(this.files[0]));$('.logo-save').show();"
-                                   name="company_logo">
+                                   name="company_logo" required>
+                     <p class="help-block with-errors"></p>
                 </span>
 
                 </div>

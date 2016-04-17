@@ -181,7 +181,7 @@ class PromotionModel
     public function viewPromotionsTest($promotion_type)
     {
 
-        $result = $this->db->query("SELECT pr.*, usr.idcommercial_user, usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT pr.*, usr.idcommercial_user , usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
 
     }

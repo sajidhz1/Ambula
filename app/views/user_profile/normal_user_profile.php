@@ -91,7 +91,7 @@
 
     <div id="profileRow" class="row profile">
         <?php $normUser = json_decode($this->getUser(), true); ?>
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-2 col-md-2">
 
             <!-- SIDEBAR USERPIC -->
             <div id="effect-1" class="row effects clearfix">
@@ -102,7 +102,7 @@
                             <img id="profilePicture"
                                  src="https://graph.facebook.com/<?= $normUser[0]['user_facebook_uid'] ?>/picture?type=large"
                                  class="img-responsive" alt="">
-                        <?php } else if ($normUser['user_avatar'] == 1) { ?>
+                        <?php } else if ($normUser['user_avatar'] == 1 || file_exists("/uploads/profile/personal_user/".$normUser['user_id']."/".$normUser['user_id']."card.jpg")) { ?>
                             <img id="profilePicture"
                                  src="/Ambula/uploads/profile/personal_user/<?= $normUser['user_id'] ?>/<?= $normUser['user_id'] ?>.card.jpg"
                                  class="img-responsive" alt="<?= $normUser['user_name'] ?>">
@@ -177,22 +177,22 @@
                 foreach ($arrrecipe as $recipe) {
                     ?>
                     <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xsm-12" style="margin-bottom: 15px">
                             <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px">
                                 <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
                                      alt="<?= $recipe['title']; ?>" class="w3-col l12 m12 s12"
                                      style="height: 200px;"/>
 
                                 <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
-                                    <div class="txt-semibold"
+                                    <div class="txt-semibold txt-center"
                                          style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
                                         <h4><b><?= $recipe['title']; ?></b></h4>
                                     </div>
 
 
-                                    <p>views: <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+                                    <p class="txt-red">Views <i class="glyphicon glyphicon-eye-open"> <?= $recipe['views'] ?></i></p>
 
-                                    <p>rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
+                                    <p class="txt-red">Ratings <i class="glyphicon glyphicon-star"> <?= $recipe['rating'] ?> </i></p>
 
 
                                     <!--<a href="" class="w3-btn w3-blue" data-toggle="modal" data-target="#myModal"
