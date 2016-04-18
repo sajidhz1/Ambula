@@ -1,12 +1,20 @@
 /**
  * Created by Dulitha RD on 2/7/2016.*/
+// attach the function to the window resize event
+$(window).resize(onResize);
 
+//there can be only one document ready function for page
 $(document).ready(function () {
+    onResize();
     $(".celenderForPromo").datepicker({
         dateFormat: "dd/mm/yy"
     });
-    marginAdd();
 });
+
+function onResize() {
+    // apply dynamic padding at the top of the body according to the fixed navbar height
+    $("#promotionRow").css("margin-top", $(".navbar-fixed-top").height()+15);
+}
 
 $(function () {
 
@@ -76,12 +84,3 @@ $(document).on('change', "#startdate", function(){
         $("#enddate").prop("disabled", true);
     }
 });
-
-//JS function to dynamically add margin for promotion adding form
-var marginAdd = function() {
-    // apply dynamic padding at the top of the body according to the fixed navbar height
-    $(".registration-container").css("margin-top", $(".navbar-fixed-top").height());
-};
-
-// attach the function to the window resize event
-$(window).resize(marginAdd);
