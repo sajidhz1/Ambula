@@ -40,7 +40,7 @@ $(function () {
                 //};
 
                 //var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                window.location.href = "/promotions/?id=1";
+                window.location.href = "/Ambula/home/promotions?id=1";
             },
             progress: function(e) {
 
