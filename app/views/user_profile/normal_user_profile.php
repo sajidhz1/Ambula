@@ -176,34 +176,54 @@
 
             <div id="norm-user-content" class="row">
                 <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
-                foreach ($arrrecipe as $recipe) {
-                    ?>
-                    <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xsm-12" style="margin-bottom: 15px">
-                            <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px">
-                                <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
-                                     alt="<?= $recipe['title']; ?>" class="w3-col l12 m12 s12"
-                                     style="height: 200px;"/>
 
-                                <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
-                                    <div class="txt-semibold txt-center"
-                                         style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
-                                        <h4><b><?= $recipe['title']; ?></b></h4>
-                                    </div>
-
-
-                                    <p class="txt-red">Views <i class="glyphicon glyphicon-eye-open"> <?= $recipe['views'] ?></i></p>
-
-                                    <p class="txt-red">Ratings <i class="glyphicon glyphicon-star"> <?= $recipe['rating'] ?> </i></p>
-
-
-                                    <a href="/Ambula/recipes/editRecipe/<?= $recipe['idRecipe'] ?>" class="w3-btn w3-blue" target="_blank" style="float: right; width: 45%; background-color: #337ab7 !important;">Update</a>
-                                    <!--<a href="" class="w3-btn w3-orange" style="float: left; width: 45%">Delete</a>-->
-                                </div>
+                if(empty($arrrecipe)){ ?>
+                    <?php if ($this->user_name === $_SESSION['username']) { ?>
+                        <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                            <div class="w3-container">
+                                <h2>Your Legacy Is Waiting To Be Shared</h2>
+                                <h3>You haven't shared any recipes with Ambula&trade; yet!</h3>
+                                <a class="w3-btn w3-orange notice-btn" data-toggle="modal" data-target="#recipeChooseModal">Start Adding Recipes</a>
                             </div>
                         </div>
-                    </a>
-                <?php } ?>
+                    <?php }else{ ?>
+                        <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                            <div class="w3-container">
+                                <p><h3><span id="first-name"><?= $normUser['first_name'] ?></span>
+                                    <span id="last-name"><?= $normUser['last_name'] ?></span>
+                                    Haven't shared any recipes with Ambula&trade; yet !</h3>
+                                </p>
+                            </div>
+                        </div>
+                    <?php }}else{ ?>
+                <?php foreach ($arrrecipe as $recipe) {?>
+                        <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+                                <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px">
+                                    <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg"
+                                         alt="<?= $recipe['title']; ?>" class="w3-col l12 m12 s12"
+                                         style="height: 200px;"/>
+
+                                    <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
+                                        <div class="txt-semibold"
+                                             style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
+                                            <h4><b><?= $recipe['title']; ?></b></h4>
+                                        </div>
+
+
+                                        <p>views: <?= $recipe['views'] ?> <i class="glyphicon glyphicon-eye-open"></i></p>
+
+                                        <p>rating: <?= $recipe['rating'] ?> <i class="glyphicon glyphicon-star"></i></p>
+
+
+                                        <a href="/Ambula/recipes/editRecipe/<?= $recipe['idRecipe'] ?>" class="w3-btn w3-blue" target="_blank" style="float: right; width: 45%; background-color: #337ab7 !important;">Update</a>
+                                        <!--<a href="" class="w3-btn w3-orange" style="float: left; width: 45%">Delete</a>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php }?>
+                <?php }?>
             </div>
 
 

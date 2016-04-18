@@ -118,7 +118,7 @@
                         <div>
                             <?php if ($commUser['user_avatar'] == 1) { ?>
                                 <img id="profilePicture"
-                                     src="/Ambula/uploads/profile/commercial/<?= $commUser['user_id'] ?>/<?= $commUser['user_id'] ?>.card.jpg"
+                                     src="/Ambula/uploads/profile/commercial_user/<?= $commUser['user_id'] ?>/<?= $commUser['user_id'] ?>.card.jpg"
                                      class="img-responsive" alt="<?= $commUser['user_name'] ?>">
                             <?php } else { ?>
                                 <img id="profilePicture" src="/Ambula/public/img/profile_avatar.jpg"
@@ -175,8 +175,6 @@
                         Chanel</a>
                 </div>
             </div>
-
-
         </div>
         <div class="col-lg-9 col-md-9"><!--this div contains the two toggling divs-->
             <div id="comm-user-content" class="row">
@@ -192,90 +190,125 @@
 
                 <div class="tab-content">
                     <div id="promotions" class="tab-pane fade in active">
-                        <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true);
-                        foreach ($promotions as $promotion) {
-                            ?>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+                        <?php $promotions = json_decode($this->getAllPromotionsByUser($this->user_name), true); ?>
+                        <?php if (empty($promotions)) { ?>
+                            <?php if ($this->user_name === $_SESSION['username']) { ?>
+                                <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                                    <div class="w3-container">
+                                        <h2>Ambula&trade; Community Is Waiting On Your Amazing Offers & Promotions</h2>
 
-                                <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12" style="padding: 0px;">
-
-
-                                    <img src="/Ambula/<?= $promotion['image_url'] ?>" alt="promotion image"
-                                         class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
-
-                                    <div class="w3-container txt-center w3-col m12 l12 s12" style="padding:5px">
-                                        <div class="txt-semibold"
-                                             style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
-                                            <h3>
-                                                <?= $promotion['promotion_name'] ?>
-                                            </h3>
-                                        </div>
-                                        <span
-                                            class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span
-                                            class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
-
-                                        <!--<a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
-                                           style="float: left; width: 45%; background-color: #337ab7">Renew</a>
-                                        <a href="" class="w3-btn w3-orange"
-                                           style="float: right; width: 45%">Delete</a>-->
-
+                                        <h3>You haven't published any promotions or offers on Ambula&trade; yet!</h3>
+                                        <a class="w3-btn w3-orange notice-btn" href="/Ambula/Promotion/index">
+                                            Start Adding Promotions
+                                        </a>
                                     </div>
-
                                 </div>
-                            </div>
-                            <?php
-                        }
-
-
-                        ?>
-
-                    </div>
-                    <div id="recipes" class="tab-pane fade">
-                        <!-- add in & active classes to make a tab first tab to display and selected-->
-
-                        <?php $recipes = json_decode($this->getRecipesByUser($this->user_name), true);
-
-                        foreach ($recipes as $recipe) {
-                            ?>
-                            <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
-
+                            <?php } else { ?>
+                                <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                                    <div class="w3-container">
+                                        <p>
+                                            <h3 class="notice-com-name"><?= $commUser['company_name'] ?><h3>
+                                            <h3>Haven't shared any promotions or offers with Ambula&trade; yet!</h3>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach ($promotions as $promotion) { ?>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
 
                                     <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12"
                                          style="padding: 0px;">
 
-                                        <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>"
-                                             alt="recipe image"
-                                             class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px">
 
-                                        <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
+                                        <img src="/Ambula/uploads/promotions/<?= $promotion['idPromotion']?>/<?= $promotion['idPromotion']?>.jpg" alt="promotion image"
+                                             class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px;">
+
+                                        <div class="w3-container txt-center w3-col m12 l12 s12" style="padding:5px">
                                             <div class="txt-semibold"
                                                  style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
-                                                <h4 class="txt-center"><?= $recipe['title'] ?></h4>
+                                                <h3>
+                                                    <?= $promotion['promotion_name'] ?>
+                                                </h3>
                                             </div>
-                                            <h5 class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views
-                                                : <?= $recipe['views'] ?> <span
-                                                    class="glyphicon glyphicon-eye-open"></span></h5>
-                                            <h5 class="txt-red txt-bold" style="margin: 0px">Ratings
-                                                : <?= $recipe['views'] ?>
-                                                <span
-                                                    class="glyphicon glyphicon-star">s</span></h5>
+                                        <span
+                                            class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['start_date'])); ?></span><span> To </span><span
+                                                class="txt-red txt-bold"><?= date('d-M-y', strtotime($promotion['end_date'])); ?> </span>
 
-                                            <!--<a href="" class="w3-btn"
-                                                   style="float: left; width: 45%; background-color: #337ab7">Update</a>
-                                                <a href="" class="w3-btn w3-orange"
-                                                   style="float: right; width: 45%">Delete</a>-->
-
+                                            <!--<a href="" class="w3-btn" data-toggle="modal" data-target="#myModal"
+                                               style="float: left; width: 45%; background-color: #337ab7">Renew</a>
+                                            <a href="" class="w3-btn w3-orange"
+                                               style="float: right; width: 45%">Delete</a>-->
                                         </div>
 
                                     </div>
                                 </div>
-                            </a>
-                            <?php
-                        }
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                    <div id="recipes" class="tab-pane fade">
+                        <!-- add in & active classes to make a tab first tab to display and selected-->
+                        <?php $recipes = json_decode($this->getRecipesByUser($this->user_name), true); ?>
+                        <?php if (empty($recipe)) { ?>
+                            <?php if ($this->user_name === $_SESSION['username']) { ?>
+                                <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                                    <div class="w3-container">
+                                        <h2>Your Legacy Is Waiting To Be Shared</h2>
 
-                        ?>
+                                        <h3>You haven't shared any recipes with Ambula&trade; yet!</h3>
+                                        <a class="w3-btn w3-orange notice-btn" data-toggle="modal" data-target="#recipeChooseModal">
+                                            Start Adding Recipes
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php } else { ?>
+                                <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
+                                    <div class="w3-container">
+                                        <p>
+                                            <h3 class="notice-com-name"><?= $commUser['company_name'] ?><h3>
+                                            <h3>Haven't shared any recipes with Ambula&trade; yet!</h3>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach ($recipes as $recipe) { ?>
+                                <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
 
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">
+
+                                        <div class="w3-card-4 col-lg-12 col-md-12 col-sm-12 col-xsm-12"
+                                             style="padding: 0px;">
+
+                                            <img src="/Ambula/uploads/recipes/<?= $recipe['idRecipe']; ?>/thumb.jpg ?>"
+                                                 alt="recipe image"
+                                                 class="w3-col l12 m12 s12" style="height: 200px; margin-bottom: 7px">
+
+                                            <div class="w3-container w3-col m12 l12 s12" style="padding:5px">
+                                                <div class="txt-semibold"
+                                                     style="width: inherit; white-space: nowrap; overflow: hidden; text-overflow:ellipsis; text-transform: capitalize;">
+                                                    <h4 class="txt-center"><?= $recipe['title'] ?></h4>
+                                                </div>
+                                                <h5 class="txt-red txt-semibold" style="margin: 2px 0px 2px 0px">Views
+                                                    : <?= $recipe['views'] ?> <span
+                                                        class="glyphicon glyphicon-eye-open"></span></h5>
+                                                <h5 class="txt-red txt-bold" style="margin: 0px">Ratings
+                                                    : <?= $recipe['views'] ?>
+                                                    <span
+                                                        class="glyphicon glyphicon-star">s</span></h5>
+
+                                                <!--<a href="" class="w3-btn"
+                                                       style="float: left; width: 45%; background-color: #337ab7">Update</a>
+                                                    <a href="" class="w3-btn w3-orange"
+                                                       style="float: right; width: 45%">Delete</a>-->
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } ?>
+                        <?php } ?>
                     </div>
                 </div>
 

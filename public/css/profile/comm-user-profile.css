@@ -1,15 +1,24 @@
 
-.w3-fbtheme {color:#fff !important; background-color:#3b5998 !important}
+.w3-fbtheme {
+    color: #fff !important;
+    background-color: #3b5998 !important
+}
 
-#webLink{
+#webLink {
     background-color: #ff9800;
 }
 
-#webLink:hover{color:#ff9800 !important}
+#webLink:hover {
+    color: #ff9800 !important
+}
 
-#fbLink:hover{color:#3b5998 !important}
+#fbLink:hover {
+    color: #3b5998 !important
+}
 
-#youtubeLink:hover{color:#f44336 !important}
+#youtubeLink:hover {
+    color: #f44336 !important
+}
 
 .profile-userpic {
     padding: 4px;
@@ -28,7 +37,7 @@
     text-overflow: ellipsis;
 }
 
-.profile-usertitle-name h3{
+.profile-usertitle-name h3 {
     color: #5a7391;
     font-weight: 600;
     cursor: default;
@@ -46,13 +55,13 @@
     margin: 15px 0px 15px 0px;
 }
 
-.profile-weblinks > div > a{
+.profile-weblinks > div > a {
     padding-top: 8px;
     display: block;
     margin-bottom: 5px;
 }
 
-.profile-weblinks i{
+.profile-weblinks i {
     float: left;
 }
 
@@ -60,7 +69,7 @@
     display: none;
 }
 
-#comm-user-info{
+#comm-user-info {
     margin-bottom: 15px;
 }
 
@@ -103,19 +112,19 @@ tr:hover > td > a {
     display: inline;
 }
 
-textarea{
+textarea {
     resize: none;
 }
 
-.modalInfoFeildName{
+.modalInfoFeildName {
     padding: 10px 0px 5px 0px !important;
 }
 
-.modalUserInfo{
+.modalUserInfo {
     padding: 10px 0px 5px 0px !important;
 }
 
-#modalUpdateTable tr{
+#modalUpdateTable tr {
     height: 25px;
 }
 
@@ -145,7 +154,6 @@ textarea{
 .effects .img {
     position: relative;
     float: left;
-    margin-bottom: 5px;
     overflow: hidden;
 }
 
@@ -253,4 +261,23 @@ a.expand {
     -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
     box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+
+/*CSS for notice for users on their profiles*/
+.notice {
+    float: none;
+}
+
+.notice div {
+    background: #B6B6B5;
+    color: #FFFFFF !important;
+    padding-bottom: 10px;
+}
+
+.notice-com-name{
+    text-transform: uppercase;
+}
+
+.notice-btn{
+    color: #FFFFFF !important;
 }
