@@ -124,10 +124,6 @@ class PromotionModel
 
         }
 
-        //$hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-
-        //    echo $promo_type_flag ." ".$promo_name_flag." ".$company_name_flag." ".$email_flag." ".$image_url." ".$description_flag." ".$startdate_flag." ".$enddate_flag." ".$priority_flag;
-
         if (!$promo_type_flag || !$promo_name_flag || !$description_flag || !$startdate_flag || !$enddate_flag) {
             echo $promo_type_flag . '#' . $promo_name_flag . '#' . $description_flag . '#' . $startdate_flag . '#' . $enddate_flag;
         }
@@ -181,7 +177,7 @@ class PromotionModel
     public function viewPromotionsTest($promotion_type)
     {
 
-        $result = $this->db->query("SELECT pr.*, usr.idcommercial_user, usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
+        $result = $this->db->query("SELECT pr.*, usr.idcommercial_user , usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
         return json_encode($result);
 
     }
@@ -248,27 +244,15 @@ class PromotionModel
             return false;
             // if everything is ok, try to upload file
         } else {
-            $info = getimagesize($_FILES[$name]["tmp_name"]);
-            if ($info['mime'] == 'image/jpeg') {
-                $image = imagecreatefromjpeg($_FILES[$name]["tmp_name"]);
-            }
-            elseif ($info['mime'] == 'image/gif') {
-                $image = imagecreatefromgif($_FILES[$name]["tmp_name"]);
-            }
-            elseif ($info['mime'] == 'image/png') {
-                $image = imagecreatefrompng($_FILES[$name]["tmp_name"]);
-            }
 
-            imagejpeg($image, $target_dir.$path.'.jpg', 80);
+        //    imagejpeg($image, $target_dir.$path.'.jpg', 80);
 
-//            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
-//
-//
-//
-//                return $target_file;
-//            } else {
-//                return false;
-//            }
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir.$path.'.'.$imageFileType)) {
+                return true;
+
+            } else {
+                return false;
+            }
         }
     }
 

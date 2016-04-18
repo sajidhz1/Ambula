@@ -91,7 +91,7 @@
 
     <div id="profileRow" class="row profile">
         <?php $normUser = json_decode($this->getUser(), true); ?>
-        <div class="col-lg-3 col-md-3">
+        <div class="col-lg-2 col-md-2">
 
             <!-- SIDEBAR USERPIC -->
             <div id="effect-1" class="row effects clearfix">
@@ -176,6 +176,7 @@
 
             <div id="norm-user-content" class="row">
                 <?php $arrrecipe = json_decode($this->getRecipesByUser($this->user_name), true);
+
                 if(empty($arrrecipe)){ ?>
                     <?php if ($this->user_name === $_SESSION['username']) { ?>
                         <div class="center-block text-center col-lg-8 col-md-8 col-sm-12 col-xsm-12 notice">
@@ -194,8 +195,7 @@
                                 </p>
                             </div>
                         </div>
-                    <?php }?>
-                <?php}else{ ?>
+                    <?php }}else{ ?>
                 <?php foreach ($arrrecipe as $recipe) {?>
                         <a href="/Ambula/recipes/viewRecipe/<?= $recipe['idRecipe']; ?>" target="_blank">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xsm-12" style="margin-bottom: 15px">

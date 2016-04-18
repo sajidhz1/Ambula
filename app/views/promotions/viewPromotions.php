@@ -169,7 +169,6 @@
         padding-left: 4%;
     }
 
-
     .modal-dialog-center {
         margin-top: 15%;
     }
@@ -182,7 +181,6 @@
     .btn {
         border-radius: 0px;
     }
-
 
     .card div {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -222,9 +220,10 @@
         z-index: 100;
     }
 
-
     @media (max-width: @screen-xs-min) {
-        .modal-xs { width: @modal-sm; }
+        .modal-xs {
+            width: @modal-sm;
+        }
     }
 
 </style>
@@ -274,6 +273,10 @@
     //ajx method to view a single promotion enlarged
     $(document).on('click', '.singlePromo', function (e) {
         var id = $(this).attr('id');
+        open_single_promoModal(id);
+    });
+
+    function open_single_promoModal(id) {
         $.ajax({
             type: "POST",
             url: "/Ambula/Promotion/viewSinglePromotion",
@@ -305,8 +308,17 @@
 //                    $('#modalBody').width($('#singlePromoModalImg > img').width() + 400);
             }
         });
-    });
+    }
 
+    <?php
+      if(isset($_GET["id"])){
+
+      ?>
+    open_single_promoModal(<?=$_GET["id"] ?>);
+
+    <?php
+      }
+     ?>
     // facebook share
     function share_facebook(url, name) {
         u = url;
@@ -404,7 +416,7 @@
 <!-- single promotion displaying modal-->
 <div class="modal fade" id="promoViewModal" tabindex="-1" style="z-index: 1050" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="false">
-    <div class="modal-dialog" id="modalBody" >
+    <div class="modal-dialog" id="modalBody">
         <div class="modal-content col-lg-12 col-md-12 col-xs-12 col-sm-12" style="overflow-y: auto;">
 
             <div class="modal-header row">
@@ -417,7 +429,7 @@
                 <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
 
                     <div id="singlePromoModalImg" class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-                        <img id="promoImage"  src=""  style="width: 100%"   alt="" class="img-responsive"/>
+                        <img id="promoImage" src="" style="width: 100%" alt="" class="img-responsive"/>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
                         <h3 id="modal-title" class="pg-title" style="text-align: center;color: red">Title here</h3>
@@ -431,7 +443,10 @@
                         <br>
                         <br>
 
-                        <a class="btn btn-primary"  href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12" onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')" target="_blank">
+                        <a class="btn btn-primary"
+                           href="https://www.facebook.com/sharer/sharer.php?u=theambula.lk/recipes/viewRecipe/31?id=12"
+                           onclick="return share_facebook('theambula.lk/recipes/viewRecipe/31?id=12','sajidh')"
+                           target="_blank">
                             <i class="fa fa-facebook"></i> Share on Facebook
 
                         </a>
@@ -446,13 +461,14 @@
             </div>
 
 
+        </div>
     </div>
-</div></div>
+</div>
 
 
 <!-- div tag for containing promotions -->
 
-<div class="row" >
+<div class="row">
     <div id="promotionContainer" class="col-lg-12" style="margin: 0px; ">
 
     </div>

@@ -755,16 +755,19 @@ class Recipe
 
 
             $tempFile = $_FILES['file']['tmp_name'];          //3
-
+            $name_array = $_FILES['file']['name'];
             $targetPath = $storeFolder . $ds;  //4
 
-            $targetFile = $targetPath . basename($_FILES['file']['name']);  //5
-            $imageFileType = pathinfo($targetFile, PATHINFO_EXTENSION);
-            move_uploaded_file($tempFile, $storeFolder . '/' . $_GET['name'] . "." . $imageFileType); //6
+            move_uploaded_file($tempFile, $storeFolder . "/" . $_GET['name']. "-" . $name_array); //6
+            for($i = 0; $i < count($tempFile); $i++) {
 
-            $this->make_thumb($storeFolder . '/' . $_GET['name'] . '.' . $imageFileType, $storeFolder . '/' . $_GET['name'] . '_thumb.' . $imageFileType, 200);
+              //  $targetFile = $targetPath . basename($_FILES['file']['name']);  //5
+                //$imageFileType = pathinfo($targetFile, PATHINFO_EXTENSION);
 
-            echo $_GET['name'] . "." . $imageFileType;
+            }
+           // $this->make_thumb($storeFolder . '/' . $_GET['name'] . '.' . $imageFileType, $storeFolder . '/' . $_GET['name'] . '_thumb.' . $imageFileType, 200);
+
+           // echo $_GET['name'] . "." . $imageFileType;
         }
 
 
@@ -918,53 +921,22 @@ class Recipe
         return rmdir($dir);
     }
 
-
-    //////////////////////////////////////Function to update the recipes///////////////////////////////////////
-    public function updateRecipeTitle()
+   //new functions to edit recipe
+    public function loadImagesFromRecipesFolder($recipeId ='')
     {
 
-        if (isset($_POST['recipeId']) && isset($_POST['title'])) {
-            $sql = "UPDATE recipes SET title = '" . $_POST['title'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
+       $result  = array();
+        $handle = opendir('uploads/recipes/'.$recipeId);
 
+
+        while($file = readdir($handle)){ //get an array which has the names of all the files and loop through it
+            $obj['name'] = $file; //get the filename in array
+            $obj['size'] = filesize('uploads/recipes/'.$recipeId.'/'); //get the flesize in array
+            $result[] = $obj; // copy it to another array
         }
+       // header('Content-Type: application/json');
+        echo json_encode($result);
+
+
     }
-
-    public function updateRecipeTime()
-    {
-
-        if (isset($_POST['recipeId']) && isset($_POST['time'])) {
-            $sql = "UPDATE recipes SET est_time = '" . $_POST['time'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
-    public function updateRecipeTags()
-    {
-        if (isset($_POST['recipeId']) && isset($_POST['tags'])) {
-            $sql = "UPDATE recipes SET tags = '" . $_POST['tags'] . "' WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
-    public function updateRecipeCategory()
-    {
-
-        if (isset($_POST['recipeId']) && isset($_POST['category'])) {
-            $sql = "UPDATE recipes SET category_id = " . $_POST['category'] . " WHERE idRecipe = " . $_POST['recipeId'];
-            $sth = $this->db->prepare($sql);
-            $result = $sth->execute();
-            echo $result;
-
-        }
-    }
-
 } 

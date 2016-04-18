@@ -81,6 +81,9 @@ class Promotion extends Controller
             $startDate = $promo['start_date'];
             $endDate = $promo['end_date'];
             $companyName = $promo['company_name'];
+            $target_file = 'uploads/promotions/'.$promotionId.'/'.$promotionId;
+            $matching = glob($target_file . '.*');
+
             /*$text = $text."<div class='col-sm-4' xmlns=\"http://www.w3.org/1999/html\">
                                 <div class='thumbnail card' style='padding: 15px'>
                                     <img src=/Ambula/$imageUrl alt='' style='width: 170px; height: 150px;'>
@@ -93,14 +96,14 @@ class Promotion extends Controller
                                 </div>
                             </div>";*/
 
-            $text = $text . "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 singlePromo'  id='$promotionId' >
+                           $text = $text . "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 singlePromo'  id='$promotionId' >
 
                                     <div class='hovereffect'>
 
-                                        <img class='img-responsive' src='/Ambula/$imageUrl' alt=''>
+                                        <img class='img-responsive' src='/Ambula/$matching[0]' alt=''>
                                         <div class='overlay'>
                                            <h2>$promotionName</h2>
-                                           <a class='info' href='#'>$companyName</a>
+                                           <a class='info' href='/Ambula/profile/index/sajidhz'>$companyName</a>
                                         </div>
                                     </div>
                                 </div>

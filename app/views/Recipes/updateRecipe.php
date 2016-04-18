@@ -12,12 +12,25 @@
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/bootstrap-tagsinput.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/recipes-style.css" rel="stylesheet" media="screen"/>
+<<<<<<< HEAD
+
+    <link
+        href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
+        rel="stylesheet" media="screen"/>
+=======
     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen"/>
     <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+>>>>>>> 32f37dd0a9163a525a3f2b6a38ad8ea09f1a0bd4
 
     <!-- fav icon -->
     <link rel="icon" href="/AMbula/public/img/fav_ico.png" type="image/gif" sizes="16x16">
 
+<<<<<<< HEAD
+    <script type="text/javascript" src="/Ambula/public/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/recipes/bootstrap-tagsinput.min.js"></script>
+=======
+>>>>>>> 32f37dd0a9163a525a3f2b6a38ad8ea09f1a0bd4
 
     <script type="text/javascript" src="/Ambula/public/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
@@ -25,7 +38,17 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script type="text/javascript" src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<<<<<<< HEAD
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
     <script src="/Ambula/public/js/typeahead.js"></script>
+
+
+    <!--[if lt IE 9]>
+    <script src="css/font-awesome-ie7.min.css"></script>
+    <![endif]-->
+=======
+    <script src="/Ambula/public/js/typeahead.js"></script>
+>>>>>>> 32f37dd0a9163a525a3f2b6a38ad8ea09f1a0bd4
 
     <!-- Google Font Link: Choose font you want on google font(http://www.google.com/webfonts) and make sure your replace those fonts in name in custom.css -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Sanchez:400,400italic' rel='stylesheet'
@@ -87,6 +110,7 @@
     $(window).resize(onResize);
     $(document).ready(onResize);
 </script>
+
 
 
 <div class="container-fluid">

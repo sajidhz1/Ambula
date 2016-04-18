@@ -173,11 +173,24 @@ $(function () {
      myDropzone = new Dropzone("#mydropzone",
         {
             url: "/Ambula/recipes/testDropZone?name="+name,
+            method: "post",
             maxFileSize: 5,
+            parallelUploads: 1,
             acceptedFiles: ".jpg,.png,.jpeg,.gif",
-            addRemoveLinks: true
+            addRemoveLinks: true,
+            clickable: true,
+            maxFilesize: 2,
+            createImageThumbnails: true,
+            maxThumbnailFilesize: 10,
+            thumbnailWidth: 120,
+            thumbnailHeight: 120,
+            success : function(file, response){
+              //  console.log(file);
+                console.log(name);
+                name++;
+                this.options.url = "/Ambula/recipes/testDropZone?name="+name;
+            }
         }
-
     );
 
     myDropzone.on("success", function(file, response) {
@@ -187,8 +200,9 @@ $(function () {
 
     myDropzone.on("addedfile", function(file) {
         // Hookup the start button
-        this.options.url = "/Ambula/recipes/testDropZone?name="+name++;
 
+        //this.options.url = "/Ambula/recipes/testDropZone?name="+name++;
+        console.log(name);
         if($('.dz-image').length > 0){
             //assign a hidden variable to check whethere the files are uploaded
             $('#dropzone-content').html('1');
