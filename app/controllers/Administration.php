@@ -6,7 +6,7 @@
  * Date: 12/19/2015
  * Time: 10:35 AM
  */
-class Administration extends Controller
+class administration extends Controller
 {
 
     protected $admin;
