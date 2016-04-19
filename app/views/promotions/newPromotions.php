@@ -35,7 +35,6 @@
 
     <script type="text/javascript" src="http://localhost/Ambula/public/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="http://localhost/Ambula/public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
     <script src="http://localhost/Ambula/public/js/typeahead.js"></script>
 
 
@@ -55,7 +54,7 @@
     <!-- Calendar for promotion adding form -->
     <link href="/Ambula/public/js/promotion/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="/Ambula/public/js/promotion/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/Ambula/public/js/promotion/promotionJavaScriptCustom.js"></script>
+
 
 
     <script type="text/javascript">
@@ -325,5 +324,7 @@
 </script>
 <script src="https://cdn.rawgit.com/ilopX/jquery-ajax-progress/master/dist/jquery.ajax-progress.min.js"></script>
 <script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
+<script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/promotion/promotionJavaScriptCustom.js"></script>
 </body>
 </html>

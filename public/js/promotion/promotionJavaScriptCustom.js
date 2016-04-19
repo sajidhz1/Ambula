@@ -20,42 +20,41 @@ $(function () {
         }).html('<span>'+precis+'</span>');
     }
 
-    $('#newPromotionForm').on('submit', function () {
+    $('#newPromotionForm').validator().on('submit', function (e) {
 
-        CKupdate();
-        $('#progressModal').modal('show');
-        $('#newPromotionForm').hide();
-        $.ajax({
-            url: $(this).attr('action'),
-            type: $(this).attr('method'),
-            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-            contentType: false,       // The content type used when sending data to the server.
-            cache: false,             // To unable request pages to be cached
-            processData: false,        // To send DOMDocument or non processed data file it is set to false
-            success: function (json) {
+        if (e.isDefaultPrevented()) {}
+        else {
+            CKupdate();
+            $('#progressModal').modal('show');
+            $('#newPromotionForm').hide();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+                contentType: false,       // The content type used when sending data to the server.
+                cache: false,             // To unable request pages to be cached
+                processData: false,        // To send DOMDocument or non processed data file it is set to false
+                success: function (json) {
 
-                $('#newPromotionForm')[0].reset();
-                //window.onbeforeunload = function () {
-                //    return null;
-                //};
+                    $('#newPromotionForm')[0].reset();
 
-                //var recipeId = json.substring(json.lastIndexOf(":") + 1, json.lastIndexOf(";"));
-                window.location.href = "/Ambula/home/promotions?id=1";
-            },
-            progress: function(e) {
+                    window.location.href = "/Ambula/home/promotions?id="+json;
+                },
+                progress: function (e) {
 
-                if(e.lengthComputable) {
-                    setProgress(e.loaded / e.total * 100);
-                    var content = e.srcElement.responseText;
-                    alert(progress);
+                    if (e.lengthComputable) {
+                        setProgress(e.loaded / e.total * 100);
+                        var content = e.srcElement.responseText;
+                        alert(progress);
+                    }
+                    else {
+                        // TODO add message error 'Content Length not reported!';
+                    }
                 }
-                else {
-                    // TODO add message error 'Content Length not reported!';
-                }
-            }
-        });
+            });
 
-        return false;
+            return false;
+        }
     });
 
 

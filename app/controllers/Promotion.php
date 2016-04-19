@@ -103,7 +103,7 @@ class Promotion extends Controller
                                         <img class='img-responsive' src='/Ambula/$matching[0]' alt=''>
                                         <div class='overlay'>
                                            <h2>$promotionName</h2>
-                                           <a class='info' href='/Ambula/profile/index/sajidhz'>$companyName</a>
+                                           <a class='info' href=''>$companyName</a>
                                         </div>
                                     </div>
                                 </div>
@@ -119,37 +119,7 @@ class Promotion extends Controller
     {
 
         $promoId = $_POST["promotoionId"];
-
-        /*$singlePromotion = json_decode($this->promotion->viewSinglePromotion($promoId), true);
-        $promoId = $singlePromotion[0]['idPromotion'];
-        $imageUrl = $singlePromotion[0]['image_url'];
-        $description = $singlePromotion[0]['description'];
-        $startDate = $singlePromotion[0]['start_date'];
-        $endDate = $singlePromotion[0]['end_date'];
-
-        $text = "<div class='modal fade' id='promoViewModal' role='dialog'>
-                    <div class='modal-dialog'>
-                        <!-- Modal content-->
-                        <div class='modal-content'>
-                            <div class='modal-header'>
-                                <button type='button' class='close' data-dismiss='modal'>&times;</button>
-                                <h4 class='modal-title'>$promoId</h4>
-                            </div>
-                            <div class='modal-body'>
-                                <p>$description</p>
-                            </div>
-                            <div class='modal-footer'>
-                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>";
-
-        echo $text;*/
-
         echo $this->promotion->viewSinglePromotion($promoId);
-
-
     }
 
     public function error_page()

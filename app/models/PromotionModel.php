@@ -76,7 +76,7 @@ class PromotionModel
                 $startdate_flag = false;
             } else {
                 $startdate_flag = true;
-                $start_date = date('Y-m-d', strtotime($this->test_input($_POST["start_date"])));
+                $start_date = $_POST["start_date"];
             }
 
             //end date
@@ -85,7 +85,7 @@ class PromotionModel
                 $enddate_flag = false;
             } else {
                 $enddate_flag = true;
-                $end_date = date('Y-m-d', strtotime($this->test_input($_POST["end_date"])));
+                $end_date = date(strtotime($this->test_input($_POST["end_date"])));
             }
 
             //promotional image
@@ -141,7 +141,7 @@ class PromotionModel
             ':end_date' => $end_date,
             ':visibility' => $visibility));
 
-        echo '#1';
+        echo $this->db->lastInsertId();
 
     }
 
@@ -187,8 +187,12 @@ class PromotionModel
     //function to retrieve a information about a single promotion
     public function viewSinglePromotion($promoId)
     {
-
         $result = $this->db->query("SELECT * FROM promotion WHERE idPromotion = '$promoId'")->fetchAll(PDO::FETCH_ASSOC);
+        //add new image url to the database result array
+        $target_file = 'uploads/promotions/'.$promoId.'/'.$promoId;
+        $matching = glob($target_file . '.*');
+
+        $result['img_url'] = $matching[0];
         return json_encode($result);
     }
 

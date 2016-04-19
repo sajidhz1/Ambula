@@ -273,7 +273,7 @@
     //ajx method to view a single promotion enlarged
     $(document).on('click', '.singlePromo', function (e) {
         var id = $(this).attr('id');
-        open_single_promoModal(id);
+        window.location.href = "/Ambula/home/promotions?id="+id;
     });
 
     function open_single_promoModal(id) {
@@ -288,7 +288,7 @@
                 pUId = myVar[0].users_user_id;
                 pType = myVar[0].promotion_type;
                 pName = myVar[0].promotion_name;
-                pImg = myVar[0].image_url;
+                pImg = myVar.img_url;
                 pDescription = myVar[0].description;
                 pStartDate = myVar[0].start_date;
                 pEndDate = myVar[0].end_date;
