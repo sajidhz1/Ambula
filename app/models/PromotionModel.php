@@ -13,28 +13,25 @@ class PromotionModel
     public function __construct(DataBase $db)
     {
         $this->db = $db;
-        $this->idPromotion_Adder = "";
-        $this->idpromo_adderErr = "";
-        $this->idpromo_adder_flag = false;
     }
 
 
     public function validateAndInsertNewPromo()
     {
 
-        $this->idpromo_adder_flag = $promo_type_flag = $promo_name_flag = $description_flag = $startdate_flag = $enddate_flag = $priority_flag = false;
-        $this->idpromo_adderErr = $promo_typeErr = $promo_nameErr = $promo_imageErr = $descriptionErr = $startdateErr = $enddateErr = $priorityErr = $datetime_adderdErr = $visibilityErr = "";
-        $this->idPromotion_Adder = $promotion_type = $promotion_name = $image_url = $description = $start_date = $end_date = $priority = $date_time_added = $visibility = "";
+        $idpromo_adder_flag = $promo_type_flag = $promo_name_flag = $description_flag = $startdate_flag = $enddate_flag = $priority_flag = false;
+        $idpromo_adderErr = $promo_typeErr = $promo_nameErr = $promo_imageErr = $descriptionErr = $startdateErr = $enddateErr = $priorityErr = $datetime_adderdErr = $visibilityErr = "";
+        $idPromotion_Adder = $promotion_type = $promotion_name = $image_url = $description = $start_date = $end_date = $priority = $date_time_added = $visibility = "";
 
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (isset($_SESSION["user_logged_in"]) && $_SESSION["user_account_type"] == 2) {
-                $this->idPromotion_Adder = $_SESSION["uid"];
-                $this->idpromo_adder_flag = true;
+                $idPromotion_Adder = $_SESSION["uid"];
+                $idpromo_adder_flag = true;
             } else {
-                $this->idpromo_adder_flag = false;
-                $this->idpromo_adderErr = "Not logged in as Coporate user";
+                $idpromo_adder_flag = false;
+                $idpromo_adderErr = "Not logged in as Coporate user";
             }
 
             //promo type validation
@@ -53,21 +50,16 @@ class PromotionModel
             } else {
                 $promo_name_flag = true;
                 $promotion_name = $this->test_input($_POST["promotion_name"]);
-                // check if promo name only contains letters and whitespace
-                if (!preg_match("/^[a-zA-Z0-9 ]*$/", $promotion_name)) {
-                    $promo_name_flag = false;
-                    $promo_nameErr = "Only letters,digits and white spaces allowed";
-                }
             }
 
 
             //promotion description validation
             if (empty($_POST["description"])) {
-                ECHO "Description about the promotion is required";
+                $descriptionErr = "Description about the promotion is required";
                 $description_flag = false;
             } else {
                 $description_flag = true;
-                $description = $this->test_input($_POST["description"]);
+                $description = $_POST["description"];
             }
 
             //start date
@@ -76,7 +68,8 @@ class PromotionModel
                 $startdate_flag = false;
             } else {
                 $startdate_flag = true;
-                $start_date = $_POST["start_date"];
+                $stDate = DateTime::createFromFormat("d/m/Y",$_POST["start_date"]);
+                $start_date = $stDate->format("Y-m-d");
             }
 
             //end date
@@ -85,30 +78,17 @@ class PromotionModel
                 $enddate_flag = false;
             } else {
                 $enddate_flag = true;
-                $end_date = date(strtotime($this->test_input($_POST["end_date"])));
+                $enDate = DateTime::createFromFormat("d/m/Y",$_POST["end_date"]);
+                $end_date = $enDate->format("Y-m-d");
             }
 
             //promotional image
-            $sqlForId = "SELECT idPromotion FROM promotion ORDER BY idPromotion DESC LIMIT 1";
+/*            $sqlForId = "SELECT idPromotion FROM promotion ORDER BY idPromotion DESC LIMIT 1";
             $queryId = $this->db->prepare($sqlForId);
             $queryId->execute();
-            $lastPromoId = $queryId->fetchColumn();
+            $lastPromoId = $queryId->fetchColumn();*/
 
-            if (!$lastPromoId) {
-                $lastPromoId = 1;
-                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
-                    mkdir("uploads/promotions/" . $lastPromoId);
-                }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId);
-                $lastPromoId = null;
-            } else {
-                $lastPromoId++;
-                if (!is_dir("uploads/promotions/" . $lastPromoId)) {
-                    mkdir("uploads/promotions/" . $lastPromoId);
-                }
-                $image_url = $this->imageUpload("promo_image", $lastPromoId);
-                $lastPromoId = null;
-            }
+
 
 
             //priority
@@ -124,28 +104,36 @@ class PromotionModel
 
         }
 
-        if (!$promo_type_flag || !$promo_name_flag || !$description_flag || !$startdate_flag || !$enddate_flag) {
-            echo $promo_type_flag . '#' . $promo_name_flag . '#' . $description_flag . '#' . $startdate_flag . '#' . $enddate_flag;
+        if ($idpromo_adder_flag  && $promo_type_flag && $promo_name_flag && $description_flag && $startdate_flag && $enddate_flag) {
+            $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, description, start_date, end_date,  visibility) VALUES
+                  (:user_id ,:promotion_type ,:promotion_name,:description ,:start_date ,:end_date ,:visibility)";
+            $query = $this->db->prepare($sql);
+            $query->execute(array(':user_id' => $idPromotion_Adder,
+                ':promotion_type' => $promotion_type,
+                ':promotion_name' => $promotion_name,
+                ':description' => $description,
+                ':start_date' => $start_date,
+                ':end_date' => $end_date,
+                ':visibility' => $visibility));
+
+            $insertedPromoId = $this->db->lastInsertId();
+
+            if ($insertedPromoId) {
+                if($this->imageUpload("promo_image", $insertedPromoId)){
+                    return $insertedPromoId;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return $promo_type_flag . '#' . $promo_name_flag . '#' . $description_flag . '#' . $startdate_flag . '#' . $enddate_flag;
         }
-        //insert into promotion_adder table
-
-        $sql = "INSERT INTO promotion (users_user_id, promotion_type, promotion_name, image_url, description, start_date, end_date,  visibility) VALUES
-                  (:user_id ,:promotion_type ,:promotion_name ,:image_url ,:description ,:start_date ,:end_date ,:visibility)";
-        $query = $this->db->prepare($sql);
-        $query->execute(array(':user_id' => $this->idPromotion_Adder,
-            ':promotion_type' => $promotion_type,
-            ':promotion_name' => $promotion_name,
-            ':image_url' => $image_url,
-            ':description' => $description,
-            ':start_date' => $start_date,
-            ':end_date' => $end_date,
-            ':visibility' => $visibility));
-
-        echo $this->db->lastInsertId();
 
     }
 
-    public function viewPromotions($promotion_type)
+    public function checkPromotionAvailability($promotion_type)
     {
         $sql = "SELECT * FROM promotion WHERE promotion_type = ?";
         $query = $this->db->prepare($sql);
@@ -173,13 +161,13 @@ class PromotionModel
         }
     }
 
-    //==================================================Now implemented=======================================//
-    public function viewPromotionsTest($promotion_type)
+    //================================================================================================//
+    public function viewAllPromotions($promotion_type)
     {
-
-        $result = $this->db->query("SELECT pr.*, usr.idcommercial_user , usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type='$promotion_type') AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id")->fetchAll(PDO::FETCH_ASSOC);
-        return json_encode($result);
-
+        $sql= "SELECT pr.*, usr.idcommercial_user , usr.company_name, usr.web_url, usr.logo_url, usr.telephone_1, usr.address_1 FROM (SELECT * FROM promotion WHERE promotion_type=:promotion_type) AS pr INNER JOIN commercial_user AS usr ON pr.users_user_id=usr.users_user_id";
+        $result = $this->db->prepare($sql);
+        $result->execute(array(':promotion_type'=>$promotion_type));
+        return json_encode($result->fetchAll(PDO::FETCH_ASSOC));
     }
 
     //=================================================================================================//
@@ -192,7 +180,7 @@ class PromotionModel
         $target_file = 'uploads/promotions/'.$promoId.'/'.$promoId;
         $matching = glob($target_file . '.*');
 
-        $result['img_url'] = $matching[0];
+        $result['img_url'] = $matching[1];
         return json_encode($result);
     }
 
@@ -206,58 +194,110 @@ class PromotionModel
         return $data;
     }
 
-    public function imageUpload($name,$path)
+    public function imageUpload($fileInputName , $promotionId)
     {
+        if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == true && isset($_SESSION['username'])) {
 
-        $target_dir = "uploads/promotions/" . $path . "/";
-        $target_file = $target_dir . basename($_FILES[$name]["name"]);
-        $uploadOk = 1;
-        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
-        // Check if image file is a actual image or fake image
-        if (isset($_POST["promo_image"])) {
-            echo "testing upload";
-            $check = getimagesize($_FILES[$name]["tmp_name"]);
+
+            $target_dir = "uploads/promotions/" . $promotionId . "/";
+
+
+            //To create the directory if its not created already
+            $uploadOk = mkdir($target_dir);
+
+            $target_file = $target_dir . basename($_FILES[$fileInputName]["name"]);
+            $uploadOk = 1;
+
+            $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES[$fileInputName]["tmp_name"]);
             if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                //echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
                 echo "File is not an image.";
                 $uploadOk = 0;
             }
-        }
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            echo $target_file;
-            $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES[$name]["size"] > 1000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif"
-        ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            return false;
-            // if everything is ok, try to upload file
-        } else {
 
-        //    imagejpeg($image, $target_dir.$path.'.jpg', 80);
-
-            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_dir.$path.'.'.$imageFileType)) {
-                return true;
-
-            } else {
-                return false;
+            // Check if file already exists
+            if (file_exists($target_file)) {
+                echo "Sorry, file already exists.";
+                $uploadOk = 0;
             }
+
+            // Check file size
+            if ($_FILES[$fileInputName]["size"] > 3000000) {
+                echo "Sorry, your file is too large.";
+                $uploadOk = 0;
+            }
+
+            // Allow certain file formats
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $uploadOk = 0;
+            }
+
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk == 0) {
+                return false;
+                // if everything is ok, try to upload file
+            } else {
+                if (move_uploaded_file($_FILES[$fileInputName]["tmp_name"], $target_dir . $promotionId . '.' . $imageFileType)) {
+
+                    $this->make_thumb($target_dir . $promotionId . '.' . $imageFileType, $target_dir . $promotionId . '.card.jpg', 500);
+                    $this->make_thumb($target_dir . $promotionId . '.' . $imageFileType, $target_dir . $promotionId . '.thumb.jpg', 200);
+
+                    //Data base update query for updating the column of user avatar availability//
+                    $sql = "UPDATE promotion SET image_url = :image_url WHERE idPromotion = :idPromotion";
+                    $result = $this->db->prepare($sql);
+                    $result->execute(array(':image_url' => $target_dir . $promotionId . '.' . $imageFileType, ':idPromotion' => $promotionId));
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        } else {
+            return false;
         }
+    }
+
+    //create thumbnail
+    function make_thumb($src, $dest, $desired_width)
+    {
+
+        /* read the source image */
+        $what = getimagesize($src);
+
+        switch (strtolower($what['mime'])) {
+            case 'image/png':
+                $img = imagecreatefrompng($src);
+                break;
+            case 'image/jpeg':
+                $img = imagecreatefromjpeg($src);
+                break;
+            case 'image/gif':
+                $img = imagecreatefromgif($src);
+                break;
+            default:
+                die();
+        }
+
+        $width = imagesx($img);
+        $height = imagesy($img);
+
+        /* find the "desired height" of this thumbnail, relative to the desired width  */
+        $desired_height = floor($height * ($desired_width / $width));
+
+        /* create a new, "virtual" image */
+        $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+
+        /* copy source image at a resized size */
+        imagecopyresampled($virtual_image, $img, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+
+        /* create the physical thumbnail image to its destination */
+        imagejpeg($virtual_image, $dest);
     }
 
 

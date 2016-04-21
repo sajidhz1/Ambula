@@ -150,11 +150,6 @@ class Home extends Controller
     }
 
 
-    public function promotions()
-    {
-        $this->view('promotions/viewPromotions');
-    }
-
     public function uploadUserPhoto()
     {
         $this->user->uploadUserPhoto();

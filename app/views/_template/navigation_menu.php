@@ -39,12 +39,12 @@
                 else
                     $d = "" ?>
 
-                <li><a <?php if ($d == "home") echo "class='current'" ?> href="/Ambula/">Home</a></li>
-                <li><a <?php if ($d and $data == "categories") echo "class='current'" ?> href="/Ambula/home/categories">Recipes</a>
+                <li><a <?php if ($d == "home") echo "class='current'"; ?> href="/Ambula/">Home</a></li>
+                <li><a <?php if ($d and $data == "categories") echo "class='current'"; ?> href="/Ambula/home/categories">Recipes</a>
                 </li>
-                <li><a <?php if ($d and $data == "contact") echo "class='current'" ?> href="/Ambula/Foodproducts">Groceries</a>
+                <li><a <?php if ($d and $data == "contact") echo "class='current'" ;?> href="/Ambula/Foodproducts">Groceries</a>
                 </li>
-                <li><a <?php if ($d and $data == "promotions") echo "class='current'" ?> href="/Ambula/home/promotions">Promotions</a>
+                <li><a <?php if ($d and $data == "promotions") echo "class='current'"; ?> href="/Ambula/promotion">Promotions</a>
                 </li>
 
 
@@ -82,7 +82,7 @@
                                 if (Session::get('user_account_type') == 2) {
                                     ?>
                                     <li><a href="/Ambula/Foodproducts/addnewproduct">New Product</a></li>
-                                    <li><a href="/Ambula/promotion">New Promotion</a></li>
+                                    <li><a href="/Ambula/promotion/newPromotion">New Promotion</a></li>
                                 <?php
                                 }
                             } ?>

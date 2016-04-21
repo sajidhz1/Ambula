@@ -169,7 +169,6 @@ class ProfileModel
                     $sql = "UPDATE users SET user_avatar = :user_avatar WHERE user_id = :logged_in_user";
                     $result = $this->db->prepare($sql);
                     $result->execute(array(':user_avatar' => 1, ':logged_in_user' => $_SESSION['uid']));
-
                     return true;
                 } else {
                     return false;
