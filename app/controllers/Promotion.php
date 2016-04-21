@@ -6,7 +6,7 @@
  * Date: 7/31/2015
  * Time: 11:49 PM
  */
-class Promotion extends Controller
+class promotion extends Controller
 {
     protected $promotion;
 
@@ -18,58 +18,35 @@ class Promotion extends Controller
 
     public function index()
     {
-        $this->view('promotions/newPromotions');
+        $this->view('promotions/viewPromotions');
     }
 
-    public function viewNewPromoAdderForm()
+    public function newPromotion()
     {
-        $this->view('promotions/promotionAdderForm');
+        if(isset($_SESSION['user_logged_in']) && isset($_SESSION['uid']) && isset($_SESSION['coporate_user_id'])){
+            $this->view('promotions/newPromotion');
+        }else{
+            ob_start();
+            header('Location: /Ambula/login');
+            ob_end_flush();
+            die();
+        }
     }
+
 
     public function addNewPromotion()
     {
-        $this->promotion->validateAndInsertNewPromo();
-    }
-
-    public function promotionSuccess()
-    {
-        $this->view('promotions/promotionSuccessMessage');
-    }
-
-    public function viewAllPromotions()
-    {
-        $promoList = $this->promotion->viewPromotions($_GET["promtoionType"]);
-        switch ($_GET["promtoionType"]) {
-            case 'restaurant':
-                $promotionType = "Restaurents";
-                break;
-            case 'foodproduct':
-                $promotionType = "Food Products";
-                break;
-            case 'culinary_equipment':
-                $promotionType = "Culinary Equipments";
-        }
-        if (!$promoList) {
-            echo "<div style='padding: 20%; padding-top: 10%;' class='col-lg registration-container'>
-					<div class='alert alert-info' role='alert' style='text-align:center;'>
-						<span class='glyphicon glyphicon-warning-sign' aria-hidden='true'></span>
-						Currently No Promotions Or Offers are Available on $promotionType
-					</div>
-				</div>";
-        } else {
-
-        }
-
+        echo $this->promotion->validateAndInsertNewPromo();
     }
 
     //==================================================Now implemented=======================================//
 
-    public function viewPromotionsTest()
+    public function viewAllPromotions()
     {
 
         $promotion_type = $_POST["promotoionType"];
 
-        $promoList = json_decode($this->promotion->viewPromotionsTest($promotion_type), true);
+        $promoList = json_decode($this->promotion->viewAllPromotions($promotion_type), true);
 
         $text = "";
 
@@ -117,7 +94,6 @@ class Promotion extends Controller
     //to display information about a single promotion on a modal when a promotion tile is clicked
     public function viewSinglePromotion()
     {
-
         $promoId = $_POST["promotoionId"];
         echo $this->promotion->viewSinglePromotion($promoId);
     }

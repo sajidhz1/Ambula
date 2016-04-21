@@ -26,9 +26,9 @@
 
 
     <link href="/Ambula/public/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <link href="/Ambula/public/css/bootstrap-theme.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/custom.css" rel="stylesheet" media="screen"/>
     <link href="/Ambula/public/css/color1.css" rel="stylesheet" media="screen"/>
+    <link href="/Ambula/public/css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
     <link href="/Ambula/public/css/w3.css" rel="stylesheet" media="screen"/>
 
     <!-- fav icon -->
@@ -36,6 +36,7 @@
 
 
     <script type="text/javascript" src="/Ambula/public/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/Ambula/public/js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
     <script type="text/javascript" src="/Ambula/public/js/typeahead.js"></script>
@@ -54,9 +55,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Calendar for promotion adding form -->
-    <link href="/Ambula/public/js/promotion/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/Ambula/public/js/promotion/jquery-ui.min.js"></script>
 
 
 
@@ -154,10 +152,10 @@
         <?php $this->view('_template/navigation_menu', "newPromotion"); ?>
     </div>
 
-    <div class="row" id="promotionRow">
+    <div class="row" id="promotionAddRow">
         <div class="col-lg-6 col-md-8 col-sm-8 col-xsm-12 center-block" id="promotion-container">
             <form id="newPromotionForm" data-toggle="validator" role="form"
-                  action="/Ambula/Promotion/addNewPromotion" method="POST" enctype="multipart/form-data">
+                  action="/Ambula/promotion/addNewPromotion" method="POST" enctype="multipart/form-data">
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -237,7 +235,7 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <!-- Start date -->
-                        <label class="control-label" for="start_date">Starting Date</label>
+                        <label class="control-label" for="start_date"><span class="compulsory">*</span>Starting Date</label>
 
                         <div class="controls">
                             <input id="startdate" name="start_date" class="form-control celenderForPromo"
@@ -248,12 +246,12 @@
                     </div>
                     <div class="form-group col-lg-4">
                         <!-- End date -->
-                        <label class="control-label" for="end_date">Ending Date</label>
+                        <label class="control-label" for="end_date"><span class="compulsory">*</span>Ending Date</label>
 
                         <div class="controls">
                             <input id="enddate" name="end_date" class="form-control celenderForPromo"
                                    pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$"
-                                   data-error="Please Pick a Valid Date" required disabled>
+                                   data-error="Please Pick a Valid Date" required>
                         </div>
                         <span class="help-block with-errors"></span>
                     </div>
@@ -326,7 +324,7 @@
 </script>
 <script src="https://cdn.rawgit.com/ilopX/jquery-ajax-progress/master/dist/jquery.ajax-progress.min.js"></script>
 <script src="//cdn.ckeditor.com/4.5.3/basic/ckeditor.js"></script>
-<script type="text/javascript" src="http://localhost/Ambula/public/js/registration/validator.js"></script>
-<script type="text/javascript" src="/Ambula/public/js/promotion/promotionJavaScriptCustom.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/registration/validator.js"></script>
+<script type="text/javascript" src="/Ambula/public/js/promotion/promotion.js"></script>
 </body>
 </html>
